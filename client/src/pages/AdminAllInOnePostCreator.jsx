@@ -64,7 +64,14 @@ export default function AdminAllInOnePostCreator() {
   const [isListening, setIsListening] = useState(false);
   const [speechLanguage, setSpeechLanguage] = useState('hi-IN');
   const [speechSupported, setSpeechSupported] = useState(true);
+  const [interimText, setInterimText] = useState('');
   const recognitionRef = useRef(null);
+  const baseTextRef = useRef('');
+  const rawContentRef = useRef('');
+  const isListeningRef = useRef(false);
+
+  // Sync ref with state
+  rawContentRef.current = rawContent;
 
   // Platform-tailored content (dynamically calculated or manually customized)
   const [platformContents, setPlatformContents] = useState({
@@ -103,25 +110,61 @@ export default function AdminAllInOnePostCreator() {
       recognition.lang = speechLanguage;
 
       recognition.onresult = (event) => {
-        let currentTranscript = '';
-        for (let i = event.resultIndex; i < event.results.length; i++) {
-          currentTranscript += event.results[i][0].transcript;
+        let sessionFinal = '';
+        let currentInterim = '';
+
+        // Web Speech API maintains the full results array for the current session.
+        // Loop from 0 to event.results.length to calculate canonical final and interim transcript.
+        for (let i = 0; i < event.results.length; i++) {
+          const item = event.results[i];
+          const transcript = item[0]?.transcript || '';
+          if (item.isFinal) {
+            sessionFinal += transcript + ' ';
+          } else {
+            currentInterim += transcript;
+          }
         }
-        if (currentTranscript.trim()) {
-          setRawContent((prev) => {
-            const separator = prev && !prev.endsWith(' ') ? ' ' : '';
-            return prev + separator + currentTranscript;
-          });
+
+        const base = baseTextRef.current ? baseTextRef.current.trim() : '';
+        const finalTrimmed = sessionFinal.trim();
+
+        let newContent = base;
+        if (finalTrimmed) {
+          newContent = base ? `${base} ${finalTrimmed}` : finalTrimmed;
         }
+
+        setRawContent(newContent);
+        setInterimText(currentInterim.trim());
       };
 
       recognition.onerror = (event) => {
         console.warn('Speech recognition error:', event.error);
-        setIsListening(false);
+        if (event.error === 'no-speech') {
+          return;
+        }
+        if (event.error === 'not-allowed' || event.error === 'service-not-allowed') {
+          showToast('⚠️ माइक्रोफ़ोन की अनुमति (Permission) ब्लॉक है। कृपया ब्राउज़र में अनुमति दें।');
+          setIsListening(false);
+          isListeningRef.current = false;
+          setInterimText('');
+        }
       };
 
       recognition.onend = () => {
+        // In Chrome, recognition stops on brief silence.
+        // Auto-restart if user has not explicitly clicked stop!
+        if (isListeningRef.current) {
+          try {
+            baseTextRef.current = rawContentRef.current ? rawContentRef.current.trim() : '';
+            recognition.start();
+            return;
+          } catch (e) {
+            console.warn('Auto-restart recognition error:', e);
+          }
+        }
         setIsListening(false);
+        isListeningRef.current = false;
+        setInterimText('');
       };
 
       recognitionRef.current = recognition;
@@ -146,20 +189,39 @@ export default function AdminAllInOnePostCreator() {
     }
 
     if (isListening) {
-      if (recognitionRef.current) {
-        recognitionRef.current.stop();
-      }
+      isListeningRef.current = false;
       setIsListening(false);
+      if (recognitionRef.current) {
+        try {
+          recognitionRef.current.stop();
+        } catch (e) {}
+      }
+      // Flush any pending interim text cleanly
+      if (interimText && interimText.trim()) {
+        setRawContent((prev) => {
+          const trimmed = prev.trim();
+          const toAdd = interimText.trim();
+          return trimmed ? `${trimmed} ${toAdd}` : toAdd;
+        });
+      }
+      setInterimText('');
+      showToast('⏹️ रिकॉर्डिंग रोक दी गई।');
     } else {
+      // Record base text before starting dictation
+      baseTextRef.current = rawContent ? rawContent.trim() : '';
+      isListeningRef.current = true;
+      setIsListening(true);
+      setInterimText('');
+
       if (recognitionRef.current) {
         try {
           recognitionRef.current.lang = speechLanguage;
           recognitionRef.current.start();
-          setIsListening(true);
           showToast('🎙️ रिकॉर्डिंग चालू है... बोलिए, आपकी आवाज टेक्स्ट में बदल रही है!');
         } catch (err) {
           console.error('Failed to start speech recognition:', err);
           setIsListening(false);
+          isListeningRef.current = false;
         }
       }
     }
@@ -544,11 +606,24 @@ export default function AdminAllInOnePostCreator() {
                 </div>
               </div>
 
-              {/* Voice status banner if recording */}
+              {/* Voice status banner with live interim transcription */}
               {isListening && (
-                <div className="p-3 bg-red-50 border border-red-200 rounded-2xl flex items-center gap-3 text-red-700 text-xs font-bold animate-pulse">
-                  <span className="w-2.5 h-2.5 rounded-full bg-red-600"></span>
-                  <span>माइक सक्रिय है... आप जो बोलेंगे वो नीचे पोस्ट में अपने आप टाइप हो रहा है।</span>
+                <div className="p-3 bg-red-50 border border-red-200 rounded-2xl space-y-2 text-xs animate-pulse">
+                  <div className="flex items-center justify-between text-red-700 font-bold">
+                    <div className="flex items-center gap-2">
+                      <span className="w-2.5 h-2.5 rounded-full bg-red-600 animate-ping"></span>
+                      <span>🎙️ माइक चालू है... आप बोलिए, आपकी बात लाइव टाइप हो रही है।</span>
+                    </div>
+                    <span className="px-2 py-0.5 rounded-md bg-red-100 text-red-800 text-[10px] font-extrabold uppercase">
+                      {speechLanguage === 'hi-IN' ? 'हिंदी' : 'English'}
+                    </span>
+                  </div>
+                  {interimText && (
+                    <div className="bg-white/90 border border-red-200 rounded-xl px-3 py-1.5 text-slate-800 font-medium italic flex items-center gap-2">
+                      <span className="text-[10px] text-red-600 font-bold uppercase not-italic shrink-0">पहचाना जा रहा है:</span>
+                      <span className="truncate">"{interimText}"</span>
+                    </div>
+                  )}
                 </div>
               )}
 
@@ -586,15 +661,30 @@ export default function AdminAllInOnePostCreator() {
                 </div>
               </div>
 
-              {/* Content Textarea with Emoji bar */}
+              {/* Content Textarea with Emoji bar & Clear Button */}
               <div>
                 <div className="flex items-center justify-between mb-1">
                   <label className="text-xs font-bold text-slate-700">
                     विस्तृत पोस्ट विवरण (HTML / टेक्स्ट समर्थित)
                   </label>
-                  <span className="text-[11px] text-slate-400">
-                    अक्षर: {rawContent.length}
-                  </span>
+                  <div className="flex items-center gap-2.5">
+                    {rawContent && (
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setRawContent('');
+                          setInterimText('');
+                        }}
+                        className="text-[11px] text-red-500 hover:text-red-700 font-bold cursor-pointer hover:underline"
+                        title="पूरा टेक्स्ट साफ़ करें"
+                      >
+                        ✕ टेक्स्ट साफ़ करें
+                      </button>
+                    )}
+                    <span className="text-[11px] text-slate-400 font-semibold">
+                      अक्षर: {rawContent.length}
+                    </span>
+                  </div>
                 </div>
 
                 {/* Quick Emojis */}
