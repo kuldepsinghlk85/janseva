@@ -36,6 +36,10 @@ export const api = {
   updateModules: (modules, user = 'Admin') => fetchJson('/settings/modules', { method: 'PUT', body: JSON.stringify({ modules, user }) }),
   toggleModule: (moduleKey, user = 'Admin') => fetchJson('/settings/modules/toggle', { method: 'POST', body: JSON.stringify({ moduleKey, user }) }),
   resetThemeSettings: (user = 'Admin') => fetchJson('/settings/master-layout/reset', { method: 'POST', body: JSON.stringify({ user }) }),
+  getLeaderProfiles: () => fetchJson('/settings/leader-profiles'),
+  updateLeaderProfile: (profile, user = 'Admin') => fetchJson('/settings/leader-profile', { method: 'PUT', body: JSON.stringify({ profile, user }) }),
+  createLeaderProfile: (profile, user = 'Admin') => fetchJson('/settings/leader-profiles', { method: 'POST', body: JSON.stringify({ profile, user }) }),
+  activateLeaderProfile: (id, user = 'Admin') => fetchJson(`/settings/leader-profiles/activate/${id}`, { method: 'POST', body: JSON.stringify({ user }) }),
   getMlaPhotos: () => fetchJson('/settings/mla-photos'),
   updateMlaPhoto: (data, user = 'Admin') => fetchJson('/settings/mla-photo', { method: 'PUT', body: JSON.stringify({ ...data, user }) }),
   setActiveMlaPhoto: (id, user = 'Admin') => fetchJson(`/settings/mla-photos/set-active/${id}`, { method: 'POST', body: JSON.stringify({ user }) }),
@@ -318,6 +322,29 @@ export const api = {
   getSystemUsers: () => fetchJson('/users'),
   createSystemUser: (data) => fetchJson('/users', { method: 'POST', body: JSON.stringify(data) }),
   updateSystemUser: (id, data) => fetchJson(`/users/${encodeURIComponent(id)}`, { method: 'PUT', body: JSON.stringify(data) }),
-  deleteSystemUser: (id) => fetchJson(`/users/${encodeURIComponent(id)}`, { method: 'DELETE' })
+  deleteSystemUser: (id) => fetchJson(`/users/${encodeURIComponent(id)}`, { method: 'DELETE' }),
+
+  // Multi-Leader SaaS & Portal Provisioning
+  getLeaderProfiles: () => fetchJson('/settings/leader-profiles'),
+  createLeaderProfile: (profile, user = 'Super Admin') => fetchJson('/settings/leader-profiles', { method: 'POST', body: JSON.stringify({ profile, user }) }),
+  activateLeaderProfile: (id, user = 'Super Admin') => fetchJson(`/settings/leader-profiles/activate/${encodeURIComponent(id)}`, { method: 'POST', body: JSON.stringify({ user }) }),
+  updateLeaderProfile: (profile, user = 'Super Admin') => fetchJson('/settings/leader-profile', { method: 'PUT', body: JSON.stringify({ profile, user }) }),
+
+  // Direct File Upload Helper
+  uploadImageFile: async (file) => {
+    const formData = new FormData();
+    formData.append('file', file);
+    try {
+      const res = await fetch(`${API_BASE}/upload`, {
+        method: 'POST',
+        body: formData
+      });
+      return await res.json();
+    } catch (err) {
+      console.error('Upload Error:', err);
+      return { success: false, message: err.message };
+    }
+  }
 };
+
 

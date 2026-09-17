@@ -1,7 +1,7 @@
 {
   "mla": {
     "name": "श्रीमती सरिता भदौरिया",
-    "nameEn": "Smt. Sarita Bhadauria",
+    "nameEn": "श्रीमती सरिता भदौरिया",
     "title": "विधायक, इटावा विधानसभा (200)",
     "constituency": "इटावा (200)",
     "district": "इटावा",
@@ -52,7 +52,7 @@
     "banner": "/images/assets/official_bjp_mla_banner.jpg"
   },
   "settings": {
-    "activeTemplate": "public-connect",
+    "activeTemplate": "media-news",
     "hero": {
       "show": true,
       "title": "विकास ही मेरी प्राथमिकता है,\nऔर जनता ही मेरी शक्ति।",
@@ -131,9 +131,9 @@
         "order": 1
       },
       {
-        "id": "citizen-services",
-        "name": "Citizen Services",
-        "nameHi": "नागरिक सेवाएं एवं QR",
+        "id": "latest-news",
+        "name": "Latest News",
+        "nameHi": "ताज़ा समाचार",
         "enabled": true,
         "order": 2
       },
@@ -145,44 +145,44 @@
         "order": 3
       },
       {
-        "id": "upcoming-events",
-        "name": "Upcoming Events",
-        "nameHi": "आगामी कार्यक्रम",
-        "enabled": true,
-        "order": 4
-      },
-      {
         "id": "development-highlights",
         "name": "Development Highlights",
         "nameHi": "विकास कार्य झलकियां",
         "enabled": true,
+        "order": 4
+      },
+      {
+        "id": "leader-network",
+        "name": "Leader Network",
+        "nameHi": "मार्गदर्शक नेतृत्व",
+        "enabled": true,
         "order": 5
+      },
+      {
+        "id": "upcoming-events",
+        "name": "Upcoming Events",
+        "nameHi": "आगामी कार्यक्रम",
+        "enabled": true,
+        "order": 6
       },
       {
         "id": "about-mla",
         "name": "About MLA",
         "nameHi": "विधायक परिचय",
         "enabled": true,
-        "order": 6
+        "order": 7
       },
       {
-        "id": "latest-news",
-        "name": "Latest News",
-        "nameHi": "ताज़ा समाचार",
+        "id": "citizen-services",
+        "name": "Citizen Services",
+        "nameHi": "नागरिक सेवाएं एवं QR",
         "enabled": true,
-        "order": 7
+        "order": 8
       },
       {
         "id": "testimonial",
         "name": "Testimonial",
         "nameHi": "जनता के अनुभव",
-        "enabled": true,
-        "order": 8
-      },
-      {
-        "id": "leader-network",
-        "name": "Leader Network",
-        "nameHi": "मार्गदर्शक नेतृत्व",
         "enabled": true,
         "order": 9
       },
@@ -234,10 +234,10 @@
       }
     ],
     "branding": {
-      "primaryColor": "#1d4ed8",
-      "secondaryColor": "#0284c7",
-      "siteTitle": "जनसेवा इटावा 200",
-      "slogan": "सेवा ही संकल्प, विकास ही लक्ष्य"
+      "primaryColor": "#ea580c",
+      "secondaryColor": "#16a34a",
+      "siteTitle": "जनसेवा इटावा",
+      "slogan": "“मजबूत नेतृत्व, विकसित इटावा, समृद्ध भारत”"
     },
     "stats": {
       "developmentWorks": "125+",
@@ -299,16 +299,16 @@
       "officialMlaBanner": true,
       "heroSlider": true,
       "janSamvadSpotlight": true,
-      "metricsBar": true,
+      "metricsBar": false,
       "featuredActivity": true,
-      "updatesAndSchemes": true,
-      "socialAndConstituency": true,
-      "knowYourConstituency": true,
+      "updatesAndSchemes": false,
+      "socialAndConstituency": false,
+      "knowYourConstituency": false,
       "latestActivitiesAndMinisters": true,
       "timelineAndTeam": true,
       "citizenTestimonial": true,
-      "footerPanorama": true,
-      "floatingMobileSimulator": true,
+      "footerPanorama": false,
+      "floatingMobileSimulator": false,
       "floatingQrModal": true
     },
     "theme": {
@@ -329,7 +329,7 @@
       "highlightWord": "इटावा",
       "subtitle": "People • Development • Trust",
       "tagline": "“मजबूत नेतृत्व, विकसित इटावा, समृद्ध भारत”",
-      "constituency": "जनसेवा इटावा (विधानसभा 200)",
+      "constituency": "जनसेवा इटावा (इटावा (200))",
       "logoType": "icon",
       "logoIcon": "🪷",
       "logoImage": "",
@@ -1269,6 +1269,796 @@
     }
   ],
   "auditLogs": [
+    {
+      "id": "log_1789668314857_a4oy",
+      "timestamp": "2026-09-17T18:05:14.857Z",
+      "user": "Super Admin",
+      "action": "सुपर एडमिन ने सक्रिय जननेता पोर्टल बदला: श्रीमती सरिता भदौरिया (इटावा (200))",
+      "module": "Super Admin Multi-Leader",
+      "details": {
+        "id": "leader-sarita-etawah-200",
+        "target": {
+          "id": "leader-sarita-etawah-200",
+          "name": "श्रीमती सरिता भदौरिया",
+          "title": "विधायक, इटावा विधानसभा (200)",
+          "constituency": "इटावा (200)",
+          "district": "इटावा",
+          "state": "उत्तर प्रदेश",
+          "party": "भारतीय जनता पार्टी (BJP)",
+          "photo": "/uploads/images/sarita_bhadauriya-1789523047198-607565.png",
+          "siteTitle": "जनसेवा इटावा",
+          "highlightWord": "इटावा",
+          "themePreset": "saffron",
+          "active": true,
+          "status": "active"
+        }
+      },
+      "device": "Desktop / Chrome Windows 11"
+    },
+    {
+      "id": "log_1789668314844_qkiv",
+      "timestamp": "2026-09-17T18:05:14.844Z",
+      "user": "Super Admin",
+      "action": "सुपर एडमिन ने सक्रिय जननेता पोर्टल बदला: श्री बृजेश पाठक (लखनऊ कैंट (175))",
+      "module": "Super Admin Multi-Leader",
+      "details": {
+        "id": "leader-demo-lucknow-cantt",
+        "target": {
+          "id": "leader-demo-lucknow-cantt",
+          "name": "श्री बृजेश पाठक",
+          "title": "उप मुख्यमंत्री / विधायक, लखनऊ कैंट",
+          "constituency": "लखनऊ कैंट (175)",
+          "district": "लखनऊ",
+          "state": "उत्तर प्रदेश",
+          "party": "भारतीय जनता पार्टी (BJP)",
+          "photo": "/images/assets/modi_portrait.jpg",
+          "siteTitle": "जनसेवा लखनऊ कैंट",
+          "highlightWord": "लखनऊ",
+          "themePreset": "royal_blue",
+          "active": true,
+          "status": "active"
+        }
+      },
+      "device": "Desktop / Chrome Windows 11"
+    },
+    {
+      "id": "log_1789667431631_z47l",
+      "timestamp": "2026-09-17T17:50:31.631Z",
+      "user": "Admin (Super Admin)",
+      "action": "Activated Template: Media & News",
+      "module": "Website Builder",
+      "details": {
+        "templateId": "media-news"
+      },
+      "device": "Desktop / Chrome Windows 11"
+    },
+    {
+      "id": "log_1789667350505_ssk6",
+      "timestamp": "2026-09-17T17:49:10.505Z",
+      "user": "Admin (Super Admin)",
+      "action": "मॉड्यूल [updatesAndSchemes] को निष्क्रिय (OFF) किया गया",
+      "module": "Module Manager",
+      "details": {
+        "moduleKey": "updatesAndSchemes",
+        "state": false
+      },
+      "device": "Desktop / Chrome Windows 11"
+    },
+    {
+      "id": "log_1789667341046_8okw",
+      "timestamp": "2026-09-17T17:49:01.046Z",
+      "user": "Admin (Super Admin)",
+      "action": "मॉड्यूल [floatingMobileSimulator] को निष्क्रिय (OFF) किया गया",
+      "module": "Module Manager",
+      "details": {
+        "moduleKey": "floatingMobileSimulator",
+        "state": false
+      },
+      "device": "Desktop / Chrome Windows 11"
+    },
+    {
+      "id": "log_1789667338395_n3ju",
+      "timestamp": "2026-09-17T17:48:58.395Z",
+      "user": "Admin (Super Admin)",
+      "action": "मॉड्यूल [footerPanorama] को निष्क्रिय (OFF) किया गया",
+      "module": "Module Manager",
+      "details": {
+        "moduleKey": "footerPanorama",
+        "state": false
+      },
+      "device": "Desktop / Chrome Windows 11"
+    },
+    {
+      "id": "log_1789667253133_kpn2",
+      "timestamp": "2026-09-17T17:47:33.133Z",
+      "user": "Admin (Super Admin)",
+      "action": "वेबसाइट मॉड्यूल्स विजिबिलिटी सेटिंग्स अपडेट की गईं",
+      "module": "Module Manager",
+      "details": {
+        "topRibbon": true,
+        "headerMobileAppBtn": true,
+        "headerLoginBtn": true,
+        "headerLangBtn": true,
+        "festivalBanner": true,
+        "officialMlaBanner": true,
+        "heroSlider": true,
+        "janSamvadSpotlight": true,
+        "metricsBar": false,
+        "featuredActivity": true,
+        "updatesAndSchemes": true,
+        "socialAndConstituency": false,
+        "knowYourConstituency": false,
+        "latestActivitiesAndMinisters": true,
+        "timelineAndTeam": true,
+        "citizenTestimonial": true,
+        "footerPanorama": true,
+        "floatingMobileSimulator": true,
+        "floatingQrModal": true
+      },
+      "device": "Desktop / Chrome Windows 11"
+    },
+    {
+      "id": "log_1789667253125_m5px",
+      "timestamp": "2026-09-17T17:47:33.125Z",
+      "user": "Admin (Super Admin)",
+      "action": "वेबसाइट हेडर व लोगो अपडेट किया गया: जनसेवा इटावा",
+      "module": "Header Branding",
+      "details": {
+        "siteTitle": "जनसेवा इटावा",
+        "highlightWord": "इटावा",
+        "subtitle": "People • Development • Trust",
+        "tagline": "“मजबूत नेतृत्व, विकसित इटावा, समृद्ध भारत”",
+        "constituency": "जनसेवा इटावा (विधानसभा 200)",
+        "logoType": "icon",
+        "logoIcon": "🪷",
+        "logoImage": "",
+        "logoWidth": 44,
+        "headerLayout": "standard",
+        "showRibbon": true,
+        "showMobileAppBtn": true,
+        "showLoginBtn": true,
+        "showLangBtn": true
+      },
+      "device": "Desktop / Chrome Windows 11"
+    },
+    {
+      "id": "log_1789667253116_b67d",
+      "timestamp": "2026-09-17T17:47:33.116Z",
+      "user": "Admin (Super Admin)",
+      "action": "वेबसाइट थीम अपडेट की गई: saffron (#ea580c)",
+      "module": "Master Theme Manager",
+      "details": {
+        "preset": "saffron",
+        "primaryColor": "#ea580c",
+        "secondaryColor": "#16a34a",
+        "accentColor": "#f59e0b",
+        "navbarBg": "#ffffff",
+        "navbarText": "#0f172a",
+        "footerBg": "#0f172a",
+        "bodyBg": "#f8fafc",
+        "cardRadius": "rounded-xl",
+        "fontFamily": "Inter",
+        "headerStyle": "standard"
+      },
+      "device": "Desktop / Chrome Windows 11"
+    },
+    {
+      "id": "log_1789667232305_orib",
+      "timestamp": "2026-09-17T17:47:12.305Z",
+      "user": "Admin (Super Admin)",
+      "action": "मॉड्यूल [metricsBar] को निष्क्रिय (OFF) किया गया",
+      "module": "Module Manager",
+      "details": {
+        "moduleKey": "metricsBar",
+        "state": false
+      },
+      "device": "Desktop / Chrome Windows 11"
+    },
+    {
+      "id": "log_1789667231143_zk2o",
+      "timestamp": "2026-09-17T17:47:11.143Z",
+      "user": "Admin (Super Admin)",
+      "action": "मॉड्यूल [metricsBar] को सक्रिय (ON) किया गया",
+      "module": "Module Manager",
+      "details": {
+        "moduleKey": "metricsBar",
+        "state": true
+      },
+      "device": "Desktop / Chrome Windows 11"
+    },
+    {
+      "id": "log_1789667230614_clm3",
+      "timestamp": "2026-09-17T17:47:10.614Z",
+      "user": "Admin (Super Admin)",
+      "action": "मॉड्यूल [metricsBar] को निष्क्रिय (OFF) किया गया",
+      "module": "Module Manager",
+      "details": {
+        "moduleKey": "metricsBar",
+        "state": false
+      },
+      "device": "Desktop / Chrome Windows 11"
+    },
+    {
+      "id": "log_1789667220946_yuxa",
+      "timestamp": "2026-09-17T17:47:00.946Z",
+      "user": "Admin (Super Admin)",
+      "action": "मॉड्यूल [knowYourConstituency] को निष्क्रिय (OFF) किया गया",
+      "module": "Module Manager",
+      "details": {
+        "moduleKey": "knowYourConstituency",
+        "state": false
+      },
+      "device": "Desktop / Chrome Windows 11"
+    },
+    {
+      "id": "log_1789667219100_bu45",
+      "timestamp": "2026-09-17T17:46:59.100Z",
+      "user": "Admin (Super Admin)",
+      "action": "मॉड्यूल [socialAndConstituency] को निष्क्रिय (OFF) किया गया",
+      "module": "Module Manager",
+      "details": {
+        "moduleKey": "socialAndConstituency",
+        "state": false
+      },
+      "device": "Desktop / Chrome Windows 11"
+    },
+    {
+      "id": "log_1789667198684_i6p6",
+      "timestamp": "2026-09-17T17:46:38.684Z",
+      "user": "Admin (Super Admin)",
+      "action": "मास्टर लेआउट एवं थीम डिफ़ॉल्ट पर रीसेट किया गया",
+      "module": "Master Theme Manager",
+      "details": {},
+      "device": "Desktop / Chrome Windows 11"
+    },
+    {
+      "id": "log_1789667149924_7t94",
+      "timestamp": "2026-09-17T17:45:49.924Z",
+      "user": "Admin (Super Admin)",
+      "action": "वेबसाइट मॉड्यूल्स विजिबिलिटी सेटिंग्स अपडेट की गईं",
+      "module": "Module Manager",
+      "details": {
+        "topRibbon": true,
+        "headerMobileAppBtn": true,
+        "headerLoginBtn": true,
+        "headerLangBtn": true,
+        "festivalBanner": true,
+        "officialMlaBanner": true,
+        "heroSlider": true,
+        "janSamvadSpotlight": true,
+        "metricsBar": true,
+        "featuredActivity": true,
+        "updatesAndSchemes": true,
+        "socialAndConstituency": true,
+        "knowYourConstituency": true,
+        "latestActivitiesAndMinisters": true,
+        "timelineAndTeam": true,
+        "citizenTestimonial": true,
+        "footerPanorama": true,
+        "floatingMobileSimulator": true,
+        "floatingQrModal": true
+      },
+      "device": "Desktop / Chrome Windows 11"
+    },
+    {
+      "id": "log_1789667149915_e8sz",
+      "timestamp": "2026-09-17T17:45:49.915Z",
+      "user": "Admin (Super Admin)",
+      "action": "वेबसाइट हेडर व लोगो अपडेट किया गया: जनसेवा कानपुर ",
+      "module": "Header Branding",
+      "details": {
+        "siteTitle": "जनसेवा कानपुर ",
+        "highlightWord": "कानपुर ",
+        "subtitle": "People • Development • Trust",
+        "tagline": "“मजबूत नेतृत्व, विकसित कानपुर , समृद्ध भारत”",
+        "constituency": "जनसेवा कानपुर (विधानसभा 201 )",
+        "logoType": "icon",
+        "logoIcon": "☀️",
+        "logoImage": "",
+        "logoWidth": 63,
+        "headerLayout": "standard",
+        "showRibbon": true,
+        "showMobileAppBtn": true,
+        "showLoginBtn": true,
+        "showLangBtn": true
+      },
+      "device": "Desktop / Chrome Windows 11"
+    },
+    {
+      "id": "log_1789667149907_ict9",
+      "timestamp": "2026-09-17T17:45:49.907Z",
+      "user": "Admin (Super Admin)",
+      "action": "वेबसाइट थीम अपडेट की गई: dark_modern (#8b5cf6)",
+      "module": "Master Theme Manager",
+      "details": {
+        "preset": "dark_modern",
+        "primaryColor": "#8b5cf6",
+        "secondaryColor": "#06b6d4",
+        "accentColor": "#ec4899",
+        "navbarBg": "#090d16",
+        "navbarText": "#f8fafc",
+        "footerBg": "#030712",
+        "bodyBg": "#0b0f19",
+        "cardRadius": "rounded-2xl",
+        "fontFamily": "Inter",
+        "headerStyle": "standard"
+      },
+      "device": "Desktop / Chrome Windows 11"
+    },
+    {
+      "id": "log_1789667016640_4n8f",
+      "timestamp": "2026-09-17T17:43:36.640Z",
+      "user": "Admin (Super Admin)",
+      "action": "वेबसाइट मॉड्यूल्स विजिबिलिटी सेटिंग्स अपडेट की गईं",
+      "module": "Module Manager",
+      "details": {
+        "topRibbon": true,
+        "headerMobileAppBtn": true,
+        "headerLoginBtn": true,
+        "headerLangBtn": true,
+        "festivalBanner": true,
+        "officialMlaBanner": true,
+        "heroSlider": true,
+        "janSamvadSpotlight": true,
+        "metricsBar": true,
+        "featuredActivity": true,
+        "updatesAndSchemes": true,
+        "socialAndConstituency": true,
+        "knowYourConstituency": true,
+        "latestActivitiesAndMinisters": true,
+        "timelineAndTeam": true,
+        "citizenTestimonial": true,
+        "footerPanorama": true,
+        "floatingMobileSimulator": true,
+        "floatingQrModal": true
+      },
+      "device": "Desktop / Chrome Windows 11"
+    },
+    {
+      "id": "log_1789667016633_gdfq",
+      "timestamp": "2026-09-17T17:43:36.633Z",
+      "user": "Admin (Super Admin)",
+      "action": "वेबसाइट हेडर व लोगो अपडेट किया गया: जनसेवा इटावा",
+      "module": "Header Branding",
+      "details": {
+        "siteTitle": "जनसेवा इटावा",
+        "highlightWord": "इटावा",
+        "subtitle": "People • Development • Trust",
+        "tagline": "“मजबूत नेतृत्व, विकसित इटावा, समृद्ध भारत”",
+        "constituency": "जनसेवा इटावा (विधानसभा 200)",
+        "logoType": "icon",
+        "logoIcon": "🪷",
+        "logoImage": "",
+        "logoWidth": 44,
+        "headerLayout": "standard",
+        "showRibbon": true,
+        "showMobileAppBtn": true,
+        "showLoginBtn": true,
+        "showLangBtn": true
+      },
+      "device": "Desktop / Chrome Windows 11"
+    },
+    {
+      "id": "log_1789667016625_xobk",
+      "timestamp": "2026-09-17T17:43:36.625Z",
+      "user": "Admin (Super Admin)",
+      "action": "वेबसाइट थीम अपडेट की गई: dark_modern (#8b5cf6)",
+      "module": "Master Theme Manager",
+      "details": {
+        "preset": "dark_modern",
+        "primaryColor": "#8b5cf6",
+        "secondaryColor": "#06b6d4",
+        "accentColor": "#ec4899",
+        "navbarBg": "#090d16",
+        "navbarText": "#f8fafc",
+        "footerBg": "#030712",
+        "bodyBg": "#0b0f19",
+        "cardRadius": "rounded-2xl",
+        "fontFamily": "Inter",
+        "headerStyle": "standard"
+      },
+      "device": "Desktop / Chrome Windows 11"
+    },
+    {
+      "id": "log_1789667004871_lhlr",
+      "timestamp": "2026-09-17T17:43:24.871Z",
+      "user": "Admin (Super Admin)",
+      "action": "वेबसाइट थीम अपडेट की गई: dark_modern (#8b5cf6)",
+      "module": "Master Theme Manager",
+      "details": {
+        "preset": "dark_modern",
+        "primaryColor": "#8b5cf6",
+        "secondaryColor": "#06b6d4",
+        "accentColor": "#ec4899",
+        "navbarBg": "#090d16",
+        "navbarText": "#f8fafc",
+        "footerBg": "#030712",
+        "bodyBg": "#0b0f19",
+        "cardRadius": "rounded-2xl",
+        "fontFamily": "Inter",
+        "headerStyle": "standard"
+      },
+      "device": "Desktop / Chrome Windows 11"
+    },
+    {
+      "id": "log_1789666926788_1zah",
+      "timestamp": "2026-09-17T17:42:06.788Z",
+      "user": "Admin (Super Admin)",
+      "action": "वेबसाइट मॉड्यूल्स विजिबिलिटी सेटिंग्स अपडेट की गईं",
+      "module": "Module Manager",
+      "details": {
+        "topRibbon": true,
+        "headerMobileAppBtn": true,
+        "headerLoginBtn": true,
+        "headerLangBtn": true,
+        "festivalBanner": true,
+        "officialMlaBanner": true,
+        "heroSlider": true,
+        "janSamvadSpotlight": true,
+        "metricsBar": true,
+        "featuredActivity": true,
+        "updatesAndSchemes": true,
+        "socialAndConstituency": true,
+        "knowYourConstituency": true,
+        "latestActivitiesAndMinisters": true,
+        "timelineAndTeam": true,
+        "citizenTestimonial": true,
+        "footerPanorama": true,
+        "floatingMobileSimulator": true,
+        "floatingQrModal": true
+      },
+      "device": "Desktop / Chrome Windows 11"
+    },
+    {
+      "id": "log_1789666926779_jk1k",
+      "timestamp": "2026-09-17T17:42:06.779Z",
+      "user": "Admin (Super Admin)",
+      "action": "वेबसाइट हेडर व लोगो अपडेट किया गया: जनसेवा इटावा",
+      "module": "Header Branding",
+      "details": {
+        "siteTitle": "जनसेवा इटावा",
+        "highlightWord": "इटावा",
+        "subtitle": "People • Development • Trust",
+        "tagline": "“मजबूत नेतृत्व, विकसित इटावा, समृद्ध भारत”",
+        "constituency": "जनसेवा इटावा (विधानसभा 200)",
+        "logoType": "icon",
+        "logoIcon": "🪷",
+        "logoImage": "",
+        "logoWidth": 44,
+        "headerLayout": "standard",
+        "showRibbon": true,
+        "showMobileAppBtn": true,
+        "showLoginBtn": true,
+        "showLangBtn": true
+      },
+      "device": "Desktop / Chrome Windows 11"
+    },
+    {
+      "id": "log_1789666926770_4qf3",
+      "timestamp": "2026-09-17T17:42:06.770Z",
+      "user": "Admin (Super Admin)",
+      "action": "वेबसाइट थीम अपडेट की गई: emerald (#059669)",
+      "module": "Master Theme Manager",
+      "details": {
+        "preset": "emerald",
+        "primaryColor": "#059669",
+        "secondaryColor": "#0d9488",
+        "accentColor": "#ea580c",
+        "navbarBg": "#ffffff",
+        "navbarText": "#064e3b",
+        "footerBg": "#064e3b",
+        "bodyBg": "#f0fdf4",
+        "cardRadius": "rounded-2xl",
+        "fontFamily": "Inter",
+        "headerStyle": "standard"
+      },
+      "device": "Desktop / Chrome Windows 11"
+    },
+    {
+      "id": "log_1789666923281_qlt5",
+      "timestamp": "2026-09-17T17:42:03.281Z",
+      "user": "Admin (Super Admin)",
+      "action": "वेबसाइट थीम अपडेट की गई: emerald (#059669)",
+      "module": "Master Theme Manager",
+      "details": {
+        "preset": "emerald",
+        "primaryColor": "#059669",
+        "secondaryColor": "#0d9488",
+        "accentColor": "#ea580c",
+        "navbarBg": "#ffffff",
+        "navbarText": "#064e3b",
+        "footerBg": "#064e3b",
+        "bodyBg": "#f0fdf4",
+        "cardRadius": "rounded-2xl",
+        "fontFamily": "Inter",
+        "headerStyle": "standard"
+      },
+      "device": "Desktop / Chrome Windows 11"
+    },
+    {
+      "id": "log_1789666910861_sm3a",
+      "timestamp": "2026-09-17T17:41:50.861Z",
+      "user": "Admin (Super Admin)",
+      "action": "वेबसाइट मॉड्यूल्स विजिबिलिटी सेटिंग्स अपडेट की गईं",
+      "module": "Module Manager",
+      "details": {
+        "topRibbon": true,
+        "headerMobileAppBtn": true,
+        "headerLoginBtn": true,
+        "headerLangBtn": true,
+        "festivalBanner": true,
+        "officialMlaBanner": true,
+        "heroSlider": true,
+        "janSamvadSpotlight": true,
+        "metricsBar": true,
+        "featuredActivity": true,
+        "updatesAndSchemes": true,
+        "socialAndConstituency": true,
+        "knowYourConstituency": true,
+        "latestActivitiesAndMinisters": true,
+        "timelineAndTeam": true,
+        "citizenTestimonial": true,
+        "footerPanorama": true,
+        "floatingMobileSimulator": true,
+        "floatingQrModal": true
+      },
+      "device": "Desktop / Chrome Windows 11"
+    },
+    {
+      "id": "log_1789666910855_j2ub",
+      "timestamp": "2026-09-17T17:41:50.855Z",
+      "user": "Admin (Super Admin)",
+      "action": "वेबसाइट हेडर व लोगो अपडेट किया गया: जनसेवा इटावा",
+      "module": "Header Branding",
+      "details": {
+        "siteTitle": "जनसेवा इटावा",
+        "highlightWord": "इटावा",
+        "subtitle": "People • Development • Trust",
+        "tagline": "“मजबूत नेतृत्व, विकसित इटावा, समृद्ध भारत”",
+        "constituency": "जनसेवा इटावा (विधानसभा 200)",
+        "logoType": "icon",
+        "logoIcon": "🪷",
+        "logoImage": "",
+        "logoWidth": 44,
+        "headerLayout": "standard",
+        "showRibbon": true,
+        "showMobileAppBtn": true,
+        "showLoginBtn": true,
+        "showLangBtn": true
+      },
+      "device": "Desktop / Chrome Windows 11"
+    },
+    {
+      "id": "log_1789666910846_iw9k",
+      "timestamp": "2026-09-17T17:41:50.846Z",
+      "user": "Admin (Super Admin)",
+      "action": "वेबसाइट थीम अपडेट की गई: royal_blue (#1d4ed8)",
+      "module": "Master Theme Manager",
+      "details": {
+        "preset": "royal_blue",
+        "primaryColor": "#1d4ed8",
+        "secondaryColor": "#0284c7",
+        "accentColor": "#f59e0b",
+        "navbarBg": "#0f172a",
+        "navbarText": "#ffffff",
+        "footerBg": "#020617",
+        "bodyBg": "#f1f5f9",
+        "cardRadius": "rounded-xl",
+        "fontFamily": "Inter",
+        "headerStyle": "standard"
+      },
+      "device": "Desktop / Chrome Windows 11"
+    },
+    {
+      "id": "log_1789666908314_p59a",
+      "timestamp": "2026-09-17T17:41:48.314Z",
+      "user": "Admin (Super Admin)",
+      "action": "वेबसाइट थीम अपडेट की गई: royal_blue (#1d4ed8)",
+      "module": "Master Theme Manager",
+      "details": {
+        "preset": "royal_blue",
+        "primaryColor": "#1d4ed8",
+        "secondaryColor": "#0284c7",
+        "accentColor": "#f59e0b",
+        "navbarBg": "#0f172a",
+        "navbarText": "#ffffff",
+        "footerBg": "#020617",
+        "bodyBg": "#f1f5f9",
+        "cardRadius": "rounded-xl",
+        "fontFamily": "Inter",
+        "headerStyle": "standard"
+      },
+      "device": "Desktop / Chrome Windows 11"
+    },
+    {
+      "id": "log_1789666797991_zpib",
+      "timestamp": "2026-09-17T17:39:57.991Z",
+      "user": "Admin (Super Admin)",
+      "action": "वेबसाइट थीम अपडेट की गई: royal_blue (#1d4ed8)",
+      "module": "Master Theme Manager",
+      "details": {
+        "preset": "royal_blue",
+        "primaryColor": "#1d4ed8",
+        "secondaryColor": "#0284c7",
+        "accentColor": "#f59e0b",
+        "navbarBg": "#0f172a",
+        "navbarText": "#ffffff",
+        "footerBg": "#020617",
+        "bodyBg": "#f1f5f9",
+        "cardRadius": "rounded-xl",
+        "fontFamily": "Inter",
+        "headerStyle": "standard"
+      },
+      "device": "Desktop / Chrome Windows 11"
+    },
+    {
+      "id": "log_1789666793176_6qt1",
+      "timestamp": "2026-09-17T17:39:53.176Z",
+      "user": "Admin (Super Admin)",
+      "action": "वेबसाइट थीम अपडेट की गई: saffron (#ea580c)",
+      "module": "Master Theme Manager",
+      "details": {
+        "preset": "saffron",
+        "primaryColor": "#ea580c",
+        "secondaryColor": "#16a34a",
+        "accentColor": "#f59e0b",
+        "navbarBg": "#ffffff",
+        "navbarText": "#0f172a",
+        "footerBg": "#0f172a",
+        "bodyBg": "#f8fafc",
+        "cardRadius": "rounded-xl",
+        "fontFamily": "Inter",
+        "headerStyle": "standard"
+      },
+      "device": "Desktop / Chrome Windows 11"
+    },
+    {
+      "id": "log_1789666791726_btkz",
+      "timestamp": "2026-09-17T17:39:51.726Z",
+      "user": "Admin (Super Admin)",
+      "action": "वेबसाइट थीम अपडेट की गई: saffron (#ea580c)",
+      "module": "Master Theme Manager",
+      "details": {
+        "preset": "saffron",
+        "primaryColor": "#ea580c",
+        "secondaryColor": "#16a34a",
+        "accentColor": "#f59e0b",
+        "navbarBg": "#ffffff",
+        "navbarText": "#0f172a",
+        "footerBg": "#0f172a",
+        "bodyBg": "#f8fafc",
+        "cardRadius": "rounded-xl",
+        "fontFamily": "Inter",
+        "headerStyle": "standard"
+      },
+      "device": "Desktop / Chrome Windows 11"
+    },
+    {
+      "id": "log_1789666790706_fjj8",
+      "timestamp": "2026-09-17T17:39:50.706Z",
+      "user": "Admin (Super Admin)",
+      "action": "वेबसाइट थीम अपडेट की गई: saffron (#ea580c)",
+      "module": "Master Theme Manager",
+      "details": {
+        "preset": "saffron",
+        "primaryColor": "#ea580c",
+        "secondaryColor": "#16a34a",
+        "accentColor": "#f59e0b",
+        "navbarBg": "#ffffff",
+        "navbarText": "#0f172a",
+        "footerBg": "#0f172a",
+        "bodyBg": "#f8fafc",
+        "cardRadius": "rounded-xl",
+        "fontFamily": "Inter",
+        "headerStyle": "standard"
+      },
+      "device": "Desktop / Chrome Windows 11"
+    },
+    {
+      "id": "log_1789666789276_ypmb",
+      "timestamp": "2026-09-17T17:39:49.276Z",
+      "user": "Admin (Super Admin)",
+      "action": "वेबसाइट थीम अपडेट की गई: saffron (#ea580c)",
+      "module": "Master Theme Manager",
+      "details": {
+        "preset": "saffron",
+        "primaryColor": "#ea580c",
+        "secondaryColor": "#16a34a",
+        "accentColor": "#f59e0b",
+        "navbarBg": "#ffffff",
+        "navbarText": "#0f172a",
+        "footerBg": "#0f172a",
+        "bodyBg": "#f8fafc",
+        "cardRadius": "rounded-xl",
+        "fontFamily": "Inter",
+        "headerStyle": "standard"
+      },
+      "device": "Desktop / Chrome Windows 11"
+    },
+    {
+      "id": "log_1789666789048_qxpm",
+      "timestamp": "2026-09-17T17:39:49.048Z",
+      "user": "Admin (Super Admin)",
+      "action": "वेबसाइट थीम अपडेट की गई: saffron (#ea580c)",
+      "module": "Master Theme Manager",
+      "details": {
+        "preset": "saffron",
+        "primaryColor": "#ea580c",
+        "secondaryColor": "#16a34a",
+        "accentColor": "#f59e0b",
+        "navbarBg": "#ffffff",
+        "navbarText": "#0f172a",
+        "footerBg": "#0f172a",
+        "bodyBg": "#f8fafc",
+        "cardRadius": "rounded-xl",
+        "fontFamily": "Inter",
+        "headerStyle": "standard"
+      },
+      "device": "Desktop / Chrome Windows 11"
+    },
+    {
+      "id": "log_1789666781270_ki3g",
+      "timestamp": "2026-09-17T17:39:41.270Z",
+      "user": "Admin (Super Admin)",
+      "action": "वेबसाइट थीम अपडेट की गई: saffron (#ea580c)",
+      "module": "Master Theme Manager",
+      "details": {
+        "preset": "saffron",
+        "primaryColor": "#ea580c",
+        "secondaryColor": "#16a34a",
+        "accentColor": "#f59e0b",
+        "navbarBg": "#ffffff",
+        "navbarText": "#0f172a",
+        "footerBg": "#0f172a",
+        "bodyBg": "#f8fafc",
+        "cardRadius": "rounded-xl",
+        "fontFamily": "Inter",
+        "headerStyle": "standard"
+      },
+      "device": "Desktop / Chrome Windows 11"
+    },
+    {
+      "id": "log_1789666780251_yqt3",
+      "timestamp": "2026-09-17T17:39:40.251Z",
+      "user": "Admin (Super Admin)",
+      "action": "वेबसाइट थीम अपडेट की गई: saffron (#ea580c)",
+      "module": "Master Theme Manager",
+      "details": {
+        "preset": "saffron",
+        "primaryColor": "#ea580c",
+        "secondaryColor": "#16a34a",
+        "accentColor": "#f59e0b",
+        "navbarBg": "#ffffff",
+        "navbarText": "#0f172a",
+        "footerBg": "#0f172a",
+        "bodyBg": "#f8fafc",
+        "cardRadius": "rounded-xl",
+        "fontFamily": "Inter",
+        "headerStyle": "standard"
+      },
+      "device": "Desktop / Chrome Windows 11"
+    },
+    {
+      "id": "log_1789666779033_k84x",
+      "timestamp": "2026-09-17T17:39:39.033Z",
+      "user": "Admin (Super Admin)",
+      "action": "वेबसाइट थीम अपडेट की गई: saffron (#ea580c)",
+      "module": "Master Theme Manager",
+      "details": {
+        "preset": "saffron",
+        "primaryColor": "#ea580c",
+        "secondaryColor": "#16a34a",
+        "accentColor": "#f59e0b",
+        "navbarBg": "#ffffff",
+        "navbarText": "#0f172a",
+        "footerBg": "#0f172a",
+        "bodyBg": "#f8fafc",
+        "cardRadius": "rounded-xl",
+        "fontFamily": "Inter",
+        "headerStyle": "standard"
+      },
+      "device": "Desktop / Chrome Windows 11"
+    },
     {
       "id": "log_1789665684367_8k2h",
       "timestamp": "2026-09-17T17:21:24.367Z",
@@ -3101,5 +3891,38 @@
       "description": "जनसंवाद समस्याओं की जांच, संबंधित विभाग को पत्राचार/अग्रेषण, टोकन रसीद प्रिंट व एक्शन टेकन रिपोर्ट दर्ज करना।",
       "createdAt": "2026-09-15"
     }
-  ]
+  ],
+  "leaderProfiles": [
+    {
+      "id": "leader-sarita-etawah-200",
+      "name": "श्रीमती सरिता भदौरिया",
+      "title": "विधायक, इटावा विधानसभा (200)",
+      "constituency": "इटावा (200)",
+      "district": "इटावा",
+      "state": "उत्तर प्रदेश",
+      "party": "भारतीय जनता पार्टी (BJP)",
+      "photo": "/uploads/images/sarita_bhadauriya-1789523047198-607565.png",
+      "siteTitle": "जनसेवा इटावा",
+      "highlightWord": "इटावा",
+      "themePreset": "saffron",
+      "active": true,
+      "status": "active"
+    },
+    {
+      "id": "leader-demo-lucknow-cantt",
+      "name": "श्री बृजेश पाठक",
+      "title": "उप मुख्यमंत्री / विधायक, लखनऊ कैंट",
+      "constituency": "लखनऊ कैंट (175)",
+      "district": "लखनऊ",
+      "state": "उत्तर प्रदेश",
+      "party": "भारतीय जनता पार्टी (BJP)",
+      "photo": "/images/assets/modi_portrait.jpg",
+      "siteTitle": "जनसेवा लखनऊ कैंट",
+      "highlightWord": "लखनऊ",
+      "themePreset": "royal_blue",
+      "active": false,
+      "status": "ready"
+    }
+  ],
+  "activeLeaderId": "leader-sarita-etawah-200"
 }

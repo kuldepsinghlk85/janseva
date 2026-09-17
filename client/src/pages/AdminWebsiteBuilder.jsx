@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useApp } from '../context/AppContext';
 import { api } from '../services/api';
 import MediaPickerModal from '../components/common/MediaPickerModal';
@@ -19,7 +19,18 @@ import {
   Palette,
   Image as ImageIcon,
   CheckSquare,
-  Type
+  Type,
+  UploadCloud,
+  Users,
+  RefreshCw,
+  X,
+  ShieldAlert,
+  Lock,
+  CheckCircle,
+  Plus,
+  AlertTriangle,
+  ArrowRight,
+  Camera
 } from 'lucide-react';
 
 export default function AdminWebsiteBuilder() {
@@ -30,12 +41,51 @@ export default function AdminWebsiteBuilder() {
     setViewMode,
     showToast,
     setShowMobileSimulator,
-    navigateToPublicPage
+    navigateToPublicPage,
+    activeAdminRole
   } = useApp();
 
-  const [activeTab, setActiveTab] = useState('theme'); // theme, header, modules, templates, hero, sections, festival, seo, css
+  const isSuperAdmin = activeAdminRole === 'admin';
+
+  const [activeTab, setActiveTab] = useState('theme'); // theme, header, leader_saas, modules, templates, hero, sections, festival, seo, css
   const [saving, setSaving] = useState(false);
   const [mediaPickerOpen, setMediaPickerOpen] = useState(false);
+
+  // Logo file upload state
+  const [logoUploading, setLogoUploading] = useState(false);
+  const [logoUploadError, setLogoUploadError] = useState(null);
+  const logoFileInputRef = useRef(null);
+
+  // Multi-Leader SaaS Profiles State
+  const [leaderProfiles, setLeaderProfiles] = useState([]);
+  const [activeLeaderId, setActiveLeaderId] = useState('');
+  const [loadingProfiles, setLoadingProfiles] = useState(false);
+  const [activatingLeaderId, setActivatingLeaderId] = useState('');
+  const [showCreateLeaderModal, setShowCreateLeaderModal] = useState(false);
+  const [savingLeader, setSavingLeader] = useState(false);
+  const [newLeaderForm, setNewLeaderForm] = useState({
+    name: '',
+    nameEn: '',
+    title: '',
+    constituency: '',
+    district: '',
+    state: 'उत्तर प्रदेश',
+    party: 'भारतीय जनता पार्टी (BJP)',
+    siteTitle: '',
+    highlightWord: '',
+    tagline: '“जनसेवा ही सच्चा संकल्प है”',
+    subtitle: 'People • Development • Trust',
+    primaryColor: '#ea580c',
+    secondaryColor: '#16a34a',
+    preset: 'saffron',
+    photo: '',
+    banner: '/images/assets/official_bjp_mla_banner.jpg',
+    logoType: 'icon',
+    logoIcon: '🪷',
+    logoImage: '',
+    about: ''
+  });
+  const [editingLeader, setEditingLeader] = useState(null);
 
   // 1. Theme State (WordPress Style)
   const [themeForm, setThemeForm] = useState({
@@ -150,6 +200,157 @@ export default function AdminWebsiteBuilder() {
       if (settings.customCode) setCustomCodeForm(prev => ({ ...prev, ...settings.customCode }));
     }
   }, [settings]);
+
+  // Load leader profiles on mount
+  const loadLeaderProfiles = async () => {
+    try {
+      setLoadingProfiles(true);
+      const res = await api.getLeaderProfiles();
+      if (res.success) {
+        setLeaderProfiles(res.profiles || []);
+        setActiveLeaderId(res.activeLeaderId || 'sarita_bhadauria');
+        setEditingLeader(res.activeLeader || res.profiles?.[0] || null);
+      }
+    } catch (err) {
+      console.error('Error loading leader profiles:', err);
+    } finally {
+      setLoadingProfiles(false);
+    }
+  };
+
+  useEffect(() => {
+    loadLeaderProfiles();
+  }, []);
+
+  // Direct Logo File Upload Handler
+  const handleLogoFileUpload = async (e) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    if (!file.type.startsWith('image/')) {
+      showToast('कृपया केवल इमेज फ़ाइल (PNG, JPG, SVG, WEBP) चुनें!', 'error');
+      return;
+    }
+
+    setLogoUploading(true);
+    setLogoUploadError(null);
+
+    try {
+      const res = await api.uploadImageFile(file);
+      if (res.success && res.url) {
+        setHeaderForm(prev => ({
+          ...prev,
+          logoImage: res.url,
+          logoType: 'image'
+        }));
+        showToast('वेबसाइट लोगो इमेज सफलतापूर्वक अपलोड हुई!', 'success');
+      } else {
+        setLogoUploadError(res.message || 'लोगो अपलोड विफल रहा');
+        showToast(res.message || 'लोगो अपलोड विफल रहा', 'error');
+      }
+    } catch (err) {
+      setLogoUploadError('सर्वर से कनेक्ट नहीं हो सका');
+      showToast('सर्वर से कनेक्ट नहीं हो सका', 'error');
+    } finally {
+      setLogoUploading(false);
+      if (logoFileInputRef.current) logoFileInputRef.current.value = '';
+    }
+  };
+
+  // Switch / Activate Leader Profile (Super Admin Action)
+  const handleActivateLeader = async (leaderId) => {
+    if (!isSuperAdmin) {
+      showToast('केवल सुपर एडमिन ही पोर्टल को किसी अन्य जननेता पर स्विच कर सकते हैं!', 'error');
+      return;
+    }
+    setActivatingLeaderId(leaderId);
+    try {
+      const res = await api.activateLeaderProfile(leaderId, 'Super Admin');
+      if (res.success) {
+        setActiveLeaderId(leaderId);
+        setLeaderProfiles(res.profiles || []);
+        setEditingLeader(res.activeLeader);
+        showToast(res.message || 'सक्रिय जननेता पोर्टल सफलतापूर्वक बदला गया!', 'success');
+        await loadSettings();
+      } else {
+        showToast(res.message || 'पोर्टल स्विच विफल रहा!', 'error');
+      }
+    } catch (err) {
+      showToast('स्विच के दौरान त्रुटि आई!', 'error');
+    } finally {
+      setActivatingLeaderId('');
+    }
+  };
+
+  // Create New Leader Profile (Super Admin Action)
+  const handleCreateLeader = async (e) => {
+    e?.preventDefault();
+    if (!isSuperAdmin) {
+      showToast('केवल सुपर एडमिन ही नया जननेता पोर्टल बना सकते हैं!', 'error');
+      return;
+    }
+    if (!newLeaderForm.name || !newLeaderForm.constituency) {
+      showToast('कृपया जननेता का नाम एवं विधानसभा क्षेत्र भरें!', 'error');
+      return;
+    }
+
+    setSavingLeader(true);
+    try {
+      const res = await api.createLeaderProfile(newLeaderForm, 'Super Admin');
+      if (res.success) {
+        showToast(res.message || 'नया जननेता पोर्टल प्रोफाइल सफलतापूर्वक बनाया गया!', 'success');
+        setShowCreateLeaderModal(false);
+        setNewLeaderForm({
+          name: '',
+          nameEn: '',
+          title: '',
+          constituency: '',
+          district: '',
+          state: 'उत्तर प्रदेश',
+          party: 'भारतीय जनता पार्टी (BJP)',
+          siteTitle: '',
+          highlightWord: '',
+          tagline: '“जनसेवा ही सच्चा संकल्प है”',
+          subtitle: 'People • Development • Trust',
+          primaryColor: '#ea580c',
+          secondaryColor: '#16a34a',
+          preset: 'saffron',
+          photo: '',
+          banner: '/images/assets/official_bjp_mla_banner.jpg',
+          logoType: 'icon',
+          logoIcon: '🪷',
+          logoImage: '',
+          about: ''
+        });
+        await loadLeaderProfiles();
+      } else {
+        showToast(res.message || 'नया प्रोफाइल बनाना विफल रहा!', 'error');
+      }
+    } catch (err) {
+      showToast('प्रोफाइल बनाने में त्रुटि आई!', 'error');
+    } finally {
+      setSavingLeader(false);
+    }
+  };
+
+  // Save Editing Leader Info
+  const handleSaveEditingLeader = async () => {
+    if (!editingLeader) return;
+    setSavingLeader(true);
+    try {
+      const res = await api.updateLeaderProfile(editingLeader, 'Super Admin');
+      if (res.success) {
+        showToast('जनप्रतिनिधि विवरण सफलतापूर्वक सुरक्षित किया गया!', 'success');
+        await loadLeaderProfiles();
+      } else {
+        showToast(res.message || 'अपडेट विफल रहा!', 'error');
+      }
+    } catch (err) {
+      showToast('अपडेट के दौरान त्रुटि आई!', 'error');
+    } finally {
+      setSavingLeader(false);
+    }
+  };
 
   // Presets List
   const themePresets = settings?.themePresets || [
@@ -542,6 +743,39 @@ export default function AdminWebsiteBuilder() {
   return (
     <div className="p-6 space-y-6 max-w-7xl mx-auto">
       
+      {/* Super Admin Status & Governance Notice */}
+      {!isSuperAdmin ? (
+        <div className="bg-amber-500/10 border-2 border-amber-500/30 rounded-2xl p-4 flex items-center justify-between text-amber-900">
+          <div className="flex items-center space-x-3">
+            <div className="w-10 h-10 rounded-xl bg-amber-500 text-white flex items-center justify-center flex-shrink-0 shadow-md">
+              <Lock className="w-5 h-5" />
+            </div>
+            <div>
+              <h4 className="text-xs font-black uppercase tracking-wider text-amber-950 flex items-center space-x-1.5">
+                <span>केवल सुपर एडमिन अधिकार क्षेत्र (Super Admin View-Only Mode)</span>
+              </h4>
+              <p className="text-xs text-amber-800 font-medium">
+                वेबसाइट की मास्टर थीम, लोगो, हेडर, संपूर्ण लेआउट और जननेताओं के पोर्टल्स कॉन्फ़िगर करने के विशेष अधिकार केवल <strong>Super Admin</strong> के पास हैं। वर्तमान सक्रिय भूमिका: <strong>{activeAdminRole}</strong> (रीड-ओनली)।
+              </p>
+            </div>
+          </div>
+          <span className="px-3 py-1 rounded-full bg-amber-200/70 text-amber-950 text-[10px] font-black uppercase tracking-wider">
+            Protected Mode
+          </span>
+        </div>
+      ) : (
+        <div className="bg-emerald-500/10 border border-emerald-500/30 rounded-2xl px-4 py-2.5 flex items-center justify-between text-emerald-900">
+          <div className="flex items-center space-x-2 text-xs font-bold">
+            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-ping" />
+            <span className="text-emerald-950 font-black">👑 सुपर एडमिन गवर्नेंस मोड सक्रिय:</span>
+            <span>आपके पास थीम, लोगो, हेडर, लेआउट और समस्त जननेताओं के पोर्टल्स को 100% कस्टमाइज करने का पूर्ण अधिकार है।</span>
+          </div>
+          <span className="px-2.5 py-0.5 rounded-full bg-emerald-600 text-white text-[10px] font-black uppercase tracking-wider">
+            Super Admin
+          </span>
+        </div>
+      )}
+
       {/* Master Top Control Banner (WordPress Style) */}
       <div className="bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 text-white rounded-3xl p-6 border border-slate-700 shadow-xl flex flex-col lg:flex-row lg:items-center justify-between gap-6">
         <div className="space-y-1">
@@ -551,6 +785,9 @@ export default function AdminWebsiteBuilder() {
             </span>
             <span className="text-xs text-slate-400 font-bold">
               • सक्रिय थीम: <span className="text-orange-400 font-black">{themePresets.find(p => p.id === themeForm.preset)?.name || 'कस्टम'}</span>
+            </span>
+            <span className="text-xs text-slate-400 font-bold">
+              • सक्रिय नेता: <span className="text-amber-400 font-black">{editingLeader?.name || 'श्रीमती सरिता भदौरिया'}</span>
             </span>
             <span className="text-xs text-slate-400 font-bold">
               • सक्रिय मॉड्यूल्स: <span className="text-emerald-400 font-black">{activeModulesCount}/{MODULE_ITEMS.length}</span>
@@ -586,8 +823,8 @@ export default function AdminWebsiteBuilder() {
 
           <button
             onClick={handleResetAll}
-            disabled={saving}
-            className="flex items-center space-x-1.5 px-3 py-2 rounded-xl bg-slate-800 hover:bg-red-950/60 text-slate-300 border border-slate-700 hover:border-red-600 font-bold text-xs transition cursor-pointer"
+            disabled={saving || !isSuperAdmin}
+            className="flex items-center space-x-1.5 px-3 py-2 rounded-xl bg-slate-800 hover:bg-red-950/60 text-slate-300 border border-slate-700 hover:border-red-600 font-bold text-xs transition cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed"
             title="मूल सेटिंग्स पर रीसेट करें"
           >
             <RotateCcw className="w-3.5 h-3.5 text-slate-400" />
@@ -596,11 +833,11 @@ export default function AdminWebsiteBuilder() {
 
           <button
             onClick={handleSaveAllMasterLayout}
-            disabled={saving}
-            className="flex items-center space-x-1.5 px-5 py-2.5 rounded-xl bg-gradient-to-r from-orange-500 to-amber-600 hover:from-orange-600 hover:to-amber-700 text-white font-extrabold text-xs transition shadow-lg shadow-orange-500/30 cursor-pointer disabled:opacity-50"
+            disabled={saving || !isSuperAdmin}
+            className="flex items-center space-x-1.5 px-5 py-2.5 rounded-xl bg-gradient-to-r from-orange-500 to-amber-600 hover:from-orange-600 hover:to-amber-700 text-white font-extrabold text-xs transition shadow-lg shadow-orange-500/30 cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed"
           >
             <Save className="w-4 h-4" />
-            <span>{saving ? 'सुरक्षित हो रहा है...' : 'सभी परिवर्तन सेव करें'}</span>
+            <span>{saving ? 'सुरक्षित हो रहा है...' : !isSuperAdmin ? 'केवल सुपर एडमिन सेव कर सकते हैं' : 'सभी परिवर्तन सेव करें'}</span>
           </button>
         </div>
       </div>
@@ -610,6 +847,7 @@ export default function AdminWebsiteBuilder() {
         {[
           { id: 'theme', label: '🎨 वर्डप्रेस थीम एवं रंग', icon: Palette },
           { id: 'header', label: '🏷️ हेडर, शीर्षक व लोगो', icon: Type },
+          { id: 'leader_saas', label: '🏛️ जननेता व मल्टी-पोर्टल (SaaS)', icon: Users },
           { id: 'modules', label: '👁️ मॉड्यूल विजिबिलिटी मैट्रिक्स', icon: CheckSquare },
           { id: 'templates', label: '📐 लेआउट टेम्पलेट्स', icon: Layout },
           { id: 'hero', label: '⭐ मुख्य बैनर व कोट्स', icon: Settings },
@@ -1028,34 +1266,151 @@ export default function AdminWebsiteBuilder() {
                     </div>
                   </div>
                 ) : (
-                  <div className="space-y-3 bg-slate-50 p-4 rounded-xl border border-slate-200">
-                    <label className="text-xs font-bold text-slate-700">लोगो इमेज URL या मीडिया से चुनें:</label>
-                    <div className="flex items-center space-x-2">
-                      <input
-                        type="text"
-                        value={headerForm.logoImage}
-                        onChange={(e) => setHeaderForm({ ...headerForm, logoImage: e.target.value })}
-                        placeholder="https://... या /uploads/... या /images/..."
-                        className="flex-1 px-3 py-2 text-xs bg-white border border-slate-300 rounded-lg"
-                      />
-                      <button
-                        type="button"
-                        onClick={() => setMediaPickerOpen(true)}
-                        className="px-3 py-2 rounded-lg bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs flex items-center space-x-1 cursor-pointer"
-                      >
-                        <ImageIcon className="w-3.5 h-3.5" />
-                        <span>मीडिया से चुनें</span>
-                      </button>
+                  <div className="space-y-4 bg-slate-50 p-5 rounded-2xl border border-slate-200">
+                    <div className="flex items-center justify-between">
+                      <div>
+                        <label className="text-xs font-black text-slate-800 flex items-center space-x-1.5">
+                          <UploadCloud className="w-4 h-4 text-orange-600" />
+                          <span>डायरेक्ट लोगो इमेज अपलोडर (Direct File Uploader)</span>
+                        </label>
+                        <p className="text-[11px] text-slate-500">
+                          कंप्यूटर से PNG, JPG, SVG या WEBP फ़ाइल सीधे अपलोड करें।
+                        </p>
+                      </div>
+
+                      <div className="flex items-center space-x-2">
+                        <button
+                          type="button"
+                          onClick={() => setMediaPickerOpen(true)}
+                          className="px-3 py-1.5 rounded-xl bg-slate-200/70 hover:bg-slate-300 text-slate-700 font-bold text-xs flex items-center space-x-1 cursor-pointer transition"
+                        >
+                          <ImageIcon className="w-3.5 h-3.5 text-slate-600" />
+                          <span>लाइब्रेरी से चुनें</span>
+                        </button>
+                      </div>
                     </div>
 
+                    {/* Hidden File Input */}
+                    <input
+                      type="file"
+                      ref={logoFileInputRef}
+                      onChange={handleLogoFileUpload}
+                      accept="image/*"
+                      className="hidden"
+                    />
+
+                    {/* Upload Dropzone / Button */}
+                    <div
+                      onDrop={(e) => {
+                        e.preventDefault();
+                        if (e.dataTransfer.files?.[0]) {
+                          handleLogoFileUpload({ target: { files: e.dataTransfer.files } });
+                        }
+                      }}
+                      onDragOver={(e) => e.preventDefault()}
+                      onClick={() => !logoUploading && logoFileInputRef.current?.click()}
+                      className={`border-2 border-dashed rounded-2xl p-6 text-center cursor-pointer transition flex flex-col items-center justify-center ${
+                        logoUploading
+                          ? 'border-orange-500 bg-orange-50/50 cursor-wait'
+                          : 'border-slate-300 hover:border-orange-500 hover:bg-orange-50/20 bg-white'
+                      }`}
+                    >
+                      {logoUploading ? (
+                        <div className="flex flex-col items-center space-y-2 py-2">
+                          <RefreshCw className="w-7 h-7 text-orange-600 animate-spin" />
+                          <span className="text-xs font-bold text-orange-700">सर्वर पर लोगो अपलोड हो रहा है...</span>
+                        </div>
+                      ) : (
+                        <div className="flex flex-col items-center space-y-2">
+                          <div className="w-12 h-12 rounded-2xl bg-orange-100 text-orange-600 flex items-center justify-center shadow-inner">
+                            <UploadCloud className="w-6 h-6" />
+                          </div>
+                          <div>
+                            <span className="text-xs font-black text-slate-800 block">
+                              {headerForm.logoImage ? 'नया लोगो अपलोड करने हेतु क्लिक करें या खींचें' : 'कंप्यूटर से लोगो फ़ाइल चुनें या यहाँ खींचें'}
+                            </span>
+                            <span className="text-[10px] text-slate-400">
+                              पारदर्शी बैकग्राउंड (Transparent PNG / SVG) सर्वोत्तम परिणाम देता है
+                            </span>
+                          </div>
+                        </div>
+                      )}
+                    </div>
+
+                    {logoUploadError && (
+                      <p className="text-xs font-bold text-red-600 flex items-center space-x-1">
+                        <AlertTriangle className="w-3.5 h-3.5 flex-shrink-0" />
+                        <span>{logoUploadError}</span>
+                      </p>
+                    )}
+
+                    {/* Logo Preview & Adjustments */}
                     {headerForm.logoImage && (
-                      <div className="flex items-center space-x-3 pt-2">
-                        <span className="text-[11px] font-bold text-slate-500">प्रीव्यू:</span>
-                        <img
-                          src={headerForm.logoImage}
-                          alt="Logo Preview"
-                          className="h-12 w-12 object-contain rounded-lg border border-slate-200 bg-white p-1"
-                        />
+                      <div className="p-4 bg-white rounded-xl border border-slate-200 shadow-sm space-y-3">
+                        <div className="flex items-center justify-between border-b border-slate-100 pb-2.5">
+                          <span className="text-xs font-black text-slate-800 flex items-center space-x-1.5">
+                            <CheckCircle className="w-4 h-4 text-emerald-600" />
+                            <span>सक्रिय लोगो इमेज प्रीव्यू (Active Logo Preview)</span>
+                          </span>
+                          <button
+                            type="button"
+                            onClick={() => setHeaderForm({ ...headerForm, logoImage: '', logoType: 'icon' })}
+                            className="text-xs font-bold text-red-600 hover:text-red-700 flex items-center space-x-1 px-2.5 py-1 rounded-lg hover:bg-red-50 transition cursor-pointer"
+                          >
+                            <X className="w-3.5 h-3.5" />
+                            <span>लोगो हटाएं</span>
+                          </button>
+                        </div>
+
+                        {/* Multi-Format Previews */}
+                        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                          {/* Light Background Preview */}
+                          <div className="p-3 bg-slate-50 rounded-xl border border-slate-200 flex flex-col items-center justify-center space-y-1 text-center">
+                            <span className="text-[10px] font-bold text-slate-500 uppercase">सफेद हेडर पर</span>
+                            <div className="w-16 h-16 bg-white rounded-xl border border-slate-200 flex items-center justify-center p-1.5 shadow-sm">
+                              <img
+                                src={headerForm.logoImage}
+                                alt="Logo Light"
+                                className="max-w-full max-h-full object-contain"
+                              />
+                            </div>
+                          </div>
+
+                          {/* Dark Background Preview */}
+                          <div className="p-3 bg-slate-900 rounded-xl border border-slate-800 flex flex-col items-center justify-center space-y-1 text-center">
+                            <span className="text-[10px] font-bold text-slate-400 uppercase">डार्क हेडर पर</span>
+                            <div className="w-16 h-16 bg-slate-800 rounded-xl border border-slate-700 flex items-center justify-center p-1.5 shadow-sm">
+                              <img
+                                src={headerForm.logoImage}
+                                alt="Logo Dark"
+                                className="max-w-full max-h-full object-contain"
+                              />
+                            </div>
+                          </div>
+
+                          {/* Circular Emblem Preview */}
+                          <div className="p-3 bg-orange-50 rounded-xl border border-orange-200 flex flex-col items-center justify-center space-y-1 text-center">
+                            <span className="text-[10px] font-bold text-orange-700 uppercase">गोलाकार एम्बलम</span>
+                            <div className="w-16 h-16 rounded-full bg-white border-2 border-orange-500 flex items-center justify-center p-1 shadow-md">
+                              <img
+                                src={headerForm.logoImage}
+                                alt="Logo Round"
+                                className="max-w-full max-h-full object-contain rounded-full"
+                              />
+                            </div>
+                          </div>
+                        </div>
+
+                        {/* URL input fallback */}
+                        <div className="pt-2 border-t border-slate-100 flex items-center space-x-2">
+                          <span className="text-[10px] font-bold text-slate-400">इमेज पाथ:</span>
+                          <input
+                            type="text"
+                            value={headerForm.logoImage}
+                            onChange={(e) => setHeaderForm({ ...headerForm, logoImage: e.target.value })}
+                            className="flex-1 px-2.5 py-1 text-[11px] font-mono text-slate-600 bg-slate-50 border border-slate-200 rounded-lg"
+                          />
+                        </div>
                       </div>
                     )}
                   </div>
@@ -1114,7 +1469,291 @@ export default function AdminWebsiteBuilder() {
             </div>
           )}
 
-          {/* TAB 3: FEATURE & MODULE VISIBILITY CONTROLLER */}
+          {/* TAB: MULTI-LEADER SAAS & PROFILES PROVISIONING */}
+          {activeTab === 'leader_saas' && (
+            <div className="space-y-6">
+              {/* Header Banner */}
+              <div className="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm space-y-4">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-100 pb-3">
+                  <div>
+                    <h3 className="text-sm font-extrabold text-slate-900 flex items-center space-x-2">
+                      <Users className="w-4 h-4 text-orange-600" />
+                      <span>जननेता व मल्टी-पोर्टल कॉन्फ़िग (Multi-Leader SaaS Platform)</span>
+                    </h3>
+                    <p className="text-xs text-slate-500 mt-0.5">
+                      सुपर एडमिन प्रत्येक जननेता / विधायक का संपूर्ण कस्टमाइज्ड वेब पोर्टल कॉन्फ़िगर करके उन्हें सीधे हैंडओवर कर सकते हैं।
+                    </p>
+                  </div>
+
+                  <button
+                    type="button"
+                    onClick={() => setShowCreateLeaderModal(true)}
+                    disabled={!isSuperAdmin}
+                    className="px-4 py-2 rounded-xl bg-gradient-to-r from-orange-600 to-amber-600 hover:from-orange-700 hover:to-amber-700 text-white font-bold text-xs flex items-center space-x-1.5 shadow-md shadow-orange-500/20 cursor-pointer disabled:opacity-40"
+                  >
+                    <Plus className="w-4 h-4" />
+                    <span>+ नया नेता पोर्टल जोड़ें</span>
+                  </button>
+                </div>
+
+                {/* Live Active Leader Spotlight Banner */}
+                <div className="bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 text-white p-5 rounded-2xl border border-slate-700 flex flex-col md:flex-row items-center justify-between gap-5 shadow-lg">
+                  <div className="flex items-center space-x-4">
+                    <div className="relative flex-shrink-0">
+                      <img
+                        src={editingLeader?.photo || '/uploads/images/default_leader.png'}
+                        alt={editingLeader?.name || 'Leader'}
+                        className="w-16 h-16 rounded-2xl object-cover border-2 border-orange-500 shadow-md bg-slate-800"
+                        onError={(e) => { e.target.src = '/uploads/images/sarita_bhadauriya-1789523047198-607565.png'; }}
+                      />
+                      <span className="absolute -bottom-1 -right-1 w-4 h-4 rounded-full bg-emerald-500 border-2 border-slate-900" title="सक्रिय" />
+                    </div>
+                    <div>
+                      <div className="flex items-center space-x-2">
+                        <span className="px-2 py-0.5 rounded-full text-[9px] font-black uppercase tracking-wider bg-emerald-500 text-white flex items-center space-x-1">
+                          <Check className="w-2.5 h-2.5" />
+                          <span>सक्रिय वेबसाइट पोर्टल (LIVE ACTIVE)</span>
+                        </span>
+                        <span className="text-[11px] text-amber-300 font-bold">
+                          {editingLeader?.party || 'भारतीय जनता पार्टी (BJP)'}
+                        </span>
+                      </div>
+                      <h3 className="text-xl font-black text-white mt-1">
+                        {editingLeader?.name || 'श्रीमती सरिता भदौरिया'}
+                      </h3>
+                      <p className="text-xs text-slate-300">
+                        {editingLeader?.title || 'विधायक, इटावा विधानसभा (200)'} • <span className="text-orange-400 font-bold">{editingLeader?.siteTitle || 'जनसेवा इटावा'}</span>
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="flex flex-wrap items-center gap-2">
+                    <button
+                      type="button"
+                      onClick={() => setViewMode('public')}
+                      className="px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-600 font-bold text-xs flex items-center space-x-1 cursor-pointer"
+                    >
+                      <Eye className="w-3.5 h-3.5 text-orange-400" />
+                      <span>वेबसाइट देखें</span>
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => navigateToPublicPage('mobile')}
+                      className="px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-600 font-bold text-xs flex items-center space-x-1 cursor-pointer"
+                    >
+                      <Smartphone className="w-3.5 h-3.5 text-emerald-400" />
+                      <span>मोबाइल ऐप</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              {/* Profiles Grid */}
+              <div className="space-y-3">
+                <div className="flex items-center justify-between">
+                  <h4 className="text-xs font-black text-slate-800 uppercase tracking-wider">
+                    उपलब्ध जननेता पोर्टल्स सूची ({leaderProfiles.length})
+                  </h4>
+                  <span className="text-[11px] text-slate-500">
+                    सुपर एडमिन 1-क्लिक में किसी भी नेता की वेबसाइट पर स्विच कर सकते हैं
+                  </span>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                  {leaderProfiles.map((p) => {
+                    const isCurActive = p.id === activeLeaderId || (p.status === 'active');
+                    const isActivating = activatingLeaderId === p.id;
+                    return (
+                      <div
+                        key={p.id}
+                        className={`bg-white rounded-2xl p-4 border transition flex flex-col justify-between space-y-3 ${
+                          isCurActive
+                            ? 'border-2 border-emerald-500 shadow-md ring-2 ring-emerald-500/20'
+                            : 'border-slate-200 hover:border-orange-300 shadow-sm'
+                        }`}
+                      >
+                        <div className="space-y-2.5">
+                          <div className="flex items-center space-x-3">
+                            <img
+                              src={p.photo || '/uploads/images/default_leader.png'}
+                              alt={p.name}
+                              className="w-12 h-12 rounded-xl object-cover border border-slate-200 bg-slate-100 flex-shrink-0"
+                              onError={(e) => { e.target.src = '/uploads/images/sarita_bhadauriya-1789523047198-607565.png'; }}
+                            />
+                            <div className="overflow-hidden">
+                              <h5 className="text-xs font-extrabold text-slate-900 truncate">
+                                {p.name}
+                              </h5>
+                              <p className="text-[10px] text-slate-500 truncate">{p.title}</p>
+                              <span className="inline-block px-1.5 py-0.5 mt-0.5 rounded text-[9px] font-bold bg-slate-100 text-slate-700">
+                                {p.constituency}
+                              </span>
+                            </div>
+                          </div>
+
+                          <div className="p-2 bg-slate-50 rounded-xl text-[11px] space-y-1">
+                            <div className="flex items-center justify-between text-slate-600">
+                              <span>पोर्टल शीर्षक:</span>
+                              <span className="font-bold text-slate-800">{p.siteTitle}</span>
+                            </div>
+                            <div className="flex items-center justify-between text-slate-600">
+                              <span>पार्टी:</span>
+                              <span className="font-bold text-orange-600">{p.party}</span>
+                            </div>
+                          </div>
+                        </div>
+
+                        {/* Card Actions */}
+                        <div className="pt-2 border-t border-slate-100 flex items-center justify-between gap-2">
+                          <button
+                            type="button"
+                            onClick={() => setEditingLeader(p)}
+                            className="px-2.5 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 text-[11px] font-bold transition cursor-pointer"
+                          >
+                            विवरण देखें / एडिट
+                          </button>
+
+                          {isCurActive ? (
+                            <span className="px-3 py-1 rounded-lg bg-emerald-100 text-emerald-800 font-extrabold text-[11px] flex items-center space-x-1">
+                              <CheckCircle className="w-3.5 h-3.5" />
+                              <span>सक्रिय</span>
+                            </span>
+                          ) : (
+                            <button
+                              type="button"
+                              onClick={() => handleActivateLeader(p.id)}
+                              disabled={isActivating || !isSuperAdmin}
+                              className="px-3 py-1.5 rounded-lg bg-orange-600 hover:bg-orange-700 text-white font-bold text-[11px] flex items-center space-x-1 transition shadow-sm cursor-pointer disabled:opacity-40"
+                            >
+                              {isActivating ? (
+                                <>
+                                  <RefreshCw className="w-3 h-3 animate-spin" />
+                                  <span>सक्रिय हो रहा...</span>
+                                </>
+                              ) : (
+                                <>
+                                  <span>सक्रिय करें</span>
+                                  <ArrowRight className="w-3 h-3" />
+                                </>
+                              )}
+                            </button>
+                          )}
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+
+              {/* Editing Leader Details Form */}
+              {editingLeader && (
+                <div className="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm space-y-4">
+                  <div className="flex items-center justify-between border-b border-slate-100 pb-3">
+                    <div>
+                      <h4 className="text-xs font-black text-slate-900 uppercase tracking-wider flex items-center space-x-1.5">
+                        <Settings className="w-4 h-4 text-orange-600" />
+                        <span>जनप्रतिनिधि प्रोफाइल विवरण: {editingLeader.name}</span>
+                      </h4>
+                      <p className="text-[11px] text-slate-500">
+                        इस जनप्रतिनिधि का नाम, क्षेत्र, पद, फोटो एवं स्लोगन अपडेट करें।
+                      </p>
+                    </div>
+
+                    <button
+                      type="button"
+                      onClick={handleSaveEditingLeader}
+                      disabled={savingLeader || !isSuperAdmin}
+                      className="px-4 py-2 rounded-xl bg-orange-600 hover:bg-orange-700 text-white font-bold text-xs flex items-center space-x-1 cursor-pointer transition disabled:opacity-40"
+                    >
+                      <Save className="w-3.5 h-3.5" />
+                      <span>{savingLeader ? 'सुरक्षित हो रहा है...' : 'प्रोफाइल सुरक्षित करें'}</span>
+                    </button>
+                  </div>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div className="space-y-1">
+                      <label className="text-xs font-bold text-slate-700">नेता का नाम (हिंदी में)</label>
+                      <input
+                        type="text"
+                        value={editingLeader.name || ''}
+                        onChange={(e) => setEditingLeader({ ...editingLeader, name: e.target.value })}
+                        className="w-full px-3 py-2 text-xs font-bold bg-slate-50 border border-slate-200 rounded-xl"
+                      />
+                    </div>
+
+                    <div className="space-y-1">
+                      <label className="text-xs font-bold text-slate-700">नेता का नाम (English में)</label>
+                      <input
+                        type="text"
+                        value={editingLeader.nameEn || ''}
+                        onChange={(e) => setEditingLeader({ ...editingLeader, nameEn: e.target.value })}
+                        className="w-full px-3 py-2 text-xs font-bold bg-slate-50 border border-slate-200 rounded-xl"
+                      />
+                    </div>
+
+                    <div className="space-y-1">
+                      <label className="text-xs font-bold text-slate-700">पद / उपाधि (Title / Designation)</label>
+                      <input
+                        type="text"
+                        value={editingLeader.title || ''}
+                        onChange={(e) => setEditingLeader({ ...editingLeader, title: e.target.value })}
+                        className="w-full px-3 py-2 text-xs font-bold bg-slate-50 border border-slate-200 rounded-xl"
+                      />
+                    </div>
+
+                    <div className="space-y-1">
+                      <label className="text-xs font-bold text-slate-700">विधानसभा क्षेत्र (Constituency)</label>
+                      <input
+                        type="text"
+                        value={editingLeader.constituency || ''}
+                        onChange={(e) => setEditingLeader({ ...editingLeader, constituency: e.target.value })}
+                        className="w-full px-3 py-2 text-xs font-bold bg-slate-50 border border-slate-200 rounded-xl"
+                      />
+                    </div>
+
+                    <div className="space-y-1">
+                      <label className="text-xs font-bold text-slate-700">राजनीतिक दल (Political Party)</label>
+                      <input
+                        type="text"
+                        value={editingLeader.party || ''}
+                        onChange={(e) => setEditingLeader({ ...editingLeader, party: e.target.value })}
+                        className="w-full px-3 py-2 text-xs font-bold bg-slate-50 border border-slate-200 rounded-xl"
+                      />
+                    </div>
+
+                    <div className="space-y-1">
+                      <label className="text-xs font-bold text-slate-700">नेता का फोटो URL (Portrait Image)</label>
+                      <div className="flex items-center space-x-2">
+                        <input
+                          type="text"
+                          value={editingLeader.photo || ''}
+                          onChange={(e) => setEditingLeader({ ...editingLeader, photo: e.target.value })}
+                          className="flex-1 px-3 py-2 text-xs bg-slate-50 border border-slate-200 rounded-xl"
+                        />
+                        <button
+                          type="button"
+                          onClick={() => setMediaPickerOpen(true)}
+                          className="px-2.5 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold cursor-pointer"
+                        >
+                          लाइब्रेरी
+                        </button>
+                      </div>
+                    </div>
+
+                    <div className="sm:col-span-2 space-y-1">
+                      <label className="text-xs font-bold text-slate-700">परिचय एवं जीवन-ध्येय (About Bio)</label>
+                      <textarea
+                        rows={3}
+                        value={editingLeader.about || ''}
+                        onChange={(e) => setEditingLeader({ ...editingLeader, about: e.target.value })}
+                        className="w-full px-3 py-2 text-xs bg-slate-50 border border-slate-200 rounded-xl"
+                      />
+                    </div>
+                  </div>
+                </div>
+              )}
+            </div>
+          )}
           {activeTab === 'modules' && (
             <div className="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm space-y-5">
               <div className="border-b border-slate-100 pb-3 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
@@ -1627,6 +2266,169 @@ export default function AdminWebsiteBuilder() {
         </div>
 
       </div>
+
+      {/* Create New Leader Profile Modal */}
+      {showCreateLeaderModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm animate-in fade-in duration-200">
+          <div className="bg-white rounded-3xl max-w-2xl w-full max-h-[90vh] overflow-y-auto p-6 shadow-2xl border border-slate-200 space-y-5">
+            <div className="flex items-center justify-between border-b border-slate-100 pb-3">
+              <div className="flex items-center space-x-2">
+                <div className="w-9 h-9 rounded-xl bg-orange-100 text-orange-600 flex items-center justify-center">
+                  <Users className="w-5 h-5" />
+                </div>
+                <div>
+                  <h3 className="text-base font-extrabold text-slate-900">
+                    नया जननेता / विधायक पोर्टल जोड़ें
+                  </h3>
+                  <p className="text-xs text-slate-500">
+                    सुपर एडमिन किसी नए जनप्रतिनिधि हेतु सम्पूर्ण पोर्टल प्रोविजन कर सकते हैं।
+                  </p>
+                </div>
+              </div>
+              <button
+                type="button"
+                onClick={() => setShowCreateLeaderModal(false)}
+                className="p-2 rounded-xl text-slate-400 hover:text-slate-700 hover:bg-slate-100 transition cursor-pointer"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+
+            <form onSubmit={handleCreateLeader} className="space-y-4 text-xs font-bold text-slate-700">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="space-y-1">
+                  <label>नेता का नाम (हिंदी में) <span className="text-red-500">*</span></label>
+                  <input
+                    type="text"
+                    required
+                    placeholder="उदा. श्री अजय कुमार सिंह"
+                    value={newLeaderForm.name}
+                    onChange={(e) => setNewLeaderForm({ ...newLeaderForm, name: e.target.value })}
+                    className="w-full px-3 py-2.5 bg-slate-50 border border-slate-300 rounded-xl focus:bg-white focus:ring-2 focus:ring-orange-500"
+                  />
+                </div>
+
+                <div className="space-y-1">
+                  <label>नेता का नाम (English में)</label>
+                  <input
+                    type="text"
+                    placeholder="उदा. Shri Ajay Kumar Singh"
+                    value={newLeaderForm.nameEn}
+                    onChange={(e) => setNewLeaderForm({ ...newLeaderForm, nameEn: e.target.value })}
+                    className="w-full px-3 py-2.5 bg-slate-50 border border-slate-300 rounded-xl focus:bg-white focus:ring-2 focus:ring-orange-500"
+                  />
+                </div>
+
+                <div className="space-y-1">
+                  <label>पद / उपाधि (Designation)</label>
+                  <input
+                    type="text"
+                    placeholder="उदा. विधायक, लखनऊ कैंट (175)"
+                    value={newLeaderForm.title}
+                    onChange={(e) => setNewLeaderForm({ ...newLeaderForm, title: e.target.value })}
+                    className="w-full px-3 py-2.5 bg-slate-50 border border-slate-300 rounded-xl"
+                  />
+                </div>
+
+                <div className="space-y-1">
+                  <label>विधानसभा क्षेत्र व संख्या <span className="text-red-500">*</span></label>
+                  <input
+                    type="text"
+                    required
+                    placeholder="उदा. लखनऊ कैंट (175)"
+                    value={newLeaderForm.constituency}
+                    onChange={(e) => setNewLeaderForm({ ...newLeaderForm, constituency: e.target.value })}
+                    className="w-full px-3 py-2.5 bg-slate-50 border border-slate-300 rounded-xl"
+                  />
+                </div>
+
+                <div className="space-y-1">
+                  <label>जिला (District)</label>
+                  <input
+                    type="text"
+                    placeholder="उदा. लखनऊ"
+                    value={newLeaderForm.district}
+                    onChange={(e) => setNewLeaderForm({ ...newLeaderForm, district: e.target.value })}
+                    className="w-full px-3 py-2.5 bg-slate-50 border border-slate-300 rounded-xl"
+                  />
+                </div>
+
+                <div className="space-y-1">
+                  <label>राजनीतिक दल (Political Party)</label>
+                  <input
+                    type="text"
+                    placeholder="उदा. भारतीय जनता पार्टी (BJP)"
+                    value={newLeaderForm.party}
+                    onChange={(e) => setNewLeaderForm({ ...newLeaderForm, party: e.target.value })}
+                    className="w-full px-3 py-2.5 bg-slate-50 border border-slate-300 rounded-xl"
+                  />
+                </div>
+
+                <div className="space-y-1">
+                  <label>वेबसाइट हेडर शीर्षक (Site Title)</label>
+                  <input
+                    type="text"
+                    placeholder="उदा. जनसेवा लखनऊ कैंट"
+                    value={newLeaderForm.siteTitle}
+                    onChange={(e) => setNewLeaderForm({ ...newLeaderForm, siteTitle: e.target.value })}
+                    className="w-full px-3 py-2.5 bg-slate-50 border border-slate-300 rounded-xl"
+                  />
+                </div>
+
+                <div className="space-y-1">
+                  <label>हाइलाइट शब्द (Highlight Word)</label>
+                  <input
+                    type="text"
+                    placeholder="उदा. लखनऊ"
+                    value={newLeaderForm.highlightWord}
+                    onChange={(e) => setNewLeaderForm({ ...newLeaderForm, highlightWord: e.target.value })}
+                    className="w-full px-3 py-2.5 bg-slate-50 border border-slate-300 rounded-xl"
+                  />
+                </div>
+
+                <div className="sm:col-span-2 space-y-1">
+                  <label>स्लोगन / आदर्श वाक्य (Tagline)</label>
+                  <input
+                    type="text"
+                    placeholder="उदा. “स्मार्ट राजधानी, विकसित लखनऊ, सुशासन संकल्प”"
+                    value={newLeaderForm.tagline}
+                    onChange={(e) => setNewLeaderForm({ ...newLeaderForm, tagline: e.target.value })}
+                    className="w-full px-3 py-2.5 bg-slate-50 border border-slate-300 rounded-xl"
+                  />
+                </div>
+
+                <div className="sm:col-span-2 space-y-1">
+                  <label>फोटो URL (Portrait Photo URL)</label>
+                  <input
+                    type="text"
+                    placeholder="https://... या /uploads/..."
+                    value={newLeaderForm.photo}
+                    onChange={(e) => setNewLeaderForm({ ...newLeaderForm, photo: e.target.value })}
+                    className="w-full px-3 py-2.5 bg-slate-50 border border-slate-300 rounded-xl"
+                  />
+                </div>
+              </div>
+
+              <div className="pt-3 border-t border-slate-100 flex items-center justify-end space-x-3">
+                <button
+                  type="button"
+                  onClick={() => setShowCreateLeaderModal(false)}
+                  className="px-4 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold transition cursor-pointer"
+                >
+                  रद्द करें
+                </button>
+                <button
+                  type="submit"
+                  disabled={savingLeader}
+                  className="px-5 py-2 rounded-xl bg-orange-600 hover:bg-orange-700 text-white font-extrabold shadow-md shadow-orange-500/20 transition cursor-pointer disabled:opacity-50"
+                >
+                  {savingLeader ? 'प्रोफाइल बन रहा है...' : 'पोर्टल प्रोफाइल बनाएं'}
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
 
       {/* Media Picker Modal */}
       <MediaPickerModal

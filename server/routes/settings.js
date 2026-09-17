@@ -398,6 +398,219 @@ router.post('/master-layout/reset', (req, res) => {
   });
 });
 
+// ============================================================================
+// SUPER ADMIN: MULTI-LEADER PORTAL PROVISIONING & LEADER PROFILE MANAGEMENT
+// ============================================================================
+
+// GET all Leader Profiles (Super Admin Multi-Leader SaaS)
+router.get('/leader-profiles', (req, res) => {
+  const db = readDb();
+  if (!db.leaderProfiles || !db.leaderProfiles.length) {
+    db.leaderProfiles = [
+      {
+        id: 'sarita_bhadauria',
+        name: db.mla?.name || 'श्रीमती सरिता भदौरिया',
+        nameEn: 'Smt. Sarita Bhadauria',
+        title: db.mla?.title || 'विधायक, इटावा विधानसभा (200)',
+        constituency: db.mla?.constituency || 'इटावा (200)',
+        district: db.mla?.district || 'इटावा',
+        state: db.mla?.state || 'उत्तर प्रदेश',
+        party: db.mla?.party || 'भारतीय जनता पार्टी (BJP)',
+        photo: db.mla?.photo || '/uploads/images/sarita_bhadauriya-1789523047198-607565.png',
+        siteTitle: db.settings?.header?.siteTitle || 'जनसेवा इटावा',
+        highlightWord: db.settings?.header?.highlightWord || 'इटावा',
+        tagline: '“मजबूत नेतृत्व, विकसित इटावा, समृद्ध भारत”',
+        themePreset: db.settings?.theme?.preset || 'saffron',
+        active: true,
+        status: 'active'
+      },
+      {
+        id: 'rajesh_kumar_lucknow',
+        name: 'श्री राजेश कुमार सिंह',
+        nameEn: 'Shri Rajesh Kumar Singh',
+        title: 'विधायक, लखनऊ कैंट विधानसभा (175)',
+        constituency: 'लखनऊ कैंट (175)',
+        district: 'लखनऊ',
+        state: 'उत्तर प्रदेश',
+        party: 'भारतीय जनता पार्टी (BJP)',
+        photo: '/images/assets/modi_portrait.jpg',
+        siteTitle: 'जनसेवा लखनऊ कैंट',
+        highlightWord: 'लखनऊ',
+        tagline: '“स्मार्ट राजधानी, विकसित लखनऊ, सुशासन संकल्प”',
+        themePreset: 'royal_blue',
+        active: false,
+        status: 'ready'
+      },
+      {
+        id: 'anurag_dixit_kanpur',
+        name: 'डॉ. अनुराग दीक्षित',
+        nameEn: 'Dr. Anurag Dixit',
+        title: 'जनप्रतिनिधि, कानपुर नगर (213)',
+        constituency: 'कानपुर नगर (213)',
+        district: 'कानपुर',
+        state: 'उत्तर प्रदेश',
+        party: 'सर्वजन विकास मोर्चा',
+        photo: '/images/assets/yogi_portrait.jpg',
+        siteTitle: 'जनसेवा कानपुर नगर',
+        highlightWord: 'कानपुर',
+        tagline: '“औद्योगिक क्रांति, युवा रोजगार, जनहित सर्वोपरि”',
+        themePreset: 'emerald',
+        active: false,
+        status: 'ready'
+      }
+    ];
+    db.activeLeaderId = 'sarita_bhadauria';
+    writeDb(db);
+  }
+
+  const activeLeader = db.mla || db.leaderProfiles.find(l => l.active) || db.leaderProfiles[0];
+  const activeLeaderId = db.activeLeaderId || db.leaderProfiles.find(l => l.active)?.id || db.leaderProfiles[0].id;
+
+  res.json({
+    success: true,
+    profiles: db.leaderProfiles,
+    leaderProfiles: db.leaderProfiles,
+    activeLeaderId,
+    activeLeader
+  });
+});
+
+// UPDATE Active Leader Profile (Super Admin)
+router.put('/leader-profile', (req, res) => {
+  const { profile, user = 'Admin' } = req.body;
+  const db = readDb();
+  if (!db.mla) db.mla = {};
+  
+  db.mla = {
+    ...db.mla,
+    ...profile
+  };
+
+  // Sync with active item in leaderProfiles
+  if (db.leaderProfiles && db.leaderProfiles.length) {
+    const activeIdx = db.leaderProfiles.findIndex(l => l.active || l.id === db.activeLeaderId);
+    if (activeIdx >= 0) {
+      db.leaderProfiles[activeIdx] = {
+        ...db.leaderProfiles[activeIdx],
+        ...profile
+      };
+    }
+  }
+
+  writeDb(db);
+  logAudit(user, `सुपर एडमिन ने जननेता प्रोफाइल अपडेट की: ${db.mla.name}`, 'Super Admin Multi-Leader', db.mla);
+  res.json({
+    success: true,
+    mla: db.mla,
+    activeLeader: db.mla,
+    profiles: db.leaderProfiles,
+    leaderProfiles: db.leaderProfiles,
+    message: 'जननेता प्रोफाइल सफलतापूर्वक अपडेट की गई!'
+  });
+});
+
+// CREATE New Leader Portal Profile (Super Admin)
+router.post('/leader-profiles', (req, res) => {
+  const { profile, user = 'Admin' } = req.body;
+  const db = readDb();
+  if (!db.leaderProfiles) db.leaderProfiles = [];
+
+  const newProfile = {
+    id: profile.id || 'leader-' + Date.now(),
+    name: profile.name || 'नया जननेता',
+    nameEn: profile.nameEn || profile.name || '',
+    title: profile.title || `विधायक, ${profile.constituency || 'क्षेत्र'}`,
+    constituency: profile.constituency || 'विधानसभा क्षेत्र',
+    district: profile.district || 'जिला',
+    state: profile.state || 'उत्तर प्रदेश',
+    party: profile.party || 'भारतीय जनता पार्टी (BJP)',
+    photo: profile.photo || '/uploads/images/default_leader.png',
+    siteTitle: profile.siteTitle || `जनसेवा ${profile.constituency || 'पोर्टल'}`,
+    highlightWord: profile.highlightWord || profile.constituency || 'सेवा',
+    tagline: profile.tagline || '“जनसेवा ही सच्चा संकल्प है”',
+    subtitle: profile.subtitle || 'People • Development • Trust',
+    primaryColor: profile.primaryColor || '#ea580c',
+    secondaryColor: profile.secondaryColor || '#16a34a',
+    preset: profile.preset || 'saffron',
+    themePreset: profile.themePreset || profile.preset || 'saffron',
+    active: false,
+    status: 'ready',
+    createdAt: new Date().toISOString()
+  };
+
+  db.leaderProfiles.push(newProfile);
+  writeDb(db);
+  logAudit(user, `सुपर एडमिन ने नया जननेता पोर्टल प्रोफाइल बनाया: ${newProfile.name}`, 'Super Admin Multi-Leader', newProfile);
+  res.json({
+    success: true,
+    profile: newProfile,
+    profiles: db.leaderProfiles,
+    leaderProfiles: db.leaderProfiles,
+    message: `नया जननेता पोर्टल [${newProfile.name}] सफलतापूर्वक बनाया गया!`
+  });
+});
+
+// SWITCH Active Leader Portal (Super Admin 1-Click Provisioning)
+router.post('/leader-profiles/activate/:id', (req, res) => {
+  const { id } = req.params;
+  const { user = 'Admin' } = req.body;
+  const db = readDb();
+  if (!db.leaderProfiles) db.leaderProfiles = [];
+
+  const target = db.leaderProfiles.find(l => l.id === id || l.id.includes(id) || (id.includes(l.id)));
+  if (!target) {
+    return res.status(404).json({ success: false, message: 'Leader profile not found' });
+  }
+
+  db.leaderProfiles.forEach(l => {
+    l.active = (l.id === target.id);
+    l.status = (l.id === target.id) ? 'active' : 'ready';
+  });
+  db.activeLeaderId = target.id;
+  
+  // Apply this leader's data to active portal
+  db.mla = {
+    ...(db.mla || {}),
+    name: target.name,
+    nameEn: target.nameEn || target.name,
+    title: target.title,
+    constituency: target.constituency,
+    district: target.district || db.mla?.district || '',
+    state: target.state || db.mla?.state || 'उत्तर प्रदेश',
+    party: target.party || db.mla?.party || '',
+    photo: target.photo || db.mla?.photo,
+    image: target.photo || db.mla?.image
+  };
+
+  if (!db.settings) db.settings = {};
+  if (!db.settings.header) db.settings.header = {};
+  if (target.siteTitle) db.settings.header.siteTitle = target.siteTitle;
+  if (target.highlightWord) db.settings.header.highlightWord = target.highlightWord;
+  if (target.constituency) db.settings.header.constituency = `${target.siteTitle} (${target.constituency})`;
+  if (target.tagline) db.settings.header.tagline = target.tagline;
+  if (target.photo && db.settings.hero) db.settings.hero.saritaImage = target.photo;
+  if (target.name && db.settings.hero) {
+    db.settings.hero.signature = target.name;
+    db.settings.hero.designation = target.title;
+  }
+  if (target.themePreset && db.settings.theme) {
+    db.settings.theme.preset = target.themePreset;
+  }
+
+  writeDb(db);
+  logAudit(user, `सुपर एडमिन ने सक्रिय जननेता पोर्टल बदला: ${target.name} (${target.constituency})`, 'Super Admin Multi-Leader', { id, target });
+  res.json({
+    success: true,
+    message: `सक्रिय पोर्टल सफलतापूर्वक "${target.name} (${target.constituency})" पर स्विच किया गया!`,
+    activeLeaderId: target.id,
+    activeLeader: db.mla,
+    profiles: db.leaderProfiles,
+    leaderProfiles: db.leaderProfiles,
+    header: db.settings.header,
+    settings: db.settings
+  });
+});
+
 // UPDATE SEO & Meta Settings
 router.put('/seo', (req, res) => {
   const db = readDb();
@@ -784,5 +997,7 @@ router.post('/mobile/toggle', (req, res) => {
 });
 
 module.exports = router;
+
+
 
 
