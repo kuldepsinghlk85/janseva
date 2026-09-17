@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useApp } from '../context/AppContext';
 import { api } from '../services/api';
+import MediaPickerModal from '../components/common/MediaPickerModal';
 import {
   Sparkles,
   Save,
@@ -12,16 +13,13 @@ import {
   Globe,
   Code,
   Check,
-  CheckCircle2,
   Smartphone,
   ExternalLink,
-  PlusCircle,
-  Edit,
-  ArrowUp,
-  ArrowDown,
-  ArrowRight,
   RotateCcw,
-  Image as ImageIcon
+  Palette,
+  Image as ImageIcon,
+  CheckSquare,
+  Type
 } from 'lucide-react';
 
 export default function AdminWebsiteBuilder() {
@@ -32,13 +30,70 @@ export default function AdminWebsiteBuilder() {
     setViewMode,
     showToast,
     setShowMobileSimulator,
-    setAdminTab
+    navigateToPublicPage
   } = useApp();
 
-  const [activeTab, setActiveTab] = useState('templates'); // templates, settings, sections, blogs, festival, seo, css
+  const [activeTab, setActiveTab] = useState('theme'); // theme, header, modules, templates, hero, sections, festival, seo, css
   const [saving, setSaving] = useState(false);
+  const [mediaPickerOpen, setMediaPickerOpen] = useState(false);
 
-  // Hero Form State
+  // 1. Theme State (WordPress Style)
+  const [themeForm, setThemeForm] = useState({
+    preset: 'saffron',
+    primaryColor: '#ea580c',
+    secondaryColor: '#16a34a',
+    accentColor: '#f59e0b',
+    navbarBg: '#ffffff',
+    navbarText: '#0f172a',
+    footerBg: '#0f172a',
+    bodyBg: '#f8fafc',
+    cardRadius: 'rounded-xl',
+    fontFamily: 'Inter',
+    headerStyle: 'standard'
+  });
+
+  // 2. Header & Logo State
+  const [headerForm, setHeaderForm] = useState({
+    siteTitle: 'जनसेवा इटावा',
+    highlightWord: 'इटावा',
+    subtitle: 'People • Development • Trust',
+    tagline: '“मजबूत नेतृत्व, विकसित इटावा, समृद्ध भारत”',
+    constituency: 'जनसेवा इटावा (विधानसभा 200)',
+    logoType: 'icon',
+    logoIcon: '🪷',
+    logoImage: '',
+    logoWidth: 44,
+    headerLayout: 'standard',
+    showRibbon: true,
+    showMobileAppBtn: true,
+    showLoginBtn: true,
+    showLangBtn: true
+  });
+
+  // 3. Module & Feature Visibility State
+  const [modulesForm, setModulesForm] = useState({
+    topRibbon: true,
+    headerMobileAppBtn: true,
+    headerLoginBtn: true,
+    headerLangBtn: true,
+    festivalBanner: true,
+    officialMlaBanner: true,
+    heroSlider: true,
+    janSamvadSpotlight: true,
+    metricsBar: true,
+    featuredActivity: true,
+    updatesAndSchemes: true,
+    socialAndConstituency: true,
+    knowYourConstituency: true,
+    latestActivitiesAndMinisters: true,
+    timelineAndTeam: true,
+    citizenTestimonial: true,
+    footerPanorama: true,
+    floatingMobileSimulator: true,
+    floatingQrModal: true
+  });
+
+  // 4. Hero Form State
   const [heroForm, setHeroForm] = useState({
     title: 'विकास ही मेरी प्राथमिकता है,\nऔर जनता ही मेरी शक्ति।',
     subtitle: 'इटावा के सर्वांगीण विकास एवं जन-जन के कल्याण हेतु अहर्निश समर्पित',
@@ -55,7 +110,7 @@ export default function AdminWebsiteBuilder() {
     show: true
   });
 
-  // Festival Form State
+  // 5. Festival Form State
   const [festivalForm, setFestivalForm] = useState({
     active: false,
     title: 'गणेश चतुर्थी की हार्दिक शुभकामनाएं',
@@ -65,172 +120,411 @@ export default function AdminWebsiteBuilder() {
     bannerImage: '/images/assets/sarita_bhadauria_hero.jpg'
   });
 
-  // Sections State
+  // 6. Sections State
   const [sections, setSections] = useState([]);
 
-  // SEO Form State
+  // 7. SEO Form State
   const [seoForm, setSeoForm] = useState({
     metaTitle: 'जनसेवा इटावा (200) | विधायक श्रीमती सरिता भदौरिया - आधिकारिक पोर्टल',
-    metaDescription: 'इटावा विधानसभा (200) की माननीया विधायक श्रीमती सरिता भदौरिया का आधिकारिक जनसेवा एवं विकास पोर्टल। दैनिक जन-गतिविधि, विकास कार्य व सरकारी योजनाएं।',
+    metaDescription: 'इटावा विधानसभा (200) की माननीया विधायक श्रीमती सरिता भदौरिया का आधिकारिक जनसेवा एवं विकास पोर्टल।',
     keywords: 'इटावा विधायक, सरिता भदौरिया, Sarita Bhadauria MLA Etawah, BJP Etawah 200, JanSeva, विकास कार्य',
     ogImage: '/images/assets/sarita_bhadauria_hero.jpg'
   });
 
-  // Custom Code Form State
+  // 8. Custom Code Form State
   const [customCodeForm, setCustomCodeForm] = useState({
     css: '',
     js: ''
   });
 
-  // Blog Settings State
-  const [blogSettingsForm, setBlogSettingsForm] = useState({
-    showOnHome: true,
-    maxHomeCards: 3
-  });
-
   // Sync state when settings change
   useEffect(() => {
     if (settings) {
+      if (settings.theme) setThemeForm(prev => ({ ...prev, ...settings.theme }));
+      if (settings.header) setHeaderForm(prev => ({ ...prev, ...settings.header }));
+      if (settings.modules) setModulesForm(prev => ({ ...prev, ...settings.modules }));
       if (settings.hero) setHeroForm(prev => ({ ...prev, ...settings.hero }));
       if (settings.festival) setFestivalForm(prev => ({ ...prev, ...settings.festival }));
       if (settings.sections) setSections(settings.sections);
       if (settings.seo) setSeoForm(prev => ({ ...prev, ...settings.seo }));
       if (settings.customCode) setCustomCodeForm(prev => ({ ...prev, ...settings.customCode }));
-      if (settings.blogSettings) setBlogSettingsForm(prev => ({ ...prev, ...settings.blogSettings }));
     }
   }, [settings]);
 
-  // Save Hero Section Changes
-  const handleSaveHero = async () => {
+  // Presets List
+  const themePresets = settings?.themePresets || [
+    {
+      id: 'saffron',
+      name: 'भगवा एवं राष्ट्रभक्ति',
+      nameEn: 'Saffron Patriot',
+      desc: 'पारंपरिक ऊर्जावान भगवा व समृद्ध हरित रंग का सामंजस्य',
+      primaryColor: '#ea580c',
+      secondaryColor: '#16a34a',
+      accentColor: '#f59e0b',
+      navbarBg: '#ffffff',
+      navbarText: '#0f172a',
+      footerBg: '#0f172a',
+      bodyBg: '#f8fafc',
+      cardRadius: 'rounded-xl',
+      fontFamily: 'Inter'
+    },
+    {
+      id: 'royal_blue',
+      name: 'शाही नीला / डिजिटल भारत',
+      nameEn: 'Royal Blue & Gold',
+      desc: 'गंभीर, आधुनिक प्रशासनिक नीला एवं स्वर्णिम आभा',
+      primaryColor: '#1d4ed8',
+      secondaryColor: '#0284c7',
+      accentColor: '#f59e0b',
+      navbarBg: '#0f172a',
+      navbarText: '#ffffff',
+      footerBg: '#020617',
+      bodyBg: '#f1f5f9',
+      cardRadius: 'rounded-xl',
+      fontFamily: 'Inter'
+    },
+    {
+      id: 'emerald',
+      name: 'समृद्धि हरित / विकास एवं प्रकृति',
+      nameEn: 'Emerald Prosperity',
+      desc: 'विकास, पर्यावरण, ग्रामीण उन्नति और ताज़गी का प्रतीक',
+      primaryColor: '#059669',
+      secondaryColor: '#0d9488',
+      accentColor: '#ea580c',
+      navbarBg: '#ffffff',
+      navbarText: '#064e3b',
+      footerBg: '#064e3b',
+      bodyBg: '#f0fdf4',
+      cardRadius: 'rounded-2xl',
+      fontFamily: 'Inter'
+    },
+    {
+      id: 'tricolor',
+      name: 'राष्ट्रीय तिरंगा गौरव',
+      nameEn: 'National Tricolor',
+      desc: 'केसरिया, श्वेत व हरा — पूर्ण राष्ट्रभक्ति और जनसेवा भावना',
+      primaryColor: '#ea580c',
+      secondaryColor: '#15803d',
+      accentColor: '#1e3a8a',
+      navbarBg: '#ffffff',
+      navbarText: '#1e293b',
+      footerBg: '#111827',
+      bodyBg: '#fafaf9',
+      cardRadius: 'rounded-lg',
+      fontFamily: 'Inter'
+    },
+    {
+      id: 'maroon_gold',
+      name: 'शाही मैरून एवं स्वर्णिम',
+      nameEn: 'Imperial Maroon & Amber',
+      desc: 'गरिमापूर्ण ऐतिहासिक मैरून व एम्बर स्वर्णिम चमक',
+      primaryColor: '#991b1b',
+      secondaryColor: '#b45309',
+      accentColor: '#d97706',
+      navbarBg: '#ffffff',
+      navbarText: '#450a0a',
+      footerBg: '#450a0a',
+      bodyBg: '#fef2f2',
+      cardRadius: 'rounded-xl',
+      fontFamily: 'Rozha One'
+    },
+    {
+      id: 'dark_modern',
+      name: 'डार्क मॉडर्न एलीट',
+      nameEn: 'Dark Modern Elite',
+      desc: 'प्रीमियम हाई-टेक डार्क लुक व वाइब्रेंट पर्पल हाइलाइट्स',
+      primaryColor: '#8b5cf6',
+      secondaryColor: '#06b6d4',
+      accentColor: '#ec4899',
+      navbarBg: '#090d16',
+      navbarText: '#f8fafc',
+      footerBg: '#030712',
+      bodyBg: '#0b0f19',
+      cardRadius: 'rounded-2xl',
+      fontFamily: 'Inter'
+    }
+  ];
+
+  // Module Definitions with Categories & Descriptions
+  const MODULE_ITEMS = [
+    {
+      key: 'topRibbon',
+      nameHi: 'शीर्ष तिरंगा रिबन व स्लोगन पट्टी',
+      nameEn: 'Top Ribbon & Motto Bar',
+      category: 'हेडर व शीर्ष घटक',
+      desc: 'पेज के सबसे ऊपर तिरंगा धारी, विधानसभा नाम और स्लोगन प्रदर्शित करता है।'
+    },
+    {
+      key: 'headerMobileAppBtn',
+      nameHi: 'हेडर मोबाइल ऐप बटन (/mobile)',
+      nameEn: 'Header Mobile App Button',
+      category: 'हेडर व शीर्ष घटक',
+      desc: 'हेडर में सीधे मोबाइल वेब ऐप खोलने वाला बटन।'
+    },
+    {
+      key: 'headerLoginBtn',
+      nameHi: 'नागरिक प्रोफाइल व यूजर लॉगिन बटन',
+      nameEn: 'User Login / Profile Button',
+      category: 'हेडर व शीर्ष घटक',
+      desc: 'नागरिकों व कार्यकर्ताओं के लिए लॉगिन/प्रोफाइल बटन।'
+    },
+    {
+      key: 'headerLangBtn',
+      nameHi: 'भाषा चयन ड्रॉपडाउन (हिंदी / English)',
+      nameEn: 'Language Switcher Dropdown',
+      category: 'हेडर व शीर्ष घटक',
+      desc: 'हेडर में भाषा बदलने का ड्रॉपडाउन।'
+    },
+    {
+      key: 'festivalBanner',
+      nameHi: 'त्यौहार व पर्व विशेष शुभकामना बैनर',
+      nameEn: 'Festival Campaign Greeting Banner',
+      category: 'मुख्य बैनर व हीरो घटक',
+      desc: 'विशेष पर्वों पर टॉप पर प्रदर्शित होने वाला आकर्षक शुभकामना बैनर।'
+    },
+    {
+      key: 'officialMlaBanner',
+      nameHi: 'माननीया विधायक आधिकारिक प्रोफाइल व संदेश',
+      nameEn: 'Official MLA Portrait & Message Banner',
+      category: 'मुख्य बैनर व हीरो घटक',
+      desc: 'संसदीय सत्र, पार्टी लोगो एवं माननीया विधायक का आधिकारिक संदेश।'
+    },
+    {
+      key: 'heroSlider',
+      nameHi: 'मुख्य हीरो पोस्टर स्लाइडर व वीडियो',
+      nameEn: 'Hero Poster Slider & Highlights',
+      category: 'मुख्य बैनर व हीरो घटक',
+      desc: 'होमपेज का मुख्य पोस्टर स्लाइडर (4-6 हाई-रेज़ॉल्यूशन पोस्टर्स)।'
+    },
+    {
+      key: 'janSamvadSpotlight',
+      nameHi: 'जनसंवाद एवं समस्या निवारण स्पॉटलाइट',
+      nameEn: 'Jan Samvad Grievance Spotlight',
+      category: 'मुख्य बैनर व हीरो घटक',
+      desc: 'नागरिकों की समस्याओं का समाधान और डायरेक्ट आवेदन बॉक्स।'
+    },
+    {
+      key: 'metricsBar',
+      nameHi: 'विधानसभा प्रमुख सांख्यिकी व आंकड़े (Metrics Bar)',
+      nameEn: 'Constituency Key Metrics Bar',
+      category: 'विकास कार्य, आंकड़े व योजनाएं',
+      desc: '420+ बूथ, 200+ गांव, ₹500+ करोड़ विकास कार्य आदि के आंकड़े।'
+    },
+    {
+      key: 'featuredActivity',
+      nameHi: 'विशेष मुख्य विकास गतिविधि कार्ड (Featured Story)',
+      nameEn: 'Featured Highlight Story Card',
+      category: 'विकास कार्य, आंकड़े व योजनाएं',
+      desc: 'ताज़ा मुख्य विकास कार्य या बड़ी उपलब्धि का विशेष हाइलाइट कार्ड।'
+    },
+    {
+      key: 'updatesAndSchemes',
+      nameHi: 'ताज़ा अपडेट्स एवं सरकारी योजनाएं पंक्ति',
+      nameEn: 'Latest Updates & Schemes Row',
+      category: 'विकास कार्य, आंकड़े व योजनाएं',
+      desc: 'प्रमुख कल्याणकारी योजनाओं और ताज़ा गतिविधियों की संयुक्त पंक्ति।'
+    },
+    {
+      key: 'timelineAndTeam',
+      nameHi: 'विकास यात्रा टाइमलाइन व क्षेत्रीय टीम',
+      nameEn: 'Vikas Yatra Timeline & Team',
+      category: 'विकास कार्य, आंकड़े व योजनाएं',
+      desc: 'विधानसभा विकास की ऐतिहासिक टाइमलाइन व प्रमुख कार्यकर्ता टीम।'
+    },
+    {
+      key: 'socialAndConstituency',
+      nameHi: 'सोशल मीडिया लाइव वॉल व नेतागण',
+      nameEn: 'Social Media Feed & Leadership Row',
+      category: 'जनसंपर्क, नक्शा व सोशल मीडिया',
+      desc: 'फेसबुक/ट्विटर लाइव पोस्ट्स एवं पार्टी नेतृत्व की झलकियां।'
+    },
+    {
+      key: 'knowYourConstituency',
+      nameHi: 'विधानसभा परिचय व इंटरैक्टिव नक्शा (GIS Map)',
+      nameEn: 'Know Your Constituency & Map',
+      category: 'जनसंपर्क, नक्शा व सोशल मीडिया',
+      desc: 'इटावा सदर का विस्तृत भौगोलिक परिचय और बूथ मैपिंग।'
+    },
+    {
+      key: 'latestActivitiesAndMinisters',
+      nameHi: 'मंत्रिगण व समस्त दैनिक गतिविधियां अनुभाग',
+      nameEn: 'Ministers & All Activities Section',
+      category: 'जनसंपर्क, नक्शा व सोशल मीडिया',
+      desc: 'दैनिक जन-गतिविधियां, उद्घाटन, बैठकें और वरिष्ठ नेतागण।'
+    },
+    {
+      key: 'citizenTestimonial',
+      nameHi: 'नागरिक अनुभव व नीचे का सदस्यता बैनर',
+      nameEn: 'Citizen Testimonials & Bottom Banner',
+      category: 'जनसंपर्क, नक्शा व सोशल मीडिया',
+      desc: 'क्षेत्रीय जनता की प्रतिक्रियाएं एवं सदस्यता आमंत्रण बैनर।'
+    },
+    {
+      key: 'footerPanorama',
+      nameHi: 'फुटर पैनोरमा, हेल्पलाइन व सोशल लिंक्स',
+      nameEn: 'Footer Panorama & Directory Links',
+      category: 'फुटर व फ्लोटिंग टूल्स',
+      desc: 'वेबसाइट का संपूर्ण फुटर, संपर्क सूत्र और त्वरित नेविगेशन।'
+    },
+    {
+      key: 'floatingMobileSimulator',
+      nameHi: 'फ्लोटिंग मोबाइल व्यू सिमुलेटर बटन',
+      nameEn: 'Floating Mobile Simulator Toggle',
+      category: 'फुटर व फ्लोटिंग टूल्स',
+      desc: 'स्क्रीन के कोने में मोबाइल व्यू का फ्लोटिंग बटन।'
+    },
+    {
+      key: 'floatingQrModal',
+      nameHi: 'नागरिक सदस्यता व QR कोड पॉपअप',
+      nameEn: 'Citizen Connect & QR Membership Modal',
+      category: 'फुटर व फ्लोटिंग टूल्स',
+      desc: 'नागरिकों को व्हाट्सएप या फॉर्म से जोड़ने वाला त्वरित पॉपअप।'
+    }
+  ];
+
+  // Save Handlers
+  const handleSaveTheme = async (customTheme = null) => {
     setSaving(true);
-    const res = await api.updateHero(heroForm, 'Admin (Super Admin)');
+    const toSave = customTheme || themeForm;
+    const res = await api.updateTheme(toSave, 'Admin (Super Admin)');
     setSaving(false);
     if (res.success) {
-      showToast('Hero Header एवं मुख्य पृष्ठ विवरण सफलतापूर्वक अपडेट किया गया!', 'success');
+      showToast('थीम एवं रंग-रोगन सेटिंग्स सफलतापूर्वक सुरक्षित की गईं!', 'success');
       await loadSettings();
     } else {
-      showToast('अपडेट विफल रहा, पुनः प्रयास करें।', 'error');
+      showToast('थीम अपडेट विफल रहा!', 'error');
     }
   };
 
-  // 1-Click Activate Template
+  const handleSaveHeader = async () => {
+    setSaving(true);
+    const res = await api.updateHeader(headerForm, 'Admin (Super Admin)');
+    setSaving(false);
+    if (res.success) {
+      showToast('हेडर, शीर्षक एवं लोगो ब्रांडिंग सफलतापूर्वक सुरक्षित की गई!', 'success');
+      await loadSettings();
+    } else {
+      showToast('हेडर अपडेट विफल रहा!', 'error');
+    }
+  };
+
+  const handleSaveModules = async (customModules = null) => {
+    setSaving(true);
+    const toSave = customModules || modulesForm;
+    const res = await api.updateModules(toSave, 'Admin (Super Admin)');
+    setSaving(false);
+    if (res.success) {
+      showToast('मॉड्यूल विजिबिलिटी सेटिंग्स सफलतापूर्वक सुरक्षित की गईं!', 'success');
+      await loadSettings();
+    } else {
+      showToast('मॉड्यूल अपडेट विफल रहा!', 'error');
+    }
+  };
+
+  const handleToggleModule = async (key) => {
+    const updated = { ...modulesForm, [key]: !modulesForm[key] };
+    setModulesForm(updated);
+    const res = await api.toggleModule(key, 'Admin (Super Admin)');
+    if (res.success) {
+      showToast(`मॉड्यूल [${key}] अब ${res.state ? 'चालू (ON)' : 'बंद (OFF)'} है।`, 'info');
+      await loadSettings();
+    }
+  };
+
+  const handleSetAllModules = async (status) => {
+    const updated = {};
+    MODULE_ITEMS.forEach(m => {
+      updated[m.key] = status;
+    });
+    setModulesForm(updated);
+    await handleSaveModules(updated);
+  };
+
+  const handleApplyPreset = async (preset) => {
+    const updated = {
+      ...themeForm,
+      preset: preset.id,
+      primaryColor: preset.primaryColor,
+      secondaryColor: preset.secondaryColor,
+      accentColor: preset.accentColor,
+      navbarBg: preset.navbarBg,
+      navbarText: preset.navbarText,
+      footerBg: preset.footerBg,
+      bodyBg: preset.bodyBg,
+      cardRadius: preset.cardRadius,
+      fontFamily: preset.fontFamily
+    };
+    setThemeForm(updated);
+    await handleSaveTheme(updated);
+  };
+
+  const handleResetAll = async () => {
+    if (!window.confirm('क्या आप सचमुच मास्टर लेआउट, थीम, हेडर और मॉड्यूल्स को डिफ़ॉल्ट पर रीसेट करना चाहते हैं?')) return;
+    setSaving(true);
+    const res = await api.resetThemeSettings('Admin (Super Admin)');
+    setSaving(false);
+    if (res.success) {
+      if (res.theme) setThemeForm(res.theme);
+      if (res.header) setHeaderForm(res.header);
+      if (res.modules) setModulesForm(res.modules);
+      showToast(res.message || 'सफलतापूर्वक डिफ़ॉल्ट रीसेट किया गया!', 'success');
+      await loadSettings();
+    }
+  };
+
+  const handleSaveAllMasterLayout = async () => {
+    setSaving(true);
+    try {
+      await Promise.all([
+        api.updateTheme(themeForm, 'Admin (Super Admin)'),
+        api.updateHeader(headerForm, 'Admin (Super Admin)'),
+        api.updateModules(modulesForm, 'Admin (Super Admin)')
+      ]);
+      showToast('सम्पूर्ण मास्टर लेआउट (थीम, हेडर व मॉड्यूल्स) एक साथ सुरक्षित कर दिया गया!', 'success');
+      await loadSettings();
+    } catch (e) {
+      showToast('सहेजने में त्रुटि आई!', 'error');
+    } finally {
+      setSaving(false);
+    }
+  };
+
   const handleActivateTemplate = async (templateId) => {
     setSaving(true);
     const res = await api.setTemplate(templateId, 'Admin (Super Admin)');
     setSaving(false);
     if (res.success) {
-      if (res.sections) setSections(res.sections);
-      showToast(`टेम्पलेट सफलतापूर्वक सक्रिय किया गया: ${res.template?.name || templateId}`, 'success');
-      await loadSettings();
-    } else {
-      showToast('टेम्पलेट सक्रिय करने में त्रुटि आई।', 'error');
-    }
-  };
-
-  // Toggle Section Switch
-  const handleToggleSection = async (sectionId) => {
-    const res = await api.toggleSection(sectionId, 'Admin (Super Admin)');
-    if (res.success) {
-      const updated = sections.map(s => s.id === sectionId ? { ...s, enabled: res.section.enabled } : s);
-      setSections(updated);
-      showToast(`सेक्शन ${res.section.nameHi || res.section.name}: ${res.section.enabled ? 'सक्रिय (ON)' : 'निष्क्रिय (OFF)'}`, 'info');
+      showToast(`टेम्पलेट सफलतापूर्वक सक्रिय किया गया!`, 'success');
       await loadSettings();
     }
   };
 
-  // Move Section Up/Down in Order
-  const handleMoveSection = async (index, direction) => {
-    const newIndex = direction === 'up' ? index - 1 : index + 1;
-    if (newIndex < 0 || newIndex >= sections.length) return;
-
-    const reordered = [...sections];
-    const [moved] = reordered.splice(index, 1);
-    reordered.splice(newIndex, 0, moved);
-
-    const updated = reordered.map((sec, i) => ({ ...sec, order: i + 1 }));
-    setSections(updated);
-
-    const res = await api.updateSections(updated, 'Admin (Super Admin)');
-    if (res.success) {
-      showToast('सेक्शन का क्रम सफलतापूर्वक बदला गया और होमपेज पर लागू हुआ!', 'success');
-      await loadSettings();
-    }
-  };
-
-  // Reset Sections to Default Order
-  const handleResetSections = async () => {
-    const defaultSections = [
-      { id: 'about-mla', name: 'About MLA', nameHi: 'विधायक परिचय', enabled: true, order: 1 },
-      { id: 'hero-banner', name: 'Hero Banner', nameHi: 'मुख्य बैनर', enabled: true, order: 2 },
-      { id: 'development-highlights', name: 'Development Highlights', nameHi: 'विकास कार्य झलकियां', enabled: true, order: 3 },
-      { id: 'social-feed', name: 'Social Media Feed', nameHi: 'सोशल मीडिया अपडेट', enabled: true, order: 4 },
-      { id: 'latest-news', name: 'Latest News', nameHi: 'ताज़ा समाचार', enabled: true, order: 5 },
-      { id: 'upcoming-events', name: 'Upcoming Events', nameHi: 'आगामी कार्यक्रम', enabled: true, order: 6 },
-      { id: 'testimonial', name: 'Testimonial', nameHi: 'जनता के अनुभव', enabled: true, order: 7 },
-      { id: 'citizen-services', name: 'Citizen Services', nameHi: 'नागरिक सेवाएं एवं QR', enabled: true, order: 8 },
-      { id: 'leader-network', name: 'Leader Network', nameHi: 'मार्गदर्शक नेतृत्व', enabled: true, order: 9 },
-      { id: 'blogs', name: 'Blogs', nameHi: 'ब्लॉग एवं लेख', enabled: true, order: 10 },
-      { id: 'gallery', name: 'Gallery', nameHi: 'फोटो एवं वीडियो गैलरी', enabled: true, order: 11 }
-    ];
-    setSections(defaultSections);
-    const res = await api.updateSections(defaultSections, 'Admin (Super Admin)');
-    if (res.success) {
-      showToast('लेआउट क्रम डिफ़ॉल्ट पर रीसेट कर दिया गया!', 'success');
-      await loadSettings();
-    }
-  };
-
-  // Toggle Festival Campaign
-  const handleToggleFestival = async (activeState) => {
-    const updated = { ...festivalForm, active: activeState };
-    setFestivalForm(updated);
-    const res = await api.updateFestival(updated, 'Admin (Super Admin)');
-    if (res.success) {
-      showToast(`फेस्टिवल पेज ${activeState ? 'सक्रिय (Active)' : 'निष्क्रिय (Inactive)'} किया गया!`, 'success');
-      await loadSettings();
-    }
-  };
-
-  // Save Festival Form
-  const handleSaveFestival = async () => {
+  const handleSaveHero = async () => {
     setSaving(true);
-    const res = await api.updateFestival(festivalForm, 'Admin (Super Admin)');
+    const res = await api.updateHero(heroForm, 'Admin (Super Admin)');
     setSaving(false);
     if (res.success) {
-      showToast('फेस्टिवल विवरण सफलतापूर्वक सुरक्षित किया गया!', 'success');
+      showToast('Hero Header विवरण सफलतापूर्वक सुरक्षित किया गया!', 'success');
       await loadSettings();
     }
   };
 
-  // Save SEO Form
   const handleSaveSeo = async () => {
     setSaving(true);
     const res = await api.updateSeo(seoForm, 'Admin (Super Admin)');
     setSaving(false);
     if (res.success) {
-      showToast('SEO एवं मेटा टैग्स सफलतापूर्वक सुरक्षित किए गए!', 'success');
+      showToast('SEO एवं मेटा टैग्स सुरक्षित किए गए!', 'success');
       await loadSettings();
     }
   };
 
-  // Save Custom Code Form
   const handleSaveCustomCode = async () => {
     setSaving(true);
     const res = await api.updateCustomCode(customCodeForm, 'Admin (Super Admin)');
     setSaving(false);
     if (res.success) {
-      showToast('कस्टम CSS/JS कोड सुरक्षित किया गया और वेबसाइट पर लागू हुआ!', 'success');
-      await loadSettings();
-    }
-  };
-
-  // Save Blog Settings
-  const handleSaveBlogSettings = async () => {
-    setSaving(true);
-    const res = await api.updateBlogSettings(blogSettingsForm, 'Admin (Super Admin)');
-    setSaving(false);
-    if (res.success) {
-      showToast('ब्लॉग सेटिंग्स सुरक्षित की गईं!', 'success');
+      showToast('कस्टम CSS/JS सुरक्षित किया गया!', 'success');
       await loadSettings();
     }
   };
@@ -243,93 +537,86 @@ export default function AdminWebsiteBuilder() {
     { id: 'complete-intelligence', name: 'Complete Intelligence', nameHi: 'समग्र इंटेलिजेंस होमपेज', desc: 'लाइव मैप्स, विकास स्टेटस चार्ट और डेटा विज़ुअलाइज़ेशन युक्त डैशबोर्ड।' }
   ];
 
+  const activeModulesCount = Object.values(modulesForm).filter(Boolean).length;
+
   return (
     <div className="p-6 space-y-6 max-w-7xl mx-auto">
       
-      {/* Top Welcome Banner with Live Actions (Mockup 1 Header) */}
-      <div className="bg-gradient-to-r from-orange-50 via-white to-amber-50 rounded-2xl p-5 sm:p-6 border border-orange-200/80 shadow-sm flex flex-col lg:flex-row lg:items-center justify-between gap-6">
-        <div>
-          <div className="flex items-center space-x-2 text-xs font-bold text-orange-700">
-            <Sparkles className="w-4 h-4 text-orange-600" />
-            <span>Website Management & Appearance</span>
+      {/* Master Top Control Banner (WordPress Style) */}
+      <div className="bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 text-white rounded-3xl p-6 border border-slate-700 shadow-xl flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+        <div className="space-y-1">
+          <div className="flex items-center space-x-2">
+            <span className="px-2.5 py-0.5 rounded-full text-[10px] font-black tracking-wider uppercase bg-orange-500 text-white">
+              MASTER LAYOUT & THEME CUSTOMIZER
+            </span>
+            <span className="text-xs text-slate-400 font-bold">
+              • सक्रिय थीम: <span className="text-orange-400 font-black">{themePresets.find(p => p.id === themeForm.preset)?.name || 'कस्टम'}</span>
+            </span>
+            <span className="text-xs text-slate-400 font-bold">
+              • सक्रिय मॉड्यूल्स: <span className="text-emerald-400 font-black">{activeModulesCount}/{MODULE_ITEMS.length}</span>
+            </span>
           </div>
-          <h2 className="text-2xl font-black text-slate-900 tracking-tight mt-1">
-            Welcome back, Admin!
+          <h2 className="text-2xl font-black tracking-tight text-white flex items-center space-x-2">
+            <span>वेबसाइट थीम, लोगो व मास्टर लेआउट प्रबंधक</span>
           </h2>
-          <p className="text-xs text-slate-600">
-            Manage your MLA Constituency Platform • “जनता की सेवा ही सच्ची राजनीति है।” — जनसेवा
+          <p className="text-xs text-slate-300">
+            वर्डप्रेस की तरह वेबसाइट के रंग-रोगन, लोगो, हेडर शीर्षक (<span className="text-amber-300 font-bold">"{headerForm.siteTitle}"</span>) और सभी मॉड्यूल्स की विजिबिलिटी को 1-क्लिक में नियंत्रित करें।
           </p>
         </div>
 
-        <div className="flex items-center space-x-3">
+        {/* Action Buttons */}
+        <div className="flex flex-wrap items-center gap-2.5">
           <button
             onClick={() => setViewMode('public')}
-            className="flex items-center space-x-1.5 px-4 py-2 rounded-xl bg-white hover:bg-slate-50 text-slate-700 border border-slate-300 font-bold text-xs transition shadow-sm"
+            className="flex items-center space-x-1.5 px-3.5 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-600 font-bold text-xs transition cursor-pointer"
+            title="मुख्य वेबसाइट देखें"
           >
-            <Eye className="w-4 h-4 text-slate-500" />
-            <span>Preview</span>
+            <Eye className="w-4 h-4 text-orange-400" />
+            <span>लाइव प्रीव्यू</span>
           </button>
 
           <button
-            onClick={handleSaveHero}
+            onClick={() => navigateToPublicPage('mobile')}
+            className="flex items-center space-x-1.5 px-3.5 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-600 font-bold text-xs transition cursor-pointer"
+            title="मोबाइल ऐप व्यू देखें"
+          >
+            <Smartphone className="w-4 h-4 text-emerald-400" />
+            <span>मोबाइल ऐप</span>
+          </button>
+
+          <button
+            onClick={handleResetAll}
             disabled={saving}
-            className="flex items-center space-x-1.5 px-5 py-2 rounded-xl bg-orange-600 hover:bg-orange-700 text-white font-bold text-xs transition shadow-md shadow-orange-600/30 disabled:opacity-50"
+            className="flex items-center space-x-1.5 px-3 py-2 rounded-xl bg-slate-800 hover:bg-red-950/60 text-slate-300 border border-slate-700 hover:border-red-600 font-bold text-xs transition cursor-pointer"
+            title="मूल सेटिंग्स पर रीसेट करें"
+          >
+            <RotateCcw className="w-3.5 h-3.5 text-slate-400" />
+            <span>डिफ़ॉल्ट रीसेट</span>
+          </button>
+
+          <button
+            onClick={handleSaveAllMasterLayout}
+            disabled={saving}
+            className="flex items-center space-x-1.5 px-5 py-2.5 rounded-xl bg-gradient-to-r from-orange-500 to-amber-600 hover:from-orange-600 hover:to-amber-700 text-white font-extrabold text-xs transition shadow-lg shadow-orange-500/30 cursor-pointer disabled:opacity-50"
           >
             <Save className="w-4 h-4" />
-            <span>{saving ? 'Saving...' : 'Save Changes'}</span>
+            <span>{saving ? 'सुरक्षित हो रहा है...' : 'सभी परिवर्तन सेव करें'}</span>
           </button>
         </div>
       </div>
 
-      {/* Top 6 KPI Summary Cards (Mockup 1) */}
-      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
-        <div className="bg-white p-3 rounded-xl border border-slate-200 shadow-sm text-center">
-          <div className="text-lg font-black text-slate-900">5,42,318</div>
-          <div className="text-[10px] font-bold text-slate-500">Total Citizens</div>
-          <span className="text-[9px] text-emerald-600 font-bold">+12%</span>
-        </div>
-
-        <div className="bg-white p-3 rounded-xl border border-slate-200 shadow-sm text-center">
-          <div className="text-lg font-black text-slate-900">1,248</div>
-          <div className="text-[10px] font-bold text-slate-500">Total Posts</div>
-          <span className="text-[9px] text-emerald-600 font-bold">+18%</span>
-        </div>
-
-        <div className="bg-white p-3 rounded-xl border border-slate-200 shadow-sm text-center">
-          <div className="text-lg font-black text-slate-900">320</div>
-          <div className="text-[10px] font-bold text-slate-500">Development Works</div>
-          <span className="text-[9px] text-emerald-600 font-bold">+25%</span>
-        </div>
-
-        <div className="bg-white p-3 rounded-xl border border-slate-200 shadow-sm text-center">
-          <div className="text-lg font-black text-slate-900">46</div>
-          <div className="text-[10px] font-bold text-slate-500">Upcoming Events</div>
-          <span className="text-[9px] text-emerald-600 font-bold">+10%</span>
-        </div>
-
-        <div className="bg-white p-3 rounded-xl border border-slate-200 shadow-sm text-center">
-          <div className="text-lg font-black text-slate-900">24</div>
-          <div className="text-[10px] font-bold text-slate-500">Pending Approvals</div>
-          <span className="text-[9px] text-amber-600 font-bold">Needs Review</span>
-        </div>
-
-        <div className="bg-white p-3 rounded-xl border border-slate-200 shadow-sm text-center">
-          <div className="text-lg font-black text-slate-900">2.4M</div>
-          <div className="text-[10px] font-bold text-slate-500">Total Reach (Social)</div>
-          <span className="text-[9px] text-emerald-600 font-bold">+32%</span>
-        </div>
-      </div>
-
-      {/* Sub-Tabs Bar */}
+      {/* Main Tabs Navigation */}
       <div className="flex items-center space-x-2 border-b border-slate-200 pb-2 overflow-x-auto text-xs font-bold scrollbar-none">
         {[
-          { id: 'templates', label: 'Templates', icon: Layout },
-          { id: 'settings', label: 'Homepage Settings', icon: Settings },
-          { id: 'sections', label: 'Section Manager', icon: Layers },
-          { id: 'blogs', label: 'Blog Settings', icon: Edit },
-          { id: 'festival', label: 'Festival Pages', icon: Calendar },
-          { id: 'seo', label: 'SEO & Meta', icon: Globe },
-          { id: 'css', label: 'Custom CSS/JS', icon: Code }
+          { id: 'theme', label: '🎨 वर्डप्रेस थीम एवं रंग', icon: Palette },
+          { id: 'header', label: '🏷️ हेडर, शीर्षक व लोगो', icon: Type },
+          { id: 'modules', label: '👁️ मॉड्यूल विजिबिलिटी मैट्रिक्स', icon: CheckSquare },
+          { id: 'templates', label: '📐 लेआउट टेम्पलेट्स', icon: Layout },
+          { id: 'hero', label: '⭐ मुख्य बैनर व कोट्स', icon: Settings },
+          { id: 'sections', label: '📑 सेक्शन क्रम प्रबंधन', icon: Layers },
+          { id: 'festival', label: '🪔 त्यौहार अभियान', icon: Calendar },
+          { id: 'seo', label: '🔍 SEO व मेटा', icon: Globe },
+          { id: 'css', label: '💻 कस्टम CSS/JS', icon: Code }
         ].map(t => {
           const Icon = t.icon;
           const isActive = activeTab === t.id;
@@ -339,7 +626,7 @@ export default function AdminWebsiteBuilder() {
               onClick={() => setActiveTab(t.id)}
               className={`flex items-center space-x-1.5 px-4 py-2.5 rounded-xl transition whitespace-nowrap cursor-pointer ${
                 isActive
-                  ? 'bg-orange-600 text-white shadow-sm font-extrabold'
+                  ? 'bg-orange-600 text-white shadow-md font-extrabold'
                   : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
               }`}
             >
@@ -350,22 +637,590 @@ export default function AdminWebsiteBuilder() {
         })}
       </div>
 
-      {/* Main Builder Grid: Left Controls & Right Live Preview */}
+      {/* Main Builder Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
         
-        {/* Left Column: Config Forms & Section Switchers (7 cols) */}
-        <div className="lg:col-span-7 space-y-6">
-          
-          {/* TAB 1: Pre-built Homepage Templates */}
+        {/* Left Column: Active Tab Controls (8 cols) */}
+        <div className="lg:col-span-8 space-y-6">
+
+          {/* TAB 1: WORDPRESS THEME & COLOR PRESETS */}
+          {activeTab === 'theme' && (
+            <div className="space-y-6">
+              
+              {/* Presets Grid */}
+              <div className="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm space-y-4">
+                <div className="border-b border-slate-100 pb-3 flex items-center justify-between">
+                  <div>
+                    <h3 className="text-sm font-extrabold text-slate-900 flex items-center space-x-1.5">
+                      <Palette className="w-4 h-4 text-orange-600" />
+                      <span>वर्डप्रेस-स्टाइल थीम प्रीसेट्स (1-क्लिक एक्टिवेशन)</span>
+                    </h3>
+                    <p className="text-xs text-slate-500 mt-0.5">
+                      किसी भी थीम कार्ड पर क्लिक करें — पूरी वेबसाइट के बटन्स, कार्ड्स, हेडर्स और बॉर्डर्स तुरंत उस रंग में बदल जाएंगे।
+                    </p>
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3.5">
+                  {themePresets.map((preset) => {
+                    const isSelected = themeForm.preset === preset.id;
+                    return (
+                      <div
+                        key={preset.id}
+                        onClick={() => handleApplyPreset(preset)}
+                        className={`p-3.5 rounded-2xl border-2 transition cursor-pointer relative flex flex-col justify-between ${
+                          isSelected
+                            ? 'border-orange-500 bg-orange-50/40 shadow-md ring-2 ring-orange-400/20'
+                            : 'border-slate-200 bg-white hover:border-slate-300 hover:shadow-sm'
+                        }`}
+                      >
+                        <div>
+                          <div className="flex items-center justify-between">
+                            <span className="text-xs font-black text-slate-900">{preset.name}</span>
+                            {isSelected && (
+                              <span className="w-5 h-5 rounded-full bg-orange-600 text-white flex items-center justify-center text-[10px]">
+                                <Check className="w-3.5 h-3.5" />
+                              </span>
+                            )}
+                          </div>
+                          <span className="text-[10px] font-bold text-slate-400 block">{preset.nameEn}</span>
+                          <p className="text-[11px] text-slate-500 mt-1 leading-relaxed">{preset.desc}</p>
+                        </div>
+
+                        {/* Color Swatch Dots */}
+                        <div className="mt-3 pt-2.5 border-t border-slate-100 flex items-center justify-between">
+                          <div className="flex items-center space-x-1.5">
+                            <span className="w-5 h-5 rounded-full border border-slate-300 shadow-sm" style={{ backgroundColor: preset.primaryColor }} title="Primary" />
+                            <span className="w-5 h-5 rounded-full border border-slate-300 shadow-sm" style={{ backgroundColor: preset.secondaryColor }} title="Secondary" />
+                            <span className="w-5 h-5 rounded-full border border-slate-300 shadow-sm" style={{ backgroundColor: preset.accentColor }} title="Accent" />
+                          </div>
+                          <span className={`text-[10px] font-extrabold px-2 py-0.5 rounded-md ${
+                            isSelected ? 'bg-orange-600 text-white' : 'bg-slate-100 text-slate-600'
+                          }`}>
+                            {isSelected ? 'सक्रिय थीम' : 'लागू करें'}
+                          </span>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+
+              {/* Custom Color Pickers */}
+              <div className="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm space-y-4">
+                <div className="border-b border-slate-100 pb-3 flex items-center justify-between">
+                  <div>
+                    <h3 className="text-sm font-extrabold text-slate-900">
+                      कस्टम कलर पैलेट एवं स्टाइल ट्यूनिंग
+                    </h3>
+                    <p className="text-xs text-slate-500 mt-0.5">
+                      अपनी पसंद के अनुसार मुख्य रंग, द्वितीयक रंग, हेडर/फुटर बैकग्राउंड और फॉन्ट स्टाइल को कस्टमाइज़ करें।
+                    </p>
+                  </div>
+                  <button
+                    onClick={() => handleSaveTheme()}
+                    disabled={saving}
+                    className="px-4 py-1.5 rounded-xl bg-orange-600 hover:bg-orange-700 text-white font-bold text-xs transition flex items-center space-x-1 cursor-pointer"
+                  >
+                    <Save className="w-3.5 h-3.5" />
+                    <span>रंग सेव करें</span>
+                  </button>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                  {/* Primary Color */}
+                  <div className="space-y-1.5">
+                    <label className="text-xs font-bold text-slate-700 flex items-center justify-between">
+                      <span>मुख्य रंग (Primary Brand Color)</span>
+                      <span className="w-3 h-3 rounded-full border" style={{ backgroundColor: themeForm.primaryColor }} />
+                    </label>
+                    <div className="flex items-center space-x-2">
+                      <input
+                        type="color"
+                        value={themeForm.primaryColor}
+                        onChange={(e) => setThemeForm({ ...themeForm, primaryColor: e.target.value, preset: 'custom' })}
+                        className="w-10 h-10 rounded-lg cursor-pointer border border-slate-200 p-0.5"
+                      />
+                      <input
+                        type="text"
+                        value={themeForm.primaryColor}
+                        onChange={(e) => setThemeForm({ ...themeForm, primaryColor: e.target.value, preset: 'custom' })}
+                        className="flex-1 px-3 py-2 text-xs font-mono font-bold bg-slate-50 border border-slate-200 rounded-lg"
+                      />
+                    </div>
+                    <span className="text-[10px] text-slate-400">सभी मुख्य बटन्स, लिंक्स व सक्रिय टैब्स का रंग</span>
+                  </div>
+
+                  {/* Secondary Color */}
+                  <div className="space-y-1.5">
+                    <label className="text-xs font-bold text-slate-700 flex items-center justify-between">
+                      <span>द्वितीयक रंग (Secondary Color)</span>
+                      <span className="w-3 h-3 rounded-full border" style={{ backgroundColor: themeForm.secondaryColor }} />
+                    </label>
+                    <div className="flex items-center space-x-2">
+                      <input
+                        type="color"
+                        value={themeForm.secondaryColor}
+                        onChange={(e) => setThemeForm({ ...themeForm, secondaryColor: e.target.value, preset: 'custom' })}
+                        className="w-10 h-10 rounded-lg cursor-pointer border border-slate-200 p-0.5"
+                      />
+                      <input
+                        type="text"
+                        value={themeForm.secondaryColor}
+                        onChange={(e) => setThemeForm({ ...themeForm, secondaryColor: e.target.value, preset: 'custom' })}
+                        className="flex-1 px-3 py-2 text-xs font-mono font-bold bg-slate-50 border border-slate-200 rounded-lg"
+                      />
+                    </div>
+                    <span className="text-[10px] text-slate-400">सफलता बैज, प्रगति बार व द्वितीयक हाइलाइट्स</span>
+                  </div>
+
+                  {/* Accent Color */}
+                  <div className="space-y-1.5">
+                    <label className="text-xs font-bold text-slate-700 flex items-center justify-between">
+                      <span>हाइलाइट / एक्सेंट रंग (Accent Color)</span>
+                      <span className="w-3 h-3 rounded-full border" style={{ backgroundColor: themeForm.accentColor }} />
+                    </label>
+                    <div className="flex items-center space-x-2">
+                      <input
+                        type="color"
+                        value={themeForm.accentColor}
+                        onChange={(e) => setThemeForm({ ...themeForm, accentColor: e.target.value, preset: 'custom' })}
+                        className="w-10 h-10 rounded-lg cursor-pointer border border-slate-200 p-0.5"
+                      />
+                      <input
+                        type="text"
+                        value={themeForm.accentColor}
+                        onChange={(e) => setThemeForm({ ...themeForm, accentColor: e.target.value, preset: 'custom' })}
+                        className="flex-1 px-3 py-2 text-xs font-mono font-bold bg-slate-50 border border-slate-200 rounded-lg"
+                      />
+                    </div>
+                    <span className="text-[10px] text-slate-400">विशेष अलर्ट्स, स्टार्स व स्वर्णिम हाइलाइट्स</span>
+                  </div>
+
+                  {/* Navbar Background */}
+                  <div className="space-y-1.5">
+                    <label className="text-xs font-bold text-slate-700">हेडर/नेवबार बैकग्राउंड</label>
+                    <div className="flex items-center space-x-2">
+                      <input
+                        type="color"
+                        value={themeForm.navbarBg}
+                        onChange={(e) => setThemeForm({ ...themeForm, navbarBg: e.target.value, preset: 'custom' })}
+                        className="w-10 h-10 rounded-lg cursor-pointer border border-slate-200 p-0.5"
+                      />
+                      <input
+                        type="text"
+                        value={themeForm.navbarBg}
+                        onChange={(e) => setThemeForm({ ...themeForm, navbarBg: e.target.value, preset: 'custom' })}
+                        className="flex-1 px-3 py-2 text-xs font-mono font-bold bg-slate-50 border border-slate-200 rounded-lg"
+                      />
+                    </div>
+                  </div>
+
+                  {/* Footer Background */}
+                  <div className="space-y-1.5">
+                    <label className="text-xs font-bold text-slate-700">फुटर बैकग्राउंड रंग</label>
+                    <div className="flex items-center space-x-2">
+                      <input
+                        type="color"
+                        value={themeForm.footerBg}
+                        onChange={(e) => setThemeForm({ ...themeForm, footerBg: e.target.value, preset: 'custom' })}
+                        className="w-10 h-10 rounded-lg cursor-pointer border border-slate-200 p-0.5"
+                      />
+                      <input
+                        type="text"
+                        value={themeForm.footerBg}
+                        onChange={(e) => setThemeForm({ ...themeForm, footerBg: e.target.value, preset: 'custom' })}
+                        className="flex-1 px-3 py-2 text-xs font-mono font-bold bg-slate-50 border border-slate-200 rounded-lg"
+                      />
+                    </div>
+                  </div>
+
+                  {/* Body Background */}
+                  <div className="space-y-1.5">
+                    <label className="text-xs font-bold text-slate-700">पेज बैकग्राउंड शेड (Body Hue)</label>
+                    <div className="flex items-center space-x-2">
+                      <input
+                        type="color"
+                        value={themeForm.bodyBg}
+                        onChange={(e) => setThemeForm({ ...themeForm, bodyBg: e.target.value, preset: 'custom' })}
+                        className="w-10 h-10 rounded-lg cursor-pointer border border-slate-200 p-0.5"
+                      />
+                      <input
+                        type="text"
+                        value={themeForm.bodyBg}
+                        onChange={(e) => setThemeForm({ ...themeForm, bodyBg: e.target.value, preset: 'custom' })}
+                        className="flex-1 px-3 py-2 text-xs font-mono font-bold bg-slate-50 border border-slate-200 rounded-lg"
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                {/* Typography & Card Radius */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-3 border-t border-slate-100">
+                  <div className="space-y-1.5">
+                    <label className="text-xs font-bold text-slate-700">कार्ड बॉर्डर रेडियस (Corner Smoothness)</label>
+                    <select
+                      value={themeForm.cardRadius}
+                      onChange={(e) => setThemeForm({ ...themeForm, cardRadius: e.target.value })}
+                      className="w-full px-3 py-2 text-xs font-bold bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-orange-500"
+                    >
+                      <option value="rounded-none">तीखे कोने (Sharp Corners - 0px)</option>
+                      <option value="rounded-lg">क्लासिक गोल (Subtle Rounded - 8px)</option>
+                      <option value="rounded-xl">आधुनिक मॉडर्न (Modern - 12px)</option>
+                      <option value="rounded-2xl">अति गोल (Soft Curved - 16px)</option>
+                      <option value="rounded-3xl">पिल व बबल (Pill / Bubble - 24px)</option>
+                    </select>
+                  </div>
+
+                  <div className="space-y-1.5">
+                    <label className="text-xs font-bold text-slate-700">फॉन्ट परिवार (Typography Font)</label>
+                    <select
+                      value={themeForm.fontFamily}
+                      onChange={(e) => setThemeForm({ ...themeForm, fontFamily: e.target.value })}
+                      className="w-full px-3 py-2 text-xs font-bold bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-orange-500"
+                    >
+                      <option value="Inter">Inter (आधुनिक, स्पष्ट एवं उच्च पठनीयता)</option>
+                      <option value="Mukta">Mukta (सुंदर देवनागरी व हिंदी फॉन्ट)</option>
+                      <option value="Noto Sans Devanagari">Noto Sans Devanagari (आधिकारिक सरकारी मानक)</option>
+                      <option value="Rozha One">Rozha One / Serif (गरिमापूर्ण ऐतिहासिक शाही शैली)</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* TAB 2: HEADER, LOGO & BRANDING CUSTOMIZER */}
+          {activeTab === 'header' && (
+            <div className="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm space-y-5">
+              <div className="border-b border-slate-100 pb-3 flex items-center justify-between">
+                <div>
+                  <h3 className="text-sm font-extrabold text-slate-900 flex items-center space-x-2">
+                    <Type className="w-4 h-4 text-orange-600" />
+                    <span>वेबसाइट हेडर, शीर्षक व लोगो कस्टमाइज़र</span>
+                  </h3>
+                  <p className="text-xs text-slate-500 mt-0.5">
+                    यहाँ से वर्तमान "जनसेवा इटावा" हेडर को अपनी इच्छानुसार बदलें और लोगो आइकन या इमेज अपलोड करें।
+                  </p>
+                </div>
+                <button
+                  onClick={handleSaveHeader}
+                  disabled={saving}
+                  className="px-4 py-2 rounded-xl bg-orange-600 hover:bg-orange-700 text-white font-bold text-xs transition flex items-center space-x-1 cursor-pointer"
+                >
+                  <Save className="w-3.5 h-3.5" />
+                  <span>हेडर सेव करें</span>
+                </button>
+              </div>
+
+              {/* Main Titles Form */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="space-y-1.5">
+                  <label className="text-xs font-bold text-slate-800">
+                    वेबसाइट मुख्य हेडर शीर्षक (Site Title) <span className="text-red-500">*</span>
+                  </label>
+                  <input
+                    type="text"
+                    value={headerForm.siteTitle}
+                    onChange={(e) => setHeaderForm({ ...headerForm, siteTitle: e.target.value })}
+                    placeholder="उदा. जनसेवा इटावा, आपका नेता, विधायक सेवा केंद्र..."
+                    className="w-full px-3.5 py-2.5 text-xs font-black bg-slate-50 border border-slate-300 rounded-xl focus:ring-2 focus:ring-orange-500 focus:bg-white"
+                  />
+                  <span className="text-[10px] text-slate-500">यह नाम पूरे हेडर और लोगो के पास प्रमुखता से दिखाई देगा।</span>
+                </div>
+
+                <div className="space-y-1.5">
+                  <label className="text-xs font-bold text-slate-800">
+                    हाइलाइट शब्द (Highlight Word in Theme Color)
+                  </label>
+                  <input
+                    type="text"
+                    value={headerForm.highlightWord}
+                    onChange={(e) => setHeaderForm({ ...headerForm, highlightWord: e.target.value })}
+                    placeholder="उदा. इटावा"
+                    className="w-full px-3.5 py-2.5 text-xs font-bold bg-slate-50 border border-slate-300 rounded-xl focus:ring-2 focus:ring-orange-500 focus:bg-white"
+                  />
+                  <span className="text-[10px] text-slate-500">शीर्षक का वह शब्द जो थीम के प्राथमिक रंग में चमकेगा।</span>
+                </div>
+
+                <div className="space-y-1.5">
+                  <label className="text-xs font-bold text-slate-800">उपशीर्षक (Subtitle / Tagline Under Logo)</label>
+                  <input
+                    type="text"
+                    value={headerForm.subtitle}
+                    onChange={(e) => setHeaderForm({ ...headerForm, subtitle: e.target.value })}
+                    placeholder="People • Development • Trust"
+                    className="w-full px-3.5 py-2.5 text-xs font-bold bg-slate-50 border border-slate-300 rounded-xl"
+                  />
+                </div>
+
+                <div className="space-y-1.5">
+                  <label className="text-xs font-bold text-slate-800">विधानसभा नाम व संख्या (Constituency Info)</label>
+                  <input
+                    type="text"
+                    value={headerForm.constituency}
+                    onChange={(e) => setHeaderForm({ ...headerForm, constituency: e.target.value })}
+                    placeholder="जनसेवा इटावा (विधानसभा 200)"
+                    className="w-full px-3.5 py-2.5 text-xs font-bold bg-slate-50 border border-slate-300 rounded-xl"
+                  />
+                </div>
+
+                <div className="sm:col-span-2 space-y-1.5">
+                  <label className="text-xs font-bold text-slate-800">शीर्ष रिबन स्लोगन (Top Announcement Motto)</label>
+                  <input
+                    type="text"
+                    value={headerForm.tagline}
+                    onChange={(e) => setHeaderForm({ ...headerForm, tagline: e.target.value })}
+                    placeholder="“मजबूत नेतृत्व, विकसित इटावा, समृद्ध भारत”"
+                    className="w-full px-3.5 py-2.5 text-xs font-bold bg-slate-50 border border-slate-300 rounded-xl"
+                  />
+                </div>
+              </div>
+
+              {/* Logo Section */}
+              <div className="pt-4 border-t border-slate-100 space-y-4">
+                <h4 className="text-xs font-black text-slate-900 uppercase tracking-wider">
+                  लोगो चयन (Logo Type & Graphics)
+                </h4>
+
+                <div className="flex items-center space-x-6 text-xs font-bold">
+                  <label className="flex items-center space-x-2 cursor-pointer">
+                    <input
+                      type="radio"
+                      name="logoType"
+                      checked={headerForm.logoType === 'icon'}
+                      onChange={() => setHeaderForm({ ...headerForm, logoType: 'icon' })}
+                      className="text-orange-600 focus:ring-orange-500"
+                    />
+                    <span>प्रतीक चिन्ह (Icon / Emblem)</span>
+                  </label>
+
+                  <label className="flex items-center space-x-2 cursor-pointer">
+                    <input
+                      type="radio"
+                      name="logoType"
+                      checked={headerForm.logoType === 'image'}
+                      onChange={() => setHeaderForm({ ...headerForm, logoType: 'image' })}
+                      className="text-orange-600 focus:ring-orange-500"
+                    />
+                    <span>कस्टम इमेज लोगो (Custom Image / Photo)</span>
+                  </label>
+                </div>
+
+                {headerForm.logoType === 'icon' ? (
+                  <div className="space-y-2">
+                    <label className="text-xs font-bold text-slate-700">प्रतीक चिन्ह चुनें:</label>
+                    <div className="grid grid-cols-5 sm:grid-cols-10 gap-2">
+                      {['🪷', '🏛️', '🇮🇳', '🚩', '🤝', '⚖️', '🦁', '⭐', '🌾', '☀️'].map((ico) => (
+                        <button
+                          key={ico}
+                          type="button"
+                          onClick={() => setHeaderForm({ ...headerForm, logoIcon: ico })}
+                          className={`h-12 rounded-xl border flex items-center justify-center text-2xl transition cursor-pointer ${
+                            headerForm.logoIcon === ico
+                              ? 'border-orange-500 bg-orange-100 shadow-sm scale-105 ring-2 ring-orange-400/30'
+                              : 'border-slate-200 bg-slate-50 hover:bg-white'
+                          }`}
+                        >
+                          {ico}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                ) : (
+                  <div className="space-y-3 bg-slate-50 p-4 rounded-xl border border-slate-200">
+                    <label className="text-xs font-bold text-slate-700">लोगो इमेज URL या मीडिया से चुनें:</label>
+                    <div className="flex items-center space-x-2">
+                      <input
+                        type="text"
+                        value={headerForm.logoImage}
+                        onChange={(e) => setHeaderForm({ ...headerForm, logoImage: e.target.value })}
+                        placeholder="https://... या /uploads/... या /images/..."
+                        className="flex-1 px-3 py-2 text-xs bg-white border border-slate-300 rounded-lg"
+                      />
+                      <button
+                        type="button"
+                        onClick={() => setMediaPickerOpen(true)}
+                        className="px-3 py-2 rounded-lg bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs flex items-center space-x-1 cursor-pointer"
+                      >
+                        <ImageIcon className="w-3.5 h-3.5" />
+                        <span>मीडिया से चुनें</span>
+                      </button>
+                    </div>
+
+                    {headerForm.logoImage && (
+                      <div className="flex items-center space-x-3 pt-2">
+                        <span className="text-[11px] font-bold text-slate-500">प्रीव्यू:</span>
+                        <img
+                          src={headerForm.logoImage}
+                          alt="Logo Preview"
+                          className="h-12 w-12 object-contain rounded-lg border border-slate-200 bg-white p-1"
+                        />
+                      </div>
+                    )}
+                  </div>
+                )}
+
+                {/* Logo Size */}
+                <div className="space-y-1.5 pt-2">
+                  <div className="flex items-center justify-between text-xs font-bold text-slate-700">
+                    <span>लोगो का आकार (Logo Dimension): {headerForm.logoWidth}px</span>
+                    <span className="text-slate-400">32px - 64px</span>
+                  </div>
+                  <input
+                    type="range"
+                    min="32"
+                    max="64"
+                    value={headerForm.logoWidth}
+                    onChange={(e) => setHeaderForm({ ...headerForm, logoWidth: Number(e.target.value) })}
+                    className="w-full accent-orange-600 cursor-pointer"
+                  />
+                </div>
+              </div>
+
+              {/* Live Header Simulation Bar */}
+              <div className="mt-4 p-4 rounded-xl bg-slate-900 text-white space-y-2">
+                <span className="text-[10px] font-extrabold text-orange-400 uppercase tracking-wider block">
+                  लाइव हेडर प्रीव्यू (Live Header Simulation)
+                </span>
+                <div className="flex items-center space-x-3 bg-white text-slate-900 p-3 rounded-xl">
+                  {headerForm.logoType === 'image' && headerForm.logoImage ? (
+                    <img
+                      src={headerForm.logoImage}
+                      alt="Logo"
+                      style={{ width: `${headerForm.logoWidth}px`, height: `${headerForm.logoWidth}px` }}
+                      className="object-contain rounded-lg shadow-sm"
+                    />
+                  ) : (
+                    <div
+                      style={{ width: `${headerForm.logoWidth}px`, height: `${headerForm.logoWidth}px` }}
+                      className="rounded-full bg-gradient-to-tr from-orange-500 via-amber-400 to-green-600 p-0.5 flex items-center justify-center shadow-md flex-shrink-0"
+                    >
+                      <div className="w-full h-full bg-white rounded-full flex items-center justify-center text-xl">
+                        {headerForm.logoIcon}
+                      </div>
+                    </div>
+                  )}
+                  <div>
+                    <h4 className="text-xl font-black font-serif tracking-tight">
+                      {headerForm.siteTitle}
+                    </h4>
+                    <span className="text-[10px] text-slate-500 font-bold uppercase tracking-wider -mt-1 block">
+                      {headerForm.subtitle}
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* TAB 3: FEATURE & MODULE VISIBILITY CONTROLLER */}
+          {activeTab === 'modules' && (
+            <div className="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm space-y-5">
+              <div className="border-b border-slate-100 pb-3 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                <div>
+                  <h3 className="text-sm font-extrabold text-slate-900 flex items-center space-x-2">
+                    <CheckSquare className="w-4 h-4 text-orange-600" />
+                    <span>वेबसाइट मॉड्यूल एवं फीचर विजिबिलिटी कंट्रोलर</span>
+                  </h3>
+                  <p className="text-xs text-slate-500 mt-0.5">
+                    वेबसाइट के किसी भी मॉड्यूल को ऑन (दृश्यमान) या ऑफ (अदृश्य) करें। परिवर्तन तुरंत मुख्य वेबसाइट पर लागू होंगे।
+                  </p>
+                </div>
+
+                <div className="flex items-center space-x-2">
+                  <button
+                    type="button"
+                    onClick={() => handleSetAllModules(true)}
+                    className="px-3 py-1.5 rounded-lg bg-emerald-50 text-emerald-700 hover:bg-emerald-100 font-bold text-xs transition border border-emerald-200 cursor-pointer"
+                  >
+                    सभी ऑन करें
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => handleSetAllModules(false)}
+                    className="px-3 py-1.5 rounded-lg bg-slate-100 text-slate-700 hover:bg-slate-200 font-bold text-xs transition border border-slate-200 cursor-pointer"
+                  >
+                    सभी ऑफ करें
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => handleSaveModules()}
+                    disabled={saving}
+                    className="px-4 py-1.5 rounded-lg bg-orange-600 hover:bg-orange-700 text-white font-bold text-xs transition flex items-center space-x-1 cursor-pointer"
+                  >
+                    <Save className="w-3.5 h-3.5" />
+                    <span>सेव करें</span>
+                  </button>
+                </div>
+              </div>
+
+              {/* Modules Grouped by Category */}
+              <div className="space-y-4">
+                {['हेडर व शीर्ष घटक', 'मुख्य बैनर व हीरो घटक', 'विकास कार्य, आंकड़े व योजनाएं', 'जनसंपर्क, नक्शा व सोशल मीडिया', 'फुटर व फ्लोटिंग टूल्स'].map((cat) => {
+                  const itemsInCat = MODULE_ITEMS.filter(m => m.category === cat);
+                  return (
+                    <div key={cat} className="space-y-2">
+                      <div className="flex items-center space-x-2 text-xs font-black text-slate-800 uppercase tracking-wider bg-slate-100/70 px-3 py-1.5 rounded-lg">
+                        <span>{cat}</span>
+                        <span className="text-[10px] text-slate-400">({itemsInCat.length} मॉड्यूल्स)</span>
+                      </div>
+
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-2.5">
+                        {itemsInCat.map((item) => {
+                          const isEnabled = modulesForm[item.key] !== false;
+                          return (
+                            <div
+                              key={item.key}
+                              onClick={() => handleToggleModule(item.key)}
+                              className={`p-3 rounded-xl border transition flex items-start justify-between gap-3 cursor-pointer select-none ${
+                                isEnabled
+                                  ? 'border-emerald-300 bg-emerald-50/40 hover:bg-emerald-50'
+                                  : 'border-slate-200 bg-slate-50/60 opacity-60 hover:opacity-100'
+                              }`}
+                            >
+                              <div className="space-y-0.5">
+                                <div className="flex items-center space-x-2">
+                                  <span className={`w-2 h-2 rounded-full ${isEnabled ? 'bg-emerald-500 animate-pulse' : 'bg-slate-300'}`} />
+                                  <h4 className="text-xs font-black text-slate-900">{item.nameHi}</h4>
+                                </div>
+                                <p className="text-[11px] text-slate-500 line-clamp-2">{item.desc}</p>
+                              </div>
+
+                              {/* Toggle Switch */}
+                              <div className="flex flex-col items-end flex-shrink-0">
+                                <div className={`w-10 h-5 flex items-center rounded-full p-0.5 transition duration-300 ${
+                                  isEnabled ? 'bg-emerald-600 justify-end' : 'bg-slate-300 justify-start'
+                                }`}>
+                                  <div className="bg-white w-4 h-4 rounded-full shadow-md transform transition"></div>
+                                </div>
+                                <span className={`text-[9px] font-black uppercase mt-1 ${
+                                  isEnabled ? 'text-emerald-700' : 'text-slate-400'
+                                }`}>
+                                  {isEnabled ? 'दृश्यमान (ON)' : 'अदृश्य (OFF)'}
+                                </span>
+                              </div>
+                            </div>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          )}
+
+          {/* TAB 4: TEMPLATES CHOOSER */}
           {activeTab === 'templates' && (
-            <div className="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-sm space-y-4">
+            <div className="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm space-y-4">
               <div className="border-b border-slate-100 pb-3">
                 <div className="flex items-center justify-between">
                   <h3 className="text-sm font-extrabold text-slate-900">Pre-built Homepage Templates</h3>
                   <span className="text-xs text-orange-600 font-bold">1-क्लिक सक्रियण</span>
                 </div>
                 <p className="text-xs text-slate-500 mt-0.5">
-                  Select any pre-configured layout and activate it as the primary public homepage with 1 click. All section orders dynamically adapt.
+                  Select any pre-configured layout and activate it as the primary public homepage with 1 click.
                 </p>
               </div>
 
@@ -389,7 +1244,7 @@ export default function AdminWebsiteBuilder() {
                           </span>
                           {isActive && (
                             <span className="px-2 py-0.5 rounded-full text-[9px] font-black bg-emerald-600 text-white flex items-center space-x-1">
-                              <Check className="w-3 h-3 inline" />
+                              <Check className="w-3.5 h-3.5 inline" />
                               <span>ACTIVE</span>
                             </span>
                           )}
@@ -415,270 +1270,128 @@ export default function AdminWebsiteBuilder() {
             </div>
           )}
 
-          {/* TAB 2: Homepage Settings (Hero, Quotes, Photos) */}
-          {activeTab === 'settings' && (
-            <div className="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-sm space-y-4">
-              <div className="flex items-center justify-between border-b border-slate-100 pb-3">
+          {/* TAB 5: HERO CONTENT SETTINGS */}
+          {activeTab === 'hero' && (
+            <div className="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm space-y-4">
+              <div className="border-b border-slate-100 pb-3 flex items-center justify-between">
                 <div>
-                  <h3 className="text-sm font-extrabold text-slate-900">Hero Section & Headline Settings</h3>
-                  <p className="text-xs text-slate-500">
-                    यहाँ बदले गए सभी शीर्षक, उद्धरण और फोटो सीधे मुख्य पृष्ठ पर वास्तविक समय में दिखेंगे।
-                  </p>
+                  <h3 className="text-sm font-extrabold text-slate-900">Hero Header & Quotes</h3>
+                  <p className="text-xs text-slate-500 mt-0.5">Edit hero title, subtitle, leadership quotes and call-to-action buttons.</p>
                 </div>
-
-                <label className="flex items-center space-x-2 cursor-pointer text-xs font-bold text-slate-700">
-                  <span>Show on Website</span>
-                  <input
-                    type="checkbox"
-                    checked={heroForm.show}
-                    onChange={(e) => setHeroForm({ ...heroForm, show: e.target.checked })}
-                    className="w-4 h-4 accent-orange-600 rounded cursor-pointer"
-                  />
-                </label>
+                <button
+                  onClick={handleSaveHero}
+                  disabled={saving}
+                  className="px-4 py-1.5 rounded-xl bg-orange-600 hover:bg-orange-700 text-white font-bold text-xs transition flex items-center space-x-1 cursor-pointer"
+                >
+                  <Save className="w-3.5 h-3.5" />
+                  <span>हीरो सेव करें</span>
+                </button>
               </div>
 
-              {/* Main Heading & Subtitle */}
-              <div className="space-y-3">
-                <div>
-                  <label className="block text-xs font-bold text-slate-700 mb-1">
-                    Banner Title (Main Heading - नई लाइन के लिए Enter दबाएं)
-                  </label>
+              <div className="space-y-4">
+                <div className="space-y-1.5">
+                  <label className="text-xs font-bold text-slate-700">Hero Main Title (2 Lines)</label>
                   <textarea
                     rows={2}
                     value={heroForm.title}
                     onChange={(e) => setHeroForm({ ...heroForm, title: e.target.value })}
-                    className="w-full px-3 py-2 text-xs rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-orange-500 font-semibold"
-                    placeholder="उदा. “विकास ही मेरी प्राथमिकता है,&#10;और जनता ही मेरी शक्ति।”"
+                    className="w-full px-3 py-2 text-xs font-bold bg-slate-50 border border-slate-200 rounded-xl"
                   />
                 </div>
 
-                <div>
-                  <label className="block text-xs font-bold text-slate-700 mb-1">
-                    Subtitle / Tagline (उपशीर्षक)
-                  </label>
+                <div className="space-y-1.5">
+                  <label className="text-xs font-bold text-slate-700">Hero Subtitle</label>
                   <input
                     type="text"
                     value={heroForm.subtitle}
                     onChange={(e) => setHeroForm({ ...heroForm, subtitle: e.target.value })}
-                    className="w-full px-3 py-2 text-xs rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-orange-500"
-                    placeholder="इटावा के सर्वांगीण विकास एवं जन-जन के कल्याण हेतु अहर्निश समर्पित"
+                    className="w-full px-3 py-2 text-xs font-bold bg-slate-50 border border-slate-200 rounded-xl"
                   />
                 </div>
-              </div>
 
-              {/* Signature & Designation */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                <div>
-                  <label className="block text-xs font-bold text-slate-700 mb-1">विधायक का नाम (Signature Name)</label>
-                  <input
-                    type="text"
-                    value={heroForm.signature}
-                    onChange={(e) => setHeroForm({ ...heroForm, signature: e.target.value })}
-                    className="w-full px-3 py-2 text-xs rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-orange-500"
-                  />
-                </div>
-                <div>
-                  <label className="block text-xs font-bold text-slate-700 mb-1">पदवी (Designation)</label>
-                  <input
-                    type="text"
-                    value={heroForm.designation}
-                    onChange={(e) => setHeroForm({ ...heroForm, designation: e.target.value })}
-                    className="w-full px-3 py-2 text-xs rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-orange-500"
-                  />
-                </div>
-              </div>
-
-              {/* Modi & Yogi Quotes */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2 border-t border-slate-100">
-                <div>
-                  <label className="block text-xs font-bold text-slate-700 mb-1">PM नरेन्द्र मोदी जी का विचार (Quote)</label>
-                  <textarea
-                    rows={2}
-                    value={heroForm.modiQuote}
-                    onChange={(e) => setHeroForm({ ...heroForm, modiQuote: e.target.value })}
-                    className="w-full px-3 py-2 text-xs rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-orange-500"
-                  />
-                </div>
-                <div>
-                  <label className="block text-xs font-bold text-slate-700 mb-1">CM योगी आदित्यनाथ जी का विचार (Quote)</label>
-                  <textarea
-                    rows={2}
-                    value={heroForm.yogiQuote}
-                    onChange={(e) => setHeroForm({ ...heroForm, yogiQuote: e.target.value })}
-                    className="w-full px-3 py-2 text-xs rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-orange-500"
-                  />
-                </div>
-              </div>
-
-              {/* CTAs */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                <div>
-                  <label className="block text-xs font-bold text-slate-700 mb-1">Primary CTA Button</label>
-                  <input
-                    type="text"
-                    value={heroForm.ctaPrimaryText}
-                    onChange={(e) => setHeroForm({ ...heroForm, ctaPrimaryText: e.target.value })}
-                    className="w-full px-3 py-2 text-xs rounded-xl border border-slate-300"
-                  />
-                </div>
-                <div>
-                  <label className="block text-xs font-bold text-slate-700 mb-1">Secondary CTA Button</label>
-                  <input
-                    type="text"
-                    value={heroForm.ctaSecondaryText}
-                    onChange={(e) => setHeroForm({ ...heroForm, ctaSecondaryText: e.target.value })}
-                    className="w-full px-3 py-2 text-xs rounded-xl border border-slate-300"
-                  />
-                </div>
-              </div>
-
-              {/* MLA Photo URL & Preview */}
-              <div className="pt-2 border-t border-slate-100">
-                <label className="block text-xs font-bold text-slate-700 mb-1">विधायक मुख्य फोटो (MLA Photo URL)</label>
-                <div className="flex items-center space-x-3">
-                  <input
-                    type="text"
-                    value={heroForm.saritaImage}
-                    onChange={(e) => setHeroForm({ ...heroForm, saritaImage: e.target.value })}
-                    className="flex-1 px-3 py-2 text-xs rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-orange-500"
-                  />
-                  <button
-                    type="button"
-                    onClick={() => setAdminTab('media-changer')}
-                    className="px-3 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold text-xs flex items-center space-x-1 cursor-pointer"
-                  >
-                    <ImageIcon className="w-3.5 h-3.5 text-orange-600" />
-                    <span>फोटो बदलें</span>
-                  </button>
-                </div>
-              </div>
-
-              {/* Hero Poster Slider Quick-Link Card */}
-              <div className="pt-3 border-t border-slate-100">
-                <div className="p-3.5 rounded-2xl bg-gradient-to-r from-orange-50 via-amber-50 to-orange-50 border border-orange-200/90 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
-                  <div>
-                    <div className="text-xs font-black text-orange-900 flex items-center space-x-1.5">
-                      <Sparkles className="w-3.5 h-3.5 text-orange-600" />
-                      <span>दैनिक हीरो पोस्टर स्लाइडर (4-6 पोस्टर रोटेशन)</span>
-                    </div>
-                    <p className="text-[11px] text-slate-600 font-medium mt-0.5">
-                      होमपेज के दाहिने हिस्से में चलने वाले 4 से 6 पोस्टर अपलोड करें, उनका क्रम बदलें और ऑटो-स्लाइड गति तय करें।
-                    </p>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  <div className="space-y-1.5">
+                    <label className="text-xs font-bold text-slate-700">PM Modi Quote</label>
+                    <textarea
+                      rows={2}
+                      value={heroForm.modiQuote}
+                      onChange={(e) => setHeroForm({ ...heroForm, modiQuote: e.target.value })}
+                      className="w-full px-3 py-2 text-xs bg-slate-50 border border-slate-200 rounded-xl"
+                    />
                   </div>
-                  <button
-                    type="button"
-                    onClick={() => setAdminTab('hero-posters')}
-                    className="px-4 py-2 rounded-xl bg-orange-600 hover:bg-orange-700 text-white font-black text-xs shadow-xs transition active:scale-95 flex items-center space-x-1.5 flex-shrink-0 cursor-pointer"
-                  >
-                    <span>पोस्टर स्लाइडर सेटिंग्स खोलें</span>
-                    <ArrowRight className="w-3.5 h-3.5" />
-                  </button>
-                </div>
-              </div>
 
-              <div className="pt-2">
-                <button
-                  type="button"
-                  onClick={handleSaveHero}
-                  disabled={saving}
-                  className="w-full py-2.5 rounded-xl bg-orange-600 hover:bg-orange-700 text-white font-bold text-xs shadow-md shadow-orange-600/30 transition cursor-pointer"
-                >
-                  {saving ? 'सुरक्षित हो रहा है...' : 'Hero Section अपडेट करें'}
-                </button>
+                  <div className="space-y-1.5">
+                    <label className="text-xs font-bold text-slate-700">CM Yogi Quote</label>
+                    <textarea
+                      rows={2}
+                      value={heroForm.yogiQuote}
+                      onChange={(e) => setHeroForm({ ...heroForm, yogiQuote: e.target.value })}
+                      className="w-full px-3 py-2 text-xs bg-slate-50 border border-slate-200 rounded-xl"
+                    />
+                  </div>
+                </div>
               </div>
             </div>
           )}
 
-          {/* TAB 3: Section Manager (Reorder & Visibility) */}
+          {/* TAB 6: SECTION REORDERING */}
           {activeTab === 'sections' && (
-            <div className="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-sm space-y-4">
-              <div className="flex items-center justify-between border-b border-slate-100 pb-3">
+            <div className="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm space-y-4">
+              <div className="border-b border-slate-100 pb-3 flex items-center justify-between">
                 <div>
-                  <div className="flex items-center space-x-2">
-                    <span className="w-6 h-6 rounded-full bg-orange-100 text-orange-700 flex items-center justify-center font-bold text-xs">
-                      {sections.length}
-                    </span>
-                    <h3 className="text-sm font-extrabold text-slate-900">
-                      Website Sections Manager (क्रम और दृश्यता नियंत्रण)
-                    </h3>
-                  </div>
-                  <p className="text-xs text-slate-500 mt-1">
-                    किसी भी सेक्शन को ऊपर/नीचे करें या स्विच बंद करके वेबसाइट से छिपाएं। परिवर्तन तत्काल मुख्य पृष्ठ पर दिखेंगे।
-                  </p>
+                  <h3 className="text-sm font-extrabold text-slate-900">Homepage Sections Reordering</h3>
+                  <p className="text-xs text-slate-500 mt-0.5">Use the up/down arrows to change the vertical layout order on the homepage.</p>
                 </div>
-
-                <button
-                  type="button"
-                  onClick={handleResetSections}
-                  className="flex items-center space-x-1 px-3 py-1.5 rounded-xl text-xs font-bold text-slate-600 hover:bg-slate-100 border border-slate-200 cursor-pointer"
-                  title="Reset to default order"
-                >
-                  <RotateCcw className="w-3 h-3" />
-                  <span>डिफ़ॉल्ट रीसेट</span>
-                </button>
               </div>
 
               <div className="space-y-2">
                 {sections.map((sec, idx) => (
                   <div
                     key={sec.id}
-                    className={`p-3 rounded-xl border flex items-center justify-between transition ${
-                      sec.enabled ? 'bg-white border-slate-200 shadow-2xs' : 'bg-slate-50/80 border-slate-100 opacity-60'
-                    }`}
+                    className="p-3 rounded-xl border border-slate-200 bg-slate-50 flex items-center justify-between"
                   >
                     <div className="flex items-center space-x-3">
-                      {/* Order number badge */}
-                      <span className="w-6 h-6 rounded-lg bg-slate-100 text-slate-700 font-black text-[11px] flex items-center justify-center border border-slate-200">
-                        #{idx + 1}
+                      <span className="w-6 h-6 rounded-full bg-slate-200 text-slate-700 text-xs font-bold flex items-center justify-center">
+                        {idx + 1}
                       </span>
-
-                      {/* Reorder Up/Down arrows */}
-                      <div className="flex flex-col space-y-0.5 text-slate-400">
-                        <button
-                          type="button"
-                          onClick={() => handleMoveSection(idx, 'up')}
-                          disabled={idx === 0}
-                          className="hover:text-orange-600 disabled:opacity-20 cursor-pointer"
-                          title="Move Up"
-                        >
-                          <ArrowUp className="w-3.5 h-3.5" />
-                        </button>
-                        <button
-                          type="button"
-                          onClick={() => handleMoveSection(idx, 'down')}
-                          disabled={idx === sections.length - 1}
-                          className="hover:text-orange-600 disabled:opacity-20 cursor-pointer"
-                          title="Move Down"
-                        >
-                          <ArrowDown className="w-3.5 h-3.5" />
-                        </button>
-                      </div>
-
                       <div>
-                        <div className="text-xs font-bold text-slate-900">{sec.name}</div>
-                        <div className="text-[10px] text-orange-700 font-semibold">{sec.nameHi}</div>
+                        <span className="text-xs font-black text-slate-900">{sec.nameHi || sec.name}</span>
+                        <span className="text-[10px] text-slate-400 block font-mono">{sec.id}</span>
                       </div>
                     </div>
 
-                    {/* Switch & Status */}
-                    <div className="flex items-center space-x-3">
-                      <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full ${
-                        sec.enabled ? 'bg-emerald-50 text-emerald-700' : 'bg-slate-100 text-slate-400'
-                      }`}>
-                        {sec.enabled ? 'सक्रिय (Visible)' : 'छिपा हुआ (Hidden)'}
-                      </span>
-
+                    <div className="flex items-center space-x-1">
                       <button
-                        onClick={() => handleToggleSection(sec.id)}
-                        className={`relative inline-flex h-5 w-9 items-center rounded-full transition cursor-pointer ${
-                          sec.enabled ? 'bg-emerald-600' : 'bg-slate-300'
-                        }`}
+                        type="button"
+                        disabled={idx === 0}
+                        onClick={async () => {
+                          const newSecs = [...sections];
+                          const temp = newSecs[idx - 1];
+                          newSecs[idx - 1] = newSecs[idx];
+                          newSecs[idx] = temp;
+                          newSecs.forEach((s, i) => s.order = i + 1);
+                          setSections(newSecs);
+                          await api.updateSections(newSecs);
+                        }}
+                        className="p-1 rounded bg-white border border-slate-200 disabled:opacity-30 cursor-pointer"
                       >
-                        <span
-                          className={`inline-block h-3.5 w-3.5 transform rounded-full bg-white transition ${
-                            sec.enabled ? 'translate-x-4' : 'translate-x-1'
-                          }`}
-                        />
+                        <ArrowUp className="w-3.5 h-3.5" />
+                      </button>
+                      <button
+                        type="button"
+                        disabled={idx === sections.length - 1}
+                        onClick={async () => {
+                          const newSecs = [...sections];
+                          const temp = newSecs[idx + 1];
+                          newSecs[idx + 1] = newSecs[idx];
+                          newSecs[idx] = temp;
+                          newSecs.forEach((s, i) => s.order = i + 1);
+                          setSections(newSecs);
+                          await api.updateSections(newSecs);
+                        }}
+                        className="p-1 rounded bg-white border border-slate-200 disabled:opacity-30 cursor-pointer"
+                      >
+                        <ArrowDown className="w-3.5 h-3.5" />
                       </button>
                     </div>
                   </div>
@@ -687,406 +1400,226 @@ export default function AdminWebsiteBuilder() {
             </div>
           )}
 
-          {/* TAB 4: Blog Settings */}
-          {activeTab === 'blogs' && (
-            <div className="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-sm space-y-4">
-              <div className="flex items-center justify-between border-b border-slate-100 pb-3">
-                <div>
-                  <h3 className="text-sm font-extrabold text-slate-900">Blog & Article Settings</h3>
-                  <p className="text-xs text-slate-500">
-                    मुख्य पृष्ठ पर ब्लॉग व आलेखों के प्रदर्शन का नियंत्रण।
-                  </p>
-                </div>
-                <button
-                  type="button"
-                  onClick={() => setAdminTab('blogs')}
-                  className="px-3 py-1.5 rounded-xl bg-orange-600 text-white font-bold text-xs hover:bg-orange-700 transition cursor-pointer"
-                >
-                  पूरा ब्लॉग प्रबंधक खोलें →
-                </button>
+          {/* TAB 7: FESTIVAL */}
+          {activeTab === 'festival' && (
+            <div className="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm space-y-4">
+              <div className="border-b border-slate-100 pb-3">
+                <h3 className="text-sm font-extrabold text-slate-900">त्यौहार व पर्व अभियान सेटिंग्स</h3>
+                <p className="text-xs text-slate-500 mt-0.5">विशेष पर्वों के दौरान होमपेज पर शुभकामना बैनर व संदेश दिखाएं।</p>
               </div>
 
-              <div className="space-y-4 text-xs">
-                <div className="flex items-center justify-between p-3 rounded-xl bg-slate-50 border border-slate-200">
-                  <div>
-                    <div className="font-bold text-slate-800">मुख्य पृष्ठ पर ब्लॉग दिखाएं</div>
-                    <div className="text-slate-500 text-[11px]">होमपेज पर ब्लॉग सेक्शन की दृश्यता चालू या बंद करें</div>
-                  </div>
+              <div className="space-y-3">
+                <label className="flex items-center space-x-2 text-xs font-bold cursor-pointer">
                   <input
                     type="checkbox"
-                    checked={blogSettingsForm.showOnHome}
-                    onChange={(e) => setBlogSettingsForm({ ...blogSettingsForm, showOnHome: e.target.checked })}
-                    className="w-4 h-4 accent-orange-600 rounded cursor-pointer"
+                    checked={festivalForm.active}
+                    onChange={(e) => setFestivalForm({ ...festivalForm, active: e.target.checked })}
+                    className="rounded text-orange-600 focus:ring-orange-500"
                   />
-                </div>
+                  <span>पर्व बैनर अभी सक्रिय (Active) करें</span>
+                </label>
 
-                <div>
-                  <label className="block font-bold text-slate-700 mb-1">होमपेज पर प्रदर्शित होने वाले आलेखों की संख्या</label>
-                  <select
-                    value={blogSettingsForm.maxHomeCards}
-                    onChange={(e) => setBlogSettingsForm({ ...blogSettingsForm, maxHomeCards: Number(e.target.value) })}
-                    className="w-full px-3 py-2 rounded-xl border border-slate-300"
-                  >
-                    <option value={3}>3 आलेख</option>
-                    <option value={6}>6 आलेख</option>
-                    <option value={9}>9 आलेख</option>
-                  </select>
-                </div>
-
-                <button
-                  type="button"
-                  onClick={handleSaveBlogSettings}
-                  disabled={saving}
-                  className="w-full py-2.5 rounded-xl bg-slate-900 hover:bg-orange-600 text-white font-bold text-xs transition cursor-pointer"
-                >
-                  {saving ? 'सुरक्षित हो रहा है...' : 'ब्लॉग सेटिंग्स सुरक्षित करें'}
-                </button>
-              </div>
-            </div>
-          )}
-
-          {/* TAB 5: Festival Page Manager */}
-          {activeTab === 'festival' && (
-            <div className="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-sm space-y-4">
-              <div className="flex items-center justify-between border-b border-slate-100 pb-3">
-                <div>
-                  <h3 className="text-sm font-extrabold text-slate-900">Festival Campaign & Banner Settings</h3>
-                  <p className="text-xs text-slate-500">
-                    पर्व एवं विशेष दिवस पर मुख्य पृष्ठ पर बधाई बैनर व विशेष संदेश लाइव करें।
-                  </p>
-                </div>
-                <button
-                  onClick={() => handleToggleFestival(!festivalForm.active)}
-                  className={`px-3 py-1 rounded-xl text-xs font-bold transition cursor-pointer ${
-                    festivalForm.active ? 'bg-red-100 text-red-700' : 'bg-emerald-600 text-white shadow-sm'
-                  }`}
-                >
-                  {festivalForm.active ? 'Deactivate' : 'Activate Festival Page'}
-                </button>
-              </div>
-
-              <div className="space-y-3 text-xs">
-                <div>
-                  <label className="block font-bold text-slate-700 mb-1">Festival Title (त्यौहार का नाम)</label>
+                <div className="space-y-1.5">
+                  <label className="text-xs font-bold text-slate-700">पर्व का शीर्षक</label>
                   <input
                     type="text"
                     value={festivalForm.title}
                     onChange={(e) => setFestivalForm({ ...festivalForm, title: e.target.value })}
-                    className="w-full px-3 py-2 rounded-xl border border-slate-300"
+                    className="w-full px-3 py-2 text-xs bg-slate-50 border border-slate-200 rounded-xl"
                   />
                 </div>
 
-                <div>
-                  <label className="block font-bold text-slate-700 mb-1">Greeting Message (शुभकामना संदेश)</label>
+                <div className="space-y-1.5">
+                  <label className="text-xs font-bold text-slate-700">शुभकामना संदेश</label>
                   <textarea
-                    rows={3}
+                    rows={2}
                     value={festivalForm.message}
                     onChange={(e) => setFestivalForm({ ...festivalForm, message: e.target.value })}
-                    className="w-full px-3 py-2 rounded-xl border border-slate-300"
+                    className="w-full px-3 py-2 text-xs bg-slate-50 border border-slate-200 rounded-xl"
                   />
                 </div>
 
-                <div className="grid grid-cols-2 gap-3">
-                  <div>
-                    <label className="block font-bold text-slate-700 mb-1">Start Date</label>
-                    <input
-                      type="date"
-                      value={festivalForm.startDate}
-                      onChange={(e) => setFestivalForm({ ...festivalForm, startDate: e.target.value })}
-                      className="w-full px-3 py-2 rounded-xl border border-slate-300"
-                    />
-                  </div>
-                  <div>
-                    <label className="block font-bold text-slate-700 mb-1">End Date (Auto Restore)</label>
-                    <input
-                      type="date"
-                      value={festivalForm.endDate}
-                      onChange={(e) => setFestivalForm({ ...festivalForm, endDate: e.target.value })}
-                      className="w-full px-3 py-2 rounded-xl border border-slate-300"
-                    />
-                  </div>
-                </div>
-
-                <div className="flex items-center space-x-3 pt-2">
-                  <button
-                    type="button"
-                    onClick={handleSaveFestival}
-                    disabled={saving}
-                    className="flex-1 py-2 rounded-xl bg-orange-600 hover:bg-orange-700 text-white font-bold text-xs shadow cursor-pointer"
-                  >
-                    {saving ? 'सुरक्षित हो रहा है...' : 'फेस्टिवल सेटिंग्स सुरक्षित करें'}
-                  </button>
-
-                  <button
-                    type="button"
-                    onClick={() => setAdminTab('festival-manager')}
-                    className="px-4 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold text-xs cursor-pointer"
-                  >
-                    पूरा पोस्टर व वीडियो प्रबंधक →
-                  </button>
-                </div>
+                <button
+                  type="button"
+                  onClick={async () => {
+                    setSaving(true);
+                    await api.updateFestival(festivalForm);
+                    setSaving(false);
+                    showToast('त्यौहार सेटिंग्स सुरक्षित की गईं!', 'success');
+                    await loadSettings();
+                  }}
+                  className="px-4 py-2 rounded-xl bg-orange-600 text-white font-bold text-xs"
+                >
+                  पर्व सेटिंग्स सेव करें
+                </button>
               </div>
             </div>
           )}
 
-          {/* TAB 6: SEO & Meta */}
+          {/* TAB 8: SEO */}
           {activeTab === 'seo' && (
-            <div className="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-sm space-y-4">
-              <div className="border-b border-slate-100 pb-3">
-                <h3 className="text-sm font-extrabold text-slate-900">Search Engine Optimization (SEO) & Social Meta</h3>
-                <p className="text-xs text-slate-500">
-                  गूगल, फेसबुक और व्हाट्सएप पर शेयर करते समय दिखने वाले शीर्षक व विवरण का विन्यास।
-                </p>
+            <div className="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm space-y-4">
+              <div className="border-b border-slate-100 pb-3 flex items-center justify-between">
+                <h3 className="text-sm font-extrabold text-slate-900">SEO & Meta Tags</h3>
+                <button
+                  onClick={handleSaveSeo}
+                  className="px-4 py-1.5 rounded-xl bg-orange-600 text-white font-bold text-xs"
+                >
+                  SEO सेव करें
+                </button>
               </div>
 
-              <div className="space-y-3 text-xs">
-                <div>
-                  <label className="block font-bold text-slate-700 mb-1">Page Title (मेटा शीर्षक)</label>
+              <div className="space-y-3">
+                <div className="space-y-1">
+                  <label className="text-xs font-bold text-slate-700">Meta Title</label>
                   <input
                     type="text"
                     value={seoForm.metaTitle}
                     onChange={(e) => setSeoForm({ ...seoForm, metaTitle: e.target.value })}
-                    className="w-full px-3 py-2 rounded-xl border border-slate-300"
+                    className="w-full px-3 py-2 text-xs bg-slate-50 border border-slate-200 rounded-xl"
                   />
                 </div>
 
-                <div>
-                  <label className="block font-bold text-slate-700 mb-1">Meta Description (सर्च विवरण)</label>
+                <div className="space-y-1">
+                  <label className="text-xs font-bold text-slate-700">Meta Description</label>
                   <textarea
                     rows={3}
                     value={seoForm.metaDescription}
                     onChange={(e) => setSeoForm({ ...seoForm, metaDescription: e.target.value })}
-                    className="w-full px-3 py-2 rounded-xl border border-slate-300"
+                    className="w-full px-3 py-2 text-xs bg-slate-50 border border-slate-200 rounded-xl"
                   />
                 </div>
-
-                <div>
-                  <label className="block font-bold text-slate-700 mb-1">Keywords (कीवर्ड्स - अल्पविराम द्वारा अलग करें)</label>
-                  <input
-                    type="text"
-                    value={seoForm.keywords}
-                    onChange={(e) => setSeoForm({ ...seoForm, keywords: e.target.value })}
-                    className="w-full px-3 py-2 rounded-xl border border-slate-300"
-                  />
-                </div>
-
-                <div>
-                  <label className="block font-bold text-slate-700 mb-1">Social Share Image (OG Image URL)</label>
-                  <input
-                    type="text"
-                    value={seoForm.ogImage}
-                    onChange={(e) => setSeoForm({ ...seoForm, ogImage: e.target.value })}
-                    className="w-full px-3 py-2 rounded-xl border border-slate-300"
-                  />
-                </div>
-
-                <button
-                  type="button"
-                  onClick={handleSaveSeo}
-                  disabled={saving}
-                  className="w-full py-2.5 rounded-xl bg-orange-600 hover:bg-orange-700 text-white font-bold text-xs shadow cursor-pointer"
-                >
-                  {saving ? 'सुरक्षित हो रहा है...' : 'SEO सेटिंग्स सुरक्षित करें'}
-                </button>
               </div>
             </div>
           )}
 
-          {/* TAB 7: Custom CSS/JS */}
+          {/* TAB 9: CUSTOM CODE */}
           {activeTab === 'css' && (
-            <div className="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-sm space-y-4">
-              <div className="border-b border-slate-100 pb-3">
-                <h3 className="text-sm font-extrabold text-slate-900">Custom CSS & Analytics Scripts</h3>
-                <p className="text-xs text-slate-500">
-                  वेबसाइट के डिज़ाइन को ओवरराइड करने या Google Analytics / Meta Pixel टैग जोड़ने के लिए।
-                </p>
+            <div className="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm space-y-4">
+              <div className="border-b border-slate-100 pb-3 flex items-center justify-between">
+                <h3 className="text-sm font-extrabold text-slate-900">Custom CSS / JS Code</h3>
+                <button
+                  onClick={handleSaveCustomCode}
+                  className="px-4 py-1.5 rounded-xl bg-orange-600 text-white font-bold text-xs"
+                >
+                  कोड सेव करें
+                </button>
               </div>
 
-              <div className="space-y-3 text-xs">
-                <div>
-                  <label className="block font-bold text-slate-700 mb-1">Custom CSS</label>
-                  <textarea
-                    rows={5}
-                    value={customCodeForm.css}
-                    onChange={(e) => setCustomCodeForm({ ...customCodeForm, css: e.target.value })}
-                    className="w-full px-3 py-2 rounded-xl border border-slate-300 font-mono text-[11px]"
-                    placeholder="/* Custom CSS */ .hero-headline { color: #f97316; }"
-                  />
-                </div>
-
-                <div>
-                  <label className="block font-bold text-slate-700 mb-1">Custom Head JavaScript / Analytics Code</label>
-                  <textarea
-                    rows={4}
-                    value={customCodeForm.js}
-                    onChange={(e) => setCustomCodeForm({ ...customCodeForm, js: e.target.value })}
-                    className="w-full px-3 py-2 rounded-xl border border-slate-300 font-mono text-[11px]"
-                    placeholder="<!-- Analytics or Tracker Script -->"
-                  />
-                </div>
-
-                <button
-                  type="button"
-                  onClick={handleSaveCustomCode}
-                  disabled={saving}
-                  className="w-full py-2.5 rounded-xl bg-slate-900 hover:bg-orange-600 text-white font-bold text-xs shadow cursor-pointer"
-                >
-                  {saving ? 'सुरक्षित हो रहा है...' : 'Custom Code लागू करें'}
-                </button>
+              <div className="space-y-2">
+                <label className="text-xs font-bold text-slate-700 font-mono">Custom CSS</label>
+                <textarea
+                  rows={8}
+                  value={customCodeForm.css}
+                  onChange={(e) => setCustomCodeForm({ ...customCodeForm, css: e.target.value })}
+                  placeholder="/* Write custom CSS overrides here */"
+                  className="w-full px-3 py-2 text-xs font-mono bg-slate-900 text-emerald-400 rounded-xl"
+                />
               </div>
             </div>
           )}
 
         </div>
 
-        {/* Right Column: Live Website Preview & Quick Controls (5 cols) */}
-        <div className="lg:col-span-5 space-y-6">
+        {/* Right Column: Live Interactive Palette & Status Cards (4 cols) */}
+        <div className="lg:col-span-4 space-y-5 sticky top-24">
           
-          {/* Live Website Preview Frame */}
-          <div className="bg-white rounded-2xl p-4 border border-slate-200/80 shadow-sm space-y-3">
-            <div className="flex items-center justify-between">
+          {/* Live Palette Visualizer Card */}
+          <div className="bg-white rounded-2xl p-4 border border-slate-200 shadow-sm space-y-3">
+            <div className="flex items-center justify-between border-b border-slate-100 pb-2">
+              <span className="text-xs font-black text-slate-900 uppercase tracking-wider">
+                लाइव स्टाइल प्रीव्यू (Live Style Swatch)
+              </span>
+              <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse" />
+            </div>
+
+            {/* Mockup Button Swatches */}
+            <div className="space-y-2">
+              <span className="text-[10px] font-bold text-slate-400 block uppercase">बटन्स व लिंक्स:</span>
               <div className="flex items-center space-x-2">
-                <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
-                <h3 className="text-xs font-black text-slate-900">Live Website Preview</h3>
+                <button
+                  type="button"
+                  style={{ backgroundColor: themeForm.primaryColor }}
+                  className="px-3 py-1.5 rounded-lg text-white font-bold text-xs shadow-sm flex-1 text-center"
+                >
+                  Primary Action
+                </button>
+                <button
+                  type="button"
+                  style={{ backgroundColor: themeForm.secondaryColor }}
+                  className="px-3 py-1.5 rounded-lg text-white font-bold text-xs shadow-sm flex-1 text-center"
+                >
+                  Secondary Action
+                </button>
               </div>
+            </div>
 
+            {/* Mockup Alert / Badge */}
+            <div className="p-2.5 rounded-xl border flex items-center justify-between text-xs" style={{ borderColor: themeForm.accentColor, backgroundColor: `${themeForm.accentColor}15` }}>
+              <span className="font-bold" style={{ color: themeForm.accentColor }}>Accent Alert / Badge</span>
+              <span className="px-2 py-0.5 rounded-full text-[10px] font-black text-white" style={{ backgroundColor: themeForm.accentColor }}>NEW</span>
+            </div>
+
+            {/* Header Preview Strip */}
+            <div className="p-3 rounded-xl border shadow-inner space-y-1" style={{ backgroundColor: themeForm.navbarBg, borderColor: '#e2e8f0' }}>
+              <span className="text-[9px] font-extrabold uppercase tracking-wider block" style={{ color: themeForm.navbarText }}>
+                {headerForm.constituency}
+              </span>
               <div className="flex items-center space-x-2">
-                <button
-                  type="button"
-                  onClick={() => setShowMobileSimulator(true)}
-                  className="p-1.5 rounded-lg text-slate-600 hover:text-orange-600 hover:bg-slate-100 transition cursor-pointer"
-                  title="मोबाइल सिम्युलेटर खोलें"
-                >
-                  <Smartphone className="w-4 h-4" />
-                </button>
-                <button
-                  type="button"
-                  onClick={() => window.open('/', '_blank')}
-                  className="flex items-center space-x-1 text-[11px] font-bold text-orange-600 hover:underline cursor-pointer"
-                >
-                  <span>Open in New Tab</span>
-                  <ExternalLink className="w-3 h-3" />
-                </button>
+                <span className="text-base">{headerForm.logoType === 'icon' ? headerForm.logoIcon : '🖼️'}</span>
+                <span className="text-sm font-black font-serif" style={{ color: themeForm.navbarText }}>
+                  {headerForm.siteTitle}
+                </span>
               </div>
             </div>
 
-            {/* Interactive Scaled Live Preview Container */}
-            <div className="rounded-xl overflow-hidden border border-slate-300 aspect-[16/11] bg-slate-100 relative group shadow-inner">
-              <iframe
-                src="/?preview=true"
-                title="Live Website View"
-                className="w-[200%] h-[200%] transform scale-50 origin-top-left border-0 pointer-events-none"
-              />
-              <div className="absolute inset-0 bg-slate-900/30 opacity-0 group-hover:opacity-100 transition flex items-center justify-center backdrop-blur-2xs">
-                <button
-                  type="button"
-                  onClick={() => window.open('/', '_blank')}
-                  className="px-4 py-2 rounded-xl bg-orange-600 hover:bg-orange-700 text-white font-bold text-xs shadow-lg transition transform hover:scale-105 cursor-pointer flex items-center space-x-1.5"
-                >
-                  <span>लाइव वेबसाइट नए टैब में खोलें</span>
-                  <ExternalLink className="w-3.5 h-3.5" />
-                </button>
+            {/* Quick Status Info */}
+            <div className="pt-2 border-t border-slate-100 text-[11px] text-slate-600 space-y-1 font-medium">
+              <div className="flex items-center justify-between">
+                <span>सक्रिय फ़ॉन्ट:</span>
+                <span className="font-bold text-slate-800">{themeForm.fontFamily}</span>
+              </div>
+              <div className="flex items-center justify-between">
+                <span>कार्ड रेडियस:</span>
+                <span className="font-bold text-slate-800">{themeForm.cardRadius}</span>
+              </div>
+              <div className="flex items-center justify-between">
+                <span>सक्रिय मॉड्यूल्स:</span>
+                <span className="font-bold text-emerald-600">{activeModulesCount} / {MODULE_ITEMS.length}</span>
               </div>
             </div>
-            <div className="text-[10px] text-slate-400 text-center font-medium">
-              यहाँ किए गए सभी बदलाव वेबसाइट एवं मोबाइल ऐप पर वास्तविक समय में अपडेट होते हैं
-            </div>
           </div>
 
-          {/* Quick Actions */}
-          <div className="bg-white rounded-2xl p-4 border border-slate-200/80 shadow-sm space-y-3">
-            <h3 className="text-xs font-black text-slate-900">Quick Actions (त्वरित कार्य)</h3>
-            <div className="grid grid-cols-2 gap-2 text-xs">
+          {/* Quick Direct Links Card */}
+          <div className="bg-gradient-to-br from-orange-50 to-amber-50 rounded-2xl p-4 border border-orange-200/80 shadow-sm space-y-3">
+            <h4 className="text-xs font-black text-slate-900 uppercase tracking-wider flex items-center space-x-1.5">
+              <Sparkles className="w-4 h-4 text-orange-600" />
+              <span>त्वरित नेविगेशन व परीक्षण</span>
+            </h4>
+            <div className="space-y-1.5 text-xs font-bold">
               <button
                 type="button"
-                onClick={() => setAdminTab('activities')}
-                className="p-2.5 rounded-xl bg-emerald-50 hover:bg-emerald-100 text-emerald-800 font-bold text-center border border-emerald-200 transition cursor-pointer flex items-center justify-center space-x-1"
+                onClick={() => setViewMode('public')}
+                className="w-full text-left px-3 py-2 rounded-xl bg-white hover:bg-orange-100/50 border border-orange-200 flex items-center justify-between transition cursor-pointer text-slate-800"
               >
-                <span>+ Add New Post</span>
+                <span>🌐 मुख्य वेबसाइट देखें</span>
+                <ExternalLink className="w-3.5 h-3.5 text-orange-600" />
               </button>
               <button
                 type="button"
-                onClick={() => setAdminTab('blogs')}
-                className="p-2.5 rounded-xl bg-blue-50 hover:bg-blue-100 text-blue-800 font-bold text-center border border-blue-200 transition cursor-pointer flex items-center justify-center space-x-1"
+                onClick={() => navigateToPublicPage('mobile')}
+                className="w-full text-left px-3 py-2 rounded-xl bg-white hover:bg-orange-100/50 border border-orange-200 flex items-center justify-between transition cursor-pointer text-slate-800"
               >
-                <span>Manage Blogs</span>
+                <span>📱 मोबाइल ऐप व्यू (/mobile)</span>
+                <ExternalLink className="w-3.5 h-3.5 text-orange-600" />
               </button>
               <button
                 type="button"
-                onClick={() => setAdminTab('works')}
-                className="p-2.5 rounded-xl bg-purple-50 hover:bg-purple-100 text-purple-800 font-bold text-center border border-purple-200 transition cursor-pointer flex items-center justify-center space-x-1"
+                onClick={() => setShowMobileSimulator(true)}
+                className="w-full text-left px-3 py-2 rounded-xl bg-white hover:bg-orange-100/50 border border-orange-200 flex items-center justify-between transition cursor-pointer text-slate-800"
               >
-                <span>+ Add Event / Work</span>
-              </button>
-              <button
-                type="button"
-                onClick={() => setAdminTab('festival-manager')}
-                className="p-2.5 rounded-xl bg-orange-50 hover:bg-orange-100 text-orange-800 font-bold text-center border border-orange-200 transition cursor-pointer flex items-center justify-center space-x-1"
-              >
-                <span>Create Festival Page</span>
-              </button>
-            </div>
-          </div>
-
-          {/* Current Template Widget */}
-          <div className="bg-white rounded-2xl p-4 border border-slate-200/80 shadow-sm space-y-2">
-            <div className="flex items-center justify-between text-xs">
-              <span className="font-bold text-slate-500">Current Active Template</span>
-              <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-100 text-emerald-800">
-                Active
-              </span>
-            </div>
-            <div className="p-2.5 rounded-xl bg-slate-50 border border-slate-200 flex items-center justify-between">
-              <div>
-                <div className="text-xs font-black text-slate-900 capitalize">
-                  {settings?.activeTemplate?.replace(/-/g, ' ') || 'Development Focus'}
-                </div>
-                <div className="text-[10px] text-slate-500">
-                  {templatesList.find(t => t.id === settings?.activeTemplate)?.desc || 'Ideal for constituency development works'}
-                </div>
-              </div>
-              <button
-                type="button"
-                onClick={() => setActiveTab('templates')}
-                className="px-2.5 py-1 text-xs font-bold bg-white hover:bg-slate-100 border border-slate-300 rounded-lg text-slate-700 cursor-pointer"
-              >
-                Change
-              </button>
-            </div>
-          </div>
-
-          {/* Blog Section Control Widget */}
-          <div className="bg-white rounded-2xl p-4 border border-slate-200/80 shadow-sm space-y-2">
-            <h4 className="text-xs font-bold text-slate-700">Blog Section Control</h4>
-            <div className="p-2.5 rounded-xl bg-slate-50 border border-slate-200 flex items-center justify-between">
-              <span className="text-xs text-slate-600 font-medium">
-                {sections.find(s => s.id === 'blogs')?.enabled ? 'Blogs are Visible on Website' : 'Blogs are Hidden'}
-              </span>
-              <button
-                type="button"
-                onClick={() => handleToggleSection('blogs')}
-                className="px-3 py-1 rounded-lg text-xs font-bold bg-slate-200 hover:bg-slate-300 text-slate-800 cursor-pointer"
-              >
-                Toggle
-              </button>
-            </div>
-          </div>
-
-          {/* Festival Landing Page Widget */}
-          <div className="bg-white rounded-2xl p-4 border border-slate-200/80 shadow-sm space-y-2">
-            <h4 className="text-xs font-bold text-slate-700">Festival Landing Page</h4>
-            <div className="p-2.5 rounded-xl bg-slate-50 border border-slate-200 flex items-center justify-between">
-              <span className="text-xs text-slate-600 font-medium">
-                {festivalForm.active ? 'Festival Page is Active' : 'No festival page active'}
-              </span>
-              <button
-                type="button"
-                onClick={() => handleToggleFestival(!festivalForm.active)}
-                className={`px-3 py-1 rounded-lg text-xs font-bold transition cursor-pointer ${
-                  festivalForm.active ? 'bg-red-600 text-white' : 'bg-orange-600 text-white'
-                }`}
-              >
-                {festivalForm.active ? 'Turn Off' : 'Activate'}
+                <span>📲 फ्लोटिंग फोन सिमुलेटर</span>
+                <Smartphone className="w-3.5 h-3.5 text-orange-600" />
               </button>
             </div>
           </div>
@@ -1094,6 +1627,17 @@ export default function AdminWebsiteBuilder() {
         </div>
 
       </div>
+
+      {/* Media Picker Modal */}
+      <MediaPickerModal
+        isOpen={mediaPickerOpen}
+        onClose={() => setMediaPickerOpen(false)}
+        onSelect={(url) => {
+          setHeaderForm({ ...headerForm, logoImage: url, logoType: 'image' });
+          showToast('लोगो इमेज चुनी गई!', 'success');
+        }}
+        title="लोगो हेतु मीडिया लाइब्रेरी से चित्र चुनें"
+      />
 
     </div>
   );

@@ -3,14 +3,170 @@ const router = express.Router();
 const { readDb, writeDb, logAudit } = require('../utils/db');
 const { festivalCampaign } = require('../data/festivals');
 
+const DEFAULT_THEME = {
+  preset: 'saffron',
+  primaryColor: '#ea580c',
+  secondaryColor: '#16a34a',
+  accentColor: '#f59e0b',
+  navbarBg: '#ffffff',
+  navbarText: '#0f172a',
+  footerBg: '#0f172a',
+  bodyBg: '#f8fafc',
+  cardRadius: 'rounded-xl',
+  fontFamily: 'Inter',
+  headerStyle: 'standard'
+};
+
+const DEFAULT_HEADER = {
+  siteTitle: 'जनसेवा इटावा',
+  highlightWord: 'इटावा',
+  subtitle: 'People • Development • Trust',
+  tagline: '“मजबूत नेतृत्व, विकसित इटावा, समृद्ध भारत”',
+  constituency: 'जनसेवा इटावा (विधानसभा 200)',
+  logoType: 'icon',
+  logoIcon: '🪷',
+  logoImage: '',
+  logoWidth: 44,
+  headerLayout: 'standard',
+  showRibbon: true,
+  showMobileAppBtn: true,
+  showLoginBtn: true,
+  showLangBtn: true
+};
+
+const DEFAULT_MODULES = {
+  topRibbon: true,
+  headerMobileAppBtn: true,
+  headerLoginBtn: true,
+  headerLangBtn: true,
+  festivalBanner: true,
+  officialMlaBanner: true,
+  heroSlider: true,
+  janSamvadSpotlight: true,
+  metricsBar: true,
+  featuredActivity: true,
+  updatesAndSchemes: true,
+  socialAndConstituency: true,
+  knowYourConstituency: true,
+  latestActivitiesAndMinisters: true,
+  timelineAndTeam: true,
+  citizenTestimonial: true,
+  footerPanorama: true,
+  floatingMobileSimulator: true,
+  floatingQrModal: true
+};
+
+const THEME_PRESETS = [
+  {
+    id: 'saffron',
+    name: 'भगवा एवं राष्ट्रभक्ति',
+    nameEn: 'Saffron Patriot',
+    desc: 'पारंपरिक ऊर्जावान भगवा व समृद्ध हरित रंग का सामंजस्य',
+    primaryColor: '#ea580c',
+    secondaryColor: '#16a34a',
+    accentColor: '#f59e0b',
+    navbarBg: '#ffffff',
+    navbarText: '#0f172a',
+    footerBg: '#0f172a',
+    bodyBg: '#f8fafc',
+    cardRadius: 'rounded-xl',
+    fontFamily: 'Inter'
+  },
+  {
+    id: 'royal_blue',
+    name: 'शाही नीला / डिजिटल भारत',
+    nameEn: 'Royal Blue & Gold',
+    desc: 'गंभीर, आधुनिक प्रशासनिक नीला एवं स्वर्णिम आभा',
+    primaryColor: '#1d4ed8',
+    secondaryColor: '#0284c7',
+    accentColor: '#f59e0b',
+    navbarBg: '#0f172a',
+    navbarText: '#ffffff',
+    footerBg: '#020617',
+    bodyBg: '#f1f5f9',
+    cardRadius: 'rounded-xl',
+    fontFamily: 'Inter'
+  },
+  {
+    id: 'emerald',
+    name: 'समृद्धि हरित / विकास एवं प्रकृति',
+    nameEn: 'Emerald Prosperity',
+    desc: 'विकास, पर्यावरण, ग्रामीण उन्नति और ताज़गी का प्रतीक',
+    primaryColor: '#059669',
+    secondaryColor: '#0d9488',
+    accentColor: '#ea580c',
+    navbarBg: '#ffffff',
+    navbarText: '#064e3b',
+    footerBg: '#064e3b',
+    bodyBg: '#f0fdf4',
+    cardRadius: 'rounded-2xl',
+    fontFamily: 'Inter'
+  },
+  {
+    id: 'tricolor',
+    name: 'राष्ट्रीय तिरंगा गौरव',
+    nameEn: 'National Tricolor',
+    desc: 'केसरिया, श्वेत व हरा — पूर्ण राष्ट्रभक्ति और जनसेवा भावना',
+    primaryColor: '#ea580c',
+    secondaryColor: '#15803d',
+    accentColor: '#1e3a8a',
+    navbarBg: '#ffffff',
+    navbarText: '#1e293b',
+    footerBg: '#111827',
+    bodyBg: '#fafaf9',
+    cardRadius: 'rounded-lg',
+    fontFamily: 'Inter'
+  },
+  {
+    id: 'maroon_gold',
+    name: 'शाही मैरून एवं स्वर्णिम',
+    nameEn: 'Imperial Maroon & Amber',
+    desc: 'गरिमापूर्ण ऐतिहासिक मैरून व एम्बर स्वर्णिम चमक',
+    primaryColor: '#991b1b',
+    secondaryColor: '#b45309',
+    accentColor: '#d97706',
+    navbarBg: '#ffffff',
+    navbarText: '#450a0a',
+    footerBg: '#450a0a',
+    bodyBg: '#fef2f2',
+    cardRadius: 'rounded-xl',
+    fontFamily: 'Rozha One'
+  },
+  {
+    id: 'dark_modern',
+    name: 'डार्क मॉडर्न एलीट',
+    nameEn: 'Dark Modern Elite',
+    desc: 'प्रीमियम हाई-टेक डार्क लुक व वाइब्रेंट पर्पल हाइलाइट्स',
+    primaryColor: '#8b5cf6',
+    secondaryColor: '#06b6d4',
+    accentColor: '#ec4899',
+    navbarBg: '#090d16',
+    navbarText: '#f8fafc',
+    footerBg: '#030712',
+    bodyBg: '#0b0f19',
+    cardRadius: 'rounded-2xl',
+    fontFamily: 'Inter'
+  }
+];
+
 // GET full settings & MLA profile
 router.get('/', (req, res) => {
   const db = readDb();
+  if (!db.settings) db.settings = {};
+
+  const currentTheme = { ...DEFAULT_THEME, ...(db.settings.theme || {}) };
+  const currentHeader = { ...DEFAULT_HEADER, ...(db.settings.header || {}) };
+  const currentModules = { ...DEFAULT_MODULES, ...(db.settings.modules || {}) };
   const currentFestival = { ...db.settings.festival, ...festivalCampaign };
+
   res.json({
     success: true,
     settings: {
       ...db.settings,
+      theme: currentTheme,
+      header: currentHeader,
+      modules: currentModules,
+      themePresets: THEME_PRESETS,
       festival: currentFestival
     },
     mla: db.mla || {}
@@ -129,6 +285,117 @@ router.put('/branding', (req, res) => {
   writeDb(db);
   logAudit(req.body.user, 'Updated Branding & Theme', 'Theme & Branding', db.settings.branding);
   res.json({ success: true, branding: db.settings.branding });
+});
+
+// UPDATE Theme & Color Scheme (WordPress Style)
+router.put('/theme', (req, res) => {
+  const { theme, user = 'Admin' } = req.body;
+  const db = readDb();
+  if (!db.settings) db.settings = {};
+  
+  db.settings.theme = {
+    ...DEFAULT_THEME,
+    ...(db.settings.theme || {}),
+    ...theme
+  };
+
+  // Sync primary and secondary color with branding
+  if (theme.primaryColor) {
+    if (!db.settings.branding) db.settings.branding = {};
+    db.settings.branding.primaryColor = theme.primaryColor;
+  }
+  if (theme.secondaryColor) {
+    if (!db.settings.branding) db.settings.branding = {};
+    db.settings.branding.secondaryColor = theme.secondaryColor;
+  }
+
+  writeDb(db);
+  logAudit(user, `वेबसाइट थीम अपडेट की गई: ${db.settings.theme.preset || 'Custom'} (${db.settings.theme.primaryColor})`, 'Master Theme Manager', db.settings.theme);
+  res.json({ success: true, theme: db.settings.theme, message: 'थीम सफलतापूर्वक अपडेट की गई!' });
+});
+
+// UPDATE Header & Logo Branding
+router.put('/header', (req, res) => {
+  const { header, user = 'Admin' } = req.body;
+  const db = readDb();
+  if (!db.settings) db.settings = {};
+
+  db.settings.header = {
+    ...DEFAULT_HEADER,
+    ...(db.settings.header || {}),
+    ...header
+  };
+
+  // Sync siteTitle and slogan with branding
+  if (header.siteTitle) {
+    if (!db.settings.branding) db.settings.branding = {};
+    db.settings.branding.siteTitle = header.siteTitle;
+  }
+  if (header.tagline) {
+    if (!db.settings.branding) db.settings.branding = {};
+    db.settings.branding.slogan = header.tagline;
+  }
+
+  writeDb(db);
+  logAudit(user, `वेबसाइट हेडर व लोगो अपडेट किया गया: ${db.settings.header.siteTitle}`, 'Header Branding', db.settings.header);
+  res.json({ success: true, header: db.settings.header, message: 'हेडर एवं लोगो सेटिंग्स सफलतापूर्वक सहेजी गईं!' });
+});
+
+// UPDATE Module & Feature Visibility Matrix
+router.put('/modules', (req, res) => {
+  const { modules, user = 'Admin' } = req.body;
+  const db = readDb();
+  if (!db.settings) db.settings = {};
+
+  db.settings.modules = {
+    ...DEFAULT_MODULES,
+    ...(db.settings.modules || {}),
+    ...modules
+  };
+
+  writeDb(db);
+  logAudit(user, 'वेबसाइट मॉड्यूल्स विजिबिलिटी सेटिंग्स अपडेट की गईं', 'Module Manager', db.settings.modules);
+  res.json({ success: true, modules: db.settings.modules, message: 'मॉड्यूल विजिबिलिटी सेटिंग्स सहेजी गईं!' });
+});
+
+// TOGGLE single module
+router.post('/modules/toggle', (req, res) => {
+  const { moduleKey, user = 'Admin' } = req.body;
+  const db = readDb();
+  if (!db.settings) db.settings = {};
+  if (!db.settings.modules) db.settings.modules = { ...DEFAULT_MODULES };
+
+  if (!moduleKey) {
+    return res.status(400).json({ success: false, message: 'moduleKey is required' });
+  }
+
+  const current = Boolean(db.settings.modules[moduleKey]);
+  db.settings.modules[moduleKey] = !current;
+  writeDb(db);
+
+  logAudit(user, `मॉड्यूल [${moduleKey}] को ${!current ? 'सक्रिय (ON)' : 'निष्क्रिय (OFF)'} किया गया`, 'Module Manager', { moduleKey, state: !current });
+  res.json({ success: true, moduleKey, state: !current, modules: db.settings.modules });
+});
+
+// RESET Master Layout & Theme to defaults
+router.post('/master-layout/reset', (req, res) => {
+  const { user = 'Admin' } = req.body;
+  const db = readDb();
+  if (!db.settings) db.settings = {};
+
+  db.settings.theme = { ...DEFAULT_THEME };
+  db.settings.header = { ...DEFAULT_HEADER };
+  db.settings.modules = { ...DEFAULT_MODULES };
+
+  writeDb(db);
+  logAudit(user, 'मास्टर लेआउट एवं थीम डिफ़ॉल्ट पर रीसेट किया गया', 'Master Theme Manager', {});
+  res.json({
+    success: true,
+    theme: db.settings.theme,
+    header: db.settings.header,
+    modules: db.settings.modules,
+    message: 'मास्टर लेआउट एवं थीम सफलतापूर्वक मूल स्थिति में रीसेट कर दिया गया!'
+  });
 });
 
 // UPDATE SEO & Meta Settings

@@ -323,6 +323,88 @@ export function AppProvider({ children }) {
     loadSettings();
   }, []);
 
+  // Dynamic Theme CSS Engine (WordPress Style)
+  useEffect(() => {
+    if (!settings?.theme) return;
+    const theme = settings.theme;
+
+    const primary = theme.primaryColor || '#ea580c';
+    const secondary = theme.secondaryColor || '#16a34a';
+    const accent = theme.accentColor || '#f59e0b';
+    const navbarBg = theme.navbarBg || '#ffffff';
+    const navbarText = theme.navbarText || '#0f172a';
+    const footerBg = theme.footerBg || '#0f172a';
+    const bodyBg = theme.bodyBg || '#f8fafc';
+    const font = theme.fontFamily || 'Inter';
+
+    let styleEl = document.getElementById('janseva-dynamic-theme-style');
+    if (!styleEl) {
+      styleEl = document.createElement('style');
+      styleEl.id = 'janseva-dynamic-theme-style';
+      document.head.appendChild(styleEl);
+    }
+
+    styleEl.innerHTML = `
+      :root {
+        --theme-primary: ${primary};
+        --theme-secondary: ${secondary};
+        --theme-accent: ${accent};
+        --theme-navbar-bg: ${navbarBg};
+        --theme-navbar-text: ${navbarText};
+        --theme-footer-bg: ${footerBg};
+        --theme-body-bg: ${bodyBg};
+      }
+      body {
+        background-color: ${bodyBg} !important;
+        font-family: ${font}, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+      }
+      /* Theme classes & overrides */
+      .theme-primary-bg,
+      .bg-orange-600,
+      .bg-saffron-600 {
+        background-color: ${primary} !important;
+      }
+      .theme-primary-text,
+      .text-orange-600,
+      .text-saffron-600 {
+        color: ${primary} !important;
+      }
+      .theme-primary-border,
+      .border-orange-600,
+      .border-saffron-600 {
+        border-color: ${primary} !important;
+      }
+      .theme-secondary-bg,
+      .bg-green-600,
+      .bg-indiaGreen-600 {
+        background-color: ${secondary} !important;
+      }
+      .theme-secondary-text,
+      .text-green-600,
+      .text-indiaGreen-600 {
+        color: ${secondary} !important;
+      }
+      .theme-secondary-border,
+      .border-green-600,
+      .border-indiaGreen-600 {
+        border-color: ${secondary} !important;
+      }
+      .theme-accent-bg {
+        background-color: ${accent} !important;
+      }
+      .theme-accent-text {
+        color: ${accent} !important;
+      }
+      .hover\\:bg-orange-700:hover,
+      .hover\\:bg-orange-600:hover {
+        filter: brightness(0.92);
+      }
+      .hover\\:text-orange-600:hover {
+        color: ${primary} !important;
+      }
+    `;
+  }, [settings?.theme]);
+
   return (
     <AppContext.Provider
       value={{

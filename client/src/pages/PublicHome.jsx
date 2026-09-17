@@ -76,6 +76,8 @@ export default function PublicHome() {
     );
   }
 
+  const modules = settings?.modules || {};
+
   // Dynamic section rendering based on admin Section Manager and Template ordering
   const configuredSections = Array.isArray(settings?.sections) && settings.sections.length > 0
     ? [...settings.sections].sort((a, b) => (a.order || 0) - (b.order || 0))
@@ -92,48 +94,54 @@ export default function PublicHome() {
   const renderSection = (secId) => {
     switch (secId) {
       case 'about-mla':
-        return <OfficialMlaBanner key="about-mla" />;
+        return modules.officialMlaBanner !== false ? <OfficialMlaBanner key="about-mla" /> : null;
       case 'hero-banner':
         return (
           <React.Fragment key="hero-spotlight-group">
-            <HeroSection />
-            <JanSamvadHomeSpotlight />
+            {modules.heroSlider !== false && <HeroSection key="hero-slider" />}
+            {modules.janSamvadSpotlight !== false && <JanSamvadHomeSpotlight key="jansamvad-spotlight" />}
           </React.Fragment>
         );
       case 'development-highlights':
         return (
           <React.Fragment key="dev-highlights">
-            <MetricsBar />
-            <HomepageFeatureCard
-              activities={sliderActivities}
-              activity={featuredActivity}
-              onReadMore={(act) => setSelectedActivity(act)}
-            />
-            <HomeUpdatesAndSchemesRow
-              activities={activities}
-              onSelectActivity={(act) => setSelectedActivity(act)}
-            />
+            {modules.metricsBar !== false && <MetricsBar key="metrics-bar" />}
+            {modules.featuredActivity !== false && (
+              <HomepageFeatureCard
+                key="featured-card"
+                activities={sliderActivities}
+                activity={featuredActivity}
+                onReadMore={(act) => setSelectedActivity(act)}
+              />
+            )}
+            {modules.updatesAndSchemes !== false && (
+              <HomeUpdatesAndSchemesRow
+                key="updates-schemes"
+                activities={activities}
+                onSelectActivity={(act) => setSelectedActivity(act)}
+              />
+            )}
           </React.Fragment>
         );
       case 'social-feed':
         return (
           <React.Fragment key="social-feed">
-            <HomeSocialAndConstituencyRow />
-            <KnowYourConstituency />
+            {modules.socialAndConstituency !== false && <HomeSocialAndConstituencyRow key="social-row" />}
+            {modules.knowYourConstituency !== false && <KnowYourConstituency key="constituency-info" />}
           </React.Fragment>
         );
       case 'latest-news':
-        return (
+        return modules.latestActivitiesAndMinisters !== false ? (
           <HomeActivitiesAndMinistersSection
             key="latest-news"
             activities={activities}
             onSelectActivity={(act) => setSelectedActivity(act)}
           />
-        );
+        ) : null;
       case 'upcoming-events':
-        return <HomeTimelineAndTeamRow key="upcoming-events" />;
+        return modules.timelineAndTeam !== false ? <HomeTimelineAndTeamRow key="upcoming-events" /> : null;
       case 'testimonial':
-        return <BottomBanner key="testimonial" />;
+        return modules.citizenTestimonial !== false ? <BottomBanner key="testimonial" /> : null;
       default:
         return null;
     }
@@ -147,7 +155,7 @@ export default function PublicHome() {
       )}
 
       <Navbar />
-      <FestivalBanner />
+      {modules.festivalBanner !== false && <FestivalBanner />}
 
       <main className="flex-1">
         {configuredSections
@@ -155,9 +163,9 @@ export default function PublicHome() {
           .map((sec) => renderSection(sec.id))}
       </main>
 
-      <FooterPanorama />
-      <MobileSimulator />
-      <CitizenRegistrationModal />
+      {modules.footerPanorama !== false && <FooterPanorama />}
+      {modules.floatingMobileSimulator !== false && <MobileSimulator />}
+      {modules.floatingQrModal !== false && <CitizenRegistrationModal />}
       <UserLoginModal />
 
       {/* Auto-generated Activity Detail Modal */}

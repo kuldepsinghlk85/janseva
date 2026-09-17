@@ -23,6 +23,34 @@ export default function Navbar() {
 
   const languages = ['हिंदी', 'English'];
 
+  const header = settings?.header || {};
+  const modules = settings?.modules || {};
+  const theme = settings?.theme || {};
+
+  const siteTitle = header.siteTitle || 'जनसेवा इटावा';
+  const highlightWord = header.highlightWord || 'इटावा';
+  const subtitle = header.subtitle || 'People • Development • Trust';
+  const tagline = header.tagline || '“मजबूत नेतृत्व, विकसित इटावा, समृद्ध भारत”';
+  const constituency = header.constituency || 'जनसेवा इटावा (विधानसभा 200)';
+  const logoType = header.logoType || 'icon';
+  const logoIcon = header.logoIcon || '🪷';
+  const logoImage = header.logoImage || '';
+  const logoWidth = header.logoWidth || 44;
+
+  const renderTitle = () => {
+    if (highlightWord && siteTitle.includes(highlightWord)) {
+      const parts = siteTitle.split(highlightWord);
+      return (
+        <>
+          {parts[0]}
+          <span className="theme-primary-text text-orange-600">{highlightWord}</span>
+          {parts.slice(1).join(highlightWord)}
+        </>
+      );
+    }
+    return siteTitle;
+  };
+
   const handleSelectLang = (selected) => {
     setLang(selected);
     setLangDropdownOpen(false);
@@ -31,113 +59,136 @@ export default function Navbar() {
   return (
     <>
       <header className="sticky top-0 z-40 bg-white/98 backdrop-blur shadow-sm border-b border-slate-200">
-        {/* Top Tricolor Ribbon & Motto Banner (Matching Image 2) */}
-        <div className="tricolor-ribbon w-full"></div>
-        <div className="bg-gradient-to-r from-orange-50 via-white to-green-50 px-4 py-1.5 border-b border-slate-100 text-xs">
-          <div className="max-w-7xl mx-auto flex items-center justify-between">
-            <div className="flex items-center space-x-2">
-              <span className="inline-block w-2.5 h-2.5 rounded-full bg-orange-500 animate-pulse"></span>
-              <span className="font-extrabold text-orange-800 tracking-wide">जनसेवा इटावा (विधानसभा 200)</span>
-              <span className="text-slate-300">|</span>
-              <span className="italic font-bold text-slate-700">“मजबूत नेतृत्व, विकसित इटावा, समृद्ध भारत”</span>
-            </div>
+        {/* Top Ribbon & Motto Banner */}
+        {modules.topRibbon !== false && (
+          <>
+            <div className="tricolor-ribbon w-full"></div>
+            <div className="bg-gradient-to-r from-orange-50 via-white to-green-50 px-4 py-1.5 border-b border-slate-100 text-xs">
+              <div className="max-w-7xl mx-auto flex items-center justify-between">
+                <div className="flex items-center space-x-2">
+                  <span className="inline-block w-2.5 h-2.5 rounded-full bg-orange-500 animate-pulse"></span>
+                  <span className="font-extrabold text-orange-800 tracking-wide">{constituency}</span>
+                  <span className="text-slate-300">|</span>
+                  <span className="italic font-bold text-slate-700">{tagline}</span>
+                </div>
 
-            <div className="flex items-center space-x-3">
-              {/* Language Selector Dropdown (Image 2) */}
-              <div className="relative">
-                <button
-                  onClick={() => setLangDropdownOpen(!langDropdownOpen)}
-                  className="flex items-center space-x-1 px-2.5 py-0.5 rounded-md bg-white border border-slate-200 text-slate-700 font-bold text-[11px] hover:bg-slate-50 transition cursor-pointer"
-                >
-                  <Globe className="w-3 h-3 text-orange-600" />
-                  <span>{lang}</span>
-                  <ChevronDown className="w-3 h-3 text-slate-400" />
-                </button>
-
-                {langDropdownOpen && (
-                  <div className="absolute right-0 mt-1 w-28 bg-white border border-slate-200 rounded-xl shadow-lg z-50 py-1 text-xs">
-                    {languages.map((l) => (
+                <div className="flex items-center space-x-3">
+                  {/* Language Selector Dropdown */}
+                  {modules.headerLangBtn !== false && (
+                    <div className="relative">
                       <button
-                        key={l}
-                        onClick={() => handleSelectLang(l)}
-                        className={`w-full text-left px-3 py-1.5 font-bold flex items-center justify-between transition ${
-                          lang === l ? 'bg-orange-50 text-orange-600' : 'text-slate-700 hover:bg-slate-100'
-                        }`}
+                        onClick={() => setLangDropdownOpen(!langDropdownOpen)}
+                        className="flex items-center space-x-1 px-2.5 py-0.5 rounded-md bg-white border border-slate-200 text-slate-700 font-bold text-[11px] hover:bg-slate-50 transition cursor-pointer"
                       >
-                        <span>{l}</span>
-                        {lang === l && <Check className="w-3.5 h-3.5 text-orange-600" />}
+                        <Globe className="w-3 h-3 text-orange-600" />
+                        <span>{lang}</span>
+                        <ChevronDown className="w-3 h-3 text-slate-400" />
                       </button>
-                    ))}
-                  </div>
-                )}
+
+                      {langDropdownOpen && (
+                        <div className="absolute right-0 mt-1 w-28 bg-white border border-slate-200 rounded-xl shadow-lg z-50 py-1 text-xs">
+                          {languages.map((l) => (
+                            <button
+                              key={l}
+                              onClick={() => handleSelectLang(l)}
+                              className={`w-full text-left px-3 py-1.5 font-bold flex items-center justify-between transition ${
+                                lang === l ? 'bg-orange-50 text-orange-600' : 'text-slate-700 hover:bg-slate-100'
+                              }`}
+                            >
+                              <span>{l}</span>
+                              {lang === l && <Check className="w-3.5 h-3.5 text-orange-600" />}
+                            </button>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  )}
+
+                  {/* User Login / Citizen Profile */}
+                  {modules.headerLoginBtn !== false && (
+                    <button
+                      onClick={() => setShowLoginModal(true)}
+                      className={`flex items-center space-x-1 px-2.5 py-0.5 rounded-full text-xs font-bold transition cursor-pointer ${
+                        currentUser
+                          ? 'bg-emerald-100 text-emerald-800 border border-emerald-300 hover:bg-emerald-200'
+                          : 'bg-orange-100 text-orange-800 border border-orange-200 hover:bg-orange-200'
+                      }`}
+                      title={currentUser ? 'नागरिक प्रोफाइल' : 'यूजर लॉगिन'}
+                    >
+                      <User className="w-3.5 h-3.5" />
+                      <span>{currentUser ? currentUser.name : 'यूजर लॉगिन'}</span>
+                    </button>
+                  )}
+
+                  {/* Dedicated Mobile Web View App Button */}
+                  {modules.headerMobileAppBtn !== false && (
+                    <button
+                      onClick={() => navigateToPublicPage('mobile')}
+                      className="flex items-center space-x-1.5 px-3 py-0.5 rounded-full text-xs font-black bg-gradient-to-r from-orange-600 via-amber-500 to-green-600 text-white hover:opacity-95 transition shadow-sm cursor-pointer"
+                      title="मोबाइल वेब ऐप खोलें (/mobile)"
+                    >
+                      <Smartphone className="w-3.5 h-3.5" />
+                      <span>📱 मोबाइल ऐप (/mobile)</span>
+                    </button>
+                  )}
+
+                  {/* Mobile View Toggle */}
+                  <button
+                    onClick={() => setShowMobileSimulator(!showMobileSimulator)}
+                    className="flex items-center space-x-1 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-slate-100 hover:bg-slate-200 text-slate-700 transition cursor-pointer"
+                    title="Toggle Mobile Simulator"
+                  >
+                    <Smartphone className="w-3.5 h-3.5 text-orange-600" />
+                    <span className="hidden sm:inline">{showMobileSimulator ? 'Hide Mobile' : 'Mobile View'}</span>
+                  </button>
+
+                  {/* Admin CMS Switch */}
+                  <button
+                    onClick={() => setViewMode('admin')}
+                    className="flex items-center space-x-1.5 px-3 py-1 rounded-full text-xs font-bold bg-slate-900 text-white hover:bg-orange-600 transition shadow-sm cursor-pointer"
+                  >
+                    <ShieldCheck className="w-3.5 h-3.5 text-orange-400" />
+                    <span>Admin CMS</span>
+                  </button>
+                </div>
               </div>
-
-              {/* User Login / Citizen Profile */}
-              <button
-                onClick={() => setShowLoginModal(true)}
-                className={`flex items-center space-x-1 px-2.5 py-0.5 rounded-full text-xs font-bold transition cursor-pointer ${
-                  currentUser
-                    ? 'bg-emerald-100 text-emerald-800 border border-emerald-300 hover:bg-emerald-200'
-                    : 'bg-orange-100 text-orange-800 border border-orange-200 hover:bg-orange-200'
-                }`}
-                title={currentUser ? 'नागरिक प्रोफाइल' : 'यूजर लॉगिन'}
-              >
-                <User className="w-3.5 h-3.5" />
-                <span>{currentUser ? currentUser.name : 'यूजर लॉगिन'}</span>
-              </button>
-
-              {/* Dedicated Mobile Web View App Button */}
-              <button
-                onClick={() => navigateToPublicPage('mobile')}
-                className="flex items-center space-x-1.5 px-3 py-0.5 rounded-full text-xs font-black bg-gradient-to-r from-orange-600 via-amber-500 to-green-600 text-white hover:opacity-95 transition shadow-sm cursor-pointer"
-                title="मोबाइल वेब ऐप खोलें (/mobile)"
-              >
-                <Smartphone className="w-3.5 h-3.5" />
-                <span>📱 मोबाइल ऐप (/mobile)</span>
-              </button>
-
-              {/* Mobile View Toggle */}
-              <button
-                onClick={() => setShowMobileSimulator(!showMobileSimulator)}
-                className="flex items-center space-x-1 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-slate-100 hover:bg-slate-200 text-slate-700 transition cursor-pointer"
-                title="Toggle Mobile Simulator"
-              >
-                <Smartphone className="w-3.5 h-3.5 text-orange-600" />
-                <span className="hidden sm:inline">{showMobileSimulator ? 'Hide Mobile' : 'Mobile View'}</span>
-              </button>
-
-              {/* Admin CMS Switch */}
-              <button
-                onClick={() => setViewMode('admin')}
-                className="flex items-center space-x-1.5 px-3 py-1 rounded-full text-xs font-bold bg-slate-900 text-white hover:bg-orange-600 transition shadow-sm cursor-pointer"
-              >
-                <ShieldCheck className="w-3.5 h-3.5 text-orange-400" />
-                <span>Admin CMS</span>
-              </button>
             </div>
-          </div>
-        </div>
+          </>
+        )}
 
-
-        {/* Main Navigation Bar (Image 2) */}
+        {/* Main Navigation Bar */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             
-            {/* Logo Badge: जनसेवा इटावा People • Development • Trust (Image 2) */}
+            {/* Logo Badge & Site Title */}
             <div className="flex items-center space-x-3">
               <a href="#home" className="flex items-center space-x-2.5 group">
-                <div className="w-10 h-10 rounded-full bg-gradient-to-tr from-orange-500 via-amber-400 to-green-600 p-0.5 flex items-center justify-center shadow-md">
-                  <div className="w-full h-full bg-white rounded-full flex items-center justify-center">
-                    <span className="text-xl">🪷</span>
+                {logoType === 'image' && logoImage ? (
+                  <img
+                    src={logoImage}
+                    alt={siteTitle}
+                    style={{ width: `${logoWidth}px`, height: `${logoWidth}px` }}
+                    className="object-contain rounded-lg shadow-sm"
+                  />
+                ) : (
+                  <div
+                    style={{ width: `${logoWidth}px`, height: `${logoWidth}px` }}
+                    className="rounded-full bg-gradient-to-tr from-orange-500 via-amber-400 to-green-600 p-0.5 flex items-center justify-center shadow-md flex-shrink-0"
+                  >
+                    <div className="w-full h-full bg-white rounded-full flex items-center justify-center">
+                      <span className="text-xl">{logoIcon}</span>
+                    </div>
                   </div>
-                </div>
+                )}
                 <div>
                   <span className="text-2xl font-black tracking-tight text-slate-900 font-serif">
-                    जनसेवा <span className="text-orange-600">इटावा</span>
+                    {renderTitle()}
                   </span>
-                  <span className="block text-[10px] uppercase tracking-wider font-bold text-slate-500 -mt-1">
-                    People • Development • Trust
-                  </span>
+                  {subtitle && (
+                    <span className="block text-[10px] uppercase tracking-wider font-bold text-slate-500 -mt-1">
+                      {subtitle}
+                    </span>
+                  )}
                 </div>
               </a>
             </div>

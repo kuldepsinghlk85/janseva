@@ -54,7 +54,7 @@ export default function AdminSidebar() {
     { id: 'activities', label: 'MLA Daily Activity', labelHi: 'दैनिक जन-गतिविधि प्रकाशक', icon: Calendar, badge: 'ENGINE', badgeColor: 'bg-emerald-600 text-white' },
     { id: 'master-data', label: 'Master Data & Excel Importer', labelHi: 'मास्टर डेटा व एक्सेल अपलोड', icon: MapPin, badge: 'EXCEL', badgeColor: 'bg-emerald-600 text-white' },
     { id: 'media-library', label: 'Media Library & Downloader', labelHi: 'मीडिया लाइब्रेरी (डाउनलोड/लिंक)', icon: Image, badge: 'MEDIA', badgeColor: 'bg-blue-600 text-white' },
-    { id: 'website-builder', label: 'Homepage Builder', labelHi: 'वेबसाइट बिल्डर', icon: Palette, badge: 'CMS' },
+    { id: 'website-builder', label: 'Theme & Master Layout', labelHi: 'थीम, लोगो व मास्टर लेआउट', icon: Palette, badge: 'WP THEME', badgeColor: 'bg-gradient-to-r from-purple-600 to-indigo-600 text-white' },
     { id: 'mobile-manager', label: 'Mobile App CMS', labelHi: 'मोबाइल ऐप व मेन्यू कंट्रोल', icon: Smartphone, badge: 'MOBILE CMS', badgeColor: 'bg-gradient-to-r from-orange-600 to-amber-600 text-white' },
     { id: 'hero-posters', label: 'Hero Poster Slider', labelHi: 'हीरो पोस्टर स्लाइडर (4-6)', icon: Layers, badge: 'SLIDER', badgeColor: 'bg-orange-600 text-white' },
     { id: 'media-changer', label: 'MLA Photo & Banner Manager', labelHi: 'विधायक फोटो व बैनर', icon: Image, badge: 'PHOTO' },

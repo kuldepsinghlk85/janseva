@@ -234,9 +234,9 @@
       }
     ],
     "branding": {
-      "primaryColor": "#ea580c",
-      "secondaryColor": "#16a34a",
-      "siteTitle": "जनसेवा इटावा - डिजिटल विधानसभा 200",
+      "primaryColor": "#1d4ed8",
+      "secondaryColor": "#0284c7",
+      "siteTitle": "जनसेवा इटावा 200",
       "slogan": "सेवा ही संकल्प, विकास ही लक्ष्य"
     },
     "stats": {
@@ -289,6 +289,56 @@
         "websiteMenu": true,
         "profile": true
       }
+    },
+    "modules": {
+      "topRibbon": true,
+      "headerMobileAppBtn": true,
+      "headerLoginBtn": true,
+      "headerLangBtn": true,
+      "festivalBanner": true,
+      "officialMlaBanner": true,
+      "heroSlider": true,
+      "janSamvadSpotlight": true,
+      "metricsBar": true,
+      "featuredActivity": true,
+      "updatesAndSchemes": true,
+      "socialAndConstituency": true,
+      "knowYourConstituency": true,
+      "latestActivitiesAndMinisters": true,
+      "timelineAndTeam": true,
+      "citizenTestimonial": true,
+      "footerPanorama": true,
+      "floatingMobileSimulator": true,
+      "floatingQrModal": true
+    },
+    "theme": {
+      "preset": "saffron",
+      "primaryColor": "#ea580c",
+      "secondaryColor": "#16a34a",
+      "accentColor": "#f59e0b",
+      "navbarBg": "#ffffff",
+      "navbarText": "#0f172a",
+      "footerBg": "#0f172a",
+      "bodyBg": "#f8fafc",
+      "cardRadius": "rounded-xl",
+      "fontFamily": "Inter",
+      "headerStyle": "standard"
+    },
+    "header": {
+      "siteTitle": "जनसेवा इटावा",
+      "highlightWord": "इटावा",
+      "subtitle": "People • Development • Trust",
+      "tagline": "“मजबूत नेतृत्व, विकसित इटावा, समृद्ध भारत”",
+      "constituency": "जनसेवा इटावा (विधानसभा 200)",
+      "logoType": "icon",
+      "logoIcon": "🪷",
+      "logoImage": "",
+      "logoWidth": 44,
+      "headerLayout": "standard",
+      "showRibbon": true,
+      "showMobileAppBtn": true,
+      "showLoginBtn": true,
+      "showLangBtn": true
     }
   },
   "developmentWorks": [
@@ -1219,6 +1269,93 @@
     }
   ],
   "auditLogs": [
+    {
+      "id": "log_1789665684367_8k2h",
+      "timestamp": "2026-09-17T17:21:24.367Z",
+      "user": "Admin",
+      "action": "मास्टर लेआउट एवं थीम डिफ़ॉल्ट पर रीसेट किया गया",
+      "module": "Master Theme Manager",
+      "details": {},
+      "device": "Desktop / Chrome Windows 11"
+    },
+    {
+      "id": "log_1789665684349_roqw",
+      "timestamp": "2026-09-17T17:21:24.349Z",
+      "user": "Admin",
+      "action": "मॉड्यूल [metricsBar] को निष्क्रिय (OFF) किया गया",
+      "module": "Module Manager",
+      "details": {
+        "moduleKey": "metricsBar",
+        "state": false
+      },
+      "device": "Desktop / Chrome Windows 11"
+    },
+    {
+      "id": "log_1789665684333_ux66",
+      "timestamp": "2026-09-17T17:21:24.333Z",
+      "user": "Admin",
+      "action": "वेबसाइट हेडर व लोगो अपडेट किया गया: जनसेवा इटावा 200",
+      "module": "Header Branding",
+      "details": {
+        "siteTitle": "जनसेवा इटावा 200",
+        "highlightWord": "इटावा",
+        "subtitle": "People • Development • Trust",
+        "tagline": "“मजबूत नेतृत्व, विकसित इटावा, समृद्ध भारत”",
+        "constituency": "जनसेवा इटावा (विधानसभा 200)",
+        "logoType": "icon",
+        "logoIcon": "🪷",
+        "logoImage": "",
+        "logoWidth": 44,
+        "headerLayout": "standard",
+        "showRibbon": true,
+        "showMobileAppBtn": true,
+        "showLoginBtn": true,
+        "showLangBtn": true
+      },
+      "device": "Desktop / Chrome Windows 11"
+    },
+    {
+      "id": "log_1789665684308_2pzp",
+      "timestamp": "2026-09-17T17:21:24.308Z",
+      "user": "Admin",
+      "action": "वेबसाइट थीम अपडेट की गई: royal_blue (#1d4ed8)",
+      "module": "Master Theme Manager",
+      "details": {
+        "preset": "royal_blue",
+        "primaryColor": "#1d4ed8",
+        "secondaryColor": "#0284c7",
+        "accentColor": "#f59e0b",
+        "navbarBg": "#ffffff",
+        "navbarText": "#0f172a",
+        "footerBg": "#0f172a",
+        "bodyBg": "#f8fafc",
+        "cardRadius": "rounded-xl",
+        "fontFamily": "Inter",
+        "headerStyle": "standard"
+      },
+      "device": "Desktop / Chrome Windows 11"
+    },
+    {
+      "id": "log_1789665366920_lc4m",
+      "timestamp": "2026-09-17T17:16:06.920Z",
+      "user": "Admin",
+      "action": "मास्टर लेआउट एवं थीम डिफ़ॉल्ट पर रीसेट किया गया",
+      "module": "Master Theme Manager",
+      "details": {},
+      "device": "Desktop / Chrome Windows 11"
+    },
+    {
+      "id": "log_1789665366905_t3wq",
+      "timestamp": "2026-09-17T17:16:06.905Z",
+      "user": "Admin",
+      "action": "मॉड्यूल [topRibbon] को निष्क्रिय (OFF) किया गया",
+      "module": "Module Manager",
+      "details": {
+        "moduleKey": "topRibbon",
+        "state": false
+      },
+      "device": "Desktop / Chrome Windows 11"
+    },
     {
       "id": "log_1789648571710_yory",
       "timestamp": "2026-09-17T12:36:11.710Z",
