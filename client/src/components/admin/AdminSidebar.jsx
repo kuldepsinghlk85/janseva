@@ -73,7 +73,7 @@ export default function AdminSidebar() {
     badgeColor: 'bg-orange-600 text-white',
     items: [
       { id: 'dashboard', label: 'Dashboard Overview', labelHi: 'मुख्य डैशबोर्ड', icon: LayoutDashboard },
-      { id: 'all-in-one-post', label: 'All-in-One Post Creator', labelHi: 'ऑल इन वन पोस्ट क्रिएटर', icon: Send, badge: 'NEW', badgeColor: 'bg-gradient-to-r from-pink-600 to-rose-600 text-white' },
+      { id: 'all-in-one-post', label: 'All-in-One Post (ऑल इन वन पोस्ट)', labelHi: 'ऑल इन वन पोस्ट क्रिएटर', icon: Send, badge: 'NEW', badgeColor: 'bg-gradient-to-r from-pink-600 to-rose-600 text-white' },
       { id: 'activities', label: 'MLA Daily Activities', labelHi: 'दैनिक जन-गतिविधि प्रकाशक', icon: Calendar, badge: 'ENGINE', badgeColor: 'bg-emerald-600 text-white' },
       { id: 'hero-posters', label: 'Hero Posters Slider', labelHi: 'हीरो पोस्टर स्लाइडर', icon: Layers, badge: 'SLIDER', badgeColor: 'bg-orange-600 text-white' },
       { id: 'media-changer', label: 'MLA Photo & Banner', labelHi: 'विधायक फोटो व बैनर', icon: Image, badge: 'PHOTO' },

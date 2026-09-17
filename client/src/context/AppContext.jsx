@@ -73,7 +73,7 @@ export const SYSTEM_ROLES = [
     phone: '9839001122',
     primaryTab: 'master-data',
     allowedTabs: [
-      'master-data', 'people-directory', 'location-intelligence',
+      'all-in-one-post', 'master-data', 'people-directory', 'location-intelligence',
       'media-library', 'website-builder', 'festival-manager', 'blogs', 'news', 'social', 'mobile-manager'
     ],
     features: [
@@ -98,7 +98,7 @@ export const SYSTEM_ROLES = [
     phone: '9451122334',
     primaryTab: 'citizens',
     allowedTabs: [
-      'citizens', 'people-directory', 'activities', 'events', 'members'
+      'all-in-one-post', 'citizens', 'people-directory', 'activities', 'events', 'members'
     ],
     features: [
       'घर-घर जाकर नए नागरिकों व सदस्यों का त्वरित मोबाइल पंजीकरण',
@@ -147,7 +147,27 @@ const PAGE_HASH_MAP = {
 };
 
 export function AppProvider({ children }) {
-  const [viewMode, setViewMode] = useState('public'); // 'public' | 'admin'
+  const [viewMode, setViewMode] = useState(() => {
+    if (typeof window !== 'undefined') {
+      const pathname = window.location.pathname.toLowerCase();
+      const hash = window.location.hash.toLowerCase();
+      const searchParams = new URLSearchParams(window.location.search);
+      if (
+        pathname === '/admin' ||
+        pathname.startsWith('/admin') ||
+        hash === '#admin' ||
+        hash.startsWith('#admin/') ||
+        hash.startsWith('#admin-') ||
+        hash.includes('all-in-one') ||
+        searchParams.get('tab') ||
+        searchParams.get('adminTab')
+      ) {
+        return 'admin';
+      }
+    }
+    return 'public';
+  });
+
   const [publicPage, setPublicPage] = useState(() => {
     if (typeof window !== 'undefined') {
       if (window.location.pathname === '/mobile' || window.location.pathname.startsWith('/mobile')) {
@@ -158,7 +178,28 @@ export function AppProvider({ children }) {
     }
     return 'home';
   });
-  const [adminTab, setAdminTab] = useState('dashboard');
+
+  const [adminTab, setAdminTabState] = useState(() => {
+    if (typeof window !== 'undefined') {
+      const hash = window.location.hash.toLowerCase();
+      const searchParams = new URLSearchParams(window.location.search);
+      const tabParam = searchParams.get('tab') || searchParams.get('adminTab');
+      if (tabParam) return tabParam;
+      if (hash.includes('all-in-one')) return 'all-in-one-post';
+      if (hash.startsWith('#admin/')) return hash.replace('#admin/', '');
+      if (hash.startsWith('#admin-')) return hash.replace('#admin-', '');
+    }
+    return 'dashboard';
+  });
+
+  const setAdminTab = (tab) => {
+    setAdminTabState(tab);
+    if (typeof window !== 'undefined') {
+      if (window.location.hash !== `#admin/${tab}`) {
+        window.location.hash = `#admin/${tab}`;
+      }
+    }
+  };
   const [showMobileSimulator, setShowMobileSimulator] = useState(false);
   const [showQrModal, setShowQrModal] = useState(false);
   const [showLoginModal, setShowLoginModal] = useState(false);
@@ -255,8 +296,11 @@ export function AppProvider({ children }) {
 
   useEffect(() => {
     const syncRouteWithLocation = () => {
-      const pathname = window.location.pathname;
-      const hash = window.location.hash;
+      if (typeof window === 'undefined') return;
+      const pathname = window.location.pathname.toLowerCase();
+      const hash = window.location.hash.toLowerCase();
+      const searchParams = new URLSearchParams(window.location.search);
+      const tabParam = searchParams.get('tab') || searchParams.get('adminTab');
 
       if (pathname === '/mobile' || pathname.startsWith('/mobile') || hash === '#mobile' || hash === '#mobile-page') {
         setViewMode('public');
@@ -264,7 +308,34 @@ export function AppProvider({ children }) {
         return;
       }
 
+      if (
+        pathname === '/admin' ||
+        pathname.startsWith('/admin') ||
+        hash === '#admin' ||
+        hash.startsWith('#admin/') ||
+        hash.startsWith('#admin-') ||
+        hash.includes('all-in-one') ||
+        tabParam
+      ) {
+        setViewMode('admin');
+        let targetTab = 'dashboard';
+        if (tabParam) {
+          targetTab = tabParam;
+        } else if (hash.includes('all-in-one')) {
+          targetTab = 'all-in-one-post';
+        } else if (hash.startsWith('#admin/')) {
+          targetTab = hash.replace('#admin/', '');
+        } else if (hash.startsWith('#admin-')) {
+          targetTab = hash.replace('#admin-', '');
+        }
+        if (targetTab && targetTab !== 'admin') {
+          setAdminTabState(targetTab);
+        }
+        return;
+      }
+
       const targetPage = PAGE_HASH_MAP[hash] || 'home';
+      setViewMode('public');
       setPublicPage(targetPage);
     };
 

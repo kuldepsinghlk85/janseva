@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import { useApp } from '../../context/AppContext';
-import { Search, Globe, Bell, ExternalLink, Key, Smartphone, Sparkles, Check, ChevronRight } from 'lucide-react';
+import { Search, Globe, Bell, ExternalLink, Key, Smartphone, Sparkles, Check, ChevronRight, Send } from 'lucide-react';
 
 export default function AdminHeader() {
   const {
     setViewMode,
     navigateToPublicPage,
     adminTab,
+    setAdminTab,
     activeAdminRole,
     setActiveAdminRole,
     SYSTEM_ROLES,
@@ -95,8 +96,23 @@ export default function AdminHeader() {
         </div>
 
         {/* Right Tools */}
-        <div className="flex items-center space-x-4">
+        <div className="flex items-center space-x-3">
           
+          {/* Direct Shortcut to All-in-One Post Creator */}
+          <button
+            onClick={() => setAdminTab('all-in-one-post')}
+            className={`flex items-center space-x-1.5 px-3 py-1.5 rounded-xl text-xs font-bold transition shadow-sm cursor-pointer ${
+              adminTab === 'all-in-one-post'
+                ? 'bg-gradient-to-r from-pink-600 to-rose-600 text-white shadow-md shadow-pink-500/30 font-black ring-2 ring-pink-400/40'
+                : 'bg-pink-50 text-pink-700 hover:bg-pink-100 border border-pink-200'
+            }`}
+            title="ऑल इन वन पोस्ट क्रिएटर खोलें"
+          >
+            <Send className="w-3.5 h-3.5 text-pink-600" />
+            <span>ऑल इन वन पोस्ट</span>
+            <span className="text-[9px] px-1.5 py-0.2 rounded-full bg-pink-600 text-white uppercase font-black tracking-wider">NEW</span>
+          </button>
+
           {/* View Website Button */}
           <button
             onClick={() => setViewMode('public')}

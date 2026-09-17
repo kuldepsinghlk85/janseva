@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import { useApp } from '../../context/AppContext';
-import { Search, Smartphone, ShieldCheck, UserPlus, Menu, X, ChevronDown, Globe, Check, User } from 'lucide-react';
+import { Search, Smartphone, ShieldCheck, UserPlus, Menu, X, ChevronDown, Globe, Check, User, Send } from 'lucide-react';
 import SearchModal from './SearchModal';
 
 export default function Navbar() {
   const {
     setViewMode,
+    setAdminTab,
     setShowMobileSimulator,
     showMobileSimulator,
     setShowQrModal,
@@ -140,6 +141,19 @@ export default function Navbar() {
                   >
                     <Smartphone className="w-3.5 h-3.5 text-orange-600" />
                     <span className="hidden sm:inline">{showMobileSimulator ? 'Hide Mobile' : 'Mobile View'}</span>
+                  </button>
+
+                  {/* All-in-One Post Direct Access */}
+                  <button
+                    onClick={() => {
+                      setViewMode('admin');
+                      setAdminTab('all-in-one-post');
+                    }}
+                    className="flex items-center space-x-1 px-3 py-1 rounded-full text-xs font-bold bg-gradient-to-r from-pink-600 to-rose-600 hover:from-pink-500 hover:to-rose-500 text-white transition shadow-sm cursor-pointer"
+                    title="ऑल इन वन पोस्ट क्रिएटर खोलें"
+                  >
+                    <Send className="w-3.5 h-3.5" />
+                    <span>ऑल इन वन पोस्ट</span>
                   </button>
 
                   {/* Admin CMS Switch */}
