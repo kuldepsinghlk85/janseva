@@ -1270,6 +1270,33 @@
   ],
   "auditLogs": [
     {
+      "id": "log_1789671659202_txbg",
+      "timestamp": "2026-09-17T19:00:59.202Z",
+      "user": "श्रीमती सरिता भदौरिया",
+      "action": "Created All-in-One Social Post: \"बच्चों में  किताबें \"",
+      "module": "All-in-One Post Creator",
+      "details": {
+        "id": "aio_1789671659198_rsnn",
+        "title": "बच्चों में  किताबें ",
+        "category": "सरकारी योजना",
+        "rawText": "",
+        "htmlContent": "",
+        "videoUrl": "",
+        "videoFile": "",
+        "imageUrl": "/uploads/images/738244415_2044742999485522_621165868717354647_n-1789671592617-149107.jpeg",
+        "leader": {
+          "name": "श्रीमती सरिता भदौरिया",
+          "title": "विधायक, इटावा विधानसभा (200)",
+          "constituency": "इटावा (200)",
+          "photo": "/uploads/images/sarita_bhadauriya-1789523047198-607565.png"
+        },
+        "variants": {},
+        "status": "published",
+        "createdAt": "2026-09-17T19:00:59.198Z"
+      },
+      "device": "Desktop / Chrome Windows 11"
+    },
+    {
       "id": "log_1789669469438_ru0e",
       "timestamp": "2026-09-17T18:24:29.438Z",
       "user": "Admin",
@@ -3964,6 +3991,25 @@
   ],
   "activeLeaderId": "leader-sarita-etawah-200",
   "allInOnePosts": [
+    {
+      "id": "aio_1789671659198_rsnn",
+      "title": "बच्चों में  किताबें ",
+      "category": "सरकारी योजना",
+      "rawText": "",
+      "htmlContent": "",
+      "videoUrl": "",
+      "videoFile": "",
+      "imageUrl": "/uploads/images/738244415_2044742999485522_621165868717354647_n-1789671592617-149107.jpeg",
+      "leader": {
+        "name": "श्रीमती सरिता भदौरिया",
+        "title": "विधायक, इटावा विधानसभा (200)",
+        "constituency": "इटावा (200)",
+        "photo": "/uploads/images/sarita_bhadauriya-1789523047198-607565.png"
+      },
+      "variants": {},
+      "status": "published",
+      "createdAt": "2026-09-17T19:00:59.198Z"
+    },
     {
       "id": "aio_sample_1",
       "title": "इटावा विधानसभा में 50 किमी नवीन सड़क निर्माण एवं नवीनीकरण कार्य का भूमिपूजन",
