@@ -1270,6 +1270,44 @@
   ],
   "auditLogs": [
     {
+      "id": "log_1789669469438_ru0e",
+      "timestamp": "2026-09-17T18:24:29.438Z",
+      "user": "Admin",
+      "action": "Deleted All-in-One Social Post id: aio_1789669464735_nouw",
+      "module": "All-in-One Post Creator",
+      "details": {
+        "id": "aio_1789669464735_nouw"
+      },
+      "device": "Desktop / Chrome Windows 11"
+    },
+    {
+      "id": "log_1789669464737_0lwg",
+      "timestamp": "2026-09-17T18:24:24.737Z",
+      "user": "श्रीमती सरिता भदौरिया",
+      "action": "Created All-in-One Social Post: \"इटावा सदर में स्वास्थ्य शिविर का सफल आयोजन\"",
+      "module": "All-in-One Post Creator",
+      "details": {
+        "id": "aio_1789669464735_nouw",
+        "title": "इटावा सदर में स्वास्थ्य शिविर का सफल आयोजन",
+        "category": "जनसंवाद",
+        "rawText": "",
+        "htmlContent": "",
+        "videoUrl": "https://youtube.com/watch?v=sample123",
+        "videoFile": "",
+        "imageUrl": "",
+        "leader": {
+          "name": "श्रीमती सरिता भदौरिया",
+          "title": "विधायक, इटावा विधानसभा (200)",
+          "constituency": "इटावा (200)",
+          "photo": "/uploads/images/sarita_bhadauriya-1789523047198-607565.png"
+        },
+        "variants": {},
+        "status": "published",
+        "createdAt": "2026-09-17T18:24:24.735Z"
+      },
+      "device": "Desktop / Chrome Windows 11"
+    },
+    {
       "id": "log_1789668314857_a4oy",
       "timestamp": "2026-09-17T18:05:14.857Z",
       "user": "Super Admin",
@@ -3924,5 +3962,63 @@
       "status": "ready"
     }
   ],
-  "activeLeaderId": "leader-sarita-etawah-200"
+  "activeLeaderId": "leader-sarita-etawah-200",
+  "allInOnePosts": [
+    {
+      "id": "aio_sample_1",
+      "title": "इटावा विधानसभा में 50 किमी नवीन सड़क निर्माण एवं नवीनीकरण कार्य का भूमिपूजन",
+      "category": "विकास कार्य",
+      "rawText": "इटावा विधानसभा के ग्रामीण अंचलों को मुख्य राजमार्ग से जोड़ने हेतु आज ₹42 करोड़ की लागत से 50 किलोमीटर लंबी नई सड़कों के निर्माण कार्य का विधिवत भूमिपूजन किया गया। क्षेत्रवासियों की वर्षों पुरानी मांग आज पूरी हो रही है। विकास ही हमारा संकल्प और जनसेवा ही हमारा ध्येय है।",
+      "htmlContent": "<p>इटावा विधानसभा के ग्रामीण अंचलों को मुख्य राजमार्ग से जोड़ने हेतु आज <strong>₹42 करोड़</strong> की लागत से <strong>50 किलोमीटर लंबी नई सड़कों</strong> के निर्माण कार्य का विधिवत भूमिपूजन किया गया।</p><p>क्षेत्रवासियों की वर्षों पुरानी मांग आज पूरी हो रही है। <em>विकास ही हमारा संकल्प और जनसेवा ही हमारा ध्येय है।</em></p>",
+      "videoUrl": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+      "videoFile": "",
+      "imageUrl": "/uploads/images/sarita_bhadauriya-1789523047198-607565.png",
+      "leader": {
+        "name": "श्रीमती सरिता भदौरिया",
+        "title": "विधायक, इटावा विधानसभा (200)",
+        "constituency": "इटावा (200)",
+        "photo": "/uploads/images/sarita_bhadauriya-1789523047198-607565.png"
+      },
+      "variants": {
+        "facebook": {
+          "text": "॥ विकास की अविरल धारा - इटावा विधानसभा ॥\n\nइटावा विधानसभा के ग्रामीण अंचलों को मुख्य राजमार्ग से जोड़ने हेतु आज ₹42 करोड़ की लागत से 50 किलोमीटर लंबी नई सड़कों के निर्माण कार्य का विधिवत भूमिपूजन किया गया।\n\nक्षेत्रवासियों की वर्षों पुरानी मांग आज पूरी हो रही है। विकास ही हमारा संकल्प और जनसेवा ही हमारा ध्येय है।\n\n📍 स्थान: इटावा विधानसभा (200)\n📞 जनसेवा हेल्पलाइन: +91 98765 43210\n\n#VikasKiRaftar #EtawahDevelopment #SaritaBhadauria #BJP #JanSeva",
+          "hashtags": [
+            "#VikasKiRaftar",
+            "#EtawahDevelopment",
+            "#SaritaBhadauria",
+            "#BJP",
+            "#JanSeva"
+          ]
+        },
+        "twitter": {
+          "text": "इटावा (200) में ₹42 करोड़ की लागत से 50 KM लंबी सड़कों का भूमिपूजन संपन्न। ग्रामीण संपर्क को मिलेगी नई गति। विकास ही संकल्प, जनसेवा ही ध्येय! 🛣️ #Etawah #VikasKiRaftar #BJP",
+          "hashtags": [
+            "#Etawah",
+            "#VikasKiRaftar",
+            "#BJP"
+          ],
+          "charCount": 168
+        },
+        "instagram": {
+          "text": "🛣️ विकास की नई उड़ान! 🛣️\n\nइटावा विधानसभा के ग्रामीण अंचलों को मुख्य राजमार्ग से जोड़ने हेतु आज ₹42 करोड़ की लागत से 50 किलोमीटर लंबी सड़कों का भूमिपूजन हुआ।\n\n✅ 50 KM नई सड़कें\n✅ 18+ गांवों को डायरेक्ट कनेक्टिविटी\n✅ ₹42 करोड़ की लागत\n\n🔗 अधिक जानकारी हेतु लिंक बायो में देखें!\n.\n.\n.\n#Etawah #SaritaBhadauria #Development #BJP4UP #Infrastructure #RoadConstruction #JanSeva #UttarPradesh #TransformingUP",
+          "hashtags": [
+            "#Etawah",
+            "#SaritaBhadauria",
+            "#Development",
+            "#BJP4UP",
+            "#Infrastructure",
+            "#JanSeva"
+          ]
+        },
+        "whatsapp": {
+          "text": "*📢 इटावा विधानसभा विकास समाचार*\n\n*५० किमी नवीन सड़कों का भव्य भूमिपूजन!*\n\nइटावा विधानसभा के ग्रामीण अंचलों को मुख्य राजमार्ग से जोड़ने हेतु आज *₹42 करोड़* की लागत से 50 किलोमीटर लंबी नई सड़कों का निर्माण कार्य आरंभ हुआ।\n\n📍 *विधानसभा:* इटावा सदर (200)\n🏛️ *जनप्रतिनिधि:* श्रीमती सरिता भदौरिया (विधायक)\n🌐 *वेबसाइट:* https://janseva-etawah200.org\n\n_जनसेवा ही सच्ची राजनीति है।_"
+        },
+        "linkedin": {
+          "text": "Delighted to inaugurate the ground-breaking ceremony for 50 km of rural-to-highway connectivity roads in Etawah Constituency (200) with a sanction of ₹42 Crores.\n\nRobust infrastructure is the bedrock of economic self-reliance. Committed to delivering world-class connectivity to every citizen.\n\n#InfrastructureDevelopment #Etawah #PublicService #GoodGovernance"
+        }
+      },
+      "status": "published",
+      "createdAt": "2026-09-16T18:24:12.787Z"
+    }
+  ]
 }

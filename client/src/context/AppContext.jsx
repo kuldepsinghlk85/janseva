@@ -19,7 +19,7 @@ export const SYSTEM_ROLES = [
     phone: '9450000001',
     primaryTab: 'dashboard',
     allowedTabs: [
-      'dashboard', 'people-directory', 'location-intelligence', 'activities',
+      'dashboard', 'all-in-one-post', 'people-directory', 'location-intelligence', 'activities',
       'master-data', 'media-library', 'website-builder', 'hero-posters',
       'media-changer', 'festival-manager', 'communication', 'social',
       'blogs', 'works', 'events', 'citizens', 'members', 'leaders',
@@ -47,7 +47,7 @@ export const SYSTEM_ROLES = [
     phone: '9415045678',
     primaryTab: 'dashboard',
     allowedTabs: [
-      'dashboard', 'activities', 'communication', 'works', 'events',
+      'dashboard', 'all-in-one-post', 'activities', 'communication', 'works', 'events',
       'hero-posters', 'citizens', 'leaders', 'analytics', 'people-directory'
     ],
     features: [
@@ -122,7 +122,7 @@ export const SYSTEM_ROLES = [
     phone: '9415123450',
     primaryTab: 'citizens',
     allowedTabs: [
-      'dashboard', 'citizens', 'communication', 'activities', 'works', 'audit', 'people-directory'
+      'dashboard', 'all-in-one-post', 'citizens', 'communication', 'activities', 'works', 'audit', 'people-directory'
     ],
     features: [
       'जनसंवाद समस्याओं की दैनिक जांच व सत्यापन',

@@ -24,6 +24,7 @@ import AdminHeroPosterManager from './AdminHeroPosterManager';
 import AdminLocationIntelligence from './AdminLocationIntelligence';
 import AdminPeopleDirectory from './AdminPeopleDirectory';
 import AdminMobileAppManager from './AdminMobileAppManager';
+import AdminAllInOnePostCreator from './AdminAllInOnePostCreator';
 
 export default function AdminLayout() {
   const { adminTab } = useApp();
@@ -32,6 +33,8 @@ export default function AdminLayout() {
     switch (adminTab) {
       case 'dashboard':
         return <AdminDashboard />;
+      case 'all-in-one-post':
+        return <AdminAllInOnePostCreator />;
       case 'people-directory':
         return <AdminPeopleDirectory />;
       case 'location-intelligence':

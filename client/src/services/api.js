@@ -344,7 +344,30 @@ export const api = {
       console.error('Upload Error:', err);
       return { success: false, message: err.message };
     }
+  },
+
+  // All-in-One Post Creator (ऑल इन वन पोस्ट क्रिएटर)
+  getAllInOnePosts: () => fetchJson('/posts/all-in-one'),
+  createAllInOnePost: (post, user = 'Admin') => fetchJson('/posts/all-in-one', { method: 'POST', body: JSON.stringify({ post, user }) }),
+  updateAllInOnePost: (id, post, user = 'Admin') => fetchJson(`/posts/all-in-one/${encodeURIComponent(id)}`, { method: 'PUT', body: JSON.stringify({ post, user }) }),
+  deleteAllInOnePost: (id, user = 'Admin') => fetchJson(`/posts/all-in-one/${encodeURIComponent(id)}`, { method: 'DELETE', body: JSON.stringify({ user }) }),
+  getAllInOneSocialConfig: () => fetchJson('/posts/all-in-one/social-config'),
+  updateAllInOneSocialConfig: (config, user = 'Admin') => fetchJson('/posts/all-in-one/social-config', { method: 'PUT', body: JSON.stringify({ config, user }) }),
+  uploadVideoFile: async (file) => {
+    const formData = new FormData();
+    formData.append('file', file);
+    try {
+      const res = await fetch(`${API_BASE}/upload`, {
+        method: 'POST',
+        body: formData
+      });
+      return await res.json();
+    } catch (err) {
+      console.error('Video Upload Error:', err);
+      return { success: false, message: err.message };
+    }
   }
 };
+
 
 
