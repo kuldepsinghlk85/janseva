@@ -1,0 +1,161 @@
+const fs = require('fs');
+const path = require('path');
+
+const filePath = path.join(__dirname, 'gpsMaster.json');
+
+const initialGpsData = [
+  {
+    id: 1,
+    locationType: "mla_office",
+    title: "MLA Central Camp Office",
+    category: "Administrative",
+    address: "Civil Lines, Near Collectorate, Etawah",
+    latitude: "26.7810",
+    longitude: "79.0305",
+    description: "Central constituency office for public grievances and daily meetings",
+    contactPerson: "Camp Incharge",
+    phone: "05688-250001",
+    icon: "office"
+  },
+  {
+    id: 2,
+    locationType: "village",
+    title: "Rampur Village Center",
+    category: "Village",
+    address: "Village Rampur, Barhpura",
+    latitude: "26.7850",
+    longitude: "79.0210",
+    villageId: 1,
+    description: "Model village under Gramodaya Yojna",
+    icon: "village"
+  },
+  {
+    id: 3,
+    locationType: "booth",
+    title: "Booth 101 - Primary School Rampur",
+    category: "Polling Station",
+    address: "Primary School Rampur, Barhpura Block",
+    latitude: "26.7852",
+    longitude: "79.0215",
+    boothNumber: "101",
+    villageId: 1,
+    icon: "booth"
+  },
+  {
+    id: 4,
+    locationType: "development",
+    title: "CC Road & Drainage Construction",
+    category: "Infrastructure",
+    address: "Main Basti, Aarazi Jadhonpur",
+    latitude: "26.7620",
+    longitude: "79.0110",
+    villageId: 2,
+    status: "Completed",
+    budget: "₹ 14.5 Lakhs",
+    icon: "development"
+  },
+  {
+    id: 5,
+    locationType: "development",
+    title: "High-Mast Solar Lighting Project",
+    category: "Renewable Energy",
+    address: "Chauraha, Ajabpur Jhingupur",
+    latitude: "26.7710",
+    longitude: "78.9950",
+    villageId: 3,
+    status: "Completed",
+    budget: "₹ 6.2 Lakhs",
+    icon: "development"
+  },
+  {
+    id: 6,
+    locationType: "mla_visit",
+    title: "Jan Chaupal & Grievance Redressal",
+    category: "Public Outreach",
+    address: "Panchayat Bhavan, Udi",
+    latitude: "26.7315",
+    longitude: "78.9405",
+    villageId: 4,
+    visitDate: "2025-11-14",
+    status: "Completed",
+    icon: "visit"
+  },
+  {
+    id: 7,
+    locationType: "development",
+    title: "Sub-Health Center Upgrade",
+    category: "Healthcare",
+    address: "Main Road, Ahladpur",
+    latitude: "26.8410",
+    longitude: "79.1120",
+    villageId: 5,
+    status: "In Progress",
+    budget: "₹ 28.0 Lakhs",
+    icon: "development"
+  },
+  {
+    id: 8,
+    locationType: "development",
+    title: "Community Hall (Barat Ghar)",
+    category: "Community",
+    address: "Near Pond, Akbarpur",
+    latitude: "26.8520",
+    longitude: "79.1230",
+    villageId: 6,
+    status: "Sanctioned",
+    budget: "₹ 35.0 Lakhs",
+    icon: "development"
+  },
+  {
+    id: 9,
+    locationType: "development",
+    title: "Piped Drinking Water Over-Head Tank (JJM)",
+    category: "Drinking Water",
+    address: "Amritpur Village North",
+    latitude: "26.8330",
+    longitude: "79.1410",
+    villageId: 7,
+    status: "In Progress",
+    budget: "₹ 75.0 Lakhs",
+    icon: "development"
+  },
+  {
+    id: 10,
+    locationType: "development",
+    title: "Panchayat Sachivalaya Digital Center",
+    category: "E-Governance",
+    address: "Gram Panchayat Atirajpur",
+    latitude: "26.9610",
+    longitude: "79.0310",
+    villageId: 8,
+    status: "Completed",
+    budget: "₹ 18.5 Lakhs",
+    icon: "development"
+  }
+];
+
+let gpsPoints = [...initialGpsData];
+
+try {
+  if (fs.existsSync(filePath)) {
+    const data = fs.readFileSync(filePath, 'utf8');
+    gpsPoints = JSON.parse(data);
+  } else {
+    fs.writeFileSync(filePath, JSON.stringify(initialGpsData, null, 2), 'utf8');
+  }
+} catch (err) {
+  console.error('Error loading gpsMaster.json:', err);
+}
+
+function saveGpsPoints() {
+  try {
+    fs.writeFileSync(filePath, JSON.stringify(gpsPoints, null, 2), 'utf8');
+  } catch (err) {
+    console.error('Error saving gpsMaster.json:', err);
+  }
+}
+
+module.exports = {
+  gpsPoints,
+  saveGpsPoints
+};

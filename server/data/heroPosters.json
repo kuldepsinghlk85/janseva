@@ -1,0 +1,82 @@
+{
+  "settings": {
+    "autoSlide": true,
+    "intervalSeconds": 4.5,
+    "maxVisible": 6,
+    "showOnHero": true
+  },
+  "posters": [
+    {
+      "id": "poster-1",
+      "title": "राष्ट्रीय पर्यटन दिवस",
+      "subtitle": "की सभी को हार्दिक बधाई एवं शुभकामनाएं",
+      "category": "त्यौहार व विशेष दिवस",
+      "image": "/images/posters/poster_tourism_day.png",
+      "caption": "इटावा के ऐतिहासिक धरोहरों, मंदिरों व लायन सफारी के संरक्षण एवं पर्यटन विकास का संकल्प",
+      "date": "2026-09-16",
+      "active": true,
+      "order": 1,
+      "shares": 2450
+    },
+    {
+      "id": "poster-2",
+      "title": "कैबिनेट के महत्वपूर्ण निर्णय",
+      "subtitle": "परिषदीय प्राथमिक विद्यालय बनेंगे स्मार्ट स्कूल",
+      "category": "शासनादेश व कैबिनेट निर्णय",
+      "image": "/images/posters/poster_cabinet_smart_school.jpg",
+      "caption": "₹300 करोड़ की लागत से 14,429 प्राथमिक विद्यालय स्मार्ट स्कूल के रूप में होंगे विकसित",
+      "date": "2026-09-15",
+      "active": true,
+      "order": 2,
+      "shares": 1820
+    },
+    {
+      "id": "poster-3",
+      "title": "प्रधानमंत्री किसान सम्मान निधि योजना",
+      "subtitle": "अन्नदाता किसानों के खाते में सम्मान राशि का हस्तांतरण",
+      "category": "सरकारी योजना",
+      "image": "/images/posters/poster_kisan_samman.jpg",
+      "caption": "इटावा विधानसभा के 85,000+ किसान परिवारों को सीधा आर्थिक संबल",
+      "date": "2026-09-12",
+      "active": true,
+      "order": 3,
+      "shares": 1290
+    },
+    {
+      "id": "poster-4",
+      "title": "गणेश चतुर्थी व पावन पर्व",
+      "subtitle": "समस्त इटावा वासियों को अनंत मंगलकामनाएं",
+      "category": "त्यौहार व विशेष दिवस",
+      "image": "/images/posters/poster_ganesh_utsav.png",
+      "caption": "विघ्नहर्ता भगवान श्री गणेश सभी के जीवन में सुख, शांति एवं समृद्धि प्रदान करें",
+      "date": "2026-09-10",
+      "active": true,
+      "order": 4,
+      "shares": 3100
+    },
+    {
+      "id": "poster-5",
+      "title": "इटावा सफारी पार्क व पर्यावरण संरक्षण",
+      "subtitle": "हरित व विकसित इटावा हमारा संकल्प",
+      "category": "विकास कार्य व धरोहर",
+      "image": "/images/posters/poster_safari_etawah.png",
+      "caption": "एशिया के सबसे बड़े सफारी पार्कों में शुमार इटावा सफारी को मिला नया विस्तार",
+      "date": "2026-09-05",
+      "active": true,
+      "order": 5,
+      "shares": 980
+    },
+    {
+      "id": "poster-6",
+      "title": "इटावा विधानसभा विकास संकल्प",
+      "subtitle": "नए संपर्क मार्ग व पुलों का लोकार्पण",
+      "category": "विकास कार्य व लोकार्पण",
+      "image": "/images/posters/poster_vikas_patrika.jpg",
+      "caption": "ग्रामीण अंचलों को मुख्य राजमार्गों से जोड़ने वाले 12 नए मार्गों का निर्माण पूर्ण",
+      "date": "2026-09-01",
+      "active": true,
+      "order": 6,
+      "shares": 1540
+    }
+  ]
+}

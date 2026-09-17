@@ -1,0 +1,2968 @@
+{
+  "mla": {
+    "name": "श्रीमती सरिता भदौरिया",
+    "nameEn": "Smt. Sarita Bhadauria",
+    "title": "विधायक, इटावा विधानसभा (200)",
+    "constituency": "इटावा (200)",
+    "district": "इटावा",
+    "state": "उत्तर प्रदेश",
+    "party": "भारतीय जनता पार्टी (BJP)",
+    "slogans": [
+      "जनता की सेवा ही सच्ची राजनीति है।",
+      "सपना से सेवा विकास से विश्वास जनता का साथ",
+      "सेवा, संवाद, विकास हमारा संकल्प",
+      "एक विकसित, समृद्ध और सशक्त इटावा के लिए हम सब साथ हैं"
+    ],
+    "about": "श्रीमती सरिता भदौरिया उत्तर प्रदेश की 17वीं एवं 18वीं विधानसभा में इटावा विधानसभा (200) का प्रतिनिधित्व कर रही हैं। वे क्षेत्र के सर्वांगीण विकास, महिला सशक्तिकरण, युवाओं के उत्थान एवं किसान कल्याण के लिए सदैव समर्पित हैं। जनसेवा को अपना जीवन-ध्येय मानकर उन्होंने इटावा में सड़क, शिक्षा, स्वास्थ्य एवं पेयजल परियोजनाओं को नई दिशा दी है।",
+    "electionHistory": [
+      {
+        "year": "2022",
+        "election": "18वीं उत्तर प्रदेश विधानसभा",
+        "votes": "98,150",
+        "margin": "+17,342",
+        "result": "विजेता"
+      },
+      {
+        "year": "2017",
+        "election": "17वीं उत्तर प्रदेश विधानसभा",
+        "votes": "91,234",
+        "margin": "+17,342",
+        "result": "विजेता"
+      }
+    ],
+    "stats": {
+      "developmentWorks": 125,
+      "villagesCovered": 80,
+      "janSamvad": 350,
+      "socialPosts": 2000,
+      "registeredCitizens": 50000,
+      "activeVolunteers": 1200
+    },
+    "contact": {
+      "office": "विधायक कार्यालय, कलेक्ट्रेट रोड, इटावा, उत्तर प्रदेश - 206001",
+      "helpline": "+91 98765 43210",
+      "whatsapp": "+91 98765 43210",
+      "email": "mla.etawah200@janseva.org",
+      "website": "https://janseva-etawah200.org",
+      "instagram": "https://www.instagram.com/mlaetawah/?hl=en",
+      "facebook": "https://www.facebook.com/mlaetawah?mibextid=ZbWKwL&utm_source=ig&utm_medium=social&utm_content=link_in_bio"
+    },
+    "photo": "/uploads/images/sarita_bhadauriya-1789523047198-607565.png",
+    "image": "/uploads/images/sarita_bhadauriya-1789523047198-607565.png",
+    "banner": "/images/assets/official_bjp_mla_banner.jpg"
+  },
+  "settings": {
+    "activeTemplate": "public-connect",
+    "hero": {
+      "show": true,
+      "title": "विकास ही मेरी प्राथमिकता है,\nऔर जनता ही मेरी शक्ति।",
+      "signature": "श्रीमती सरिता भदौरिया",
+      "designation": "विधायक, इटावा विधानसभा (200)",
+      "saritaImage": "/uploads/images/sarita_bhadauriya-1789523047198-607565.png",
+      "modiImage": "/images/assets/modi_portrait.jpg",
+      "yogiImage": "/images/assets/yogi_portrait.jpg",
+      "modiQuote": "विकसित भारत का आधार है विकसित प्रदेश और सशक्त जिले",
+      "yogiQuote": "हर जिले का विकास हर गांव का उत्थान यही हमारी पहचान",
+      "ctaText": "हमारे क्षेत्र की यात्रा देखें",
+      "sloganBanner": "मजबूत नेतृत्व, विकसित इटावा, समृद्ध भारत",
+      "bgPanorama": "/images/assets/bottom_leaders_trio.jpg",
+      "user": "Admin (Super Admin)",
+      "officialBanner": "/images/assets/official_bjp_mla_banner.jpg",
+      "qrImage": "/images/assets/qr_code_clean.jpg",
+      "subtitle": "इटावा के सर्वांगीण विकास एवं जन-जन के कल्याण हेतु अहर्निश समर्पित",
+      "ctaPrimaryText": "जनसेवा से जुड़ें →",
+      "ctaSecondaryText": "हमारी कहानी देखें",
+      "bannerImage": "/images/media_1789490967602.jpg"
+    },
+    "festival": {
+      "active": false,
+      "selectedFestival": "ganesh_chaturthi",
+      "title": "गणेश चतुर्थी की हार्दिक शुभकामनाएं",
+      "message": "समस्त इटावा वासियों को गणेश चतुर्थी के पावन पर्व पर हार्दिक बधाई एवं अनंत मंगलकामनाएं।",
+      "bannerImage": "/images/assets/sarita_bhadauria_hero.jpg",
+      "startDate": "2026-10-28",
+      "endDate": "2026-11-03",
+      "autoRestore": true,
+      "presets": [
+        {
+          "id": "diwali",
+          "name": "दीपावली (Diwali)",
+          "banner": "/images/poli2.png",
+          "title": "दीपावली की हार्दिक शुभकामनाएं",
+          "message": "समस्त क्षेत्रवासियों को पावन प्रकाश पर्व दीपावली की हार्दिक बधाई।"
+        },
+        {
+          "id": "holi",
+          "name": "होली (Holi)",
+          "banner": "/images/poli1.png",
+          "title": "होली के पावन पर्व की शुभकामनाएं",
+          "message": "उमंग, उत्साह और आपसी भाईचारे के रंगोत्सव की हार्दिक बधाई।"
+        },
+        {
+          "id": "ganesh",
+          "name": "गणेश चतुर्थी (Ganesh Chaturthi)",
+          "banner": "/images/poli3.png",
+          "title": "गणेश चतुर्थी की हार्दिक शुभकामनाएं",
+          "message": "विघ्नहर्ता भगवान श्री गणेश सभी के कष्ट दूर कर सुख-समृद्धि प्रदान करें।"
+        },
+        {
+          "id": "independence",
+          "name": "स्वतंत्रता दिवस (Independence Day)",
+          "banner": "/images/poli4.png",
+          "title": "स्वतंत्रता दिवस की हार्दिक शुभकामनाएं",
+          "message": "विकसित भारत का संकल्प, समृद्ध उत्तर प्रदेश का संकल्प।"
+        },
+        {
+          "id": "navratri",
+          "name": "शारदीय नवरात्रि (Navratri)",
+          "banner": "/images/poli2.png",
+          "title": "शारदीय नवरात्रि की शुभकामनाएं",
+          "message": "मां आदिशक्ति की कृपा समस्त क्षेत्रवासियों पर बनी रहे।"
+        }
+      ],
+      "user": "Admin (Super Admin)"
+    },
+    "sections": [
+      {
+        "id": "hero-banner",
+        "name": "Hero Banner",
+        "nameHi": "मुख्य बैनर",
+        "enabled": true,
+        "order": 1
+      },
+      {
+        "id": "citizen-services",
+        "name": "Citizen Services",
+        "nameHi": "नागरिक सेवाएं एवं QR",
+        "enabled": true,
+        "order": 2
+      },
+      {
+        "id": "social-feed",
+        "name": "Social Media Feed",
+        "nameHi": "सोशल मीडिया अपडेट",
+        "enabled": true,
+        "order": 3
+      },
+      {
+        "id": "upcoming-events",
+        "name": "Upcoming Events",
+        "nameHi": "आगामी कार्यक्रम",
+        "enabled": true,
+        "order": 4
+      },
+      {
+        "id": "development-highlights",
+        "name": "Development Highlights",
+        "nameHi": "विकास कार्य झलकियां",
+        "enabled": true,
+        "order": 5
+      },
+      {
+        "id": "about-mla",
+        "name": "About MLA",
+        "nameHi": "विधायक परिचय",
+        "enabled": true,
+        "order": 6
+      },
+      {
+        "id": "latest-news",
+        "name": "Latest News",
+        "nameHi": "ताज़ा समाचार",
+        "enabled": true,
+        "order": 7
+      },
+      {
+        "id": "testimonial",
+        "name": "Testimonial",
+        "nameHi": "जनता के अनुभव",
+        "enabled": true,
+        "order": 8
+      },
+      {
+        "id": "leader-network",
+        "name": "Leader Network",
+        "nameHi": "मार्गदर्शक नेतृत्व",
+        "enabled": true,
+        "order": 9
+      },
+      {
+        "id": "blogs",
+        "name": "Blogs",
+        "nameHi": "ब्लॉग एवं लेख",
+        "enabled": true,
+        "order": 10
+      },
+      {
+        "id": "gallery",
+        "name": "Gallery",
+        "nameHi": "फोटो एवं वीडियो गैलरी",
+        "enabled": true,
+        "order": 11
+      }
+    ],
+    "templates": [
+      {
+        "id": "development-focus",
+        "name": "Development Focus",
+        "nameHi": "विकास केंद्रित होमपेज",
+        "desc": "सड़क, स्कूल, अस्पताल, पेयजल और आधारभूत संरचना पर विशेष ध्यान।"
+      },
+      {
+        "id": "public-connect",
+        "name": "Public Connect",
+        "nameHi": "जनसंवाद होमपेज",
+        "desc": "नागरिक संपर्क, समस्या निवारण, बैठकों और QR सदस्यता पर जोर।"
+      },
+      {
+        "id": "media-news",
+        "name": "Media & News",
+        "nameHi": "मीडिया एवं समाचार होमपेज",
+        "desc": "दैनिक समाचार कवरेज, प्रेस विज्ञप्तियां और मीडिया वीडियो।"
+      },
+      {
+        "id": "leadership-focus",
+        "name": "Political Leadership",
+        "nameHi": "राजनीतिक नेतृत्व होमपेज",
+        "desc": "पार्टी विचारधारा, राष्ट्रीय नेताओं के मार्गदर्शन और रैलियों का संकलन।"
+      },
+      {
+        "id": "complete-intelligence",
+        "name": "Complete Intelligence",
+        "nameHi": "समग्र इंटेलिजेंस होमपेज",
+        "desc": "लाइव मैप्स, विकास स्टेटस चार्ट और डेटा विज़ुअलाइज़ेशन युक्त डैशबोर्ड।"
+      }
+    ],
+    "branding": {
+      "primaryColor": "#ea580c",
+      "secondaryColor": "#16a34a",
+      "siteTitle": "जनसेवा इटावा - डिजिटल विधानसभा 200",
+      "slogan": "सेवा ही संकल्प, विकास ही लक्ष्य"
+    },
+    "stats": {
+      "developmentWorks": "125+",
+      "villagesCovered": "80+",
+      "population": "5.4 लाख+",
+      "socialPosts": "2,000+",
+      "janSamvad": "350+",
+      "activeMembers": "1,200+"
+    },
+    "mlaPhotoSchedule": {
+      "updateInterval": "weekly",
+      "intervalDays": 7,
+      "autoRotate": false,
+      "lastUpdated": "2026-09-16T01:44:10.565Z",
+      "nextScheduledUpdate": "2026-09-23T01:44:10.565Z",
+      "showOfficialBanner": true,
+      "officialBanner": "/images/assets/official_bjp_mla_banner.jpg"
+    },
+    "mobile": {
+      "appName": "जनसेवा इटावा 200",
+      "appTagline": "श्रीमती सरिता भदौरिया • आधिकारिक मोबाइल पोर्टल",
+      "helplinePhone": "05688250000",
+      "officialWhatsapp": "9876543210",
+      "slogan": "“जनता का विश्वास, हमारी सेवा का संकल्प”",
+      "showTopRoleSwitcher": true,
+      "showRoleCredentialsBtn": true,
+      "features": {
+        "heroProfile": true,
+        "quickCounters": true,
+        "janSamvadSpotlight": true,
+        "whatsappRegBox": true,
+        "dailyActivities": true,
+        "guidanceLeaders": true,
+        "governmentSchemes": true,
+        "developmentWorks": true,
+        "peopleDirectory": true,
+        "constituencyMap": true,
+        "socialMediaFeed": true,
+        "latestNews": true,
+        "festivalBanner": true,
+        "leadershipQuotes": true,
+        "websiteDrawer": true
+      },
+      "bottomTabs": {
+        "home": true,
+        "jansamvad": true,
+        "directory": true,
+        "works": true,
+        "websiteMenu": true,
+        "profile": true
+      }
+    }
+  },
+  "developmentWorks": [
+    {
+      "id": "work-1789503981338",
+      "title": "इटावा सदर महिला स्वयं सहायता समूह संवाद सम्मेलन",
+      "village": "इटावा सदर",
+      "block": "इटावा",
+      "category": "महिला सशक्तिकरण",
+      "department": "ग्राम्य विकास विभाग",
+      "budget": "₹ 25 लाख (अनुमानित)",
+      "status": "In Progress",
+      "date": "16 Sept 2026",
+      "coordinates": {
+        "lat": 26.78,
+        "lng": 79.02
+      },
+      "description": "इटावा सदर में आयोजित 'महिला स्वावलंबन एवं आजीविका सम्मेलन' में स्वयं सहायता समूह की कर्मठ बहनों से संवाद। प्रधानमंत्री आवास व मुद्रा योजना से जुड़कर आत्मनिर्भर बन रहीं हमारी माताएं व बहनें नए भारत की सशक्त तस्वीर प्रस्तुत कर रही हैं।",
+      "beforeImage": "/images/assets/work_women_shg.jpg",
+      "afterImage": "/images/assets/work_women_shg.jpg",
+      "photos": [
+        "/images/assets/work_women_shg.jpg"
+      ],
+      "impact": "सोशल मीडिया जनसंवाद से स्वीकृत विकास कार्य"
+    },
+    {
+      "id": "work-1",
+      "title": "ग्राम रामपुर में मुख्य संपर्क सड़क निर्माण कार्य",
+      "village": "रामपुर",
+      "block": "इटावा सदर",
+      "category": "सड़क एवं परिवहन",
+      "department": "लोक निर्माण विभाग (PWD)",
+      "budget": "₹ 2.45 करोड़",
+      "status": "Completed",
+      "date": "15 Sep 2026",
+      "coordinates": {
+        "lat": 26.782,
+        "lng": 79.025
+      },
+      "description": "रामपुर से मुख्य राजमार्ग को जोड़ने वाली 4.5 किमी डामरीकृत सड़क का निर्माण कार्य गुणवत्ता मानकों के अनुरूप पूर्ण हुआ। इससे 5 से अधिक मजरों के ग्रामीणों को बारहमासी आवागमन की सुविधा मिली है।",
+      "beforeImage": "/images/poli3.png",
+      "afterImage": "/images/assets/work_rampur_road.jpg",
+      "photos": [
+        "/images/assets/work_rampur_road.jpg"
+      ],
+      "impact": "8,500+ ग्रामीणों को सीधा लाभ"
+    },
+    {
+      "id": "work-2",
+      "title": "बकेवर में प्राथमिक विद्यालय परिसर का स्मार्ट कायाकल्प",
+      "village": "बकेवर",
+      "block": "बकेवर",
+      "category": "शिक्षा",
+      "department": "बेसिक शिक्षा परिषद",
+      "budget": "₹ 85 लाख",
+      "status": "Completed",
+      "date": "14 Sep 2026",
+      "coordinates": {
+        "lat": 26.667,
+        "lng": 79.185
+      },
+      "description": "ऑपरेशन कायाकल्प के अंतर्गत 8 नवीन स्मार्ट क्लासरूम, आधुनिक विज्ञान प्रयोगशाला, शुद्ध पेयजल आरओ संयत्र तथा बालक-बालिकाओं हेतु पृथक आधुनिक शौचालयों का निर्माण।",
+      "beforeImage": "/images/poli1.png",
+      "afterImage": "/images/assets/work_school_children.jpg",
+      "photos": [
+        "/images/assets/work_school_children.jpg"
+      ],
+      "impact": "450+ छात्र-छात्राओं को बेहतर शिक्षा"
+    },
+    {
+      "id": "work-3",
+      "title": "तकरोई में ग्रामीण पेयजल ओवरहेड टैंक एवं हर घर जल योजना",
+      "village": "तकरोई",
+      "block": "इटावा",
+      "category": "पेयजल",
+      "department": "जल निगम / जल जीवन मिशन",
+      "budget": "₹ 3.10 करोड़",
+      "status": "In Progress",
+      "date": "12 Sep 2026",
+      "coordinates": {
+        "lat": 26.755,
+        "lng": 79.08
+      },
+      "description": "250 केएल क्षमता के ओवरहेड जलाशय तथा 12 किमी पाइपलाइन बिछाने का कार्य 80% पूर्ण। आगामी 45 दिनों में प्रत्येक घर तक स्वच्छ पेयजल आपूर्ति प्रारंभ की जाएगी।",
+      "beforeImage": "/images/poli3.png",
+      "afterImage": "/images/assets/work_women_shg.jpg",
+      "photos": [
+        "/images/assets/work_women_shg.jpg"
+      ],
+      "impact": "1,200 परिवारों को स्वच्छ नल जल"
+    },
+    {
+      "id": "work-4",
+      "title": "पिलखर में प्राथमिक स्वास्थ्य केंद्र का उच्चीकरण व जन औषधि केंद्र",
+      "village": "पिलखर",
+      "block": "बकेवर",
+      "category": "स्वास्थ्य",
+      "department": "चिकित्सा एवं स्वास्थ्य विभाग",
+      "budget": "₹ 1.65 करोड़",
+      "status": "In Progress",
+      "date": "10 Sep 2026",
+      "coordinates": {
+        "lat": 26.69,
+        "lng": 79.13
+      },
+      "description": "20 बेडेड नवीन वार्ड, 24 घंटे आपातकालीन सेवा, आधुनिक प्रसव कक्ष और प्रधानमंत्री भारतीय जन औषधि केंद्र की स्थापना।",
+      "beforeImage": "/images/poli4.png",
+      "afterImage": "/images/assets/work_health_camp.jpg",
+      "photos": [
+        "/images/assets/work_health_camp.jpg"
+      ],
+      "impact": "15,000+ क्षेत्रीय आबादी को स्वास्थ्य लाभ"
+    },
+    {
+      "id": "work-5",
+      "title": "सैफई ब्लॉक में महिला स्वयं सहायता समूह सिलाई एवं हस्तशिल्प केंद्र",
+      "village": "सैफई",
+      "block": "सैफई",
+      "category": "महिला सशक्तिकरण",
+      "department": "राज्य ग्रामीण आजीविका मिशन",
+      "budget": "₹ 55 लाख",
+      "status": "Completed",
+      "date": "08 Sep 2026",
+      "coordinates": {
+        "lat": 26.96,
+        "lng": 78.96
+      },
+      "description": "क्षेत्र की महिलाओं को आत्मनिर्भर बनाने हेतु 50 आधुनिक सिलाई मशीनों व कंप्यूटर प्रशिक्षण केंद्र की स्थापना। उत्पादित सामानों को ई-मंडी से जोड़ने की व्यवस्था।",
+      "beforeImage": "/images/poli1.png",
+      "afterImage": "/images/poli4.png",
+      "photos": [
+        "/images/poli1.png",
+        "/images/poli4.png"
+      ],
+      "impact": "200+ ग्रामीण महिलाओं को स्वरोजगार"
+    },
+    {
+      "id": "work-6",
+      "title": "जसवंतनगर मार्ग पर 33/11 KV विद्युत उपकेंद्र क्षमता वृद्धि",
+      "village": "जसवंतनगर",
+      "block": "जसवंतनगर",
+      "category": "बिजली",
+      "department": "उत्तर प्रदेश पावर कारपोरेशन (UPPCL)",
+      "budget": "₹ 4.20 करोड़",
+      "status": "Approved",
+      "date": "02 Sep 2026",
+      "coordinates": {
+        "lat": 26.88,
+        "lng": 78.89
+      },
+      "description": "विद्युत आपूर्ति में लो-वोल्टेज एवं कटौती की समस्या से निजात दिलाने हेतु 10 MVA के अतिरिक्त पावर ट्रांसफार्मर की स्थापना व 33 KV नई लाइन।",
+      "beforeImage": "/images/poli6.png",
+      "afterImage": "/images/poli3.png",
+      "photos": [
+        "/images/poli6.png",
+        "/images/poli3.png"
+      ],
+      "impact": "22 गांवों को 20+ घंटे निर्बाध बिजली"
+    },
+    {
+      "id": "work-7",
+      "title": "उदी मोड़ पर किसान कल्याण केंद्र एवं मृदा परीक्षण प्रयोगशाला",
+      "village": "उदी",
+      "block": "इटावा",
+      "category": "कृषि एवं ग्रामीण विकास",
+      "department": "कृषि विभाग, उ.प्र.",
+      "budget": "₹ 1.10 करोड़",
+      "status": "In Progress",
+      "date": "28 Aug 2026",
+      "coordinates": {
+        "lat": 26.715,
+        "lng": 78.98
+      },
+      "description": "क्षेत्र के अन्नदाताओं को उन्नत बीज, उर्वरक, मृदा स्वास्थ्य कार्ड एवं आधुनिक कृषि यंत्रों की सब्सिडी सुविधा एक ही छत के नीचे उपलब्ध।",
+      "beforeImage": "/images/poli2.png",
+      "afterImage": "/images/poli1.png",
+      "photos": [
+        "/images/poli2.png",
+        "/images/poli1.png"
+      ],
+      "impact": "6,000+ किसानों को सीधा मार्गदर्शन"
+    },
+    {
+      "id": "work-8",
+      "title": "भरथना में प्रधानमंत्री आवास योजना (ग्रामीण) 150 आवास निर्माण",
+      "village": "भरथना",
+      "block": "भरथना",
+      "category": "सरकारी योजनाएँ",
+      "department": "ग्राम्य विकास विभाग",
+      "budget": "₹ 1.80 करोड़",
+      "status": "In Progress",
+      "date": "22 Aug 2026",
+      "coordinates": {
+        "lat": 26.75,
+        "lng": 79.24
+      },
+      "description": "पात्र गरीब परिवारों को पक्के छत का सपना साकार करने हेतु किस्त आवंटन एवं निर्माण की मॉनिटरिंग।",
+      "beforeImage": "/images/poli3.png",
+      "afterImage": "/images/poli4.png",
+      "photos": [
+        "/images/poli3.png",
+        "/images/poli4.png"
+      ],
+      "impact": "150 बेघर परिवारों को पक्का आवास"
+    },
+    {
+      "id": "work-9",
+      "title": "चकरनगर बीहड़ क्षेत्र में सौर ऊर्जा मिनी ग्रिड परियोजना",
+      "village": "चकरनगर",
+      "block": "चकरनगर",
+      "category": "बिजली",
+      "department": "UPNEDA (नेडा)",
+      "budget": "₹ 95 लाख",
+      "status": "Not Started",
+      "date": "18 Aug 2026",
+      "coordinates": {
+        "lat": 26.6,
+        "lng": 79.15
+      },
+      "description": "दूरस्थ यमुना-चंबल कछार के मजरों में सोलर स्ट्रीट लाइट्स तथा घरों में सौर ऊर्जा कनेक्शन। टेंडर प्रक्रिया पूर्ण।",
+      "beforeImage": "/images/poli6.png",
+      "afterImage": "/images/poli6.png",
+      "photos": [
+        "/images/poli6.png"
+      ],
+      "impact": "8 मजरों में स्वच्छ हरित ऊर्जा"
+    }
+  ],
+  "socialPosts": [
+    {
+      "id": "post-sync-1789503985309-938",
+      "platform": "instagram",
+      "profileId": "profile-instagram-mlaetawah",
+      "author": "श्रीमती सरिता भदौरिया (@mlaetawah)",
+      "authorAvatar": "/images/poli4.png",
+      "profileUrl": "https://www.instagram.com/mlaetawah/?hl=en",
+      "postUrl": "https://www.instagram.com/mlaetawah/?hl=en",
+      "content": "आज बकेवर एवं तकरोई क्षेत्र में जनसंवाद चौपाल का आयोजन। ग्रामीण जनमानस की पेयजल एवं विद्युत समस्याओं को मौके पर सुनकर संबंधित अधिकारियों को त्वरित निस्तारण के आदेश दिए। सबका साथ, सबका विकास हमारा ध्येय है।",
+      "media": "/images/assets/social_rally.jpg",
+      "date": "अभी-अभी सिंक किया गया",
+      "timestamp": "2026-09-15T20:26:25.309Z",
+      "likes": 2244,
+      "comments": 130,
+      "shares": 69,
+      "aiTags": {
+        "village": "इटावा सदर",
+        "category": "पेयजल",
+        "department": "जल निगम / जल जीवन मिशन",
+        "workType": "विकास कार्य / जनसंवाद",
+        "confidence": 0.94,
+        "autoAdded": true,
+        "suggestedTitle": "इटावा सदर में पेयजल संबंधित कार्य समीक्षा"
+      },
+      "isConvertedToActivity": false,
+      "isConvertedToWork": false,
+      "publishedOnWebsite": true
+    },
+    {
+      "id": "post-ig-3",
+      "profileId": "profile-instagram-mlaetawah",
+      "platform": "instagram",
+      "author": "श्रीमती सरिता भदौरिया (@mlaetawah)",
+      "authorAvatar": "/images/poli4.png",
+      "profileUrl": "https://www.instagram.com/mlaetawah/?hl=en",
+      "postUrl": "https://www.instagram.com/mlaetawah/?hl=en",
+      "content": "इटावा जिला अस्पताल में स्वास्थ्य सेवाओं, आपातकालीन वार्ड व दवा वितरण व्यवस्था का औचक निरीक्षण किया। मरीजों व उनके तीमारदारों से मिलकर कुशलक्षेम जाना और डॉक्टरों को शत-प्रतिशत संवेदनशीलता के साथ उपचार सुनिश्चित करने के कड़े निर्देश दिए।",
+      "media": "/images/poli3.png",
+      "date": "3 दिन पहले",
+      "timestamp": "2026-09-12T20:26:10.189Z",
+      "likes": 3890,
+      "comments": 215,
+      "shares": 145,
+      "aiTags": {
+        "village": "इटावा सदर",
+        "category": "स्वास्थ्य",
+        "department": "चिकित्सा एवं स्वास्थ्य विभाग",
+        "suggestedTitle": "इटावा जिला चिकित्सालय औचक निरीक्षण व स्वास्थ्य सेवा समीक्षा"
+      },
+      "isConvertedToActivity": false,
+      "isConvertedToWork": false,
+      "publishedOnWebsite": true
+    },
+    {
+      "id": "post-fb-2",
+      "profileId": "profile-facebook-mlaetawah",
+      "platform": "facebook",
+      "author": "Sarita Bhadauria MLA Etawah",
+      "authorAvatar": "/images/poli1.png",
+      "profileUrl": "https://www.facebook.com/mlaetawah?mibextid=ZbWKwL&utm_source=ig&utm_medium=social&utm_content=link_in_bio",
+      "postUrl": "https://www.facebook.com/mlaetawah?mibextid=ZbWKwL&utm_source=ig&utm_medium=social&utm_content=link_in_bio",
+      "content": "जसवंतनगर एवं बकेवर क्षेत्र के किसान भाइयों के साथ चौपाल में संवाद। प्रधानमंत्री किसान सम्मान निधि एवं जल जीवन मिशन के अंतर्गत हर घर नल योजना की प्रगति की समीक्षा की। किसानों की खुशहाली ही हमारी प्राथमिकता है।",
+      "media": "/images/assets/work_water_tank.jpg",
+      "date": "2 दिन पहले",
+      "timestamp": "2026-09-13T20:26:10.189Z",
+      "likes": 5430,
+      "comments": 412,
+      "shares": 490,
+      "aiTags": {
+        "village": "जसवंतनगर",
+        "category": "पेयजल",
+        "department": "जल निगम / जल जीवन मिशन",
+        "suggestedTitle": "जसवंतनगर-बकेवर किसान संवाद एवं जल जीवन मिशन समीक्षा"
+      },
+      "isConvertedToActivity": false,
+      "isConvertedToWork": false,
+      "publishedOnWebsite": true
+    },
+    {
+      "id": "post-ig-2",
+      "profileId": "profile-instagram-mlaetawah",
+      "platform": "instagram",
+      "author": "श्रीमती सरिता भदौरिया (@mlaetawah)",
+      "authorAvatar": "/images/poli4.png",
+      "profileUrl": "https://www.instagram.com/mlaetawah/?hl=en",
+      "postUrl": "https://www.instagram.com/mlaetawah/?hl=en",
+      "content": "ग्राम रामपुर में लोक निर्माण विभाग (PWD) द्वारा ₹1.85 करोड़ की लागत से बनने वाले संपर्क मार्ग के डामरीकरण कार्य का सघन निरीक्षण। ग्रामीणों से बातचीत कर उनकी समस्याओं को सुना और तय समय सीमा में कार्य पूरा करने का निर्देश दिया।",
+      "media": "/images/assets/work_rampur_road.jpg",
+      "date": "1 दिन पहले",
+      "timestamp": "2026-09-14T20:26:10.189Z",
+      "likes": 3210,
+      "comments": 184,
+      "shares": 120,
+      "aiTags": {
+        "village": "रामपुर",
+        "category": "सड़क एवं परिवहन",
+        "department": "लोक निर्माण विभाग (PWD)",
+        "suggestedTitle": "रामपुर संपर्क मार्ग डामरीकरण कार्य समीक्षा"
+      },
+      "isConvertedToActivity": true,
+      "isConvertedToWork": true,
+      "publishedOnWebsite": true
+    },
+    {
+      "id": "post-fb-1",
+      "profileId": "profile-facebook-mlaetawah",
+      "platform": "facebook",
+      "author": "Sarita Bhadauria MLA Etawah",
+      "authorAvatar": "/images/poli1.png",
+      "profileUrl": "https://www.facebook.com/mlaetawah?mibextid=ZbWKwL&utm_source=ig&utm_medium=social&utm_content=link_in_bio",
+      "postUrl": "https://www.facebook.com/mlaetawah?mibextid=ZbWKwL&utm_source=ig&utm_medium=social&utm_content=link_in_bio",
+      "content": "इटावा सदर में आयोजित 'महिला स्वावलंबन एवं आजीविका सम्मेलन' में स्वयं सहायता समूह की कर्मठ बहनों से संवाद। प्रधानमंत्री आवास व मुद्रा योजना से जुड़कर आत्मनिर्भर बन रहीं हमारी माताएं व बहनें नए भारत की सशक्त तस्वीर प्रस्तुत कर रही हैं।",
+      "media": "/images/assets/work_women_shg.jpg",
+      "date": "5 घंटे पहले",
+      "timestamp": "2026-09-15T15:26:10.189Z",
+      "likes": 4120,
+      "comments": 298,
+      "shares": 340,
+      "aiTags": {
+        "village": "इटावा सदर",
+        "category": "महिला सशक्तिकरण",
+        "department": "ग्राम्य विकास विभाग",
+        "suggestedTitle": "इटावा सदर महिला स्वयं सहायता समूह संवाद सम्मेलन"
+      },
+      "isConvertedToActivity": false,
+      "isConvertedToWork": true,
+      "publishedOnWebsite": true
+    },
+    {
+      "id": "post-ig-1",
+      "profileId": "profile-instagram-mlaetawah",
+      "platform": "instagram",
+      "author": "श्रीमती सरिता भदौरिया (@mlaetawah)",
+      "authorAvatar": "/images/poli4.png",
+      "profileUrl": "https://www.instagram.com/mlaetawah/?hl=en",
+      "postUrl": "https://www.instagram.com/mlaetawah/?hl=en",
+      "content": "आज ग्राम सैफ़ई एवं बकेवर क्षेत्र में प्राथमिक विद्यालय के नवीन भवन एवं आधुनिक स्मार्ट क्लासरूम का स्थलीय निरीक्षण किया। नौनिहालों को बेहतर शिक्षा व सभी आधुनिक सुविधाएं उपलब्ध कराना हमारी सरकार का संकल्प है। अधिकारियों को गुणवत्ता से कोई समझौता न करने के सख्त निर्देश दिए।",
+      "media": "/images/assets/work_school_children.jpg",
+      "date": "2 घंटे पहले",
+      "timestamp": "2026-09-15T18:26:10.189Z",
+      "likes": 2450,
+      "comments": 142,
+      "shares": 89,
+      "aiTags": {
+        "village": "सैफई",
+        "category": "शिक्षा",
+        "department": "बेसिक शिक्षा परिषद",
+        "suggestedTitle": "सैफई प्राथमिक विद्यालय स्मार्ट क्लासरूम व भवन निरीक्षण"
+      },
+      "isConvertedToActivity": true,
+      "isConvertedToWork": false,
+      "publishedOnWebsite": true
+    },
+    {
+      "id": "post-sync-1789501415149",
+      "platform": "facebook",
+      "author": "Sarita Bhadauria MLA Etawah",
+      "content": "आज बकेवर क्षेत्र के कार्यकर्ताओं के साथ जनसंवाद। गांव-गांव तक विकास योजनाओं को पहुंचाने का संकल्प दोहराया।",
+      "media": "/images/poli1.png",
+      "date": "Just now",
+      "likes": 120,
+      "comments": 18,
+      "shares": 24,
+      "autoAdded": true,
+      "aiTags": {
+        "village": "इटावा सदर",
+        "category": "सरकारी योजनाएँ",
+        "department": "सामान्य प्रशासन",
+        "workType": "विकास कार्य / जनसंवाद",
+        "confidence": 0.94,
+        "autoAdded": true,
+        "suggestedTitle": "इटावा सदर में सरकारी योजनाएँ संबंधित कार्य समीक्षा"
+      }
+    },
+    {
+      "id": "post-sync-1789501410597",
+      "platform": "facebook",
+      "author": "Sarita Bhadauria MLA Etawah",
+      "content": "आज बकेवर क्षेत्र के कार्यकर्ताओं के साथ जनसंवाद। गांव-गांव तक विकास योजनाओं को पहुंचाने का संकल्प दोहराया।",
+      "media": "/images/poli1.png",
+      "date": "Just now",
+      "likes": 120,
+      "comments": 18,
+      "shares": 24,
+      "autoAdded": true,
+      "aiTags": {
+        "village": "इटावा सदर",
+        "category": "सरकारी योजनाएँ",
+        "department": "सामान्य प्रशासन",
+        "workType": "विकास कार्य / जनसंवाद",
+        "confidence": 0.94,
+        "autoAdded": true,
+        "suggestedTitle": "इटावा सदर में सरकारी योजनाएँ संबंधित कार्य समीक्षा"
+      }
+    },
+    {
+      "id": "post-sync-1789494823939",
+      "platform": "facebook",
+      "author": "Sarita Bhadauria MLA Etawah",
+      "content": "आज बकेवर क्षेत्र के कार्यकर्ताओं के साथ जनसंवाद। गांव-गांव तक विकास योजनाओं को पहुंचाने का संकल्प दोहराया।",
+      "media": "/images/poli1.png",
+      "date": "Just now",
+      "likes": 120,
+      "comments": 18,
+      "shares": 24,
+      "autoAdded": true,
+      "aiTags": {
+        "village": "इटावा सदर",
+        "category": "सरकारी योजनाएँ",
+        "department": "सामान्य प्रशासन",
+        "workType": "विकास कार्य / जनसंवाद",
+        "confidence": 0.94,
+        "autoAdded": true,
+        "suggestedTitle": "इटावा सदर में सरकारी योजनाएँ संबंधित कार्य समीक्षा"
+      }
+    },
+    {
+      "id": "post-1",
+      "platform": "instagram",
+      "author": "sarita_bhadauria_mla",
+      "content": "आज ग्राम सैफ़ई में विकास कार्यों का सघन निरीक्षण किया। अधिकारियों को गुणवत्ता और समयसीमा सुनिश्चित करने के सख्त निर्देश दिए। जनता का विश्वास ही हमारी सबसे बड़ी शक्ति है।",
+      "media": "/images/poli1.png",
+      "date": "2 hours ago",
+      "likes": 2450,
+      "comments": 142,
+      "shares": 89,
+      "autoAdded": true,
+      "aiTags": {
+        "village": "सैफई",
+        "category": "विकास कार्य",
+        "department": "सामान्य प्रशासन"
+      }
+    },
+    {
+      "id": "post-2",
+      "platform": "facebook",
+      "author": "Sarita Bhadauria MLA Etawah",
+      "content": "महिला स्वावलंबन समूह के साथ आत्मीय संवाद। इटावा की नारी शक्ति अब स्वयं सहायता समूहों के माध्यम से आर्थिक स्वावलंबन की नई मिसाल पेश कर रही है।",
+      "media": "/images/poli2.png",
+      "date": "5 hours ago",
+      "likes": 4120,
+      "comments": 298,
+      "shares": 340,
+      "autoAdded": true,
+      "aiTags": {
+        "village": "इटावा सदर",
+        "category": "महिला सशक्तिकरण",
+        "department": "राज्य ग्रामीण आजीविका मिशन"
+      }
+    },
+    {
+      "id": "post-3",
+      "platform": "youtube",
+      "author": "Sarita Bhadauria Official",
+      "content": "इटावा विकास यात्रा | जनता के साथ चौपाल में संवाद एवं विकास योजनाओं की प्रगति रिपोर्ट। पूरा वीडियो देखें।",
+      "media": "/images/poli3.png",
+      "date": "12 hours ago",
+      "likes": 8920,
+      "comments": 560,
+      "shares": 810,
+      "autoAdded": true,
+      "aiTags": {
+        "village": "बकेवर",
+        "category": "जनसंवाद",
+        "department": "जनसंपर्क"
+      }
+    },
+    {
+      "id": "post-4",
+      "platform": "twitter",
+      "author": "@SaritaBhadauria",
+      "content": "आदरणीय प्रधानमंत्री श्री @narendramodi जी एवं मुख्यमंत्री श्री @myogiadityanath जी के मार्गदर्शन में इटावा विधानसभा (200) विकास की नई ऊंचाइयों को छू रहा है। #ViksitBharat #ViksitUP",
+      "media": "/images/poli4.png",
+      "date": "1 day ago",
+      "likes": 1820,
+      "comments": 115,
+      "shares": 430,
+      "autoAdded": true,
+      "aiTags": {
+        "village": "इटावा सदर",
+        "category": "मार्गदर्शक नेतृत्व",
+        "department": "पार्टी"
+      }
+    }
+  ],
+  "news": [
+    {
+      "id": "news-1",
+      "source": "अमर उजाला (Amar Ujala)",
+      "title": "इटावा में ₹15 करोड़ की ग्रामीण सड़कों का कायाकल्प, विधायक सरिता भदौरिया ने किया निरीक्षण",
+      "location": "रामपुर, इटावा",
+      "summary": "इटावा विधानसभा के 12 प्रमुख ग्रामीण मार्गों के चौड़ीकरण और सुदृढ़ीकरण हेतु लोक निर्माण विभाग की टीम के साथ विधायक ने स्थलीय निरीक्षण किया। कार्य को गुणवत्ता के साथ 60 दिन में पूरा करने का अल्टीमेटम।",
+      "date": "15 Sep 2026",
+      "category": "सड़क एवं परिवहन",
+      "image": "/images/poli3.png",
+      "status": "converted",
+      "url": "https://amarujala.com/etawah"
+    },
+    {
+      "id": "news-2",
+      "source": "दैनिक जागरण (Dainik Jagran)",
+      "title": "बकेवर में कन्या उच्च प्राथमिक विद्यालय को मिला स्मार्ट लैब का तोहफा",
+      "location": "बकेवर, इटावा",
+      "summary": "विधायक निधि और सीएसआर सहयोग से बकेवर क्षेत्र की बालिकाओं हेतु अत्याधुनिक कंप्यूटर व रोबोटिक्स लैब का उद्घाटन हुआ। ग्रामीण अंचल की बेटियों में दिखा गजब का उत्साह।",
+      "date": "14 Sep 2026",
+      "category": "शिक्षा",
+      "image": "/images/poli1.png",
+      "status": "converted",
+      "url": "https://jagran.com/etawah"
+    },
+    {
+      "id": "news-3",
+      "source": "हिन्दुस्तान (Hindustan)",
+      "title": "हर घर नल योजना: इटावा के 80 गांवों में शुद्ध पेयजल आपूर्ति की शुरुआत",
+      "location": "तकरोई, इटावा",
+      "summary": "जल जीवन मिशन के अंतर्गत विधानसभा क्षेत्र के 80 से अधिक गांवों में पाइपलाइन बिछाने का काम अंतिम चरण में। विधायक ने अधिकारियों को बिना भेदभाव हर मजरों को जोड़ने को कहा।",
+      "date": "13 Sep 2026",
+      "category": "पेयजल",
+      "image": "/images/poli2.png",
+      "status": "unread",
+      "url": "https://livehindustan.com/etawah"
+    }
+  ],
+  "blogs": [
+    {
+      "title": "विकास की राह पर इटावा: बकेवर में कन्या उच्च प्राथमिक विद्यालय को मिला स्मार्ट लैब का तोहफा",
+      "slug": "news-blog-1789494823945",
+      "category": "शिक्षा",
+      "village": "बकेवर, इटावा",
+      "excerpt": "विधायक निधि और सीएसआर सहयोग से बकेवर क्षेत्र की बालिकाओं हेतु अत्याधुनिक कंप्यूटर व रोबोटिक्स लैब का उद्घाटन हुआ। ग्रामीण अंचल की बेटियों में दिखा गजब का उत्साह।",
+      "content": "### बकेवर में कन्या उच्च प्राथमिक विद्यालय को मिला स्मार्ट लैब का तोहफा\n**स्थान:** बकेवर, इटावा | **दिनांक:** 15/9/2026\n\nइटावा विधानसभा (200) को विकास और प्रगति की नई ऊंचाइयों पर ले जाने के संकल्प के साथ विधायक श्रीमती सरिता भदौरिया निरंतर क्षेत्र में सक्रिय हैं। \n\n#### मुख्य बिंदु:\n- **नागरिक सुविधा में विस्तार:** विधायक निधि और सीएसआर सहयोग से बकेवर क्षेत्र की बालिकाओं हेतु अत्याधुनिक कंप्यूटर व रोबोटिक्स लैब का उद्घाटन हुआ। ग्रामीण अंचल की बेटियों में दिखा गजब का उत्साह।\n- **गुणवत्ता और समयबद्धता:** विकास कार्यों में पारदर्शिता और तय समय सीमा में कार्य पूर्ण करने को सर्वोच्च प्राथमिकता दी जा रही है।\n- **जनसंवाद का परिणाम:** जनता से सीधे संवाद और सुझावों के आधार पर योजनाओं को धरातल पर उतारा जा रहा है।\n\n> \"हमारा एक ही लक्ष्य है — इटावा के हर गांव, हर गली और हर नागरिक तक विकास की किरण पहुंचे। सेवा, संवाद और विकास ही हमारा संकल्प है।\"  \n> — **श्रीमती सरिता भदौरिया (विधायक, इटावा 200)**\n\nसभी सम्मानित क्षेत्रवासियों से अनुरोध है कि जनहित के विकास कार्यों में अपनी सक्रिय भागीदारी बनाए रखें।",
+      "status": "published",
+      "author": "कार्यालय श्रीमती सरिता भदौरिया (विधायक, इटावा)",
+      "image": "/images/poli1.png",
+      "tags": [
+        "बकेवर, इटावा",
+        "विकास कार्य",
+        "इटावा200",
+        "जनसंवाद"
+      ],
+      "date": "2026-09-15T17:53:43.946Z",
+      "id": "blog-1789494823946",
+      "views": 0,
+      "shares": 0
+    },
+    {
+      "id": "blog-1",
+      "title": "ग्राम रामपुर में सड़क निर्माण कार्य का निरीक्षण: विकास का हर वादा धरातल पर",
+      "slug": "rampur-road-inspection-2026",
+      "category": "विकास कार्य",
+      "village": "रामपुर",
+      "date": "15 सितंबर 2026",
+      "author": "कार्यालय श्रीमती सरिता भदौरिया (विधायक, इटावा)",
+      "image": "/images/poli3.png",
+      "excerpt": "ग्राम रामपुर में नवनिर्मित संपर्क मार्ग का निरीक्षण कर गुणवत्ता मानकों की समीक्षा की गई। ग्रामीण विकास ही सशक्त राष्ट्र की नींव है।",
+      "content": "ग्राम रामपुर में नवनिर्मित 4.5 किमी सड़क के निर्माण कार्य का स्थलीय निरीक्षण किया गया। निरीक्षण के दौरान अधिकारियों को स्पष्ट निर्देश दिए गए कि डामरीकरण में प्रयुक्त सामग्री की प्रयोगशाला जांच सुनिश्चित की जाए। किसी भी प्रकार की लापरवाही बर्दाश्त नहीं की जाएगी। ग्रामीणों ने वर्षों पुरानी मांग पूरी होने पर आभार व्यक्त किया।",
+      "status": "published",
+      "views": 3420,
+      "shares": 412
+    },
+    {
+      "id": "blog-2",
+      "title": "विद्यालय परिसर में बच्चों से संवाद: शिक्षा ही प्रगति का सबसे सशक्त माध्यम",
+      "slug": "school-children-dialogue",
+      "category": "शिक्षा",
+      "village": "बकेवर",
+      "date": "14 सितंबर 2026",
+      "author": "कार्यालय श्रीमती सरिता भदौरिया (विधायक, इटावा)",
+      "image": "/images/poli1.png",
+      "excerpt": "बकेवर प्राथमिक विद्यालय में नन्हे-मुन्ने बच्चों के साथ संवाद, पुस्तकें वितरण और स्मार्ट कक्षाओं का अवलोकन।",
+      "content": "आज बकेवर स्थित प्राथमिक विद्यालय में बच्चों के बीच कुछ समय बिताने का सौभाग्य मिला। नन्हे बच्चों के चेहरे की मुस्कान और सीखने की ललक ऊर्जा से भर देती है। प्रदेश सरकार की 'ऑपरेशन कायाकल्प' योजना के तहत विद्यालय में आधुनिक डिजिटल लैब और पुस्तकालय की व्यवस्था की गई है।",
+      "status": "published",
+      "views": 2890,
+      "shares": 305
+    },
+    {
+      "id": "blog-3",
+      "title": "महिला स्वयं सहायता समूह के साथ बैठक: आत्मनिर्भर नारी, सशक्त समाज",
+      "slug": "women-shg-empowerment",
+      "category": "महिला सशक्तिकरण",
+      "village": "तकरोई",
+      "date": "12 सितंबर 2026",
+      "author": "कार्यालय श्रीमती सरिता भदौरिया (विधायक, इटावा)",
+      "image": "/images/poli2.png",
+      "excerpt": "तकरोई में 50 से अधिक स्वयं सहायता समूहों की बहनों के साथ चौपाल, उनके उत्पादों के विपणन हेतु सहयोग का आश्वासन।",
+      "content": "हमारी माताएं-बहनें जब आर्थिक रूप से सशक्त होती हैं तो पूरा परिवार आगे बढ़ता है। आज तकरोई में स्वयं सहायता समूहों की दीदियों द्वारा तैयार किए गए उत्पादों की प्रदर्शनी देखी और उनकी समस्याओं का मौके पर ही निराकरण कराया गया।",
+      "status": "published",
+      "views": 4100,
+      "shares": 520
+    }
+  ],
+  "citizens": [
+    {
+      "id": "cit-1789610701906",
+      "name": "अनिल कुमार सिंह",
+      "mobile": "9455112233",
+      "village": "इटावा सदर",
+      "booth": "सामान्य मतदाता",
+      "type": "Citizen",
+      "area": "इटावा विधानसभा (200)",
+      "date": "17 Sept 2026",
+      "source": "User Portal Login"
+    },
+    {
+      "id": "cit-sync-1789531145815",
+      "name": "श्री आनंद मोहन त्रिपाठी",
+      "fatherSpouseName": "",
+      "mobile": "9454416111",
+      "village": "इटावा नगर",
+      "type": "तहसीलदार न्यायिक",
+      "category": "विभागीय अधिकारी (Officials)",
+      "photo": "",
+      "source": "official Sync",
+      "date": "16 Sept 2026"
+    },
+    {
+      "id": "cit-sync-1789531030872",
+      "name": "श्री संजीव कुमार",
+      "fatherSpouseName": "",
+      "mobile": "9454416099",
+      "village": "इटावा शहर",
+      "type": "अधिशासी अधिकारी (EO नगर पालिका)",
+      "category": "विभागीय अधिकारी (Officials)",
+      "photo": "",
+      "source": "official Sync",
+      "date": "16 Sept 2026"
+    },
+    {
+      "id": "cit-1789530844125-45ra",
+      "name": "सुरेश बाथम",
+      "mobile": "9456112255",
+      "village": "अछारोली",
+      "booth": "वार्ड सूची",
+      "type": "Booth President",
+      "photo": "",
+      "fatherSpouseName": "",
+      "notes": "",
+      "date": "16 Sept 2026",
+      "source": "Excel Bulk Upload"
+    },
+    {
+      "id": "cit-1789530841060-r5qe",
+      "name": "कमलेश यादव",
+      "mobile": "9456112244",
+      "village": "उझियानी",
+      "booth": "वार्ड सूची",
+      "type": "Citizen",
+      "photo": "",
+      "fatherSpouseName": "",
+      "notes": "",
+      "date": "16 Sept 2026",
+      "source": "Excel Bulk Upload"
+    },
+    {
+      "id": "cit-1789530841048-szi7",
+      "name": "राकेश कुमार पाल",
+      "mobile": "9456112233",
+      "village": "बसरेहर",
+      "booth": "वार्ड सूची",
+      "type": "Supporter",
+      "photo": "",
+      "fatherSpouseName": "",
+      "notes": "बसरेहर मंडल",
+      "date": "16 Sept 2026",
+      "source": "Excel Bulk Upload"
+    },
+    {
+      "id": "cit-1789530803319",
+      "name": "विष्णु दयाल शाक्य",
+      "mobile": "9837999888",
+      "village": "बढ़पुरा",
+      "booth": "सामान्य मतदाता",
+      "type": "Karyakarta",
+      "area": "इटावा विधानसभा (200)",
+      "photo": "",
+      "fatherSpouseName": "श्री राम चरण",
+      "notes": "सक्रिय बूथ कार्यकर्ता",
+      "date": "16 Sept 2026",
+      "source": "Quick Text Bar"
+    },
+    {
+      "id": "cit-1789525477758",
+      "name": "kuldeep",
+      "mobile": "9569896239",
+      "village": "रामपुर",
+      "booth": "बूथ संख्या 12",
+      "type": "Citizen",
+      "area": "इटावा विधानसभा (200)",
+      "date": "16 Sept 2026",
+      "source": "QR Registration"
+    },
+    {
+      "id": "cit-1789494823871",
+      "name": "Vikram Singh",
+      "mobile": "9988776655",
+      "village": "Saifai",
+      "booth": "सामान्य मतदाता",
+      "type": "Supporter",
+      "area": "इटावा विधानसभा (200)",
+      "date": "15 Sept 2026",
+      "source": "QR Registration"
+    },
+    {
+      "id": "cit-1",
+      "name": "Ramesh Kumar",
+      "mobile": "9876543210",
+      "village": "Saifai",
+      "booth": "Booth 14",
+      "type": "Citizen",
+      "date": "15 Sep 2026"
+    },
+    {
+      "id": "cit-2",
+      "name": "Pooja Yadav",
+      "mobile": "8765432109",
+      "village": "Bechpura",
+      "booth": "Booth 28",
+      "type": "Supporter",
+      "date": "15 Sep 2026"
+    },
+    {
+      "id": "cit-3",
+      "name": "Amit Singh",
+      "mobile": "7654321098",
+      "village": "Udi",
+      "booth": "Booth 07",
+      "type": "Volunteer",
+      "date": "14 Sep 2026"
+    },
+    {
+      "id": "cit-4",
+      "name": "Sushma Devi",
+      "mobile": "9876012345",
+      "village": "Banthar",
+      "booth": "Booth 19",
+      "type": "Citizen",
+      "date": "14 Sep 2026"
+    },
+    {
+      "id": "cit-5",
+      "name": "Mahesh Chandra",
+      "mobile": "9412345678",
+      "village": "Rampur",
+      "booth": "Booth 03",
+      "type": "Supporter",
+      "date": "13 Sep 2026"
+    },
+    {
+      "id": "cit-6",
+      "name": "Sunita Shakya",
+      "mobile": "9456781234",
+      "village": "Bakewar",
+      "booth": "Booth 42",
+      "type": "Volunteer",
+      "date": "12 Sep 2026"
+    },
+    {
+      "id": "cit-7",
+      "name": "Dharmendra Tiwari",
+      "mobile": "9837123456",
+      "village": "Takroi",
+      "booth": "Booth 11",
+      "type": "Booth Leader",
+      "date": "10 Sep 2026"
+    }
+  ],
+  "team": [
+    {
+      "id": "tm-1",
+      "name": "Vijay Singh",
+      "role": "Booth Agent",
+      "area": "Booth 21, इटावा सदर",
+      "mobile": "9876112233",
+      "status": "Active"
+    },
+    {
+      "id": "tm-2",
+      "name": "Neha Gupta",
+      "role": "Social Media Team",
+      "area": "Constituency HQ",
+      "mobile": "9876223344",
+      "status": "Active"
+    },
+    {
+      "id": "tm-3",
+      "name": "Rakesh Yadav",
+      "role": "Political Worker",
+      "area": "Block - Saifai",
+      "mobile": "9876334455",
+      "status": "Active"
+    },
+    {
+      "id": "tm-4",
+      "name": "Mohd. Arif",
+      "role": "Data Coordinator",
+      "area": "Etawah Sadar",
+      "mobile": "9876445566",
+      "status": "Active"
+    },
+    {
+      "id": "tm-5",
+      "name": "Priyanka Dixit",
+      "role": "Office Staff",
+      "area": "MLA Camp Office",
+      "mobile": "9876556677",
+      "status": "Active"
+    },
+    {
+      "id": "tm-6",
+      "name": "Anil Kushwaha",
+      "role": "Volunteer Lead",
+      "area": "Bakewar Sector",
+      "mobile": "9876667788",
+      "status": "Active"
+    }
+  ],
+  "leaders": [
+    {
+      "id": "leader-1",
+      "name": "नरेन्द्र मोदी",
+      "nameEn": "Narendra Modi",
+      "position": "प्रधानमंत्री, भारत",
+      "party": "BJP",
+      "quote": "विकसित भारत का संकल्प हर नागरिक के परिश्रम से साकार हो रहा है।",
+      "posts": 3,
+      "engagement": "25K",
+      "photo": "/images/media_1789490967561.jpg"
+    },
+    {
+      "id": "leader-2",
+      "name": "योगी आदित्यनाथ",
+      "nameEn": "Yogi Adityanath",
+      "position": "मुख्यमंत्री, उत्तर प्रदेश",
+      "party": "BJP",
+      "quote": "सुरक्षा, सुशासन और विकास उत्तर प्रदेश की नई पहचान है।",
+      "posts": 5,
+      "engagement": "18K",
+      "photo": "/images/media_1789490967561.jpg"
+    },
+    {
+      "id": "leader-3",
+      "name": "सरिता भदौरिया",
+      "nameEn": "Sarita Bhadauria",
+      "position": "विधायक, इटावा (200)",
+      "party": "BJP",
+      "quote": "जनता की सेवा ही सर्वोच्च प्राथमिकता है।",
+      "posts": 8,
+      "engagement": "12K",
+      "photo": "/images/media_1789490967561.jpg"
+    },
+    {
+      "id": "leader-4",
+      "name": "हेमा मालिनी",
+      "nameEn": "Hema Malini",
+      "position": "सांसद, मथुरा",
+      "party": "BJP",
+      "quote": "कला, संस्कृति और जनसेवा का सुंदर समन्वय।",
+      "posts": 1,
+      "engagement": "8K",
+      "photo": "/images/media_1789490967561.jpg"
+    }
+  ],
+  "events": [
+    {
+      "id": "ev-1",
+      "dateDay": "16",
+      "dateMonth": "Sep",
+      "title": "जन संवाद कार्यक्रम",
+      "location": "ग्राम सैफई, इटावा",
+      "time": "11:00 AM",
+      "type": "Jan Samvad"
+    },
+    {
+      "id": "ev-2",
+      "dateDay": "18",
+      "dateMonth": "Sep",
+      "title": "विकास कार्य निरीक्षण",
+      "location": "ग्राम उदी, इटावा",
+      "time": "02:00 PM",
+      "type": "Inspection"
+    },
+    {
+      "id": "ev-3",
+      "dateDay": "21",
+      "dateMonth": "Sep",
+      "title": "महिला समूह बैठक",
+      "location": "ब्लॉक कार्यालय, इटावा",
+      "time": "11:00 AM",
+      "type": "SHG Meeting"
+    },
+    {
+      "id": "ev-4",
+      "dateDay": "25",
+      "dateMonth": "Sep",
+      "title": "युवा संवाद कार्यक्रम",
+      "location": "इटावा नगर क्षेत्र",
+      "time": "04:00 PM",
+      "type": "Youth Outreach"
+    }
+  ],
+  "auditLogs": [
+    {
+      "id": "log_1789648571710_yory",
+      "timestamp": "2026-09-17T12:36:11.710Z",
+      "user": "Admin",
+      "action": "Toggled mobile feature [festivalBanner]: Enabled",
+      "module": "Mobile CMS",
+      "details": {
+        "featureKey": "festivalBanner",
+        "state": true
+      },
+      "device": "Desktop / Chrome Windows 11"
+    },
+    {
+      "id": "log_1789648566874_mgc3",
+      "timestamp": "2026-09-17T12:36:06.874Z",
+      "user": "Admin",
+      "action": "Toggled mobile feature [festivalBanner]: Disabled",
+      "module": "Mobile CMS",
+      "details": {
+        "featureKey": "festivalBanner",
+        "state": false
+      },
+      "device": "Desktop / Chrome Windows 11"
+    },
+    {
+      "id": "log_1789612666637_3bf5",
+      "timestamp": "2026-09-17T02:37:46.637Z",
+      "user": "Staff (super_admin)",
+      "action": "Jan Samvad Action on JS-2026-ETW-1005: Status forwarded_dept",
+      "module": "JanSamvad",
+      "details": {
+        "tokenNumber": "JS-2026-ETW-1005",
+        "status": "forwarded_dept"
+      },
+      "device": "Desktop / Chrome Windows 11"
+    },
+    {
+      "id": "log_1789610701920_rd7v",
+      "timestamp": "2026-09-17T02:05:01.920Z",
+      "user": "अनिल कुमार सिंह",
+      "action": "नागरिक पोर्टल पर लॉगिन किया (9455112233)",
+      "module": "Citizen Portal",
+      "details": {
+        "mobile": "9455112233",
+        "village": "इटावा सदर"
+      },
+      "device": "Desktop / Chrome Windows 11"
+    },
+    {
+      "id": "log_1789541764905_d785",
+      "timestamp": "2026-09-16T06:56:04.905Z",
+      "user": "अतिथि पाठक (Guest)",
+      "action": "कंटेंट पढ़ा: \"इटावा सदर नवीन जन-सुविधा केंद्र लोकार्पण\"",
+      "module": "Content Readership",
+      "details": {
+        "entityId": 5,
+        "entityType": "activity",
+        "title": "इटावा सदर नवीन जन-सुविधा केंद्र लोकार्पण",
+        "readerRole": "Guest"
+      },
+      "device": "Desktop / Chrome Windows 11"
+    },
+    {
+      "id": "log_1789541764869_t4cm",
+      "timestamp": "2026-09-16T06:56:04.870Z",
+      "user": "अतिथि पाठक (Guest)",
+      "action": "कंटेंट पढ़ा: \"इटावा सदर नवीन जन-सुविधा केंद्र लोकार्पण\"",
+      "module": "Content Readership",
+      "details": {
+        "entityId": 5,
+        "entityType": "activity",
+        "title": "इटावा सदर नवीन जन-सुविधा केंद्र लोकार्पण",
+        "readerRole": "Guest"
+      },
+      "device": "Desktop / Chrome Windows 11"
+    },
+    {
+      "id": "log_1789531145832_snq3",
+      "timestamp": "2026-09-16T03:59:05.832Z",
+      "user": "Super Admin",
+      "action": "Created new system user: सुनील कुमार वर्मा (@sunil_operator) [Staff Operator]",
+      "module": "User Management",
+      "details": {
+        "id": "usr-1789531145827",
+        "username": "sunil_operator",
+        "role": "Staff Operator"
+      },
+      "device": "Desktop / Chrome Windows 11"
+    },
+    {
+      "id": "log_1789531030851_h6zr",
+      "timestamp": "2026-09-16T03:57:10.851Z",
+      "user": "Super Admin",
+      "action": "Created new system user: अमित कुमार सक्सेना (@amit_operator) [Grievance Operator]",
+      "module": "User Management",
+      "details": {
+        "id": "usr-1789531030847",
+        "username": "amit_operator",
+        "role": "Grievance Operator"
+      },
+      "device": "Desktop / Chrome Windows 11"
+    },
+    {
+      "id": "log_1789530844127_jw7j",
+      "timestamp": "2026-09-16T03:54:04.127Z",
+      "user": "Admin",
+      "action": "Bulk Imported 1 Citizens from Excel (1 duplicates skipped)",
+      "module": "Citizen Database",
+      "details": {
+        "added": 1,
+        "duplicates": 1
+      },
+      "device": "Desktop / Chrome Windows 11"
+    },
+    {
+      "id": "log_1789530841064_66sx",
+      "timestamp": "2026-09-16T03:54:01.064Z",
+      "user": "Admin",
+      "action": "Bulk Imported 2 Citizens from Excel (0 duplicates skipped)",
+      "module": "Citizen Database",
+      "details": {
+        "added": 2,
+        "duplicates": 0
+      },
+      "device": "Desktop / Chrome Windows 11"
+    },
+    {
+      "id": "log_1789530803375_38mw",
+      "timestamp": "2026-09-16T03:53:23.375Z",
+      "user": "Admin (Directory Manager)",
+      "action": "New Citizen Registered: विष्णु दयाल शाक्य (9837999888)",
+      "module": "Citizen Database",
+      "details": {
+        "id": "cit-1789530803319",
+        "name": "विष्णु दयाल शाक्य",
+        "mobile": "9837999888",
+        "village": "बढ़पुरा",
+        "booth": "सामान्य मतदाता",
+        "type": "Karyakarta",
+        "area": "इटावा विधानसभा (200)",
+        "photo": "",
+        "fatherSpouseName": "श्री राम चरण",
+        "notes": "सक्रिय बूथ कार्यकर्ता",
+        "date": "16 Sept 2026",
+        "source": "Quick Text Bar"
+      },
+      "device": "Desktop / Chrome Windows 11"
+    },
+    {
+      "id": "log_1789530389748_d75o",
+      "timestamp": "2026-09-16T03:46:29.748Z",
+      "user": "Admin",
+      "action": "हीरो पोस्टर स्लाइडर सेटिंग्स अपडेट की गईं",
+      "module": "Hero Posters",
+      "details": {
+        "autoSlide": true,
+        "intervalSeconds": 4.5,
+        "maxVisible": 6,
+        "showOnHero": true
+      },
+      "device": "Desktop / Chrome Windows 11"
+    },
+    {
+      "id": "log_1789530339282_awim",
+      "timestamp": "2026-09-16T03:45:39.282Z",
+      "user": "Admin (Super Admin)",
+      "action": "Activated Template: Public Connect",
+      "module": "Website Builder",
+      "details": {
+        "templateId": "public-connect"
+      },
+      "device": "Desktop / Chrome Windows 11"
+    },
+    {
+      "id": "log_1789530177811_94xs",
+      "timestamp": "2026-09-16T03:42:57.812Z",
+      "user": "Admin (Super Admin)",
+      "action": "AI Assistant Queried: \"जन सेवा पोर्टल में किस तरीके से स्टेप बाय स्ट...\"",
+      "module": "AI Assistant",
+      "details": {
+        "question": "जन सेवा पोर्टल में किस तरीके से स्टेप बाय स्टेप कम करेेंगे"
+      },
+      "device": "Desktop / Chrome Windows 11"
+    },
+    {
+      "id": "log_1789530159578_fgz4",
+      "timestamp": "2026-09-16T03:42:39.579Z",
+      "user": "Admin (Super Admin)",
+      "action": "AI Assistant Queried: \"जन सेवा पोर्टल को कैसे इस्तेमल करना है...\"",
+      "module": "AI Assistant",
+      "details": {
+        "question": "जन सेवा पोर्टल को कैसे इस्तेमल करना है"
+      },
+      "device": "Desktop / Chrome Windows 11"
+    },
+    {
+      "id": "log_1789530140529_gc8z",
+      "timestamp": "2026-09-16T03:42:20.529Z",
+      "user": "Admin (Super Admin)",
+      "action": "AI Assistant Queried: \"कितने नागरिक पंजीकृत हैं?...\"",
+      "module": "AI Assistant",
+      "details": {
+        "question": "कितने नागरिक पंजीकृत हैं?"
+      },
+      "device": "Desktop / Chrome Windows 11"
+    },
+    {
+      "id": "log_1789530137145_baf2",
+      "timestamp": "2026-09-16T03:42:17.145Z",
+      "user": "Admin (Super Admin)",
+      "action": "AI Assistant Queried: \"Draft a press release in Hindi for MLA works...\"",
+      "module": "AI Assistant",
+      "details": {
+        "question": "Draft a press release in Hindi for MLA works"
+      },
+      "device": "Desktop / Chrome Windows 11"
+    },
+    {
+      "id": "log_1789530132905_72xy",
+      "timestamp": "2026-09-16T03:42:12.905Z",
+      "user": "Admin (Super Admin)",
+      "action": "AI Assistant Queried: \"रामपुर गांव में कौन-से विकास कार्य हुए हैं?...\"",
+      "module": "AI Assistant",
+      "details": {
+        "question": "रामपुर गांव में कौन-से विकास कार्य हुए हैं?"
+      },
+      "device": "Desktop / Chrome Windows 11"
+    },
+    {
+      "id": "log_1789530126940_i0rx",
+      "timestamp": "2026-09-16T03:42:06.940Z",
+      "user": "Admin (Super Admin)",
+      "action": "AI Assistant Queried: \"How many road projects completed?...\"",
+      "module": "AI Assistant",
+      "details": {
+        "question": "How many road projects completed?"
+      },
+      "device": "Desktop / Chrome Windows 11"
+    },
+    {
+      "id": "log_1789528863408_gqoc",
+      "timestamp": "2026-09-16T03:21:03.408Z",
+      "user": "Staff (super_admin)",
+      "action": "Jan Samvad Action on JS-2026-ETW-1005: Status in_progress",
+      "module": "JanSamvad",
+      "details": {
+        "tokenNumber": "JS-2026-ETW-1005",
+        "status": "in_progress"
+      },
+      "device": "Desktop / Chrome Windows 11"
+    },
+    {
+      "id": "log_1789528720157_atf5",
+      "timestamp": "2026-09-16T03:18:40.157Z",
+      "user": "Admin (Super Admin)",
+      "action": "Update Hero Section",
+      "module": "Website Builder",
+      "details": {
+        "show": true,
+        "title": "विकास ही मेरी प्राथमिकता है,\nऔर जनता ही मेरी शक्ति।",
+        "signature": "श्रीमती सरिता भदौरिया",
+        "designation": "विधायक, इटावा विधानसभा (200)",
+        "saritaImage": "/uploads/images/sarita_bhadauriya-1789523047198-607565.png",
+        "modiImage": "/images/assets/modi_portrait.jpg",
+        "yogiImage": "/images/assets/yogi_portrait.jpg",
+        "modiQuote": "विकसित भारत का आधार है विकसित प्रदेश और सशक्त जिले",
+        "yogiQuote": "हर जिले का विकास हर गांव का उत्थान यही हमारी पहचान",
+        "ctaText": "हमारे क्षेत्र की यात्रा देखें",
+        "sloganBanner": "मजबूत नेतृत्व, विकसित इटावा, समृद्ध भारत",
+        "bgPanorama": "/images/assets/bottom_leaders_trio.jpg",
+        "user": "Admin (Super Admin)",
+        "officialBanner": "/images/assets/official_bjp_mla_banner.jpg",
+        "qrImage": "/images/assets/qr_code_clean.jpg",
+        "subtitle": "इटावा के सर्वांगीण विकास एवं जन-जन के कल्याण हेतु अहर्निश समर्पित",
+        "ctaPrimaryText": "जनसेवा से जुड़ें →",
+        "ctaSecondaryText": "हमारी कहानी देखें",
+        "bannerImage": "/images/media_1789490967602.jpg"
+      },
+      "device": "Desktop / Chrome Windows 11"
+    },
+    {
+      "id": "log_1789528718491_f9t5",
+      "timestamp": "2026-09-16T03:18:38.491Z",
+      "user": "Admin (Super Admin)",
+      "action": "Activated Template: Development Focus",
+      "module": "Website Builder",
+      "details": {
+        "templateId": "development-focus"
+      },
+      "device": "Desktop / Chrome Windows 11"
+    },
+    {
+      "id": "log_1789528561607_w1ln",
+      "timestamp": "2026-09-16T03:16:01.607Z",
+      "user": "Citizen Portal",
+      "action": "New Jan Samvad Grievance: deep (JS-2026-ETW-1005)",
+      "module": "JanSamvad",
+      "details": {
+        "tokenNumber": "JS-2026-ETW-1005"
+      },
+      "device": "Desktop / Chrome Windows 11"
+    },
+    {
+      "id": "log_1789528126906_eryu",
+      "timestamp": "2026-09-16T03:08:46.906Z",
+      "user": "Ramesh Kumar",
+      "action": "नागरिक पोर्टल पर लॉगिन किया (9876543210)",
+      "module": "Citizen Portal",
+      "details": {
+        "mobile": "9876543210",
+        "village": "Saifai"
+      },
+      "device": "Desktop / Chrome Windows 11"
+    },
+    {
+      "id": "log_1789528121395_qv43",
+      "timestamp": "2026-09-16T03:08:41.395Z",
+      "user": "रामसेवक शर्मा",
+      "action": "कंटेंट पढ़ा: \"इटावा सदर नवीन जन-सुविधा केंद्र लोकार्पण\"",
+      "module": "Content Readership",
+      "details": {
+        "entityId": 1,
+        "entityType": "activity",
+        "title": "इटावा सदर नवीन जन-सुविधा केंद्र लोकार्पण",
+        "readerRole": "Citizen"
+      },
+      "device": "Desktop / Chrome Windows 11"
+    },
+    {
+      "id": "log_1789526425780_4wwo",
+      "timestamp": "2026-09-16T02:40:25.780Z",
+      "user": "MLA Sarita Bhadauria",
+      "action": "Direct WhatsApp Connect: 1 contact(s)",
+      "module": "Communication",
+      "details": {
+        "id": "dm-1789526425761",
+        "recipientsCount": 1,
+        "recipients": "कुलदीप (9569896239)",
+        "message": "सादर प्रणाम कुलदीप जी, विधायक कार्यालय इटावा से संपर्क।",
+        "sender": "MLA Sarita Bhadauria",
+        "sentAt": "2026-09-16T02:40:25.761Z",
+        "dateDisplay": "16 सित॰ 2026"
+      },
+      "device": "Desktop / Chrome Windows 11"
+    },
+    {
+      "id": "log_1789526136537_q1pf",
+      "timestamp": "2026-09-16T02:35:36.537Z",
+      "user": "कार्यालय प्रभारी",
+      "action": "Jan Samvad Action on JS-2026-ETW-1004: Status in_progress",
+      "module": "JanSamvad",
+      "details": {
+        "tokenNumber": "JS-2026-ETW-1004",
+        "status": "in_progress"
+      },
+      "device": "Desktop / Chrome Windows 11"
+    },
+    {
+      "id": "log_1789526136516_v9tb",
+      "timestamp": "2026-09-16T02:35:36.516Z",
+      "user": "Citizen Portal",
+      "action": "New Jan Samvad Grievance: महेश चंद्र दीक्षित (JS-2026-ETW-1004)",
+      "module": "JanSamvad",
+      "details": {
+        "tokenNumber": "JS-2026-ETW-1004"
+      },
+      "device": "Desktop / Chrome Windows 11"
+    },
+    {
+      "id": "log_1789525477852_o5w9",
+      "timestamp": "2026-09-16T02:24:37.852Z",
+      "user": "System (QR Portal)",
+      "action": "New Citizen Registered: kuldeep (9569896239)",
+      "module": "Citizen Database",
+      "details": {
+        "id": "cit-1789525477758",
+        "name": "kuldeep",
+        "mobile": "9569896239",
+        "village": "रामपुर",
+        "booth": "बूथ संख्या 12",
+        "type": "Citizen",
+        "area": "इटावा विधानसभा (200)",
+        "date": "16 Sept 2026",
+        "source": "QR Registration"
+      },
+      "device": "Desktop / Chrome Windows 11"
+    },
+    {
+      "id": "log_1789525415276_g8b4",
+      "timestamp": "2026-09-16T02:23:35.276Z",
+      "user": "Admin (Super Admin)",
+      "action": "Update Hero Section",
+      "module": "Website Builder",
+      "details": {
+        "show": true,
+        "title": "विकास ही मेरी प्राथमिकता है,\nऔर जनता ही मेरी शक्ति।",
+        "signature": "श्रीमती सरिता भदौरिया",
+        "designation": "विधायक, इटावा विधानसभा (200)",
+        "saritaImage": "/uploads/images/sarita_bhadauriya-1789523047198-607565.png",
+        "modiImage": "/images/assets/modi_portrait.jpg",
+        "yogiImage": "/images/assets/yogi_portrait.jpg",
+        "modiQuote": "विकसित भारत का आधार है विकसित प्रदेश और सशक्त जिले",
+        "yogiQuote": "हर जिले का विकास हर गांव का उत्थान यही हमारी पहचान",
+        "ctaText": "हमारे क्षेत्र की यात्रा देखें",
+        "sloganBanner": "मजबूत नेतृत्व, विकसित इटावा, समृद्ध भारत",
+        "bgPanorama": "/images/assets/bottom_leaders_trio.jpg",
+        "user": "Admin (Super Admin)",
+        "officialBanner": "/images/assets/official_bjp_mla_banner.jpg",
+        "qrImage": "/images/assets/qr_code_clean.jpg",
+        "subtitle": "इटावा के सर्वांगीण विकास एवं जन-जन के कल्याण हेतु अहर्निश समर्पित",
+        "ctaPrimaryText": "जनसेवा से जुड़ें →",
+        "ctaSecondaryText": "हमारी कहानी देखें",
+        "bannerImage": "/images/media_1789490967602.jpg"
+      },
+      "device": "Desktop / Chrome Windows 11"
+    },
+    {
+      "id": "log_1789525412834_p628",
+      "timestamp": "2026-09-16T02:23:32.834Z",
+      "user": "Admin (Super Admin)",
+      "action": "Activated Template: Complete Intelligence",
+      "module": "Website Builder",
+      "details": {
+        "templateId": "complete-intelligence"
+      },
+      "device": "Desktop / Chrome Windows 11"
+    },
+    {
+      "id": "log_1789525405892_5c1e",
+      "timestamp": "2026-09-16T02:23:25.892Z",
+      "user": "Admin (Super Admin)",
+      "action": "Activated Template: Political Leadership",
+      "module": "Website Builder",
+      "details": {
+        "templateId": "leadership-focus"
+      },
+      "device": "Desktop / Chrome Windows 11"
+    },
+    {
+      "id": "log_1789525359139_06my",
+      "timestamp": "2026-09-16T02:22:39.139Z",
+      "user": "Admin (Super Admin)",
+      "action": "Update Hero Section",
+      "module": "Website Builder",
+      "details": {
+        "show": true,
+        "title": "विकास ही मेरी प्राथमिकता है,\nऔर जनता ही मेरी शक्ति।",
+        "signature": "श्रीमती सरिता भदौरिया",
+        "designation": "विधायक, इटावा विधानसभा (200)",
+        "saritaImage": "/uploads/images/sarita_bhadauriya-1789523047198-607565.png",
+        "modiImage": "/images/assets/modi_portrait.jpg",
+        "yogiImage": "/images/assets/yogi_portrait.jpg",
+        "modiQuote": "विकसित भारत का आधार है विकसित प्रदेश और सशक्त जिले",
+        "yogiQuote": "हर जिले का विकास हर गांव का उत्थान यही हमारी पहचान",
+        "ctaText": "हमारे क्षेत्र की यात्रा देखें",
+        "sloganBanner": "मजबूत नेतृत्व, विकसित इटावा, समृद्ध भारत",
+        "bgPanorama": "/images/assets/bottom_leaders_trio.jpg",
+        "user": "Admin (Super Admin)",
+        "officialBanner": "/images/assets/official_bjp_mla_banner.jpg",
+        "qrImage": "/images/assets/qr_code_clean.jpg",
+        "subtitle": "इटावा के सर्वांगीण विकास एवं जन-जन के कल्याण हेतु अहर्निश समर्पित",
+        "ctaPrimaryText": "जनसेवा से जुड़ें →",
+        "ctaSecondaryText": "हमारी कहानी देखें",
+        "bannerImage": "/images/media_1789490967602.jpg"
+      },
+      "device": "Desktop / Chrome Windows 11"
+    },
+    {
+      "id": "log_1789525354106_p8mj",
+      "timestamp": "2026-09-16T02:22:34.106Z",
+      "user": "Admin (Super Admin)",
+      "action": "Activated Template: Media & News",
+      "module": "Website Builder",
+      "details": {
+        "templateId": "media-news"
+      },
+      "device": "Desktop / Chrome Windows 11"
+    },
+    {
+      "id": "log_1789523050584_a789",
+      "timestamp": "2026-09-16T01:44:10.584Z",
+      "user": "Admin (Super Admin)",
+      "action": "Update Hero Section",
+      "module": "Website Builder",
+      "details": {
+        "show": true,
+        "title": "विकास ही मेरी प्राथमिकता है,\nऔर जनता ही मेरी शक्ति।",
+        "signature": "श्रीमती सरिता भदौरिया",
+        "designation": "विधायक, इटावा विधानसभा (200)",
+        "saritaImage": "/uploads/images/sarita_bhadauriya-1789523047198-607565.png",
+        "modiImage": "/images/assets/modi_portrait.jpg",
+        "yogiImage": "/images/assets/yogi_portrait.jpg",
+        "modiQuote": "विकसित भारत का आधार है विकसित प्रदेश और सशक्त जिले",
+        "yogiQuote": "हर जिले का विकास हर गांव का उत्थान यही हमारी पहचान",
+        "ctaText": "हमारे क्षेत्र की यात्रा देखें",
+        "sloganBanner": "मजबूत नेतृत्व, विकसित इटावा, समृद्ध भारत",
+        "bgPanorama": "/images/assets/bottom_leaders_trio.jpg",
+        "user": "Admin (Super Admin)",
+        "officialBanner": "/images/assets/official_bjp_mla_banner.jpg",
+        "qrImage": "/images/assets/qr_code_clean.jpg"
+      },
+      "device": "Desktop / Chrome Windows 11"
+    },
+    {
+      "id": "log_1789523050573_6u6p",
+      "timestamp": "2026-09-16T01:44:10.574Z",
+      "user": "Admin (Super Admin)",
+      "action": "Updated MLA Photo & Schedule (weekly, Auto-rotate: false)",
+      "module": "MLA Media Manager",
+      "details": {
+        "photoUrl": "/uploads/images/sarita_bhadauriya-1789523047198-607565.png",
+        "updateInterval": "weekly",
+        "nextScheduledUpdate": "2026-09-23T01:44:10.565Z"
+      },
+      "device": "Desktop / Chrome Windows 11"
+    },
+    {
+      "id": "log_1789516584665_v1au",
+      "timestamp": "2026-09-15T23:56:24.665Z",
+      "user": "Admin",
+      "action": "Toggled Section About MLA: ON",
+      "module": "Section Manager",
+      "details": {
+        "id": "about-mla",
+        "enabled": true
+      },
+      "device": "Desktop / Chrome Windows 11"
+    },
+    {
+      "id": "log_1789516581237_e9e9",
+      "timestamp": "2026-09-15T23:56:21.237Z",
+      "user": "Admin",
+      "action": "Toggled Section About MLA: OFF",
+      "module": "Section Manager",
+      "details": {
+        "id": "about-mla",
+        "enabled": false
+      },
+      "device": "Desktop / Chrome Windows 11"
+    },
+    {
+      "id": "log_1789516577318_qa4s",
+      "timestamp": "2026-09-15T23:56:17.318Z",
+      "user": "Admin",
+      "action": "Update Hero Section",
+      "module": "Website Builder",
+      "details": {
+        "show": true,
+        "title": "विकास ही मेरी प्राथमिकता है,\nऔर जनता ही मेरी शक्ति।",
+        "signature": "श्रीमती सरिता भदौरिया",
+        "designation": "विधायक, इटावा विधानसभा (200)",
+        "saritaImage": "/images/assets/sarita_bhadauria_hero.jpg",
+        "modiImage": "/images/assets/modi_portrait.jpg",
+        "yogiImage": "/images/assets/yogi_portrait.jpg",
+        "modiQuote": "विकसित भारत का आधार है विकसित प्रदेश और सशक्त जिले",
+        "yogiQuote": "हर जिले का विकास हर गांव का उत्थान यही हमारी पहचान",
+        "ctaText": "हमारे क्षेत्र की यात्रा देखें",
+        "sloganBanner": "मजबूत नेतृत्व, विकसित इटावा, समृद्ध भारत",
+        "bgPanorama": "/images/assets/bottom_leaders_trio.jpg",
+        "user": "Admin"
+      },
+      "device": "Desktop / Chrome Windows 11"
+    },
+    {
+      "id": "log_1789516574231_844k",
+      "timestamp": "2026-09-15T23:56:14.231Z",
+      "user": "Admin",
+      "action": "Activated Template: Development Focus",
+      "module": "Website Builder",
+      "details": {
+        "templateId": "development-focus"
+      },
+      "device": "Desktop / Chrome Windows 11"
+    },
+    {
+      "id": "log_1789503985312_hkkh",
+      "timestamp": "2026-09-15T20:26:25.312Z",
+      "user": "Admin (Super Admin)",
+      "action": "Social Media Sync: Instagram (@mlaetawah) से डेटा सिंक किया गया (1 नए पोस्ट आयातित)",
+      "module": "Social Media",
+      "details": {
+        "targetProfileId": "profile-instagram-mlaetawah",
+        "addedCount": 1
+      },
+      "device": "Desktop / Chrome Windows 11"
+    },
+    {
+      "id": "log_1789503981396_wvsy",
+      "timestamp": "2026-09-15T20:26:21.396Z",
+      "user": "Admin (Super Admin)",
+      "action": "सोशल पोस्ट post-fb-1 को विकास कार्य में परिवर्तित किया गया",
+      "module": "Social Media",
+      "details": {
+        "workId": "work-1789503981338",
+        "title": "इटावा सदर महिला स्वयं सहायता समूह संवाद सम्मेलन"
+      },
+      "device": "Desktop / Chrome Windows 11"
+    },
+    {
+      "id": "log_1789503978433_a9te",
+      "timestamp": "2026-09-15T20:26:18.433Z",
+      "user": "Admin (Super Admin)",
+      "action": "Activated Template: Media & News",
+      "module": "Website Builder",
+      "details": {
+        "templateId": "media-news"
+      },
+      "device": "Desktop / Chrome Windows 11"
+    },
+    {
+      "id": "log_1789503977508_p5ep",
+      "timestamp": "2026-09-15T20:26:17.508Z",
+      "user": "Admin (Super Admin)",
+      "action": "सोशल पोस्ट post-ig-1 को दैनिक जन-गतिविधि में जोड़ा गया",
+      "module": "Social Media",
+      "details": {
+        "activityId": 6,
+        "title": "सैफई प्राथमिक विद्यालय स्मार्ट क्लासरूम व भवन निरीक्षण"
+      },
+      "device": "Desktop / Chrome Windows 11"
+    },
+    {
+      "id": "log_1789503934478_zxnl",
+      "timestamp": "2026-09-15T20:25:34.478Z",
+      "user": "Admin (Super Admin)",
+      "action": "Update Hero Section",
+      "module": "Website Builder",
+      "details": {
+        "show": true,
+        "title": "जनता का विश्वास\nविकास का संकल्प\nइटावा का उज्जवल भविष्य",
+        "signature": "सरिता भदौरिया",
+        "designation": "विधायक, इटावा विधानसभा (200)",
+        "saritaImage": "/images/assets/sarita_bhadauria_hero.jpg",
+        "modiImage": "/images/assets/modi_portrait.jpg",
+        "yogiImage": "/images/assets/yogi_portrait.jpg",
+        "modiQuote": "विकसित भारत का आधार है विकसित प्रदेश और सशक्त जिले",
+        "yogiQuote": "हर जिले का विकास हर गांव का उत्थान यही हमारी पहचान",
+        "ctaText": "हमारे क्षेत्र की यात्रा देखें",
+        "sloganBanner": "मजबूत नेतृत्व, विकसित इटावा, समृद्ध भारत",
+        "bgPanorama": "/images/assets/bottom_leaders_trio.jpg",
+        "user": "Admin (Super Admin)"
+      },
+      "device": "Desktop / Chrome Windows 11"
+    },
+    {
+      "id": "log_1789503927889_xfb2",
+      "timestamp": "2026-09-15T20:25:27.889Z",
+      "user": "Admin (Super Admin)",
+      "action": "Activated Template: Public Connect",
+      "module": "Website Builder",
+      "details": {
+        "templateId": "public-connect"
+      },
+      "device": "Desktop / Chrome Windows 11"
+    },
+    {
+      "id": "log_1789503633158_76j2",
+      "timestamp": "2026-09-15T20:20:33.158Z",
+      "user": "Admin (Super Admin)",
+      "action": "Activated Template: Development Focus",
+      "module": "Website Builder",
+      "details": {
+        "templateId": "development-focus"
+      },
+      "device": "Desktop / Chrome Windows 11"
+    },
+    {
+      "id": "log_1789503613710_hf9l",
+      "timestamp": "2026-09-15T20:20:13.710Z",
+      "user": "Admin (Super Admin)",
+      "action": "Festival Campaign Deactivated",
+      "module": "Festival Campaign",
+      "details": {
+        "active": false,
+        "selectedFestival": "ganesh_chaturthi",
+        "title": "गणेश चतुर्थी की हार्दिक शुभकामनाएं",
+        "message": "समस्त इटावा वासियों को गणेश चतुर्थी के पावन पर्व पर हार्दिक बधाई एवं अनंत मंगलकामनाएं।",
+        "bannerImage": "/images/assets/sarita_bhadauria_hero.jpg",
+        "startDate": "2026-10-28",
+        "endDate": "2026-11-03",
+        "autoRestore": true,
+        "presets": [
+          {
+            "id": "diwali",
+            "name": "दीपावली (Diwali)",
+            "banner": "/images/poli2.png",
+            "title": "दीपावली की हार्दिक शुभकामनाएं",
+            "message": "समस्त क्षेत्रवासियों को पावन प्रकाश पर्व दीपावली की हार्दिक बधाई।"
+          },
+          {
+            "id": "holi",
+            "name": "होली (Holi)",
+            "banner": "/images/poli1.png",
+            "title": "होली के पावन पर्व की शुभकामनाएं",
+            "message": "उमंग, उत्साह और आपसी भाईचारे के रंगोत्सव की हार्दिक बधाई।"
+          },
+          {
+            "id": "ganesh",
+            "name": "गणेश चतुर्थी (Ganesh Chaturthi)",
+            "banner": "/images/poli3.png",
+            "title": "गणेश चतुर्थी की हार्दिक शुभकामनाएं",
+            "message": "विघ्नहर्ता भगवान श्री गणेश सभी के कष्ट दूर कर सुख-समृद्धि प्रदान करें।"
+          },
+          {
+            "id": "independence",
+            "name": "स्वतंत्रता दिवस (Independence Day)",
+            "banner": "/images/poli4.png",
+            "title": "स्वतंत्रता दिवस की हार्दिक शुभकामनाएं",
+            "message": "विकसित भारत का संकल्प, समृद्ध उत्तर प्रदेश का संकल्प।"
+          },
+          {
+            "id": "navratri",
+            "name": "शारदीय नवरात्रि (Navratri)",
+            "banner": "/images/poli2.png",
+            "title": "शारदीय नवरात्रि की शुभकामनाएं",
+            "message": "मां आदिशक्ति की कृपा समस्त क्षेत्रवासियों पर बनी रहे।"
+          }
+        ],
+        "user": "Admin (Super Admin)"
+      },
+      "device": "Desktop / Chrome Windows 11"
+    },
+    {
+      "id": "log_1789503508265_cy9l",
+      "timestamp": "2026-09-15T20:18:28.265Z",
+      "user": "Admin (Super Admin)",
+      "action": "Activated Template: Complete Intelligence",
+      "module": "Website Builder",
+      "details": {
+        "templateId": "complete-intelligence"
+      },
+      "device": "Desktop / Chrome Windows 11"
+    },
+    {
+      "id": "log_1789503500824_39dp",
+      "timestamp": "2026-09-15T20:18:20.824Z",
+      "user": "Admin (Super Admin)",
+      "action": "Activated Template: Political Leadership",
+      "module": "Website Builder",
+      "details": {
+        "templateId": "leadership-focus"
+      },
+      "device": "Desktop / Chrome Windows 11"
+    },
+    {
+      "id": "log_1789503484759_sljd",
+      "timestamp": "2026-09-15T20:18:04.759Z",
+      "user": "Admin (Super Admin)",
+      "action": "Activated Template: Media & News",
+      "module": "Website Builder",
+      "details": {
+        "templateId": "media-news"
+      },
+      "device": "Desktop / Chrome Windows 11"
+    },
+    {
+      "id": "log_1789503456444_8wcj",
+      "timestamp": "2026-09-15T20:17:36.444Z",
+      "user": "Admin (Super Admin)",
+      "action": "Activated Template: Public Connect",
+      "module": "Website Builder",
+      "details": {
+        "templateId": "public-connect"
+      },
+      "device": "Desktop / Chrome Windows 11"
+    },
+    {
+      "id": "log_1789501415161_ba81",
+      "timestamp": "2026-09-15T19:43:35.162Z",
+      "user": "Admin (Super Admin)",
+      "action": "Social Media Sync Triggered: 1 new post imported & classified",
+      "module": "Social Media",
+      "details": {
+        "channels": [
+          "Facebook",
+          "Instagram",
+          "YouTube",
+          "X"
+        ]
+      },
+      "device": "Desktop / Chrome Windows 11"
+    },
+    {
+      "id": "log_1789501410611_ur1s",
+      "timestamp": "2026-09-15T19:43:30.611Z",
+      "user": "Admin (Super Admin)",
+      "action": "Social Media Sync Triggered: 1 new post imported & classified",
+      "module": "Social Media",
+      "details": {
+        "channels": [
+          "Facebook",
+          "Instagram",
+          "YouTube",
+          "X"
+        ]
+      },
+      "device": "Desktop / Chrome Windows 11"
+    },
+    {
+      "id": "log_1789501149921_5rhg",
+      "timestamp": "2026-09-15T19:39:09.922Z",
+      "user": "Admin (Super Admin)",
+      "action": "Festival Campaign Activated",
+      "module": "Festival Campaign",
+      "details": {
+        "active": true,
+        "selectedFestival": "diwali",
+        "title": "दीपावली एवं धनतेरस की हार्दिक शुभकामनाएं",
+        "message": "समस्त इटावा वासियों को प्रकाश पर्व दीपावली की हार्दिक बधाई एवं शुभकामनाएं।",
+        "bannerImage": "/images/assets/work_women_shg.jpg",
+        "startDate": "2026-10-28",
+        "endDate": "2026-11-03",
+        "autoRestore": true,
+        "presets": [
+          {
+            "id": "diwali",
+            "name": "दीपावली (Diwali)",
+            "banner": "/images/poli2.png",
+            "title": "दीपावली की हार्दिक शुभकामनाएं",
+            "message": "समस्त क्षेत्रवासियों को पावन प्रकाश पर्व दीपावली की हार्दिक बधाई।"
+          },
+          {
+            "id": "holi",
+            "name": "होली (Holi)",
+            "banner": "/images/poli1.png",
+            "title": "होली के पावन पर्व की शुभकामनाएं",
+            "message": "उमंग, उत्साह और आपसी भाईचारे के रंगोत्सव की हार्दिक बधाई।"
+          },
+          {
+            "id": "ganesh",
+            "name": "गणेश चतुर्थी (Ganesh Chaturthi)",
+            "banner": "/images/poli3.png",
+            "title": "गणेश चतुर्थी की हार्दिक शुभकामनाएं",
+            "message": "विघ्नहर्ता भगवान श्री गणेश सभी के कष्ट दूर कर सुख-समृद्धि प्रदान करें।"
+          },
+          {
+            "id": "independence",
+            "name": "स्वतंत्रता दिवस (Independence Day)",
+            "banner": "/images/poli4.png",
+            "title": "स्वतंत्रता दिवस की हार्दिक शुभकामनाएं",
+            "message": "विकसित भारत का संकल्प, समृद्ध उत्तर प्रदेश का संकल्प।"
+          },
+          {
+            "id": "navratri",
+            "name": "शारदीय नवरात्रि (Navratri)",
+            "banner": "/images/poli2.png",
+            "title": "शारदीय नवरात्रि की शुभकामनाएं",
+            "message": "मां आदिशक्ति की कृपा समस्त क्षेत्रवासियों पर बनी रहे।"
+          }
+        ]
+      },
+      "device": "Desktop / Chrome Windows 11"
+    },
+    {
+      "id": "log_1789494823954_xfbv",
+      "timestamp": "2026-09-15T17:53:43.954Z",
+      "user": "Tester",
+      "action": "AI Assistant Queried: \"How many road projects completed?...\"",
+      "module": "AI Assistant",
+      "details": {
+        "question": "How many road projects completed?"
+      },
+      "device": "Desktop / Chrome Windows 11"
+    },
+    {
+      "id": "log_1789494823949_g608",
+      "timestamp": "2026-09-15T17:53:43.949Z",
+      "user": "Tester",
+      "action": "Converted News to Blog Draft: विकास की राह पर इटावा: बकेवर में कन्या उच्च प्राथमिक विद्यालय को मिला स्मार्ट लैब का तोहफा",
+      "module": "News RSS Manager",
+      "details": {
+        "newsId": "news-2",
+        "blogId": "blog-1789494823946"
+      },
+      "device": "Desktop / Chrome Windows 11"
+    },
+    {
+      "id": "log_1789494823941_k4y7",
+      "timestamp": "2026-09-15T17:53:43.941Z",
+      "user": "Tester",
+      "action": "Social Media Sync Triggered: 1 new post imported & classified",
+      "module": "Social Media",
+      "details": {
+        "channels": [
+          "Facebook",
+          "Instagram",
+          "YouTube",
+          "X"
+        ]
+      },
+      "device": "Desktop / Chrome Windows 11"
+    },
+    {
+      "id": "log_1789494823931_g1uy",
+      "timestamp": "2026-09-15T17:53:43.931Z",
+      "user": "System (QR Portal)",
+      "action": "New Citizen Registered: Vikram Singh (9988776655)",
+      "module": "Citizen Database",
+      "details": {
+        "id": "cit-1789494823871",
+        "name": "Vikram Singh",
+        "mobile": "9988776655",
+        "village": "Saifai",
+        "booth": "सामान्य मतदाता",
+        "type": "Supporter",
+        "area": "इटावा विधानसभा (200)",
+        "date": "15 Sept 2026",
+        "source": "QR Registration"
+      },
+      "device": "Desktop / Chrome Windows 11"
+    },
+    {
+      "id": "log_1789494823867_njch",
+      "timestamp": "2026-09-15T17:53:43.867Z",
+      "user": "Tester",
+      "action": "Toggled Section Blogs: OFF",
+      "module": "Section Manager",
+      "details": {
+        "id": "blogs",
+        "enabled": false
+      },
+      "device": "Desktop / Chrome Windows 11"
+    },
+    {
+      "id": "log_1789494823856_zcz4",
+      "timestamp": "2026-09-15T17:53:43.856Z",
+      "user": "Tester",
+      "action": "Activated Template: Public Connect",
+      "module": "Website Builder",
+      "details": {
+        "templateId": "public-connect"
+      },
+      "device": "Desktop / Chrome Windows 11"
+    },
+    {
+      "id": "log-1",
+      "timestamp": "2026-09-15T11:30:00.000Z",
+      "user": "Admin (Super Admin)",
+      "action": "Homepage Template Switch",
+      "module": "Website Builder",
+      "details": {
+        "template": "Development Focus",
+        "status": "Active"
+      },
+      "device": "Desktop / Chrome Windows 11"
+    },
+    {
+      "id": "log-2",
+      "timestamp": "2026-09-15T10:45:00.000Z",
+      "user": "Admin (Super Admin)",
+      "action": "Social Media Sync",
+      "module": "Social Integration",
+      "details": {
+        "importedPosts": 4,
+        "channels": [
+          "Facebook",
+          "Instagram",
+          "YouTube",
+          "X"
+        ]
+      },
+      "device": "Desktop / Chrome Windows 11"
+    },
+    {
+      "id": "log-3",
+      "timestamp": "2026-09-15T09:15:00.000Z",
+      "user": "Content Manager",
+      "action": "Blog Published",
+      "module": "Blog Manager",
+      "details": {
+        "title": "ग्राम रामपुर में सड़क निर्माण कार्य का निरीक्षण"
+      },
+      "device": "Laptop / Edge Windows 11"
+    }
+  ],
+  "schemes": [
+    {
+      "id": "sch-1",
+      "title": "प्रधानमंत्री आवास योजना",
+      "category": "आवास",
+      "icon": "Home",
+      "beneficiaries": "12,500+ पात्र परिवार",
+      "desc": "गरीब एवं बेघर परिवारों को पक्की छत का सपना साकार"
+    },
+    {
+      "id": "sch-2",
+      "title": "उज्ज्वला योजना",
+      "category": "ऊर्जा",
+      "icon": "Flame",
+      "beneficiaries": "45,000+ गैस कनेक्शन",
+      "desc": "माताओं-बहनों को धुएं से मुक्ति व स्वच्छ ईंधन"
+    },
+    {
+      "id": "sch-3",
+      "title": "जल जीवन मिशन",
+      "category": "पेयजल",
+      "icon": "Droplets",
+      "beneficiaries": "80+ गांवों में हर घर नल",
+      "desc": "शुद्ध एवं सुरक्षित पेयजल प्रत्येक ग्रामीण परिवार तक"
+    },
+    {
+      "id": "sch-4",
+      "title": "आयुष्मान भारत",
+      "category": "स्वास्थ्य",
+      "icon": "Heart",
+      "beneficiaries": "1.2 लाख+ गोल्डन कार्ड",
+      "desc": "₹5 लाख तक का कैशलेस एवं निशुल्क उच्चस्तरीय इलाज"
+    },
+    {
+      "id": "sch-5",
+      "title": "पीएम किसान सम्मान निधि",
+      "category": "कृषि",
+      "icon": "Sprout",
+      "beneficiaries": "78,000+ किसान लाभार्थी",
+      "desc": "अन्नदाताओं को वार्षिक ₹6,000 की प्रत्यक्ष सहायता"
+    },
+    {
+      "id": "sch-6",
+      "title": "सड़क परिवहन और अवसरंचना",
+      "category": "परिवहन",
+      "icon": "Car",
+      "beneficiaries": "150+ किमी ग्रामीण सड़कें",
+      "desc": "सुदृढ़ एवं बारहमासी संपर्क मार्गों का सघन जाल"
+    }
+  ],
+  "leaderSocialUpdates": [
+    {
+      "id": "lead-post-1",
+      "leader": "narendra-modi",
+      "name": "नरेन्द्र मोदी",
+      "position": "प्रधानमंत्री",
+      "handle": "@narendramodi",
+      "tag": "प्रधानमंत्री मोदी",
+      "avatar": "/images/assets/modi_portrait.jpg",
+      "image": "/images/assets/social_modi.jpg",
+      "text": "नया भारत, विकसित भारत के लिए मिलकर काम करें। हर नागरिक का प्रयास राष्ट्र को नई ऊंचाइयों पर ले जाएगा।",
+      "likes": "2.4M",
+      "comments": "12K",
+      "shares": "5.1K"
+    },
+    {
+      "id": "lead-post-2",
+      "leader": "yogi-adityanath",
+      "name": "योगी आदित्यनाथ",
+      "position": "मुख्यमंत्री, उत्तर प्रदेश",
+      "handle": "@myogiadityanath",
+      "tag": "मुख्यमंत्री योगी",
+      "avatar": "/images/assets/yogi_portrait.jpg",
+      "image": "/images/assets/social_yogi.jpg",
+      "text": "यूपी का हर जिला बनेगा विकास का मॉडल। विकास की अविरल धारा से हर गांव और कस्बे का उत्थान।",
+      "likes": "1.1M",
+      "comments": "8.5K",
+      "shares": "2.3K"
+    },
+    {
+      "id": "lead-post-3",
+      "leader": "bjp-national",
+      "name": "भारतीय जनता पार्टी",
+      "position": "भाजपा राष्ट्रीय",
+      "handle": "@BJP4India",
+      "tag": "भाजपा राष्ट्रीय",
+      "avatar": "/images/assets/social_bjp.jpg",
+      "image": "/images/assets/social_bjp.jpg",
+      "text": "सेवा, सुशासन, गरीब कल्याण। अंत्योदय के पावन संकल्प के साथ प्रत्येक नागरिक के उत्थान हेतु समर्पित।",
+      "likes": "850K",
+      "comments": "6.2K",
+      "shares": "1.9K"
+    },
+    {
+      "id": "lead-post-4",
+      "leader": "yogi-public",
+      "name": "योगी आदित्यनाथ कार्यालय",
+      "position": "भाजपा उत्तर प्रदेश",
+      "handle": "@myogiadityanath",
+      "tag": "भाजपा उत्तर प्रदेश",
+      "avatar": "/images/assets/yogi_portrait.jpg",
+      "image": "/images/assets/social_rally.jpg",
+      "text": "जनता का विश्वास ही हमारी शक्ति है। जनसंवाद और स्थलीय निरीक्षण से समस्याओं का मौके पर समाधान।",
+      "likes": "820K",
+      "comments": "6.7K",
+      "shares": "1.9K"
+    }
+  ],
+  "communication": {
+    "alerts": [
+      {
+        "id": "alt-1",
+        "title": "विकास कार्य निरीक्षण सूचना",
+        "type": "WhatsApp Broadcast",
+        "recipients": "1,450 कार्यकर्ता",
+        "date": "15 Sep 2026",
+        "status": "Sent"
+      },
+      {
+        "id": "alt-2",
+        "title": "जनसंवाद चौपाल - सैफई ब्लॉक",
+        "type": "SMS Broadcast",
+        "recipients": "3,200 नागरिक",
+        "date": "14 Sep 2026",
+        "status": "Sent"
+      },
+      {
+        "id": "alt-3",
+        "title": "स्वास्थ्य शिविर बकेवर आमंत्रण",
+        "type": "WhatsApp Alert",
+        "recipients": "2,100 क्षेत्रवासी",
+        "date": "12 Sep 2026",
+        "status": "Sent"
+      }
+    ],
+    "queries": [
+      {
+        "id": "q-1",
+        "name": "रामअवतार राजपूत",
+        "mobile": "9876501234",
+        "village": "तकरोई",
+        "subject": "हैंडपंप मरम्मत की मांग",
+        "date": "15 Sep 2026",
+        "status": "Pending"
+      },
+      {
+        "id": "q-2",
+        "name": "मीना देवी",
+        "mobile": "9812345678",
+        "village": "बकेवर",
+        "subject": "आवास योजना सूची में नाम सत्यापन",
+        "date": "14 Sep 2026",
+        "status": "Resolved"
+      },
+      {
+        "id": "q-3",
+        "name": "संदीप यादव",
+        "mobile": "9456701234",
+        "village": "सैफई",
+        "subject": "ट्रांसफार्मर बदलने का अनुरोध",
+        "date": "13 Sep 2026",
+        "status": "In Progress"
+      }
+    ],
+    "directMessages": [
+      {
+        "id": "dm-1789526425761",
+        "recipientsCount": 1,
+        "recipients": "कुलदीप (9569896239)",
+        "message": "सादर प्रणाम कुलदीप जी, विधायक कार्यालय इटावा से संपर्क।",
+        "sender": "MLA Sarita Bhadauria",
+        "sentAt": "2026-09-16T02:40:25.761Z",
+        "dateDisplay": "16 सित॰ 2026"
+      }
+    ]
+  },
+  "members": [
+    {
+      "id": "mem-1",
+      "name": "अमित कुमार सिंह",
+      "mobile": "9876123456",
+      "village": "सैफई",
+      "booth": "बूथ 14",
+      "role": "सक्रिय सदस्य",
+      "idCard": "Issued",
+      "date": "15 Sep 2026"
+    },
+    {
+      "id": "mem-2",
+      "name": "पूनम भदौरिया",
+      "mobile": "8765234567",
+      "village": "रामपुर",
+      "booth": "बूथ 03",
+      "role": "महिला मोर्चा प्रमुख",
+      "idCard": "Issued",
+      "date": "14 Sep 2026"
+    },
+    {
+      "id": "mem-3",
+      "name": "सतीश चंद्र त्रिपाठी",
+      "mobile": "7654345678",
+      "village": "बकेवर",
+      "booth": "बूथ 21",
+      "role": "बूथ संयोजक",
+      "idCard": "Pending",
+      "date": "12 Sep 2026"
+    },
+    {
+      "id": "mem-4",
+      "name": "मोहित वर्मा",
+      "mobile": "9412456789",
+      "village": "जसवंतनगर",
+      "booth": "बूथ 09",
+      "role": "युवा कार्यकर्ता",
+      "idCard": "Issued",
+      "date": "10 Sep 2026"
+    }
+  ],
+  "mediaGallery": [
+    {
+      "id": "m-1",
+      "title": "ग्राम रामपुर सड़क निरीक्षण",
+      "type": "Photo",
+      "url": "/images/assets/work_rampur_road.jpg",
+      "category": "विकास कार्य"
+    },
+    {
+      "id": "m-2",
+      "title": "विद्यालय में बच्चों से संवाद",
+      "type": "Photo",
+      "url": "/images/assets/work_school_children.jpg",
+      "category": "शिक्षा"
+    },
+    {
+      "id": "m-3",
+      "title": "महिला स्वयं सहायता समूह बैठक",
+      "type": "Photo",
+      "url": "/images/assets/work_women_shg.jpg",
+      "category": "महिला सशक्तिकरण"
+    },
+    {
+      "id": "m-4",
+      "title": "स्वास्थ्य शिविर का शुभारंभ",
+      "type": "Photo",
+      "url": "/images/assets/work_health_camp.jpg",
+      "category": "स्वास्थ्य"
+    },
+    {
+      "id": "m-5",
+      "title": "माननीय प्रधानमंत्री नरेन्द्र मोदी जी",
+      "type": "Portrait",
+      "url": "/images/assets/modi_portrait.jpg",
+      "category": "नेता"
+    },
+    {
+      "id": "m-6",
+      "title": "माननीय मुख्यमंत्री योगी आदित्यनाथ जी",
+      "type": "Portrait",
+      "url": "/images/assets/yogi_portrait.jpg",
+      "category": "नेता"
+    },
+    {
+      "id": "m-7",
+      "title": "माननीय विधायक श्रीमती सरिता भदौरिया",
+      "type": "Portrait",
+      "url": "/images/assets/sarita_bhadauria_hero.jpg",
+      "category": "विधायक"
+    }
+  ],
+  "festivals": [
+    {
+      "id": "fest_ganesh_2026",
+      "name": "गणेश चतुर्थी (Ganesh Chaturthi)",
+      "title": "गणेश चतुर्थी की हार्दिक शुभकामनाएं",
+      "message": "समस्त इटावा वासियों को गणेश चतुर्थी के पावन पर्व पर हार्दिक बधाई एवं अनंत मंगलकामनाएं।",
+      "fullMessage": "विघ्नहर्ता, मंगलमूर्ति भगवान श्री गणेश जी के जन्मोत्सव 'गणेश चतुर्थी' की समस्त इटावा विधानसभा क्षेत्रवासियों, प्रदेशवासियों एवं देशवासियों को हार्दिक बधाई एवं अनंत मंगलकामनाएं। भगवान गजानन आप सभी के जीवन से सभी विघ्न-बाधाओं को दूर कर सुख, शांति, समृद्धि एवं आरोग्य प्रदान करें। आइए हम सब मिलकर सामाजिक समरसता और पर्यावरण संरक्षण के साथ इस पावन पर्व को मनाएं।",
+      "bannerImage": "/images/poli3.png",
+      "videoUrl": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+      "mlaSignature": "— श्रीमती सरिता भदौरिया (विधायक, इटावा विधानसभा 200)",
+      "startDate": "2026-09-15",
+      "endDate": "2026-09-24",
+      "active": true,
+      "category": "धार्मिक उत्सव",
+      "createdAt": "2026-09-15T10:00:00.000Z"
+    },
+    {
+      "id": "fest_diwali_2026",
+      "name": "दीपावली एवं धनतेरस (Diwali)",
+      "title": "दीपावली एवं धनतेरस की हार्दिक शुभकामनाएं",
+      "message": "समस्त इटावा वासियों को प्रकाश पर्व दीपावली की हार्दिक बधाई एवं शुभकामनाएं।",
+      "fullMessage": "समस्त क्षेत्रवासियों को प्रकाश, उल्लास और समृद्धि के महापर्व दीपावली की हार्दिक बधाई। मां लक्ष्मी और भगवान गणेश आपके जीवन में सुख, शांति, समृद्धि और उत्तम स्वास्थ्य लाएं। वोकल फॉर लोकल अपनाएं और स्थानीय दीयों से अपने घर को रोशन करें।",
+      "bannerImage": "/images/poli2.png",
+      "videoUrl": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+      "mlaSignature": "— श्रीमती सरिता भदौरिया (विधायक, इटावा विधानसभा 200)",
+      "startDate": "2026-10-28",
+      "endDate": "2026-11-04",
+      "active": false,
+      "category": "महापर्व",
+      "createdAt": "2026-09-14T09:00:00.000Z"
+    },
+    {
+      "id": "fest_holi_2026",
+      "name": "होली (Holi - Festival of Colors)",
+      "title": "रंगोत्सव होली की पावन शुभकामनाएं",
+      "message": "उमंग, उत्साह और आपसी सौहार्द के महापर्व होली की समस्त इटावा वासियों को अनंत शुभकामनाएं।",
+      "fullMessage": "रंग, उमंग और सामाजिक समरसता के महापर्व होली की समस्त क्षेत्रवासियों को शुभकामनाएं। यह रंगोत्सव आप सभी के जीवन में खुशहाली और विकास के नए रंग भरे।",
+      "bannerImage": "/images/poli1.png",
+      "videoUrl": "",
+      "mlaSignature": "— श्रीमती सरिता भदौरिया (विधायक, इटावा विधानसभा 200)",
+      "startDate": "2026-03-03",
+      "endDate": "2026-03-06",
+      "active": false,
+      "category": "सांस्कृतिक पर्व",
+      "createdAt": "2026-03-01T08:00:00.000Z"
+    },
+    {
+      "id": "fest_republic_2026",
+      "name": "गणतंत्र दिवस (Republic Day - 26 Jan)",
+      "title": "77वें गणतंत्र दिवस की हार्दिक शुभकामनाएं",
+      "message": "विकसित भारत का संकल्प, समृद्ध उत्तर प्रदेश का संकल्प। राष्ट्र सेवा में सदैव समर्पित।",
+      "fullMessage": "समस्त इटावा वासियों को 77वें गणतंत्र दिवस की हार्दिक बधाई एवं शुभकामनाएं। आइए संविधान के मूल्यों की रक्षा करते हुए अपने क्षेत्र व राष्ट्र के नवनिर्माण में अपना योगदान दें।",
+      "bannerImage": "/images/poli4.png",
+      "videoUrl": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+      "mlaSignature": "— श्रीमती सरिता भदौरिया (विधायक, इटावा विधानसभा 200)",
+      "startDate": "2026-01-25",
+      "endDate": "2026-01-27",
+      "active": false,
+      "category": "राष्ट्रीय पर्व",
+      "createdAt": "2026-01-20T10:00:00.000Z"
+    },
+    {
+      "id": "fest_navratri_2026",
+      "name": "शारदीय नवरात्रि (Navratri)",
+      "title": "शारदीय नवरात्रि की मंगलकामनाएं",
+      "message": "मां आदिशक्ति जगदम्बा की कृपा समस्त क्षेत्रवासियों पर सदैव बनी रहे।",
+      "fullMessage": "शक्ति उपासना के पावन पर्व शारदीय नवरात्रि की आप सभी को हार्दिक शुभकामनाएं। मां भगवती सभी पर कृपा बनाए रखें और समाज में नारी सशक्तिकरण को नई दिशा मिले।",
+      "bannerImage": "/images/assets/work_women_shg.jpg",
+      "videoUrl": "",
+      "mlaSignature": "— श्रीमती सरिता भदौरिया (विधायक, इटावा विधानसभा 200)",
+      "startDate": "2026-10-10",
+      "endDate": "2026-10-19",
+      "active": false,
+      "category": "धार्मिक पर्व",
+      "createdAt": "2026-09-10T11:00:00.000Z"
+    }
+  ],
+  "socialProfiles": [
+    {
+      "id": "profile-instagram-mlaetawah",
+      "platform": "instagram",
+      "handle": "mlaetawah",
+      "username": "@mlaetawah",
+      "displayName": "श्रीमती सरिता भदौरिया (MLA Etawah)",
+      "profileUrl": "https://www.instagram.com/mlaetawah/?hl=en",
+      "avatar": "/images/poli4.png",
+      "bio": "विधायक - इटावा सदर विधानसभा (200), उत्तर प्रदेश विधानसभा | भारतीय जनता पार्टी | जनसेवा, विकास एवं अंत्योदय को समर्पित।",
+      "followers": "18.4K",
+      "following": "245",
+      "totalPosts": 432,
+      "verified": true,
+      "status": "connected",
+      "lastSyncedAt": "2026-09-15T20:26:25.309Z",
+      "autoSync": true
+    },
+    {
+      "id": "profile-facebook-mlaetawah",
+      "platform": "facebook",
+      "handle": "mlaetawah",
+      "username": "mlaetawah",
+      "displayName": "Sarita Bhadauria - MLA Etawah (आधिकारिक पृष्ठ)",
+      "profileUrl": "https://www.facebook.com/mlaetawah?mibextid=ZbWKwL&utm_source=ig&utm_medium=social&utm_content=link_in_bio",
+      "avatar": "/images/poli1.png",
+      "bio": "आधिकारिक फेसबुक पृष्ठ - श्रीमती सरिता भदौरिया, विधायक, इटावा विधानसभा निर्वाचन क्षेत्र (200)। जनसेवा, क्षेत्र का विकास एवं लोक-कल्याण ही सर्वोच्च प्राथमिकता।",
+      "followers": "34.8K",
+      "likes": "31.2K",
+      "totalPosts": 876,
+      "verified": true,
+      "status": "connected",
+      "lastSyncedAt": "2026-09-15T19:45:38.614Z",
+      "autoSync": true
+    }
+  ],
+  "mlaPhotoHistory": [
+    {
+      "id": "photo-1789523050566",
+      "title": "सदन व विधायी कार्य पोर्ट्रेट",
+      "url": "/uploads/images/sarita_bhadauriya-1789523047198-607565.png",
+      "category": "आधिकारिक",
+      "date": "2026-09-16",
+      "active": true
+    }
+  ],
+  "contentReadLogs": [
+    {
+      "id": "read_1789541764888_n0tb",
+      "entityId": 5,
+      "entityType": "activity",
+      "title": "इटावा सदर नवीन जन-सुविधा केंद्र लोकार्पण",
+      "category": "Inauguration",
+      "readerName": "अतिथि पाठक (Guest)",
+      "readerMobile": "अज्ञात",
+      "readerRole": "Guest",
+      "device": "Desktop / PC",
+      "timestamp": "2026-09-16T06:56:04.889Z"
+    },
+    {
+      "id": "read_1789541764846_feq4",
+      "entityId": 5,
+      "entityType": "activity",
+      "title": "इटावा सदर नवीन जन-सुविधा केंद्र लोकार्पण",
+      "category": "Inauguration",
+      "readerName": "अतिथि पाठक (Guest)",
+      "readerMobile": "अज्ञात",
+      "readerRole": "Guest",
+      "device": "Desktop / PC",
+      "timestamp": "2026-09-16T06:56:04.847Z"
+    },
+    {
+      "id": "read_1789528121392_k3lv",
+      "entityId": 1,
+      "entityType": "activity",
+      "title": "इटावा सदर नवीन जन-सुविधा केंद्र लोकार्पण",
+      "category": "लोकार्पण",
+      "readerName": "रामसेवक शर्मा",
+      "readerMobile": "987****210",
+      "readerRole": "Citizen",
+      "device": "Mobile / Chrome Android",
+      "timestamp": "2026-09-16T03:08:41.392Z"
+    }
+  ],
+  "officials": [
+    {
+      "id": "off-1789531145810",
+      "name": "श्री आनंद मोहन त्रिपाठी",
+      "fatherSpouseName": "",
+      "role": "तहसीलदार न्यायिक",
+      "designation": "तहसीलदार न्यायिक",
+      "department": "राजस्व एवं न्यायिक",
+      "jurisdiction": "सदर तहसील",
+      "village": "इटावा नगर",
+      "mobile": "9454416111",
+      "email": "",
+      "category": "विभागीय अधिकारी (Officials)",
+      "photo": "",
+      "status": "Active",
+      "notes": "राजस्व अपील एवं न्यायिक वाद",
+      "createdAt": "2026-09-16"
+    },
+    {
+      "id": "off-1789531030862",
+      "name": "श्री संजीव कुमार",
+      "fatherSpouseName": "",
+      "role": "अधिशासी अधिकारी (EO नगर पालिका)",
+      "designation": "Executive Officer",
+      "department": "नगर विकास एवं पालिका",
+      "jurisdiction": "इटावा शहर",
+      "village": "इटावा शहर",
+      "mobile": "9454416099",
+      "email": "",
+      "category": "विभागीय अधिकारी (Officials)",
+      "photo": "",
+      "status": "Active",
+      "notes": "सफाई, जल निकासी व नगर पालिका कार्य",
+      "createdAt": "2026-09-16"
+    },
+    {
+      "id": "off-1",
+      "name": "श्री विक्रम सिंह राघव",
+      "fatherSpouseName": "श्री आर. एस. राघव",
+      "role": "उपजिलाधिकारी (SDM सदर)",
+      "designation": "Sub-Divisional Magistrate",
+      "department": "राजस्व विभाग (Revenue)",
+      "jurisdiction": "इटावा सदर तहसील",
+      "village": "इटावा मुख्यालय",
+      "mobile": "9454416001",
+      "email": "sdm-etawah@nic.in",
+      "category": "विभागीय अधिकारी (Officials)",
+      "photo": "/images/poli3.png",
+      "status": "Active",
+      "notes": "तहसील व भूमि विवाद निस्तारण अधिकृत",
+      "createdAt": "2026-09-01"
+    },
+    {
+      "id": "off-2",
+      "name": "श्रीमती नीलम श्रीवास्तव",
+      "fatherSpouseName": "श्री ए. के. श्रीवास्तव",
+      "role": "खंड विकास अधिकारी (BDO बढ़पुरा)",
+      "designation": "Block Development Officer",
+      "department": "ग्राम्य विकास (Rural Dev)",
+      "jurisdiction": "बढ़पुरा ब्लॉक",
+      "village": "बढ़पुरा",
+      "mobile": "9454416002",
+      "email": "bdo-barhpura@nic.in",
+      "category": "विभागीय अधिकारी (Officials)",
+      "photo": "/images/poli2.png",
+      "status": "Active",
+      "notes": "मनरेगा व ग्रामीण विकास कार्य",
+      "createdAt": "2026-09-01"
+    },
+    {
+      "id": "off-3",
+      "name": "श्री अखिलेश कुमार",
+      "fatherSpouseName": "",
+      "role": "तहसीलदार सदर",
+      "designation": "Tehsildar",
+      "department": "राजस्व विभाग (Revenue)",
+      "jurisdiction": "सदर तहसील",
+      "village": "इटावा",
+      "mobile": "9454416003",
+      "email": "tehsildar-etawah@nic.in",
+      "category": "विभागीय अधिकारी (Officials)",
+      "photo": "/images/poli1.png",
+      "status": "Active",
+      "notes": "प्रमाण पत्र, दाखिल खारिज व राजस्व",
+      "createdAt": "2026-09-01"
+    },
+    {
+      "id": "off-4",
+      "name": "श्री देवेंद्र सिंह",
+      "fatherSpouseName": "",
+      "role": "अधिशासी अभियंता (XEN विद्युत)",
+      "designation": "Executive Engineer (Electricity)",
+      "department": "विद्युत वितरण मंडल (DVVNL)",
+      "jurisdiction": "इटावा नगरीय व ग्रामीण",
+      "village": "इटावा सदर",
+      "mobile": "9454416004",
+      "email": "xen-etawah@dvvnl.org",
+      "category": "विभागीय अधिकारी (Officials)",
+      "photo": "/images/poli4.png",
+      "status": "Active",
+      "notes": "बिजली आपूर्ति, ट्रांसफॉर्मर व बिल सुधार",
+      "createdAt": "2026-09-01"
+    },
+    {
+      "id": "off-5",
+      "name": "श्री राकेश कुमार शर्मा",
+      "fatherSpouseName": "",
+      "role": "क्षेत्राधिकारी पुलिस (CO City)",
+      "designation": "Circle Officer Police",
+      "department": "गृह एवं पुलिस (Police)",
+      "jurisdiction": "इटावा नगर सर्किल",
+      "village": "इटावा नगर",
+      "mobile": "9454416005",
+      "email": "cocity-etw@uppolice.gov.in",
+      "category": "विभागीय अधिकारी (Officials)",
+      "photo": "/images/poli1.png",
+      "status": "Active",
+      "notes": "कानून व्यवस्था व जन सुरक्षा",
+      "createdAt": "2026-09-01"
+    },
+    {
+      "id": "off-6",
+      "name": "डॉ. गीताराम आनंद",
+      "fatherSpouseName": "",
+      "role": "मुख्य चिकित्सा अधिकारी (CMO)",
+      "designation": "Chief Medical Officer",
+      "department": "चिकित्सा एवं स्वास्थ्य (Health)",
+      "jurisdiction": "जनपद इटावा",
+      "village": "इटावा",
+      "mobile": "9454416006",
+      "email": "cmo-etw@up.nic.in",
+      "category": "विभागीय अधिकारी (Officials)",
+      "photo": "/images/poli3.png",
+      "status": "Active",
+      "notes": "जिला अस्पताल व सीएचसी/पीएचसी स्वास्थ्य सेवाएं",
+      "createdAt": "2026-09-01"
+    }
+  ],
+  "systemUsers": [
+    {
+      "id": 1,
+      "name": "Admin User",
+      "username": "admin",
+      "role": "Super Admin",
+      "roleKey": "admin",
+      "roleTitle": "एडमिन (Super Admin)",
+      "passwordHash": "admin123",
+      "permissions": [
+        "all"
+      ],
+      "avatar": "/images/admimadmin.png",
+      "status": "active",
+      "phone": "9450000001",
+      "department": "आईटी एवं प्रशासनिक नियंत्रण प्रकोष्ठ",
+      "badges": [
+        "पूर्ण नियंत्रण",
+        "सिस्टम कॉन्फ़िगरेशन",
+        "यूजर मैनेजमेंट",
+        "ऑडिट लॉग्स"
+      ],
+      "description": "पूरे पोर्टल, डेटाबेस, सुरक्षा और सभी मॉड्यूल्स का सर्वोच्च प्रशासनिक अधिकार।",
+      "createdAt": "2026-09-15"
+    },
+    {
+      "id": 2,
+      "name": "Smt. Sarita Bhadauria",
+      "username": "mla_sarita",
+      "role": "MLA User",
+      "roleKey": "mla",
+      "roleTitle": "विधायक (MLA - इटावा सदर 200)",
+      "passwordHash": "mla2026",
+      "permissions": [
+        "view_all",
+        "approve_grievances",
+        "broadcast_whatsapp",
+        "approve_works",
+        "mla_diary",
+        "vip_letters"
+      ],
+      "avatar": "/images/assets/sarita_bhadauria_hero.jpg",
+      "status": "active",
+      "phone": "9415045678",
+      "department": "विधानसभा सदस्य कार्यालय (इटावा 200)",
+      "badges": [
+        "क्षेत्रीय जनसंवाद",
+        "व्हाट्सएप संदेश प्रेषक",
+        "विकास कार्य स्वीकृति",
+        "वीआईपी पत्राचार"
+      ],
+      "description": "जनसंवाद शिकायतों की समीक्षा, व्यक्तिगत व सामूहिक व्हाट्सएप संदेश, विकास कार्यों की स्वीकृति।",
+      "createdAt": "2026-09-15"
+    },
+    {
+      "id": 3,
+      "name": "Neha Gupta",
+      "username": "content_mgr",
+      "role": "Content Manager",
+      "passwordHash": "content123",
+      "permissions": [
+        "manage_blogs",
+        "manage_news",
+        "manage_social"
+      ],
+      "avatar": "/images/poli2.png",
+      "status": "active",
+      "createdAt": "2026-09-15"
+    },
+    {
+      "id": 4,
+      "name": "Vijay Singh",
+      "username": "booth_coord",
+      "role": "Team Member",
+      "passwordHash": "team123",
+      "permissions": [
+        "view_constituency",
+        "register_citizens"
+      ],
+      "avatar": "/images/poli1.png",
+      "status": "active",
+      "createdAt": "2026-09-15"
+    },
+    {
+      "id": "usr-1789531030847",
+      "name": "अमित कुमार सक्सेना",
+      "username": "amit_operator",
+      "role": "Grievance Operator",
+      "passwordHash": "amit@etawah2026",
+      "permissions": [
+        "view_all",
+        "manage_grievances"
+      ],
+      "avatar": "/images/poli2.png",
+      "status": "active",
+      "phone": "9876543210",
+      "email": "",
+      "department": "जनसुनवाई प्रकोष्ठ",
+      "createdAt": "2026-09-16"
+    },
+    {
+      "id": "usr-1789531145827",
+      "name": "सुनील कुमार वर्मा",
+      "username": "sunil_operator",
+      "role": "Staff Operator",
+      "passwordHash": "sunil@etawah2026",
+      "permissions": [
+        "view_all",
+        "manage_grievances",
+        "manage_citizens"
+      ],
+      "avatar": "/images/poli2.png",
+      "status": "active",
+      "phone": "",
+      "email": "",
+      "department": "जनसेवा कार्यालय",
+      "createdAt": "2026-09-16"
+    },
+    {
+      "id": 3,
+      "name": "डेटा ऑपरेशंस मैनेजर (Data Manager)",
+      "username": "data_manager",
+      "role": "Data Manager",
+      "roleKey": "data_manager",
+      "roleTitle": "डेटा मैनेजर (Data Manager)",
+      "passwordHash": "data123",
+      "permissions": [
+        "manage_master_data",
+        "excel_import",
+        "manage_content",
+        "manage_directory",
+        "manage_schemes"
+      ],
+      "avatar": "/images/poli2.png",
+      "status": "active",
+      "phone": "9839001122",
+      "department": "सूचना, GIS मैपिंग एवं डेटा प्रबंधन",
+      "badges": [
+        "मास्टर डेटा एंट्री",
+        "एक्सेल बल्क अपलोड",
+        "डायरेक्टरी प्रबंधन",
+        "योजनाएं व समाचार"
+      ],
+      "description": "तहसील, ब्लॉक, ग्राम पंचायत, बूथ डेटा एंट्री, एमएस एक्सेल लिस्ट अपलोड, डायरेक्टरी व सामग्री प्रबंधन।",
+      "createdAt": "2026-09-15"
+    },
+    {
+      "id": 4,
+      "name": "क्षेत्रीय बूथ समन्वयक (Karyakarta Lead)",
+      "username": "karyakarta_lead",
+      "role": "Karyakarta",
+      "roleKey": "karyakarta",
+      "roleTitle": "कार्यकर्ता (Booth Coordinator)",
+      "passwordHash": "karyakarta123",
+      "permissions": [
+        "register_citizens",
+        "booth_reports",
+        "membership_drive",
+        "local_directory",
+        "view_booth_grievances"
+      ],
+      "avatar": "/images/poli1.png",
+      "status": "active",
+      "phone": "9451122334",
+      "department": "क्षेत्रीय कार्यकर्ता संगठन / बूथ प्रबंधन",
+      "badges": [
+        "घर-घर नागरिक पंजीकरण",
+        "बूथ समस्या रिपोर्ट",
+        "सदस्यता अभियान",
+        "स्थानीय संपर्क"
+      ],
+      "description": "जमीनी स्तर पर नागरिकों व सदस्यों का पंजीकरण, बूथवार समस्याओं की रिपोर्ट, जनसंपर्क।",
+      "createdAt": "2026-09-15"
+    },
+    {
+      "id": 5,
+      "name": "सचिवालय प्रतिनिधि (PA to MLA)",
+      "username": "mla_assistant",
+      "role": "MLA Assistant",
+      "roleKey": "mla_assistant",
+      "roleTitle": "विधायक का असिस्टेंट (MLA Assistant / PA)",
+      "passwordHash": "pa2026",
+      "permissions": [
+        "manage_grievances",
+        "forward_departments",
+        "action_taken_reports",
+        "schedule_diary",
+        "print_tokens"
+      ],
+      "avatar": "/images/poli3.png",
+      "status": "active",
+      "phone": "9415123450",
+      "department": "विधायक सचिवालय / जनसुनवाई व निस्तारण प्रकोष्ठ",
+      "badges": [
+        "शिकायत पंजीकरण व अग्रेषण",
+        "विभागीय पत्राचार",
+        "दैनिक दौरा व डायरी",
+        "कार्रवाई रिपोर्ट (ATR)"
+      ],
+      "description": "जनसंवाद समस्याओं की जांच, संबंधित विभाग को पत्राचार/अग्रेषण, टोकन रसीद प्रिंट व एक्शन टेकन रिपोर्ट दर्ज करना।",
+      "createdAt": "2026-09-15"
+    }
+  ]
+}

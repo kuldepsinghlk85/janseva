@@ -1,0 +1,273 @@
+const fs = require('fs');
+const path = require('path');
+
+const filePath = path.join(__dirname, 'villageMaster.json');
+
+const initialVillages = [
+  {
+    id: 1,
+    state: "Uttar Pradesh",
+    district: "Etawah",
+    assembly: "Etawah",
+    tehsil: "Etawah",
+    block: "Barhpura",
+    gramPanchayat: "Rampur Gram Panchayat",
+    villageName: "Rampur",
+    villageCode: "UP123456",
+    latitude: "26.7850",
+    longitude: "79.0210",
+    population: "3420",
+    tags: ["Village", "Development", "Road", "Primary_School"]
+  },
+  {
+    id: 2,
+    state: "Uttar Pradesh",
+    district: "Etawah",
+    assembly: "Etawah",
+    tehsil: "Etawah",
+    block: "Barhpura",
+    gramPanchayat: "Rampur Gram Panchayat",
+    villageName: "Aarazi Jadhonpur",
+    villageCode: "UP123457",
+    latitude: "26.7620",
+    longitude: "79.0110",
+    population: "2150",
+    tags: ["Village", "Development", "Solar_Light"]
+  },
+  {
+    id: 3,
+    state: "Uttar Pradesh",
+    district: "Etawah",
+    assembly: "Etawah",
+    tehsil: "Etawah",
+    block: "Barhpura",
+    gramPanchayat: "Barhpura Gram Panchayat",
+    villageName: "Ajabpur Jhingupur",
+    villageCode: "UP123458",
+    latitude: "26.7710",
+    longitude: "78.9950",
+    population: "1890",
+    tags: ["Village", "Development", "Drainage"]
+  },
+  {
+    id: 4,
+    state: "Uttar Pradesh",
+    district: "Etawah",
+    assembly: "Etawah",
+    tehsil: "Etawah",
+    block: "Barhpura",
+    gramPanchayat: "Barhpura Gram Panchayat",
+    villageName: "Udi",
+    villageCode: "UP123459",
+    latitude: "26.7320",
+    longitude: "78.9640",
+    population: "4200",
+    tags: ["Village", "Chambal_Corridor", "Tourism"]
+  },
+  {
+    id: 5,
+    state: "Uttar Pradesh",
+    district: "Etawah",
+    assembly: "Etawah",
+    tehsil: "Etawah",
+    block: "Basrehar",
+    gramPanchayat: "Basrehar Gram Panchayat",
+    villageName: "Ahladpur",
+    villageCode: "UP123460",
+    latitude: "26.8520",
+    longitude: "79.1230",
+    population: "2670",
+    tags: ["Village", "Development", "Kisan_Samman"]
+  },
+  {
+    id: 6,
+    state: "Uttar Pradesh",
+    district: "Etawah",
+    assembly: "Etawah",
+    tehsil: "Etawah",
+    block: "Basrehar",
+    gramPanchayat: "Basrehar Gram Panchayat",
+    villageName: "Akbarpur",
+    villageCode: "UP123461",
+    latitude: "26.8640",
+    longitude: "79.1350",
+    population: "3100",
+    tags: ["Village", "Development", "Panchayat_Bhavan"]
+  },
+  {
+    id: 7,
+    state: "Uttar Pradesh",
+    district: "Etawah",
+    assembly: "Etawah",
+    tehsil: "Etawah",
+    block: "Basrehar",
+    gramPanchayat: "Basrehar Gram Panchayat",
+    villageName: "Amritpur",
+    villageCode: "UP123462",
+    latitude: "26.8710",
+    longitude: "79.1420",
+    population: "1950",
+    tags: ["Village", "Development", "Jal_Jeevan_Mission"]
+  },
+  {
+    id: 8,
+    state: "Uttar Pradesh",
+    district: "Etawah",
+    assembly: "Etawah",
+    tehsil: "Saifai",
+    block: "Saifai",
+    gramPanchayat: "Saifai Gram Panchayat",
+    villageName: "Atirajpur",
+    villageCode: "UP123463",
+    latitude: "26.9610",
+    longitude: "79.0340",
+    population: "2480",
+    tags: ["Village", "Development", "Healthcare"]
+  },
+  {
+    id: 9,
+    state: "Uttar Pradesh",
+    district: "Etawah",
+    assembly: "Etawah",
+    tehsil: "Saifai",
+    block: "Saifai",
+    gramPanchayat: "Saifai Gram Panchayat",
+    villageName: "Ujhiyani",
+    villageCode: "UP123464",
+    latitude: "26.9720",
+    longitude: "79.0450",
+    population: "2100",
+    tags: ["Village", "Development", "Education"]
+  },
+  {
+    id: 10,
+    state: "Uttar Pradesh",
+    district: "Etawah",
+    assembly: "Etawah",
+    tehsil: "Jaswantnagar",
+    block: "Jaswantnagar",
+    gramPanchayat: "Jaswantnagar Gram Panchayat",
+    villageName: "Ajnoura",
+    villageCode: "UP123465",
+    latitude: "26.8850",
+    longitude: "78.8920",
+    population: "3890",
+    tags: ["Village", "Development", "Irrigation"]
+  },
+  {
+    id: 11,
+    state: "Uttar Pradesh",
+    district: "Etawah",
+    assembly: "Etawah",
+    tehsil: "Chakarnagar",
+    block: "Chakarnagar",
+    gramPanchayat: "Chakarnagar Gram Panchayat",
+    villageName: "Acharoli",
+    villageCode: "UP123466",
+    latitude: "26.6120",
+    longitude: "79.1240",
+    population: "1720",
+    tags: ["Village", "Development", "Yamuna_Tirath"]
+  },
+  {
+    id: 12,
+    state: "Uttar Pradesh",
+    district: "Etawah",
+    assembly: "Etawah",
+    tehsil: "Chakarnagar",
+    block: "Chakarnagar",
+    gramPanchayat: "Chakarnagar Gram Panchayat",
+    villageName: "Andawa",
+    villageCode: "UP123467",
+    latitude: "26.6250",
+    longitude: "79.1380",
+    population: "1850",
+    tags: ["Village", "Development", "Forestry"]
+  },
+  {
+    id: 13,
+    state: "Uttar Pradesh",
+    district: "Etawah",
+    assembly: "Etawah",
+    tehsil: "Bharthana",
+    block: "Bharthana",
+    gramPanchayat: "Bharthana Gram Panchayat",
+    villageName: "Bakewar",
+    villageCode: "UP123468",
+    latitude: "26.6680",
+    longitude: "79.1890",
+    population: "5600",
+    tags: ["Village", "Development", "Mandi"]
+  },
+  {
+    id: 14,
+    state: "Uttar Pradesh",
+    district: "Etawah",
+    assembly: "Etawah",
+    tehsil: "Bharthana",
+    block: "Bharthana",
+    gramPanchayat: "Bharthana Gram Panchayat",
+    villageName: "Bharthana Dehat",
+    villageCode: "UP123469",
+    latitude: "26.7540",
+    longitude: "79.2310",
+    population: "4800",
+    tags: ["Village", "Development", "Railway_Station"]
+  },
+  {
+    id: 15,
+    state: "Uttar Pradesh",
+    district: "Etawah",
+    assembly: "Etawah",
+    tehsil: "Mahewa",
+    block: "Mahewa",
+    gramPanchayat: "Mahewa Gram Panchayat",
+    villageName: "Lawedi",
+    villageCode: "UP123470",
+    latitude: "26.6430",
+    longitude: "79.1670",
+    population: "2780",
+    tags: ["Village", "Development", "Community_Center"]
+  },
+  {
+    id: 16,
+    state: "Uttar Pradesh",
+    district: "Etawah",
+    assembly: "Etawah",
+    tehsil: "Takha",
+    block: "Takha",
+    gramPanchayat: "Takha Gram Panchayat",
+    villageName: "Takha Gram",
+    villageCode: "UP123471",
+    latitude: "26.8920",
+    longitude: "79.2810",
+    population: "2340",
+    tags: ["Village", "Development", "Veterinary_Care"]
+  }
+];
+
+let villages = [...initialVillages];
+
+try {
+  if (fs.existsSync(filePath)) {
+    const data = fs.readFileSync(filePath, 'utf8');
+    villages = JSON.parse(data);
+  } else {
+    fs.writeFileSync(filePath, JSON.stringify(initialVillages, null, 2), 'utf8');
+  }
+} catch (err) {
+  console.error('Error loading villageMaster.json:', err);
+}
+
+function saveVillages() {
+  try {
+    fs.writeFileSync(filePath, JSON.stringify(villages, null, 2), 'utf8');
+  } catch (err) {
+    console.error('Error saving villageMaster.json:', err);
+  }
+}
+
+module.exports = {
+  villages,
+  saveVillages
+};

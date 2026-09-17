@@ -1,0 +1,41 @@
+const fs = require('fs');
+const path = require('path');
+
+const filePath = path.join(__dirname, 'blockMaster.json');
+
+const initialBlocks = [
+  { id: 1, tehsilId: 1, blockName: "Barhpura", code: "BL001", blockNameHi: "बढ़पुरा", totalVillages: 45 },
+  { id: 2, tehsilId: 1, blockName: "Basrehar", code: "BL002", blockNameHi: "बसरेहर", totalVillages: 52 },
+  { id: 3, tehsilId: 2, blockName: "Saifai", code: "BL003", blockNameHi: "सैफई", totalVillages: 38 },
+  { id: 4, tehsilId: 3, blockName: "Jaswantnagar", code: "BL004", blockNameHi: "जसवंतनगर", totalVillages: 48 },
+  { id: 5, tehsilId: 4, blockName: "Chakarnagar", code: "BL005", blockNameHi: "चकरनगर", totalVillages: 36 },
+  { id: 6, tehsilId: 5, blockName: "Bharthana", code: "BL006", blockNameHi: "भरथना", totalVillages: 55 },
+  { id: 7, tehsilId: 6, blockName: "Mahewa", code: "BL007", blockNameHi: "महेवा", totalVillages: 42 },
+  { id: 8, tehsilId: 7, blockName: "Takha", code: "BL008", blockNameHi: "ताखा", totalVillages: 34 }
+];
+
+let blocks = [...initialBlocks];
+
+try {
+  if (fs.existsSync(filePath)) {
+    const data = fs.readFileSync(filePath, 'utf8');
+    blocks = JSON.parse(data);
+  } else {
+    fs.writeFileSync(filePath, JSON.stringify(initialBlocks, null, 2), 'utf8');
+  }
+} catch (err) {
+  console.error('Error loading blockMaster.json:', err);
+}
+
+function saveBlocks() {
+  try {
+    fs.writeFileSync(filePath, JSON.stringify(blocks, null, 2), 'utf8');
+  } catch (err) {
+    console.error('Error saving blockMaster.json:', err);
+  }
+}
+
+module.exports = {
+  blocks,
+  saveBlocks
+};

@@ -1,0 +1,771 @@
+{
+  "villages": [
+    {
+      "id": "rampur",
+      "name": "Rampur",
+      "nameHi": "रामपुर",
+      "state": "Uttar Pradesh",
+      "district": "इटावा",
+      "assembly": "Etawah Assembly",
+      "tehsil": "Etawah",
+      "block": "इटावा सदर",
+      "villageCategory": "Village",
+      "sampleTag": "Development",
+      "pincode": "206001"
+    },
+    {
+      "id": "saifai",
+      "name": "Saifai",
+      "nameHi": "सैफई",
+      "state": "Uttar Pradesh",
+      "district": "इटावा",
+      "assembly": "Etawah Assembly",
+      "tehsil": "Saifai",
+      "block": "सैफई",
+      "villageCategory": "Village",
+      "sampleTag": "Development",
+      "pincode": "206130"
+    },
+    {
+      "id": "bakewar",
+      "name": "Bakewar",
+      "nameHi": "बकेवर",
+      "state": "Uttar Pradesh",
+      "district": "इटावा",
+      "assembly": "Etawah Assembly",
+      "tehsil": "Bharthana",
+      "block": "भरथना",
+      "villageCategory": "Village",
+      "sampleTag": "Development",
+      "pincode": "206124"
+    },
+    {
+      "id": "takroi",
+      "name": "Takroi",
+      "nameHi": "तकरोई",
+      "state": "Uttar Pradesh",
+      "district": "इटावा",
+      "assembly": "Etawah Assembly",
+      "tehsil": "Etawah",
+      "block": "इटावा सदर",
+      "villageCategory": "Village",
+      "sampleTag": "Development",
+      "pincode": "206001"
+    },
+    {
+      "id": "pilkhar",
+      "name": "Pilkhar",
+      "nameHi": "पिलखर",
+      "state": "Uttar Pradesh",
+      "district": "इटावा",
+      "assembly": "Etawah Assembly",
+      "tehsil": "Etawah",
+      "block": "इटावा सदर",
+      "villageCategory": "Village",
+      "sampleTag": "Development",
+      "pincode": "206001"
+    },
+    {
+      "id": "jaswantnagar",
+      "name": "Jaswantnagar",
+      "nameHi": "जसवंतनगर",
+      "state": "Uttar Pradesh",
+      "district": "इटावा",
+      "assembly": "Etawah Assembly",
+      "tehsil": "Jaswantnagar",
+      "block": "जसवंतनगर",
+      "villageCategory": "Village",
+      "sampleTag": "Development",
+      "pincode": "206245"
+    },
+    {
+      "id": "bharthana",
+      "name": "Bharthana",
+      "nameHi": "भरथना",
+      "state": "Uttar Pradesh",
+      "district": "इटावा",
+      "assembly": "Etawah Assembly",
+      "tehsil": "Bharthana",
+      "block": "भरथना",
+      "villageCategory": "Village",
+      "sampleTag": "Development",
+      "pincode": "206242"
+    },
+    {
+      "id": "udi",
+      "name": "Udi",
+      "nameHi": "उदी",
+      "state": "Uttar Pradesh",
+      "district": "इटावा",
+      "assembly": "Etawah Assembly",
+      "tehsil": "Etawah",
+      "block": "बढ़पुरा",
+      "villageCategory": "Village",
+      "sampleTag": "Development",
+      "pincode": "206131"
+    },
+    {
+      "id": "chakarnagar",
+      "name": "Chakarnagar",
+      "nameHi": "चकरनगर",
+      "state": "Uttar Pradesh",
+      "district": "इटावा",
+      "assembly": "Etawah Assembly",
+      "tehsil": "Chakarnagar",
+      "block": "चकरनगर",
+      "villageCategory": "Village",
+      "sampleTag": "Development",
+      "pincode": "206125"
+    },
+    {
+      "id": "basrehar",
+      "name": "Basrehar",
+      "nameHi": "बसरेहर",
+      "state": "Uttar Pradesh",
+      "district": "इटावा",
+      "assembly": "Etawah Assembly",
+      "tehsil": "Etawah",
+      "block": "बसरेहर",
+      "villageCategory": "Village",
+      "sampleTag": "Development",
+      "pincode": "206253"
+    },
+    {
+      "id": "chaubia",
+      "name": "Chaubia",
+      "nameHi": "चौबिया",
+      "state": "Uttar Pradesh",
+      "district": "इटावा",
+      "assembly": "Etawah Assembly",
+      "tehsil": "Saifai",
+      "block": "सैफई",
+      "villageCategory": "Village",
+      "sampleTag": "Development",
+      "pincode": "206126"
+    },
+    {
+      "id": "lawedi",
+      "name": "Lawedi",
+      "nameHi": "लवेदी",
+      "state": "Uttar Pradesh",
+      "district": "इटावा",
+      "assembly": "Etawah Assembly",
+      "tehsil": "Chakarnagar",
+      "block": "महेवा",
+      "villageCategory": "Village",
+      "sampleTag": "Development",
+      "pincode": "206127"
+    },
+    {
+      "id": "vaidpura",
+      "name": "Vaidpura",
+      "nameHi": "वैदपुरा",
+      "state": "Uttar Pradesh",
+      "district": "इटावा",
+      "assembly": "Etawah Assembly",
+      "tehsil": "Saifai",
+      "block": "सैफई",
+      "villageCategory": "Village",
+      "sampleTag": "Development",
+      "pincode": "206130"
+    },
+    {
+      "id": "pachhaygaon",
+      "name": "Pachhaygaon",
+      "nameHi": "पछायगांव",
+      "state": "Uttar Pradesh",
+      "district": "इटावा",
+      "assembly": "Etawah Assembly",
+      "tehsil": "Etawah",
+      "block": "बढ़पुरा",
+      "villageCategory": "Village",
+      "sampleTag": "Development",
+      "pincode": "206131"
+    },
+    {
+      "id": "vil-mu33qd7j",
+      "name": "कुदरेल",
+      "nameHi": "कुदरेल",
+      "state": "Uttar Pradesh",
+      "district": "इटावा",
+      "assembly": "Etawah Assembly",
+      "tehsil": "Etawah",
+      "block": "इटावा सदर",
+      "villageCategory": "Village",
+      "sampleTag": "Development",
+      "pincode": "206001"
+    },
+    {
+      "id": "aarazijadhonpur-barhpura",
+      "name": "Aarazi Jadhonpur",
+      "nameHi": "Aarazi Jadhonpur",
+      "state": "Uttar Pradesh",
+      "district": "Etawah",
+      "assembly": "Etawah Assembly",
+      "tehsil": "Etawah",
+      "block": "Barhpura",
+      "villageCategory": "Village",
+      "sampleTag": "Development",
+      "pincode": "206001"
+    },
+    {
+      "id": "ajabpurjhingupur-barhpura",
+      "name": "Ajabpur Jhingupur",
+      "nameHi": "Ajabpur Jhingupur",
+      "state": "Uttar Pradesh",
+      "district": "Etawah",
+      "assembly": "Etawah Assembly",
+      "tehsil": "Etawah",
+      "block": "Barhpura",
+      "villageCategory": "Village",
+      "sampleTag": "Development",
+      "pincode": "206001"
+    },
+    {
+      "id": "ahladpur-basrehar",
+      "name": "Ahladpur",
+      "nameHi": "Ahladpur",
+      "state": "Uttar Pradesh",
+      "district": "Etawah",
+      "assembly": "Etawah Assembly",
+      "tehsil": "Etawah",
+      "block": "Basrehar",
+      "villageCategory": "Village",
+      "sampleTag": "Development",
+      "pincode": "206001"
+    },
+    {
+      "id": "akbarpur-basrehar",
+      "name": "Akbarpur",
+      "nameHi": "Akbarpur",
+      "state": "Uttar Pradesh",
+      "district": "Etawah",
+      "assembly": "Etawah Assembly",
+      "tehsil": "Etawah",
+      "block": "Basrehar",
+      "villageCategory": "Village",
+      "sampleTag": "Development",
+      "pincode": "206001"
+    },
+    {
+      "id": "amritpur-basrehar",
+      "name": "Amritpur",
+      "nameHi": "Amritpur",
+      "state": "Uttar Pradesh",
+      "district": "Etawah",
+      "assembly": "Etawah Assembly",
+      "tehsil": "Etawah",
+      "block": "Basrehar",
+      "villageCategory": "Village",
+      "sampleTag": "Development",
+      "pincode": "206001"
+    },
+    {
+      "id": "atirajpur-saifai",
+      "name": "Atirajpur",
+      "nameHi": "Atirajpur",
+      "state": "Uttar Pradesh",
+      "district": "Etawah",
+      "assembly": "Etawah Assembly",
+      "tehsil": "Saifai",
+      "block": "Saifai",
+      "villageCategory": "Village",
+      "sampleTag": "Development",
+      "pincode": "206001"
+    },
+    {
+      "id": "ujhiyani-saifai",
+      "name": "Ujhiyani",
+      "nameHi": "Ujhiyani",
+      "state": "Uttar Pradesh",
+      "district": "Etawah",
+      "assembly": "Etawah Assembly",
+      "tehsil": "Saifai",
+      "block": "Saifai",
+      "villageCategory": "Village",
+      "sampleTag": "Development",
+      "pincode": "206001"
+    },
+    {
+      "id": "ajnoura-jaswantnagar",
+      "name": "Ajnoura",
+      "nameHi": "Ajnoura",
+      "state": "Uttar Pradesh",
+      "district": "Etawah",
+      "assembly": "Etawah Assembly",
+      "tehsil": "Jaswantnagar",
+      "block": "Jaswantnagar",
+      "villageCategory": "Village",
+      "sampleTag": "Development",
+      "pincode": "206001"
+    },
+    {
+      "id": "acharoli-chakarnagar",
+      "name": "Acharoli",
+      "nameHi": "Acharoli",
+      "state": "Uttar Pradesh",
+      "district": "Etawah",
+      "assembly": "Etawah Assembly",
+      "tehsil": "Chakarnagar",
+      "block": "Chakarnagar",
+      "villageCategory": "Village",
+      "sampleTag": "Development",
+      "pincode": "206001"
+    },
+    {
+      "id": "andawa-chakarnagar",
+      "name": "Andawa",
+      "nameHi": "Andawa",
+      "state": "Uttar Pradesh",
+      "district": "Etawah",
+      "assembly": "Etawah Assembly",
+      "tehsil": "Chakarnagar",
+      "block": "Chakarnagar",
+      "villageCategory": "Village",
+      "sampleTag": "Development",
+      "pincode": "206001"
+    }
+  ],
+  "categories": [
+    {
+      "id": "Inauguration",
+      "name": "Inauguration",
+      "nameHi": "लोकार्पण / उद्घाटन",
+      "type": "activity",
+      "color": "orange"
+    },
+    {
+      "id": "Foundation Stone",
+      "name": "Foundation Stone",
+      "nameHi": "शिलान्यास",
+      "type": "activity",
+      "color": "amber"
+    },
+    {
+      "id": "Inspection",
+      "name": "Inspection",
+      "nameHi": "स्थलीय निरीक्षण",
+      "type": "activity",
+      "color": "blue"
+    },
+    {
+      "id": "Public Meeting",
+      "name": "Public Meeting",
+      "nameHi": "जनसंवाद चौपाल",
+      "type": "activity",
+      "color": "green"
+    },
+    {
+      "id": "Village Visit",
+      "name": "Village Visit",
+      "nameHi": "ग्राम भ्रमण",
+      "type": "activity",
+      "color": "emerald"
+    },
+    {
+      "id": "Development Work",
+      "name": "Development Work",
+      "nameHi": "विकास कार्य",
+      "type": "both",
+      "color": "indigo"
+    },
+    {
+      "id": "Government Scheme",
+      "name": "Government Scheme",
+      "nameHi": "सरकारी योजना",
+      "type": "both",
+      "color": "purple"
+    },
+    {
+      "id": "Road Transport",
+      "name": "Road & Transport",
+      "nameHi": "सड़क एवं परिवहन",
+      "type": "work",
+      "color": "orange"
+    },
+    {
+      "id": "Education",
+      "name": "Education",
+      "nameHi": "शिक्षा",
+      "type": "work",
+      "color": "sky"
+    },
+    {
+      "id": "Healthcare",
+      "name": "Healthcare",
+      "nameHi": "स्वास्थ्य सेवा",
+      "type": "work",
+      "color": "rose"
+    },
+    {
+      "id": "Drinking Water",
+      "name": "Drinking Water",
+      "nameHi": "पेयजल",
+      "type": "work",
+      "color": "teal"
+    },
+    {
+      "id": "Grievance Redressal",
+      "name": "Grievance Redressal",
+      "nameHi": "जनसुनवाई",
+      "type": "activity",
+      "color": "red"
+    },
+    {
+      "id": "Other",
+      "name": "Other",
+      "nameHi": "अन्य कार्यक्रम",
+      "type": "both",
+      "color": "slate"
+    },
+    {
+      "id": "KisanMahapanchayat",
+      "name": "Kisan Mahapanchayat",
+      "nameHi": "किसान महापंचायत",
+      "type": "both",
+      "color": "orange"
+    },
+    {
+      "id": "village",
+      "name": "Village",
+      "nameHi": "Village",
+      "type": "both",
+      "color": "blue"
+    }
+  ],
+  "tags": [
+    {
+      "id": "road",
+      "name": "सड़क",
+      "count": 12
+    },
+    {
+      "id": "gram-vikas",
+      "name": "ग्राम विकास",
+      "count": 18
+    },
+    {
+      "id": "pwd",
+      "name": "पीडब्ल्यूडी",
+      "count": 8
+    },
+    {
+      "id": "etawah",
+      "name": "इटावा",
+      "count": 25
+    },
+    {
+      "id": "inauguration",
+      "name": "लोकार्पण",
+      "count": 15
+    },
+    {
+      "id": "samvad",
+      "name": "जनसंवाद",
+      "count": 9
+    },
+    {
+      "id": "nari-shakti",
+      "name": "नारी शक्ति",
+      "count": 7
+    },
+    {
+      "id": "swasthya",
+      "name": "स्वास्थ्य",
+      "count": 11
+    },
+    {
+      "id": "shiksha",
+      "name": "शिक्षा",
+      "count": 10
+    },
+    {
+      "id": "kisan",
+      "name": "किसान",
+      "count": 14
+    },
+    {
+      "id": "bijli",
+      "name": "बिजली",
+      "count": 6
+    },
+    {
+      "id": "swachhata",
+      "name": "स्वच्छता",
+      "count": 8
+    },
+    {
+      "id": "tag-mu33qd7k",
+      "name": "किसान_कल्याण",
+      "count": 1
+    },
+    {
+      "id": "development",
+      "name": "Development",
+      "count": 11
+    },
+    {
+      "id": "education",
+      "name": "Education",
+      "count": 1
+    },
+    {
+      "id": "etawah",
+      "name": "Etawah",
+      "count": 25
+    },
+    {
+      "id": "__200",
+      "name": "इटावा_विधानसभा_200",
+      "count": 20
+    },
+    {
+      "id": "etawah_tehsil",
+      "name": "Etawah_Tehsil",
+      "count": 15
+    },
+    {
+      "id": "tag-tb-4",
+      "name": "तहसील_इटावा",
+      "count": 15
+    },
+    {
+      "id": "saifai_tehsil",
+      "name": "Saifai_Tehsil",
+      "count": 10
+    },
+    {
+      "id": "tag-tb-6",
+      "name": "तहसील_सैफई",
+      "count": 10
+    },
+    {
+      "id": "jaswantnagar_tehsil",
+      "name": "Jaswantnagar_Tehsil",
+      "count": 8
+    },
+    {
+      "id": "tag-tb-8",
+      "name": "तहसील_जसवंतनगर",
+      "count": 8
+    },
+    {
+      "id": "chakarnagar_tehsil",
+      "name": "Chakarnagar_Tehsil",
+      "count": 8
+    },
+    {
+      "id": "tag-tb-10",
+      "name": "तहसील_चकरनगर",
+      "count": 8
+    },
+    {
+      "id": "bharthana_tehsil",
+      "name": "Bharthana_Tehsil",
+      "count": 7
+    },
+    {
+      "id": "tag-tb-12",
+      "name": "तहसील_भरथना",
+      "count": 7
+    },
+    {
+      "id": "mahewa_tehsil",
+      "name": "Mahewa_Tehsil",
+      "count": 6
+    },
+    {
+      "id": "tag-tb-14",
+      "name": "तहसील_महेवा",
+      "count": 6
+    },
+    {
+      "id": "takha_tehsil",
+      "name": "Takha_Tehsil",
+      "count": 5
+    },
+    {
+      "id": "tag-tb-16",
+      "name": "तहसील_ताखा",
+      "count": 5
+    },
+    {
+      "id": "barhpura",
+      "name": "Barhpura",
+      "count": 12
+    },
+    {
+      "id": "tag-tb-18",
+      "name": "बढ़पुरा",
+      "count": 12
+    },
+    {
+      "id": "tag-tb-19",
+      "name": "ब्लॉक_बढ़पुरा",
+      "count": 10
+    },
+    {
+      "id": "basrehar",
+      "name": "Basrehar",
+      "count": 12
+    },
+    {
+      "id": "tag-tb-21",
+      "name": "बसरेहर",
+      "count": 12
+    },
+    {
+      "id": "tag-tb-22",
+      "name": "ब्लॉक_बसरेहर",
+      "count": 10
+    },
+    {
+      "id": "saifai",
+      "name": "Saifai",
+      "count": 14
+    },
+    {
+      "id": "tag-tb-24",
+      "name": "सैफई",
+      "count": 14
+    },
+    {
+      "id": "tag-tb-25",
+      "name": "ब्लॉक_सैफई",
+      "count": 10
+    },
+    {
+      "id": "jaswantnagar",
+      "name": "Jaswantnagar",
+      "count": 10
+    },
+    {
+      "id": "tag-tb-27",
+      "name": "जसवंतनगर",
+      "count": 10
+    },
+    {
+      "id": "tag-tb-28",
+      "name": "ब्लॉक_जसवंतनगर",
+      "count": 8
+    },
+    {
+      "id": "chakarnagar",
+      "name": "Chakarnagar",
+      "count": 10
+    },
+    {
+      "id": "tag-tb-30",
+      "name": "चकरनगर",
+      "count": 10
+    },
+    {
+      "id": "tag-tb-31",
+      "name": "ब्लॉक_चकरनगर",
+      "count": 8
+    },
+    {
+      "id": "bharthana",
+      "name": "Bharthana",
+      "count": 9
+    },
+    {
+      "id": "tag-tb-33",
+      "name": "भरथना",
+      "count": 9
+    },
+    {
+      "id": "tag-tb-34",
+      "name": "ब्लॉक_भरथना",
+      "count": 8
+    },
+    {
+      "id": "mahewa",
+      "name": "Mahewa",
+      "count": 8
+    },
+    {
+      "id": "tag-tb-36",
+      "name": "महेवा",
+      "count": 8
+    },
+    {
+      "id": "tag-tb-37",
+      "name": "ब्लॉक_महेवा",
+      "count": 7
+    },
+    {
+      "id": "takha",
+      "name": "Takha",
+      "count": 7
+    },
+    {
+      "id": "tag-tb-39",
+      "name": "ताखा",
+      "count": 7
+    },
+    {
+      "id": "tag-tb-40",
+      "name": "ब्लॉक_ताखा",
+      "count": 6
+    }
+  ],
+  "tehsilBlocks": [
+    {
+      "district": "Etawah",
+      "tehsil": "Etawah",
+      "block": "Barhpura",
+      "tehsilHi": "इटावा",
+      "blockHi": "बढ़पुरा"
+    },
+    {
+      "district": "Etawah",
+      "tehsil": "Etawah",
+      "block": "Basrehar",
+      "tehsilHi": "इटावा",
+      "blockHi": "बसरेहर"
+    },
+    {
+      "district": "Etawah",
+      "tehsil": "Saifai",
+      "block": "Saifai",
+      "tehsilHi": "सैफई",
+      "blockHi": "सैफई"
+    },
+    {
+      "district": "Etawah",
+      "tehsil": "Jaswantnagar",
+      "block": "Jaswantnagar",
+      "tehsilHi": "जसवंतनगर",
+      "blockHi": "जसवंतनगर"
+    },
+    {
+      "district": "Etawah",
+      "tehsil": "Chakarnagar",
+      "block": "Chakarnagar",
+      "tehsilHi": "चकरनगर",
+      "blockHi": "चकरनगर"
+    },
+    {
+      "district": "Etawah",
+      "tehsil": "Bharthana",
+      "block": "Bharthana",
+      "tehsilHi": "भरथना",
+      "blockHi": "भरथना"
+    },
+    {
+      "district": "Etawah",
+      "tehsil": "Mahewa",
+      "block": "Mahewa",
+      "tehsilHi": "महेवा",
+      "blockHi": "महेवा"
+    },
+    {
+      "district": "Etawah",
+      "tehsil": "Takha",
+      "block": "Takha",
+      "tehsilHi": "ताखा",
+      "blockHi": "ताखा"
+    }
+  ]
+}

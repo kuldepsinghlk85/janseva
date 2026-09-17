@@ -1,0 +1,521 @@
+const express = require('express');
+const router = express.Router();
+const { readDb, writeDb, logAudit } = require('../utils/db');
+const { festivalCampaign } = require('../data/festivals');
+
+// GET full settings & MLA profile
+router.get('/', (req, res) => {
+  const db = readDb();
+  const currentFestival = { ...db.settings.festival, ...festivalCampaign };
+  res.json({
+    success: true,
+    settings: {
+      ...db.settings,
+      festival: currentFestival
+    },
+    mla: db.mla || {}
+  });
+});
+
+// UPDATE Hero Section
+router.put('/hero', (req, res) => {
+  const db = readDb();
+  db.settings.hero = { ...db.settings.hero, ...req.body };
+  writeDb(db);
+  logAudit(req.body.user, 'Update Hero Section', 'Website Builder', db.settings.hero);
+  res.json({ success: true, hero: db.settings.hero });
+});
+
+// Template Section Order Presets
+const TEMPLATE_ORDERS = {
+  'development-focus': [
+    'hero-banner', 'development-highlights', 'latest-news', 'upcoming-events',
+    'citizen-services', 'about-mla', 'social-feed', 'leader-network', 'testimonial', 'blogs', 'gallery'
+  ],
+  'public-connect': [
+    'hero-banner', 'citizen-services', 'social-feed', 'upcoming-events',
+    'development-highlights', 'about-mla', 'latest-news', 'testimonial', 'leader-network', 'blogs', 'gallery'
+  ],
+  'media-news': [
+    'hero-banner', 'latest-news', 'social-feed', 'development-highlights',
+    'leader-network', 'upcoming-events', 'about-mla', 'citizen-services', 'testimonial', 'blogs', 'gallery'
+  ],
+  'political-leadership': [
+    'about-mla', 'hero-banner', 'leader-network', 'latest-news',
+    'development-highlights', 'upcoming-events', 'social-feed', 'citizen-services', 'testimonial', 'blogs', 'gallery'
+  ],
+  'complete-intelligence': [
+    'about-mla', 'hero-banner', 'development-highlights', 'latest-news',
+    'social-feed', 'citizen-services', 'upcoming-events', 'leader-network', 'blogs', 'gallery', 'testimonial'
+  ]
+};
+
+// ACTIVATE Template (1-click template switch)
+router.put('/template', (req, res) => {
+  const { templateId, user } = req.body;
+  const db = readDb();
+  const template = db.settings.templates.find(t => t.id === templateId);
+  if (!template) {
+    return res.status(404).json({ success: false, message: 'Template not found' });
+  }
+  db.settings.activeTemplate = templateId;
+
+  // Apply template section order if defined
+  const orderPreset = TEMPLATE_ORDERS[templateId];
+  if (orderPreset && Array.isArray(db.settings.sections)) {
+    const existing = [...db.settings.sections];
+    const ordered = [];
+    orderPreset.forEach((secId, idx) => {
+      const found = existing.find(s => s.id === secId);
+      if (found) {
+        ordered.push({ ...found, order: idx + 1, enabled: true });
+      }
+    });
+    // Add any remaining sections not in preset
+    existing.forEach(s => {
+      if (!orderPreset.includes(s.id)) {
+        ordered.push({ ...s, order: ordered.length + 1 });
+      }
+    });
+    db.settings.sections = ordered;
+  }
+
+  writeDb(db);
+  logAudit(user, `Activated Template: ${template.name}`, 'Website Builder', { templateId });
+  res.json({ success: true, activeTemplate: templateId, template, sections: db.settings.sections });
+});
+
+// UPDATE Sections (Order & Toggles)
+router.put('/sections', (req, res) => {
+  const { sections, user } = req.body;
+  const db = readDb();
+  if (Array.isArray(sections)) {
+    db.settings.sections = sections;
+    writeDb(db);
+    logAudit(user, 'Updated Website Sections Reordering/Toggles', 'Section Manager', { count: sections.length });
+  }
+  res.json({ success: true, sections: db.settings.sections });
+});
+
+// TOGGLE single section ON/OFF
+router.put('/sections/:id/toggle', (req, res) => {
+  const { id } = req.params;
+  const { user } = req.body;
+  const db = readDb();
+  const section = db.settings.sections.find(s => s.id === id);
+  if (!section) {
+    return res.status(404).json({ success: false, message: 'Section not found' });
+  }
+  section.enabled = !section.enabled;
+  writeDb(db);
+  logAudit(user, `Toggled Section ${section.name}: ${section.enabled ? 'ON' : 'OFF'}`, 'Section Manager', { id, enabled: section.enabled });
+  res.json({ success: true, section });
+});
+
+// FESTIVAL Campaign Manager
+router.put('/festival', (req, res) => {
+  const db = readDb();
+  db.settings.festival = { ...db.settings.festival, ...req.body };
+  Object.assign(festivalCampaign, db.settings.festival);
+  writeDb(db);
+  logAudit(req.body.user, `Festival Campaign ${db.settings.festival.active ? 'Activated' : 'Deactivated'}`, 'Festival Campaign', db.settings.festival);
+  res.json({ success: true, festival: db.settings.festival });
+});
+
+// UPDATE Branding
+router.put('/branding', (req, res) => {
+  const db = readDb();
+  db.settings.branding = { ...db.settings.branding, ...req.body };
+  writeDb(db);
+  logAudit(req.body.user, 'Updated Branding & Theme', 'Theme & Branding', db.settings.branding);
+  res.json({ success: true, branding: db.settings.branding });
+});
+
+// UPDATE SEO & Meta Settings
+router.put('/seo', (req, res) => {
+  const db = readDb();
+  if (!db.settings) db.settings = {};
+  db.settings.seo = { ...(db.settings.seo || {}), ...req.body };
+  writeDb(db);
+  logAudit(req.body.user, 'Updated SEO & Meta Tags', 'Website Builder', db.settings.seo);
+  res.json({ success: true, seo: db.settings.seo });
+});
+
+// UPDATE Custom CSS & JS
+router.put('/custom-code', (req, res) => {
+  const db = readDb();
+  if (!db.settings) db.settings = {};
+  db.settings.customCode = { ...(db.settings.customCode || {}), ...req.body };
+  writeDb(db);
+  logAudit(req.body.user, 'Updated Custom CSS & JS', 'Website Builder', db.settings.customCode);
+  res.json({ success: true, customCode: db.settings.customCode });
+});
+
+// UPDATE Blog Section Settings
+router.put('/blog-settings', (req, res) => {
+  const db = readDb();
+  if (!db.settings) db.settings = {};
+  db.settings.blogSettings = { ...(db.settings.blogSettings || {}), ...req.body };
+  writeDb(db);
+  logAudit(req.body.user, 'Updated Blog Settings', 'Website Builder', db.settings.blogSettings);
+  res.json({ success: true, blogSettings: db.settings.blogSettings });
+});
+
+// Helper: compute interval days
+function getIntervalDays(interval) {
+  switch (interval) {
+    case 'weekly': return 7;
+    case 'biweekly': return 15;
+    case 'monthly': return 30;
+    case 'quarterly': return 90;
+    default: return 7;
+  }
+}
+
+// GET MLA Photo & Schedule Details
+router.get('/mla-photos', (req, res) => {
+  const db = readDb();
+  const currentPhoto = db.settings?.hero?.saritaImage || '/images/assets/sarita_bhadauria_hero.jpg';
+  const officialBanner = db.settings?.mlaPhotoSchedule?.officialBanner || db.settings?.hero?.officialBanner || '/images/assets/official_bjp_mla_banner.jpg';
+  const schedule = db.settings?.mlaPhotoSchedule || {
+    updateInterval: 'weekly',
+    intervalDays: 7,
+    autoRotate: false,
+    lastUpdated: new Date().toISOString(),
+    nextScheduledUpdate: new Date(Date.now() + 7 * 86400000).toISOString(),
+    showOfficialBanner: true,
+    officialBanner: '/images/assets/official_bjp_mla_banner.jpg'
+  };
+
+  const defaultHistory = [
+    {
+      id: 'photo-1',
+      title: 'आधिकारिक सदन व विधायी सत्र पोर्ट्रेट (सफेद साड़ी)',
+      url: '/images/assets/sarita_bhadauria_hero.jpg',
+      category: 'आधिकारिक',
+      date: '2026-09-15',
+      active: true
+    },
+    {
+      id: 'photo-2',
+      title: 'जनसंवाद एवं चौपाल कार्यक्रम (पारंपरिक परिधान)',
+      url: '/images/poli4.png',
+      category: 'जनसंवाद',
+      date: '2026-09-08',
+      active: false
+    },
+    {
+      id: 'photo-3',
+      title: 'विधानसभा क्षेत्र भ्रमण एवं विकास निरीक्षण',
+      url: '/images/poli1.png',
+      category: 'क्षेत्रीय दौरा',
+      date: '2026-09-01',
+      active: false
+    },
+    {
+      id: 'photo-4',
+      title: 'पर्व एवं विशेष दिवस औपचारिक भेंट',
+      url: '/images/poli3.png',
+      category: 'त्यौहार',
+      date: '2026-08-25',
+      active: false
+    }
+  ];
+
+  const history = (db.mlaPhotoHistory && db.mlaPhotoHistory.length) ? db.mlaPhotoHistory : defaultHistory;
+
+  res.json({
+    success: true,
+    currentPhoto,
+    officialBanner,
+    schedule,
+    history
+  });
+});
+
+// UPDATE MLA Active Photo & Regular Interval Schedule
+router.put('/mla-photo', (req, res) => {
+  const { photoUrl, officialBanner, updateInterval, autoRotate, photoTitle, showOfficialBanner, user } = req.body;
+  const db = readDb();
+  if (!db.settings) db.settings = {};
+  if (!db.settings.hero) db.settings.hero = {};
+  if (!db.mla) db.mla = {};
+
+  const days = getIntervalDays(updateInterval || 'weekly');
+  const now = new Date();
+  const nextDate = new Date(now.getTime() + days * 86400000);
+
+  // Update photo if provided
+  if (photoUrl) {
+    db.settings.hero.saritaImage = photoUrl;
+    db.mla.photo = photoUrl;
+    db.mla.image = photoUrl;
+  }
+
+  // Update official banner if provided
+  if (officialBanner) {
+    db.settings.hero.officialBanner = officialBanner;
+    db.mla.banner = officialBanner;
+  }
+
+  // Update schedule
+  db.settings.mlaPhotoSchedule = {
+    updateInterval: updateInterval || 'weekly',
+    intervalDays: days,
+    autoRotate: Boolean(autoRotate),
+    lastUpdated: now.toISOString(),
+    nextScheduledUpdate: nextDate.toISOString(),
+    showOfficialBanner: showOfficialBanner !== undefined ? Boolean(showOfficialBanner) : true,
+    officialBanner: officialBanner || db.settings.hero.officialBanner || '/images/assets/official_bjp_mla_banner.jpg'
+  };
+
+  // Update history
+  if (!db.mlaPhotoHistory) db.mlaPhotoHistory = [];
+  
+  if (photoUrl) {
+    db.mlaPhotoHistory.forEach(h => { h.active = false; });
+    const existingIndex = db.mlaPhotoHistory.findIndex(h => h.url === photoUrl);
+    if (existingIndex >= 0) {
+      db.mlaPhotoHistory[existingIndex].active = true;
+      if (photoTitle) db.mlaPhotoHistory[existingIndex].title = photoTitle;
+    } else {
+      db.mlaPhotoHistory.unshift({
+        id: 'photo-' + Date.now(),
+        title: photoTitle || 'विधायक अद्यतित पोर्ट्रेट',
+        url: photoUrl,
+        category: 'आधिकारिक',
+        date: now.toISOString().split('T')[0],
+        active: true
+      });
+    }
+  }
+
+  writeDb(db);
+  logAudit(user, `Updated MLA Photo & Schedule (${updateInterval}, Auto-rotate: ${autoRotate})`, 'MLA Media Manager', {
+    photoUrl,
+    updateInterval,
+    nextScheduledUpdate: nextDate.toISOString()
+  });
+
+  res.json({
+    success: true,
+    message: 'विधायक फोटो एवं शेड्यूलिंग सफलतापूर्वक अपडेट की गई!',
+    currentPhoto: db.settings.hero.saritaImage,
+    schedule: db.settings.mlaPhotoSchedule,
+    history: db.mlaPhotoHistory
+  });
+});
+
+// SET ACTIVE MLA PHOTO from History
+router.post('/mla-photos/set-active/:id', (req, res) => {
+  const { id } = req.params;
+  const { user } = req.body;
+  const db = readDb();
+  if (!db.mlaPhotoHistory) db.mlaPhotoHistory = [];
+
+  const photo = db.mlaPhotoHistory.find(p => p.id === id);
+  if (!photo) {
+    return res.status(404).json({ success: false, message: 'फोटो नहीं मिली।' });
+  }
+
+  db.mlaPhotoHistory.forEach(p => { p.active = (p.id === id); });
+  if (!db.settings) db.settings = {};
+  if (!db.settings.hero) db.settings.hero = {};
+  if (!db.mla) db.mla = {};
+
+  db.settings.hero.saritaImage = photo.url;
+  db.mla.photo = photo.url;
+  db.mla.image = photo.url;
+
+  if (db.settings.mlaPhotoSchedule) {
+    db.settings.mlaPhotoSchedule.lastUpdated = new Date().toISOString();
+    const days = db.settings.mlaPhotoSchedule.intervalDays || 7;
+    db.settings.mlaPhotoSchedule.nextScheduledUpdate = new Date(Date.now() + days * 86400000).toISOString();
+  }
+
+  writeDb(db);
+  logAudit(user, `Set Active MLA Photo: ${photo.title}`, 'MLA Media Manager', { photoId: id, url: photo.url });
+
+  res.json({
+    success: true,
+    message: `"${photo.title}" अब वेबसाइट पर सक्रिय है!`,
+    currentPhoto: photo.url,
+    history: db.mlaPhotoHistory
+  });
+});
+
+// ADD to Photo History
+router.post('/mla-photos/add-archive', (req, res) => {
+  const { title, url, category, setAsActive, user } = req.body;
+  const db = readDb();
+  if (!db.mlaPhotoHistory) db.mlaPhotoHistory = [];
+
+  const newPhoto = {
+    id: 'photo-' + Date.now(),
+    title: title || 'विधायक नया चित्र',
+    url: url || '/images/poli4.png',
+    category: category || 'आधिकारिक',
+    date: new Date().toISOString().split('T')[0],
+    active: Boolean(setAsActive)
+  };
+
+  if (setAsActive) {
+    db.mlaPhotoHistory.forEach(p => { p.active = false; });
+    if (!db.settings) db.settings = {};
+    if (!db.settings.hero) db.settings.hero = {};
+    if (!db.mla) db.mla = {};
+    db.settings.hero.saritaImage = newPhoto.url;
+    db.mla.photo = newPhoto.url;
+    db.mla.image = newPhoto.url;
+  }
+
+  db.mlaPhotoHistory.unshift(newPhoto);
+  writeDb(db);
+  logAudit(user, `Added Photo to MLA Archive: ${newPhoto.title}`, 'MLA Media Manager', newPhoto);
+
+  res.json({
+    success: true,
+    message: 'फोटो आर्काइव में सफलतापूर्वक जोड़ी गई!',
+    photo: newPhoto,
+    history: db.mlaPhotoHistory
+  });
+});
+
+// DELETE from Photo History
+router.delete('/mla-photos/:id', (req, res) => {
+  const { id } = req.params;
+  const { user } = req.query;
+  const db = readDb();
+  if (!db.mlaPhotoHistory) db.mlaPhotoHistory = [];
+
+  const initialLen = db.mlaPhotoHistory.length;
+  db.mlaPhotoHistory = db.mlaPhotoHistory.filter(p => p.id !== id);
+
+  if (db.mlaPhotoHistory.length !== initialLen) {
+    writeDb(db);
+    logAudit(user, `Deleted Photo ${id} from MLA Archive`, 'MLA Media Manager', { id });
+    return res.json({ success: true, message: 'फोटो आर्काइव से हटा दी गई।' });
+  }
+
+  res.status(404).json({ success: false, message: 'फोटो नहीं मिली।' });
+});
+
+// Default Mobile Configuration
+const DEFAULT_MOBILE_SETTINGS = {
+  appName: "जनसेवा इटावा 200",
+  appTagline: "श्रीमती सरिता भदौरिया • आधिकारिक मोबाइल पोर्टल",
+  helplinePhone: "05688250000",
+  officialWhatsapp: "9876543210",
+  slogan: "“जनता का विश्वास, हमारी सेवा का संकल्प”",
+  showTopRoleSwitcher: true,
+  showRoleCredentialsBtn: true,
+  features: {
+    heroProfile: true,
+    quickCounters: true,
+    janSamvadSpotlight: true,
+    whatsappRegBox: true,
+    dailyActivities: true,
+    guidanceLeaders: true,
+    governmentSchemes: true,
+    developmentWorks: true,
+    peopleDirectory: true,
+    constituencyMap: true,
+    socialMediaFeed: true,
+    latestNews: true,
+    festivalBanner: true,
+    leadershipQuotes: true,
+    websiteDrawer: true
+  },
+  bottomTabs: {
+    home: true,
+    jansamvad: true,
+    directory: true,
+    works: true,
+    websiteMenu: true,
+    profile: true
+  }
+};
+
+// GET Mobile Settings
+router.get('/mobile', (req, res) => {
+  try {
+    const db = readDb();
+    if (!db.settings.mobile) {
+      db.settings.mobile = { ...DEFAULT_MOBILE_SETTINGS };
+      writeDb(db);
+    }
+    res.json({
+      success: true,
+      mobile: db.settings.mobile
+    });
+  } catch (err) {
+    res.status(500).json({ success: false, message: err.message });
+  }
+});
+
+// UPDATE Mobile Settings
+router.put('/mobile', (req, res) => {
+  try {
+    const db = readDb();
+    const { settings: newSettings, user = 'Admin' } = req.body;
+    db.settings.mobile = {
+      ...DEFAULT_MOBILE_SETTINGS,
+      ...(db.settings.mobile || {}),
+      ...newSettings,
+      features: {
+        ...DEFAULT_MOBILE_SETTINGS.features,
+        ...((db.settings.mobile && db.settings.mobile.features) || {}),
+        ...(newSettings.features || {})
+      },
+      bottomTabs: {
+        ...DEFAULT_MOBILE_SETTINGS.bottomTabs,
+        ...((db.settings.mobile && db.settings.mobile.bottomTabs) || {}),
+        ...(newSettings.bottomTabs || {})
+      }
+    };
+    writeDb(db);
+    logAudit(user, 'Updated Mobile App Features & Menu Controls', 'Mobile CMS', db.settings.mobile);
+    res.json({
+      success: true,
+      message: 'मोबाइल ऐप व मेन्यू सेटिंग्स सफलतापूर्वक अपडेट की गईं!',
+      mobile: db.settings.mobile
+    });
+  } catch (err) {
+    res.status(500).json({ success: false, message: err.message });
+  }
+});
+
+// TOGGLE Mobile Feature
+router.post('/mobile/toggle', (req, res) => {
+  try {
+    const { featureKey, tabKey, user = 'Admin' } = req.body;
+    const db = readDb();
+    if (!db.settings.mobile) {
+      db.settings.mobile = { ...DEFAULT_MOBILE_SETTINGS };
+    }
+
+    if (featureKey) {
+      const cur = Boolean(db.settings.mobile.features[featureKey]);
+      db.settings.mobile.features[featureKey] = !cur;
+      writeDb(db);
+      logAudit(user, `Toggled mobile feature [${featureKey}]: ${!cur ? 'Enabled' : 'Disabled'}`, 'Mobile CMS', { featureKey, state: !cur });
+      return res.json({ success: true, featureKey, state: !cur, mobile: db.settings.mobile });
+    }
+
+    if (tabKey) {
+      const cur = Boolean(db.settings.mobile.bottomTabs[tabKey]);
+      db.settings.mobile.bottomTabs[tabKey] = !cur;
+      writeDb(db);
+      logAudit(user, `Toggled mobile bottom tab [${tabKey}]: ${!cur ? 'Enabled' : 'Disabled'}`, 'Mobile CMS', { tabKey, state: !cur });
+      return res.json({ success: true, tabKey, state: !cur, mobile: db.settings.mobile });
+    }
+
+    res.status(400).json({ success: false, message: 'featureKey or tabKey is required' });
+  } catch (err) {
+    res.status(500).json({ success: false, message: err.message });
+  }
+});
+
+module.exports = router;
+
+

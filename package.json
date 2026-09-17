@@ -1,0 +1,11 @@
+{
+  "name": "janseva-dashboard",
+  "version": "1.0.0",
+  "description": "JanSeva Dashboard - AI-powered Digital Constituency Intelligence, Public Communication and Political Media Management Platform",
+  "scripts": {
+    "start": "node start.js",
+    "server": "node server/server.js",
+    "client": "cmd /c \"cd client && npm run dev\"",
+    "build": "cmd /c \"cd client && npm run build\""
+  }
+}

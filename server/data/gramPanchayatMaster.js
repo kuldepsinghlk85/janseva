@@ -1,0 +1,42 @@
+const fs = require('fs');
+const path = require('path');
+
+const filePath = path.join(__dirname, 'gramPanchayatMaster.json');
+
+const initialGramPanchayats = [
+  { id: 1, blockId: 1, name: "Rampur Gram Panchayat", code: "GP001", nameHi: "रामपुर ग्राम पंचायत", villages: [1, 2] },
+  { id: 2, blockId: 1, name: "Barhpura Gram Panchayat", code: "GP002", nameHi: "बढ़पुरा ग्राम पंचायत", villages: [3, 4] },
+  { id: 3, blockId: 2, name: "Basrehar Gram Panchayat", code: "GP003", nameHi: "बसरेहर ग्राम पंचायत", villages: [5, 6, 7] },
+  { id: 4, blockId: 3, name: "Saifai Gram Panchayat", code: "GP004", nameHi: "सैफई ग्राम पंचायत", villages: [8, 9] },
+  { id: 5, blockId: 4, name: "Jaswantnagar Gram Panchayat", code: "GP005", nameHi: "जसवंतनगर ग्राम पंचायत", villages: [10] },
+  { id: 6, blockId: 5, name: "Chakarnagar Gram Panchayat", code: "GP006", nameHi: "चकरनगर ग्राम पंचायत", villages: [11, 12] },
+  { id: 7, blockId: 6, name: "Bharthana Gram Panchayat", code: "GP007", nameHi: "भरथना ग्राम पंचायत", villages: [13, 14] },
+  { id: 8, blockId: 7, name: "Mahewa Gram Panchayat", code: "GP008", nameHi: "महेवा ग्राम पंचायत", villages: [15] },
+  { id: 9, blockId: 8, name: "Takha Gram Panchayat", code: "GP009", nameHi: "ताखा ग्राम पंचायत", villages: [16] }
+];
+
+let gramPanchayats = [...initialGramPanchayats];
+
+try {
+  if (fs.existsSync(filePath)) {
+    const data = fs.readFileSync(filePath, 'utf8');
+    gramPanchayats = JSON.parse(data);
+  } else {
+    fs.writeFileSync(filePath, JSON.stringify(initialGramPanchayats, null, 2), 'utf8');
+  }
+} catch (err) {
+  console.error('Error loading gramPanchayatMaster.json:', err);
+}
+
+function saveGramPanchayats() {
+  try {
+    fs.writeFileSync(filePath, JSON.stringify(gramPanchayats, null, 2), 'utf8');
+  } catch (err) {
+    console.error('Error saving gramPanchayatMaster.json:', err);
+  }
+}
+
+module.exports = {
+  gramPanchayats,
+  saveGramPanchayats
+};
