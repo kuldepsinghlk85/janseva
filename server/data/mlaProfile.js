@@ -41,7 +41,8 @@ const mlaProfile = {
     facebook: "https://www.facebook.com/mlaetawah",
     instagram: "https://www.instagram.com/mlaetawah/?hl=en",
     twitter: "https://twitter.com/mlaetawah",
-    telegram: "https://t.me/sarrita8"
+    telegram: "https://t.me/sarrita8",
+    youtube: "https://www.youtube.com/@Mlaetawah"
   }
 };
 

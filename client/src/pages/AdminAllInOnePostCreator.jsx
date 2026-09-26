@@ -83,7 +83,8 @@ export default function AdminAllInOnePostCreator() {
     x: '',
     instagram: '',
     whatsapp: '',
-    telegram: ''
+    telegram: '',
+    youtube: ''
   });
 
   // History & Social Config
@@ -98,7 +99,7 @@ export default function AdminAllInOnePostCreator() {
     instagramUrl: 'https://www.instagram.com/mlaetawah/?hl=en',
     whatsappNumber: '919876543210',
     whatsappChannelUrl: 'https://whatsapp.com/channel/mlaetawah',
-    youtubeChannelUrl: 'https://youtube.com/@mlaetawah',
+    youtubeChannelUrl: 'https://www.youtube.com/@Mlaetawah',
     telegramChannelUrl: 'https://t.me/sarrita8'
   });
 
@@ -294,12 +295,16 @@ export default function AdminAllInOnePostCreator() {
     // Telegram: Channel bulletin with broadcast styling, join CTA, and handle
     const tgText = `📢【 ${baseTitle} 】\n\n📌 श्रेणी: #${cleanCategory.replace(/\s+/g, '_')} | #${targetConstituency.replace(/[^a-zA-Z0-9\u0900-\u097F]/g, '')}\n\n${cleanText}${videoSnippet}\n\n━━━━━━━━━━━━━━━━━━━━\n🏛️ ${leaderName}, ${leaderRole}\n📞 हेल्पलाइन: +91 ${socialConfig.whatsappNumber || '9876543210'}\n✈️ आधिकारिक चैनल: ${socialConfig.telegramChannelUrl || 'https://t.me/sarrita8'}\n\n#इटावा #सरिता_भदौरिया #TelegramUpdate #JanSeva`;
 
+    // YouTube: Video title & structured description with subscribe CTA, website & hashtags
+    const ytText = `🎥【 ${baseTitle} 】\n\n📌 विषय: ${cleanCategory} | विधानसभा क्षेत्र: ${targetConstituency}\n\n${cleanText}${videoSnippet}\n\n━━━━━━━━━━━━━━━━━━━━\n🔔 चैनल को सब्सक्राइब करें एवं घंटी आइकॉन दबाएं ताकि इटावा के विकास की हर वीडियो सबसे पहले आप तक पहुंचे:\n👉 ${socialConfig.youtubeChannelUrl || 'https://www.youtube.com/@Mlaetawah'}\n\n🏛️ ${leaderName} (${leaderRole})\n📞 जनसुनवाई हेल्पलाइन: +91 ${socialConfig.whatsappNumber || '9415045678'}\n🌐 आधिकारिक पोर्टल: https://janseva-etawah200.org\n\n#सरिता_भदौरिया #इटावा_विकास #JanSeva #UPDevelopment #BJP #SaritaBhadauria #Etawah`;
+
     setPlatformContents({
       facebook: fbText,
       x: xText,
       instagram: igText,
       whatsapp: waText,
-      telegram: tgText
+      telegram: tgText,
+      youtube: ytText
     });
   };
 
@@ -384,6 +389,9 @@ export default function AdminAllInOnePostCreator() {
       } else if (platform === 'telegram') {
         showToast('✅ टेलीग्राम टेक्स्ट कॉपी हो गया! टेलीग्राम चैनल/शेयर विंडो खोली जा रही है...');
         targetUrl = `https://t.me/share/url?url=${encodeURIComponent(videoUrl || imageUrl || 'https://janseva-etawah200.org')}&text=${encodeURIComponent(textToCopy)}`;
+      } else if (platform === 'youtube') {
+        showToast('✅ यूट्यूब वीडियो विवरण कॉपी हो गया! YouTube चैनल/Studio खोला जा रहा है...');
+        targetUrl = socialConfig.youtubeChannelUrl || 'https://www.youtube.com/@Mlaetawah';
       }
 
       if (targetUrl) {
@@ -426,7 +434,8 @@ export default function AdminAllInOnePostCreator() {
         x: post.platformVariants.x || post.platformVariants.twitter?.text || '',
         instagram: post.platformVariants.instagram || '',
         whatsapp: post.platformVariants.whatsapp || '',
-        telegram: post.platformVariants.telegram || ''
+        telegram: post.platformVariants.telegram || '',
+        youtube: post.platformVariants.youtube || ''
       });
     }
 
@@ -979,7 +988,7 @@ export default function AdminAllInOnePostCreator() {
               </div>
 
               {/* Platform Switcher Pills */}
-              <div className="grid grid-cols-2 sm:grid-cols-5 gap-2">
+              <div className="grid grid-cols-3 sm:grid-cols-6 gap-2">
                 <button
                   onClick={() => setActivePreviewPlatform('facebook')}
                   className={`py-2 px-1 rounded-2xl text-xs font-bold transition flex flex-col items-center gap-1 border cursor-pointer ${
@@ -1041,6 +1050,18 @@ export default function AdminAllInOnePostCreator() {
                   <Send className="w-4 h-4 text-sky-500" />
                   <span>Telegram</span>
                 </button>
+
+                <button
+                  onClick={() => setActivePreviewPlatform('youtube')}
+                  className={`py-2 px-1 rounded-2xl text-xs font-bold transition flex flex-col items-center gap-1 border cursor-pointer ${
+                    activePreviewPlatform === 'youtube'
+                      ? 'bg-red-50 border-red-500 text-red-700 shadow-sm'
+                      : 'bg-slate-50 border-slate-200 text-slate-600 hover:bg-slate-100'
+                  }`}
+                >
+                  <Youtube className="w-4 h-4 text-red-600" />
+                  <span>YouTube</span>
+                </button>
               </div>
 
               {/* 1-CLICK ACTION BAR FOR CURRENT PLATFORM */}
@@ -1052,6 +1073,7 @@ export default function AdminAllInOnePostCreator() {
                     {activePreviewPlatform === 'instagram' && '📷 इंस्टाग्राम के लिए कैप्शन व हैशटैग तैयार है'}
                     {activePreviewPlatform === 'whatsapp' && '💬 व्हाट्सएप के लिए बोल्ड व बुलेट मैसेज तैयार है'}
                     {activePreviewPlatform === 'telegram' && '✈️ टेलीग्राम के लिए ब्रॉडकास्ट बुलेटिन तैयार है'}
+                    {activePreviewPlatform === 'youtube' && '🎥 यूट्यूब के लिए वीडियो विवरण व सब्सक्राइब लिंक तैयार है'}
                   </span>
                   <span className="text-orange-700 text-[11px]">
                     क्लिक करते ही टेक्स्ट क्लिपबोर्ड पर कॉपी हो जाएगा और सीधे सोशल मीडिया खुल जाएगा।
@@ -1362,6 +1384,69 @@ export default function AdminAllInOnePostCreator() {
                           <span>10:48 AM</span>
                         </div>
                       </div>
+                    </div>
+                  </div>
+                )}
+
+                {/* 6. YOUTUBE VIDEO / COMMUNITY CARD */}
+                {activePreviewPlatform === 'youtube' && (
+                  <div className="bg-white rounded-2xl p-4 shadow-sm border border-slate-200 space-y-3 font-sans">
+                    {/* YouTube Video Player / Thumbnail Preview */}
+                    <div className="aspect-video rounded-xl overflow-hidden bg-slate-900 relative group flex items-center justify-center">
+                      <img
+                        src={imageUrl || '/images/assets/social_rally.jpg'}
+                        alt="YouTube Video Preview"
+                        className="w-full h-full object-cover opacity-90"
+                      />
+                      <div className="absolute inset-0 bg-black/30 flex items-center justify-center">
+                        <div className="w-14 h-14 rounded-2xl bg-red-600 text-white flex items-center justify-center shadow-2xl group-hover:scale-110 transition duration-300">
+                          <Youtube className="w-8 h-8 fill-white" />
+                        </div>
+                      </div>
+                      <span className="absolute bottom-2 right-2 px-2 py-0.5 rounded bg-black/80 text-white text-[11px] font-bold">
+                        12:45
+                      </span>
+                    </div>
+
+                    {/* Title & Channel Header */}
+                    <div className="space-y-1">
+                      <h4 className="text-sm font-black text-slate-900 leading-snug">
+                        {title || 'इटावा सदर विधानसभा (200) विकास एवं जनसेवा समीक्षा'}
+                      </h4>
+                      <div className="flex items-center justify-between pt-1">
+                        <div className="flex items-center space-x-2">
+                          <img
+                            src={leaderPhoto}
+                            alt=""
+                            className="w-8 h-8 rounded-full object-cover border border-red-300"
+                          />
+                          <div>
+                            <div className="text-xs font-bold text-slate-900 flex items-center gap-1">
+                              <span>Sarita Bhadauria MLA Etawah</span>
+                              <span className="text-[10px] text-slate-500">✓</span>
+                            </div>
+                            <div className="text-[10px] text-slate-500">25.3K subscribers</div>
+                          </div>
+                        </div>
+                        <a
+                          href={socialConfig.youtubeChannelUrl || 'https://www.youtube.com/@Mlaetawah'}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="px-3 py-1.5 rounded-full bg-slate-900 text-white text-xs font-bold hover:bg-red-600 transition flex items-center gap-1"
+                        >
+                          <Youtube className="w-3.5 h-3.5 fill-white" />
+                          <span>Subscribe</span>
+                        </a>
+                      </div>
+                    </div>
+
+                    {/* Description Box */}
+                    <div className="p-3 bg-slate-50 rounded-xl border border-slate-200 text-xs text-slate-800 leading-relaxed whitespace-pre-line">
+                      <div className="font-bold text-[11px] text-slate-500 mb-1 flex items-center justify-between">
+                        <span>45,210 views • {targetConstituency}</span>
+                        <span className="text-red-600 font-bold">@Mlaetawah</span>
+                      </div>
+                      {platformContents.youtube || 'यूट्यूब वीडियो का विवरण यहाँ दिखाई देगा...'}
                     </div>
                   </div>
                 )}

@@ -127,6 +127,15 @@ export default function FooterPanorama() {
                 >
                   <span>✈️ t.me/sarrita8</span>
                 </a>
+                <a
+                  href={mla?.contact?.youtube || "https://www.youtube.com/@Mlaetawah"}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-2.5 py-1 rounded-lg bg-red-950/60 border border-red-700/50 text-red-300 hover:bg-red-900/60 text-[10px] font-bold transition flex items-center gap-1"
+                  title="Official YouTube Channel (@Mlaetawah)"
+                >
+                  <span>▶️ @Mlaetawah</span>
+                </a>
               </div>
             </div>
           </div>

@@ -49,8 +49,8 @@ export default function HomeSocialAndConstituencyRow() {
     {
       id: 'yt',
       name: 'YouTube',
-      handle: 'MLA Etawah',
-      url: 'https://www.youtube.com',
+      handle: '@Mlaetawah',
+      url: settings?.mla?.contact?.youtube || 'https://www.youtube.com/@Mlaetawah',
       btnText: 'Subscribe',
       btnColor: 'bg-red-600 hover:bg-red-700 text-white',
       icon: Youtube,

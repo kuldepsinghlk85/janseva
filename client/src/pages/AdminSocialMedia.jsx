@@ -24,7 +24,8 @@ import {
   AlertCircle,
   Layers,
   MapPin,
-  Send
+  Send,
+  Youtube
 } from 'lucide-react';
 import ImageUploadInput from '../components/common/ImageUploadInput';
 import VoiceInputButton from '../components/common/VoiceInputButton';
@@ -183,14 +184,18 @@ export default function AdminSocialMedia() {
           ? 'Sarita Bhadauria MLA Etawah (Telegram)' 
           : newPostForm.platform === 'facebook' 
           ? 'Sarita Bhadauria MLA Etawah' 
+          : newPostForm.platform === 'youtube'
+          ? 'Sarita Bhadauria MLA Etawah (YouTube)'
           : 'श्रीमती सरिता भदौरिया (@mlaetawah)',
         authorAvatar: '/uploads/images/sarita_bhadauriya-1789523047198-607565.png',
         profileUrl: newPostForm.platform === 'telegram'
           ? 'https://t.me/sarrita8'
           : newPostForm.platform === 'facebook' 
           ? 'https://www.facebook.com/mlaetawah'
+          : newPostForm.platform === 'youtube'
+          ? 'https://www.youtube.com/@Mlaetawah'
           : 'https://www.instagram.com/mlaetawah/?hl=en',
-        postUrl: newPostForm.postUrl || (newPostForm.platform === 'telegram' ? 'https://t.me/sarrita8' : newPostForm.platform === 'facebook' ? 'https://www.facebook.com/mlaetawah' : 'https://www.instagram.com/mlaetawah/?hl=en')
+        postUrl: newPostForm.postUrl || (newPostForm.platform === 'telegram' ? 'https://t.me/sarrita8' : newPostForm.platform === 'facebook' ? 'https://www.facebook.com/mlaetawah' : newPostForm.platform === 'youtube' ? 'https://www.youtube.com/@Mlaetawah' : 'https://www.instagram.com/mlaetawah/?hl=en')
       };
       const res = await api.createSocialPost(payload, 'Admin (Super Admin)');
       if (res && res.success) {
@@ -281,11 +286,28 @@ export default function AdminSocialMedia() {
     lastSyncedAt: new Date().toISOString()
   };
 
+  const ytProfile = profiles.find((p) => p.platform === 'youtube') || {
+    id: 'profile-youtube-mlaetawah',
+    platform: 'youtube',
+    handle: 'Mlaetawah',
+    username: '@Mlaetawah',
+    displayName: 'Sarita Bhadauria MLA Etawah (आधिकारिक यूट्यूब चैनल)',
+    profileUrl: 'https://www.youtube.com/@Mlaetawah',
+    avatar: '/uploads/images/sarita_bhadauriya-1789523047198-607565.png',
+    bio: 'आधिकारिक यूट्यूब चैनल - श्रीमती सरिता भदौरिया, विधायक, इटावा सदर विधानसभा निर्वाचन क्षेत्र (200)। जनसेवा, विधानसभा संबोधन, विकास वृत्तचित्र एवं वीडियो बुलेटिन।',
+    followers: '25.3K',
+    subscribers: '25.3K',
+    totalPosts: 185,
+    status: 'connected',
+    lastSyncedAt: new Date().toISOString()
+  };
+
   // Filter posts
   const filteredPosts = posts.filter((p) => {
     if (activeTab === 'telegram' && p.platform !== 'telegram') return false;
     if (activeTab === 'instagram' && p.platform !== 'instagram') return false;
     if (activeTab === 'facebook' && p.platform !== 'facebook') return false;
+    if (activeTab === 'youtube' && p.platform !== 'youtube') return false;
     if (activeTab === 'activity' && !p.isConvertedToActivity) return false;
     if (activeTab === 'work' && !p.isConvertedToWork) return false;
 
@@ -349,13 +371,13 @@ export default function AdminSocialMedia() {
             </span>
             <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 flex items-center gap-1">
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-600 animate-pulse"></span>
-              3 प्रोफाइल्स लाइव सिंक
+              4 प्रोफाइल्स लाइव सिंक
             </span>
           </div>
           <p className="text-xs text-slate-400 hidden sm:block">एडमिन यहाँ से सभी सोशल प्रोफाइल का विवरण देख व 1-क्लिक में सिंक कर सकते हैं</p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
           {/* Instagram Profile Card */}
           <div className="bg-gradient-to-br from-rose-50/60 via-white to-pink-50/40 rounded-3xl p-5 border-2 border-rose-200/80 shadow-md relative overflow-hidden flex flex-col justify-between">
             <div className="absolute -top-10 -right-10 w-32 h-32 bg-gradient-to-br from-pink-400/10 to-rose-500/20 rounded-full blur-2xl pointer-events-none"></div>
@@ -683,6 +705,116 @@ export default function AdminSocialMedia() {
               </div>
             </div>
           </div>
+
+          {/* YouTube Profile Card */}
+          <div className="bg-gradient-to-br from-red-50/70 via-white to-rose-50/40 rounded-3xl p-5 border-2 border-red-200/80 shadow-md relative overflow-hidden flex flex-col justify-between">
+            <div className="absolute -top-10 -right-10 w-32 h-32 bg-gradient-to-br from-red-400/10 to-rose-500/20 rounded-full blur-2xl pointer-events-none"></div>
+
+            <div>
+              {/* Profile Header */}
+              <div className="flex items-start justify-between gap-3">
+                <div className="flex items-center space-x-3.5">
+                  <div className="relative">
+                    <div className="w-16 h-16 rounded-full p-0.5 bg-red-600 shadow-md">
+                      <img
+                        src={ytProfile.avatar || '/uploads/images/sarita_bhadauriya-1789523047198-607565.png'}
+                        alt={ytProfile.displayName}
+                        className="w-full h-full object-cover rounded-full border-2 border-white"
+                        onError={(e) => { e.target.src = '/images/poli1.png'; }}
+                      />
+                    </div>
+                    <span className="absolute bottom-0 right-0 w-5 h-5 bg-red-600 text-white rounded-full flex items-center justify-center text-[10px] font-bold border-2 border-white shadow">
+                      ✓
+                    </span>
+                  </div>
+
+                  <div>
+                    <div className="flex items-center gap-1.5">
+                      <span className="text-[10px] font-black uppercase tracking-wider px-2 py-0.5 rounded-full bg-red-600 text-white flex items-center gap-1">
+                        <Youtube className="w-2.5 h-2.5" />
+                        <span>YOUTUBE</span>
+                      </span>
+                      <span className="text-[11px] font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">
+                        ● सिंक एवं कनेक्टेड
+                      </span>
+                    </div>
+                    <h3 className="text-sm font-black text-slate-900 mt-1">
+                      {ytProfile.displayName}
+                    </h3>
+                    <a
+                      href={ytProfile.profileUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-xs font-bold text-red-600 hover:text-red-800 hover:underline flex items-center gap-1"
+                    >
+                      <span>{ytProfile.username || '@Mlaetawah'}</span>
+                      <ExternalLink className="w-3 h-3" />
+                    </a>
+                  </div>
+                </div>
+
+                <button
+                  onClick={() => {
+                    setEditingProfile(ytProfile);
+                    setShowEditProfileModal(true);
+                  }}
+                  className="p-1.5 text-slate-400 hover:text-slate-700 hover:bg-white rounded-lg transition"
+                  title="प्रोफाइल सेटिंग्स / URL संपादित करें"
+                >
+                  <Edit3 className="w-4 h-4" />
+                </button>
+              </div>
+
+              {/* Bio */}
+              <p className="text-xs text-slate-600 font-medium mt-3 bg-white/70 p-2.5 rounded-xl border border-red-100 line-clamp-2">
+                {ytProfile.bio}
+              </p>
+
+              {/* Stats Bar */}
+              <div className="grid grid-cols-3 gap-2 text-center mt-3 pt-3 border-t border-red-100">
+                <div className="bg-white/80 p-2 rounded-xl border border-red-100/60 shadow-xs">
+                  <div className="text-base font-black text-slate-900">{ytProfile.subscribers || ytProfile.followers || '25.3K'}</div>
+                  <div className="text-[10px] text-slate-500 font-bold uppercase tracking-wider">सब्सक्राइबर्स</div>
+                </div>
+                <div className="bg-white/80 p-2 rounded-xl border border-red-100/60 shadow-xs">
+                  <div className="text-base font-black text-slate-900">HD</div>
+                  <div className="text-[10px] text-slate-500 font-bold uppercase tracking-wider">वीडियो</div>
+                </div>
+                <div className="bg-white/80 p-2 rounded-xl border border-red-100/60 shadow-xs">
+                  <div className="text-base font-black text-slate-900">{ytProfile.totalPosts || '185'}</div>
+                  <div className="text-[10px] text-slate-500 font-bold uppercase tracking-wider">कुल वीडियो</div>
+                </div>
+              </div>
+            </div>
+
+            {/* Profile Card Footer Actions */}
+            <div className="mt-4 pt-3 border-t border-red-100 flex items-center justify-between gap-2">
+              <span className="text-[11px] text-slate-400">
+                अंतिम सिंक: {ytProfile.lastSyncedAt ? new Date(ytProfile.lastSyncedAt).toLocaleTimeString('hi-IN', { hour: '2-digit', minute: '2-digit' }) : 'अभी'}
+              </span>
+
+              <div className="flex items-center gap-2">
+                <a
+                  href={ytProfile.profileUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-3 py-1.5 rounded-xl bg-white border border-red-200 text-red-700 hover:bg-red-50 text-xs font-bold transition flex items-center gap-1 shadow-xs"
+                >
+                  <span>चैनल देखें</span>
+                  <ExternalLink className="w-3 h-3" />
+                </a>
+
+                <button
+                  onClick={() => handleSync(ytProfile.id)}
+                  disabled={syncingProfileId === ytProfile.id}
+                  className="px-3.5 py-1.5 rounded-xl bg-red-600 hover:bg-red-700 text-white text-xs font-bold transition shadow flex items-center gap-1.5 cursor-pointer disabled:opacity-50"
+                >
+                  <RefreshCw className={`w-3.5 h-3.5 ${syncingProfileId === ytProfile.id ? 'animate-spin' : ''}`} />
+                  <span>{syncingProfileId === ytProfile.id ? 'सिंक हो रहा है...' : 'YouTube सिंक करें'}</span>
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -761,6 +893,18 @@ export default function AdminSocialMedia() {
             <span>({posts.filter((p) => p.platform === 'facebook').length})</span>
           </button>
           <button
+            onClick={() => setActiveTab('youtube')}
+            className={`px-3 py-1.5 rounded-xl text-xs font-bold transition whitespace-nowrap cursor-pointer flex items-center gap-1 ${
+              activeTab === 'youtube'
+                ? 'bg-red-600 text-white shadow-sm'
+                : 'bg-red-50 text-red-700 hover:bg-red-100'
+            }`}
+          >
+            <Youtube className="w-3.5 h-3.5" />
+            <span>YouTube @Mlaetawah</span>
+            <span>({posts.filter((p) => p.platform === 'youtube').length})</span>
+          </button>
+          <button
             onClick={() => setActiveTab('activity')}
             className={`px-3 py-1.5 rounded-xl text-xs font-bold transition whitespace-nowrap cursor-pointer flex items-center gap-1 ${
               activeTab === 'activity'
@@ -829,17 +973,19 @@ export default function AdminSocialMedia() {
                             ? 'bg-sky-500 text-white'
                             : post.platform === 'instagram'
                             ? 'bg-gradient-to-r from-purple-600 to-pink-600 text-white'
+                            : post.platform === 'youtube'
+                            ? 'bg-red-600 text-white'
                             : 'bg-blue-600 text-white'
                         }`}
                       >
                         {post.platform}
                       </span>
                       <a
-                        href={post.postUrl}
+                        href={post.postUrl || post.videoUrl}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="p-1 rounded-lg hover:bg-slate-200 text-slate-500 hover:text-slate-900 transition"
-                        title="मूल पोस्ट खोलें"
+                        title="मूल पोस्ट / वीडियो खोलें"
                       >
                         <ExternalLink className="w-3.5 h-3.5" />
                       </a>
@@ -855,6 +1001,13 @@ export default function AdminSocialMedia() {
                         className="w-full h-full object-cover"
                         onError={(e) => { e.target.src = '/images/poli3.png'; }}
                       />
+                      {post.platform === 'youtube' && (
+                        <div className="absolute inset-0 bg-black/25 flex items-center justify-center pointer-events-none">
+                          <div className="w-10 h-10 rounded-full bg-red-600 text-white flex items-center justify-center shadow-lg">
+                            <Youtube className="w-5 h-5 fill-white" />
+                          </div>
+                        </div>
+                      )}
                     </div>
                   )}
 
@@ -1010,7 +1163,7 @@ export default function AdminSocialMedia() {
             <form onSubmit={handleAddManualPost} className="space-y-4">
               <div>
                 <label className="block text-xs font-bold text-slate-700 mb-1">प्लेटफ़ॉर्म चुनें *</label>
-                <div className="grid grid-cols-3 gap-2">
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
                   <button
                     type="button"
                     onClick={() => setNewPostForm({ ...newPostForm, platform: 'telegram' })}
@@ -1020,7 +1173,7 @@ export default function AdminSocialMedia() {
                         : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
                     }`}
                   >
-                    <span>Telegram (@sarrita8)</span>
+                    <span>Telegram</span>
                   </button>
                   <button
                     type="button"
@@ -1031,7 +1184,7 @@ export default function AdminSocialMedia() {
                         : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
                     }`}
                   >
-                    <span>Instagram (@mlaetawah)</span>
+                    <span>Instagram</span>
                   </button>
                   <button
                     type="button"
@@ -1042,7 +1195,18 @@ export default function AdminSocialMedia() {
                         : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
                     }`}
                   >
-                    <span>Facebook (mlaetawah)</span>
+                    <span>Facebook</span>
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setNewPostForm({ ...newPostForm, platform: 'youtube' })}
+                    className={`py-2 rounded-xl text-xs font-bold transition flex items-center justify-center gap-1 cursor-pointer ${
+                      newPostForm.platform === 'youtube'
+                        ? 'bg-red-600 text-white shadow'
+                        : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
+                    }`}
+                  >
+                    <span>YouTube</span>
                   </button>
                 </div>
               </div>

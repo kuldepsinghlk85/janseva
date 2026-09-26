@@ -61,6 +61,34 @@ class SocialSyncService {
         tg.avatar = "/uploads/images/sarita_bhadauriya-1789523047198-607565.png";
         updated = true;
       }
+
+      const yt = db.socialProfiles.find(p => p.platform === 'youtube');
+      if (!yt) {
+        db.socialProfiles.push({
+          id: "profile-youtube-mlaetawah",
+          platform: "youtube",
+          handle: "Mlaetawah",
+          username: "@Mlaetawah",
+          displayName: "Sarita Bhadauria MLA Etawah (आधिकारिक यूट्यूब चैनल)",
+          profileUrl: "https://www.youtube.com/@Mlaetawah",
+          avatar: "/uploads/images/sarita_bhadauriya-1789523047198-607565.png",
+          bio: "आधिकारिक यूट्यूब चैनल - श्रीमती सरिता भदौरिया, विधायक, इटावा सदर विधानसभा निर्वाचन क्षेत्र (200)। जनसेवा, विधानसभा संबोधन, विकास वृत्तचित्र, जनसंवाद एवं क्षेत्र की प्रमुख गतिविधियों के वीडियो बुलेटिन।",
+          followers: "25.3K",
+          subscribers: "25.3K",
+          totalPosts: 185,
+          verified: true,
+          status: "connected",
+          lastSyncedAt: new Date().toISOString(),
+          autoSync: true
+        });
+        updated = true;
+      } else {
+        yt.profileUrl = "https://www.youtube.com/@Mlaetawah";
+        yt.handle = "Mlaetawah";
+        yt.username = "@Mlaetawah";
+        yt.avatar = "/uploads/images/sarita_bhadauriya-1789523047198-607565.png";
+        updated = true;
+      }
     }
 
     if (!db.socialPosts || !Array.isArray(db.socialPosts) || db.socialPosts.length === 0) {
@@ -93,6 +121,7 @@ class SocialSyncService {
       instagramFollowers: profiles.find(p => p.platform === 'instagram')?.followers || '18.4K',
       facebookFollowers: profiles.find(p => p.platform === 'facebook')?.followers || '34.8K',
       telegramSubscribers: profiles.find(p => p.platform === 'telegram')?.subscribers || profiles.find(p => p.platform === 'telegram')?.followers || '12.5K',
+      youtubeSubscribers: profiles.find(p => p.platform === 'youtube')?.subscribers || profiles.find(p => p.platform === 'youtube')?.followers || '25.3K',
       convertedToActivities: posts.filter(p => p.isConvertedToActivity).length,
       convertedToWorks: posts.filter(p => p.isConvertedToWork).length
     };
@@ -184,6 +213,23 @@ class SocialSyncService {
         likes: Math.floor(1400 + Math.random() * 500),
         comments: Math.floor(60 + Math.random() * 30),
         shares: Math.floor(280 + Math.random() * 100)
+      },
+      {
+        platform: 'youtube',
+        profileId: 'profile-youtube-mlaetawah',
+        author: 'Sarita Bhadauria MLA Etawah (YouTube)',
+        authorAvatar: '/uploads/images/sarita_bhadauriya-1789523047198-607565.png',
+        profileUrl: 'https://www.youtube.com/@Mlaetawah',
+        postUrl: 'https://www.youtube.com/@Mlaetawah',
+        videoUrl: 'https://www.youtube.com/watch?v=sample_etawah_vikas',
+        content: '🎥 इटावा सदर विधानसभा 200 विकास समीक्षा: 7 वर्षों में इटावा के कायाकल्प, नए बाईपास, जल शोधन संयंत्र एवं बालिका शिक्षा के क्षेत्र में हुए अभूतपूर्व कार्यों पर विशेष वृत्तचित्र। आधिकारिक यूट्यूब चैनल @Mlaetawah पर देखें।',
+        media: '/images/assets/social_rally.jpg',
+        date: 'अभी-अभी सिंक किया गया',
+        timestamp: nowIso,
+        likes: Math.floor(3200 + Math.random() * 800),
+        comments: Math.floor(210 + Math.random() * 60),
+        shares: Math.floor(540 + Math.random() * 150),
+        views: '48.6K'
       }
     ];
 

@@ -59,15 +59,16 @@ export default function PublicSocialPage() {
     {
       id: 'p3',
       platform: 'youtube',
-      author: 'MLA Etawah Official',
-      handle: 'MLA Etawah',
+      author: 'Sarita Bhadauria MLA Etawah (YouTube)',
+      handle: '@Mlaetawah',
       date: '1 दिन पहले',
       media: '/images/assets/social_rally.jpg',
       content: 'इटावा नगर विधानसभा 200: विकास के 7 वर्ष, जनता का विश्वास। जनसंवाद चौपाल एवं विकास समीक्षा बैठक का मुख्य अंश। पूरा वीडियो चैनल पर देखें।',
       likes: '8.9K',
       comments: '420',
       shares: '640',
-      url: 'https://www.youtube.com'
+      url: 'https://www.youtube.com/@Mlaetawah',
+      videoUrl: 'https://www.youtube.com/watch?v=sample_etawah_vikas'
     },
     {
       id: 'p4',
@@ -109,7 +110,7 @@ export default function PublicSocialPage() {
     { key: 'telegram', label: 'Telegram (t.me/sarrita8)' },
     { key: 'instagram', label: 'Instagram (@mlaetawah)' },
     { key: 'facebook', label: 'Facebook (mlaetawah)' },
-    { key: 'youtube', label: 'YouTube' },
+    { key: 'youtube', label: 'YouTube (@Mlaetawah)' },
     { key: 'twitter', label: 'X (Twitter)' }
   ];
 
@@ -220,7 +221,7 @@ export default function PublicSocialPage() {
             </a>
 
             <a
-              href="https://www.youtube.com"
+              href="https://www.youtube.com/@Mlaetawah"
               target="_blank"
               rel="noopener noreferrer"
               className="p-3 rounded-2xl bg-red-50 border border-red-200 flex items-center justify-between hover:shadow-md transition"
@@ -229,7 +230,7 @@ export default function PublicSocialPage() {
                 <Youtube className="w-5 h-5 text-red-600" />
                 <div>
                   <h4 className="text-xs font-black text-slate-900">YouTube</h4>
-                  <p className="text-[10px] text-red-700 font-bold">MLA Etawah</p>
+                  <p className="text-[10px] text-red-700 font-bold">@Mlaetawah</p>
                 </div>
               </div>
               <ExternalLink className="w-3.5 h-3.5 text-red-600" />
@@ -321,6 +322,8 @@ export default function PublicSocialPage() {
                       ? 'bg-pink-100 text-pink-700 border border-pink-200'
                       : item.platform === 'facebook'
                       ? 'bg-blue-100 text-blue-700 border border-blue-200'
+                      : item.platform === 'youtube'
+                      ? 'bg-red-100 text-red-700 border border-red-200'
                       : 'bg-slate-100 text-slate-700'
                   }`}>
                     {item.platform}
@@ -329,13 +332,20 @@ export default function PublicSocialPage() {
 
                 {/* Media Image */}
                 {item.media && (
-                  <div className="aspect-video sm:aspect-square bg-slate-100 overflow-hidden">
+                  <div className="aspect-video sm:aspect-square bg-slate-100 overflow-hidden relative">
                     <img
                       src={item.media}
                       alt=""
                       className="w-full h-full object-cover group-hover:scale-105 transition duration-500"
                       onError={(e) => { e.target.src = '/images/assets/work_rampur_road.jpg'; }}
                     />
+                    {item.platform === 'youtube' && (
+                      <div className="absolute inset-0 bg-black/25 flex items-center justify-center pointer-events-none">
+                        <div className="w-12 h-12 rounded-full bg-red-600/90 text-white flex items-center justify-center shadow-lg group-hover:scale-110 transition duration-300">
+                          <Youtube className="w-6 h-6 fill-white" />
+                        </div>
+                      </div>
+                    )}
                   </div>
                 )}
 
@@ -366,12 +376,16 @@ export default function PublicSocialPage() {
 
                 <div className="grid grid-cols-2 gap-2">
                   <a
-                    href={item.url || 'https://www.instagram.com/mlaetawah/?hl=en'}
+                    href={item.videoUrl || item.postUrl || item.url || (item.platform === 'youtube' ? 'https://www.youtube.com/@Mlaetawah' : 'https://www.instagram.com/mlaetawah/?hl=en')}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="py-1.5 px-3 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold transition flex items-center justify-center gap-1"
+                    className={`py-1.5 px-3 rounded-xl text-xs font-bold transition flex items-center justify-center gap-1 ${
+                      item.platform === 'youtube'
+                        ? 'bg-red-50 hover:bg-red-100 text-red-700 border border-red-200'
+                        : 'bg-slate-100 hover:bg-slate-200 text-slate-700'
+                    }`}
                   >
-                    <span>मूल पोस्ट</span>
+                    <span>{item.platform === 'youtube' ? 'वीडियो देखें' : 'मूल पोस्ट'}</span>
                     <ExternalLink className="w-3 h-3" />
                   </a>
 
