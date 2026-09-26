@@ -129,7 +129,7 @@ class SocialSyncService {
         platform: 'instagram',
         profileId: 'profile-instagram-mlaetawah',
         author: 'श्रीमती सरिता भदौरिया (@mlaetawah)',
-        authorAvatar: '/images/poli4.png',
+        authorAvatar: '/uploads/images/sarita_bhadauriya-1789523047198-607565.png',
         profileUrl: 'https://www.instagram.com/mlaetawah/?hl=en',
         postUrl: 'https://www.instagram.com/mlaetawah/?hl=en',
         content: 'आज बकेवर एवं तकरोई क्षेत्र में जनसंवाद चौपाल का आयोजन। ग्रामीण जनमानस की पेयजल एवं विद्युत समस्याओं को मौके पर सुनकर संबंधित अधिकारियों को त्वरित निस्तारण के आदेश दिए। सबका साथ, सबका विकास हमारा ध्येय है।',
@@ -139,6 +139,21 @@ class SocialSyncService {
         likes: Math.floor(1800 + Math.random() * 800),
         comments: Math.floor(90 + Math.random() * 50),
         shares: Math.floor(60 + Math.random() * 40)
+      },
+      {
+        platform: 'instagram',
+        profileId: 'profile-instagram-mlaetawah',
+        author: 'श्रीमती सरिता भदौरिया (@mlaetawah)',
+        authorAvatar: '/uploads/images/sarita_bhadauriya-1789523047198-607565.png',
+        profileUrl: 'https://www.instagram.com/mlaetawah/?hl=en',
+        postUrl: 'https://www.instagram.com/mlaetawah/?hl=en',
+        content: 'इटावा सदर के प्राथमिक स्वास्थ्य केंद्र एवं पोषण पुनर्वास केंद्र का निरीक्षण। स्वास्थ्य सुविधाओं में निरंतर सुधार व जन-जन तक बेहतर उपचार पहुंचाना हमारी प्रतिबद्धता है। #EtawahHealth #SevaHiSankalp',
+        media: '/images/assets/work_health_camp.jpg',
+        date: 'अभी-अभी सिंक किया गया',
+        timestamp: nowIso,
+        likes: Math.floor(2100 + Math.random() * 600),
+        comments: Math.floor(110 + Math.random() * 40),
+        shares: Math.floor(80 + Math.random() * 30)
       },
       {
         platform: 'facebook',
