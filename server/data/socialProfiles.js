@@ -35,10 +35,77 @@ const initialProfiles = [
     status: "connected",
     lastSyncedAt: new Date(Date.now() - 15 * 60000).toISOString(),
     autoSync: true
+  },
+  {
+    id: "profile-telegram-sarrita8",
+    platform: "telegram",
+    handle: "sarrita8",
+    username: "@sarrita8",
+    displayName: "Sarita Bhadauria MLA Etawah (आधिकारिक टेलीग्राम चैनल)",
+    profileUrl: "https://t.me/sarrita8",
+    avatar: "/uploads/images/sarita_bhadauriya-1789523047198-607565.png",
+    bio: "आधिकारिक टेलीग्राम चैनल - श्रीमती सरिता भदौरिया, विधायक, इटावा सदर विधानसभा निर्वाचन क्षेत्र (200)। जनसेवा, त्वरित सूचना, विकास बुलेटिन एवं लोक-कल्याणकारी योजनाएं।",
+    followers: "12.5K",
+    subscribers: "12.5K",
+    totalPosts: 310,
+    verified: true,
+    status: "connected",
+    lastSyncedAt: new Date(Date.now() - 10 * 60000).toISOString(),
+    autoSync: true
   }
 ];
 
 const initialPosts = [
+  {
+    id: "post-tg-1",
+    profileId: "profile-telegram-sarrita8",
+    platform: "telegram",
+    author: "Sarita Bhadauria MLA Etawah (Telegram)",
+    authorAvatar: "/uploads/images/sarita_bhadauriya-1789523047198-607565.png",
+    profileUrl: "https://t.me/sarrita8",
+    postUrl: "https://t.me/sarrita8",
+    content: "📢 इटावा सदर विधानसभा (200) विकास बुलेटिन: जल जीवन मिशन के अंतर्गत आगामी सोमवार से ग्राम भरथना एवं चकरनगर क्षेत्र में शुद्ध पेयजल पाइपलाइन व ओवरहेड टैंक का कार्य प्रारंभ हो रहा है। किसी भी समस्या या सुझाव हेतु विधायक कार्यालय हेल्पलाइन या आधिकारिक टेलीग्राम चैनल पर संपर्क करें। #EtawahVikas #TelegramUpdate",
+    media: "/images/assets/work_water_tank.jpg",
+    date: "4 घंटे पहले",
+    timestamp: new Date(Date.now() - 4 * 3600000).toISOString(),
+    likes: 1840,
+    comments: 92,
+    shares: 410,
+    aiTags: {
+      village: "भरथना",
+      category: "पेयजल एवं जल जीवन मिशन",
+      department: "जल निगम / ग्रामीण विकास",
+      suggestedTitle: "जल जीवन मिशन: भरथना एवं चकरनगर में नवीन पेयजल पाइपलाइन कार्य"
+    },
+    isConvertedToActivity: false,
+    isConvertedToWork: false,
+    publishedOnWebsite: true
+  },
+  {
+    id: "post-tg-2",
+    profileId: "profile-telegram-sarrita8",
+    platform: "telegram",
+    author: "Sarita Bhadauria MLA Etawah (Telegram)",
+    authorAvatar: "/uploads/images/sarita_bhadauriya-1789523047198-607565.png",
+    profileUrl: "https://t.me/sarrita8",
+    postUrl: "https://t.me/sarrita8",
+    content: "🇮🇳 जनसंवाद एवं युवा सशक्तिकरण: केंद्र व प्रदेश सरकार की स्वरोजगार व मुद्रा लोन योजनाओं का लाभ हर पात्र युवा तक पहुँचाने का संकल्प। आधिकारिक टेलीग्राम चैनल t.me/sarrita8 से जुड़ें और सीधे क्षेत्रीय विकास गतिविधियों से अवगत रहें।",
+    media: "/images/media_1789490967547.jpg",
+    date: "1 दिन पहले",
+    timestamp: new Date(Date.now() - 28 * 3600000).toISOString(),
+    likes: 2950,
+    comments: 135,
+    shares: 620,
+    aiTags: {
+      village: "इटावा सदर",
+      category: "युवा कल्याण एवं रोजगार",
+      department: "कौशल विकास एवं सेवायोजन",
+      suggestedTitle: "इटावा युवा संवाद: स्वरोजगार एवं कल्याणकारी योजनाओं का प्रचार-प्रसार"
+    },
+    isConvertedToActivity: true,
+    isConvertedToWork: false,
+    publishedOnWebsite: true
+  },
   {
     id: "post-fb-vande-bharat",
     profileId: "profile-facebook-mlaetawah",

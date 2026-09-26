@@ -40,7 +40,8 @@ const mlaProfile = {
     website: "https://janseva-etawah200.org",
     facebook: "https://www.facebook.com/mlaetawah",
     instagram: "https://www.instagram.com/mlaetawah/?hl=en",
-    twitter: "https://twitter.com/mlaetawah"
+    twitter: "https://twitter.com/mlaetawah",
+    telegram: "https://t.me/sarrita8"
   }
 };
 

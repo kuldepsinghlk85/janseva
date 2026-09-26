@@ -46,7 +46,8 @@
       "website": "https://janseva-etawah200.org",
       "instagram": "https://www.instagram.com/mlaetawah/?hl=en",
       "facebook": "https://www.facebook.com/mlaetawah",
-      "twitter": "https://twitter.com/mlaetawah"
+      "twitter": "https://twitter.com/mlaetawah",
+      "telegram": "https://t.me/sarrita8"
     },
     "photo": "/uploads/images/sarita_bhadauriya-1789523047198-607565.png",
     "image": "/uploads/images/sarita_bhadauriya-1789523047198-607565.png",
@@ -570,6 +571,84 @@
     }
   ],
   "socialPosts": [
+    {
+      "id": "post-sync-1790419416910-289",
+      "platform": "telegram",
+      "profileId": "profile-telegram-sarrita8",
+      "author": "Sarita Bhadauria MLA Etawah (Telegram)",
+      "authorAvatar": "/uploads/images/sarita_bhadauriya-1789523047198-607565.png",
+      "profileUrl": "https://t.me/sarrita8",
+      "postUrl": "https://t.me/sarrita8",
+      "content": "📢 इटावा सदर विधानसभा 200 विकास बुलेटिन: जनसमस्याओं के त्वरित निस्तारण हेतु विधायक हेल्पलाइन व टेलीग्राम सेवा 24x7 सक्रिय है। ग्रामीण व शहरी जनमानस योजनाओं की सीधी जानकारी हेतु चैनल से जुड़े रहें: t.me/sarrita8",
+      "media": "/images/media_1789490967547.jpg",
+      "date": "अभी-अभी सिंक किया गया",
+      "timestamp": "2026-09-26T10:43:36.907Z",
+      "likes": 1553,
+      "comments": 60,
+      "shares": 327,
+      "aiTags": {
+        "village": "इटावा सदर",
+        "category": "पेयजल",
+        "department": "जल निगम / जल जीवन मिशन",
+        "workType": "विकास कार्य / जनसंवाद",
+        "confidence": 0.94,
+        "autoAdded": true,
+        "suggestedTitle": "इटावा सदर में पेयजल संबंधित कार्य समीक्षा"
+      },
+      "isConvertedToActivity": false,
+      "isConvertedToWork": false,
+      "publishedOnWebsite": true
+    },
+    {
+      "id": "post-tg-2",
+      "profileId": "profile-telegram-sarrita8",
+      "platform": "telegram",
+      "author": "Sarita Bhadauria MLA Etawah (Telegram)",
+      "authorAvatar": "/uploads/images/sarita_bhadauriya-1789523047198-607565.png",
+      "profileUrl": "https://t.me/sarrita8",
+      "postUrl": "https://t.me/sarrita8",
+      "content": "🇮🇳 जनसंवाद एवं युवा सशक्तिकरण: केंद्र व प्रदेश सरकार की स्वरोजगार व मुद्रा लोन योजनाओं का लाभ हर पात्र युवा तक पहुँचाने का संकल्प। आधिकारिक टेलीग्राम चैनल t.me/sarrita8 से जुड़ें और सीधे क्षेत्रीय विकास गतिविधियों से अवगत रहें।",
+      "media": "/images/media_1789490967547.jpg",
+      "date": "1 दिन पहले",
+      "timestamp": "2026-09-25T06:36:07.715Z",
+      "likes": 2950,
+      "comments": 135,
+      "shares": 620,
+      "aiTags": {
+        "village": "इटावा सदर",
+        "category": "युवा कल्याण एवं रोजगार",
+        "department": "कौशल विकास एवं सेवायोजन",
+        "suggestedTitle": "इटावा युवा संवाद: स्वरोजगार एवं कल्याणकारी योजनाओं का प्रचार-प्रसार"
+      },
+      "isConvertedToActivity": true,
+      "isConvertedToWork": false,
+      "publishedOnWebsite": true
+    },
+    {
+      "id": "post-tg-1",
+      "profileId": "profile-telegram-sarrita8",
+      "platform": "telegram",
+      "author": "Sarita Bhadauria MLA Etawah (Telegram)",
+      "authorAvatar": "/uploads/images/sarita_bhadauriya-1789523047198-607565.png",
+      "profileUrl": "https://t.me/sarrita8",
+      "postUrl": "https://t.me/sarrita8",
+      "content": "📢 इटावा सदर विधानसभा (200) विकास बुलेटिन: जल जीवन मिशन के अंतर्गत आगामी सोमवार से ग्राम भरथना एवं चकरनगर क्षेत्र में शुद्ध पेयजल पाइपलाइन व ओवरहेड टैंक का कार्य प्रारंभ हो रहा है। किसी भी समस्या या सुझाव हेतु विधायक कार्यालय हेल्पलाइन या आधिकारिक टेलीग्राम चैनल पर संपर्क करें। #EtawahVikas #TelegramUpdate",
+      "media": "/images/assets/work_water_tank.jpg",
+      "date": "4 घंटे पहले",
+      "timestamp": "2026-09-26T06:36:07.715Z",
+      "likes": 1840,
+      "comments": 92,
+      "shares": 410,
+      "aiTags": {
+        "village": "भरथना",
+        "category": "पेयजल एवं जल जीवन मिशन",
+        "department": "जल निगम / ग्रामीण विकास",
+        "suggestedTitle": "जल जीवन मिशन: भरथना एवं चकरनगर में नवीन पेयजल पाइपलाइन कार्य"
+      },
+      "isConvertedToActivity": false,
+      "isConvertedToWork": false,
+      "publishedOnWebsite": true
+    },
     {
       "id": "post-fb-seva-pakhwada",
       "profileId": "profile-facebook-mlaetawah",
@@ -1334,6 +1413,18 @@
     }
   ],
   "auditLogs": [
+    {
+      "id": "log_1790419416914_86el",
+      "timestamp": "2026-09-26T10:43:36.914Z",
+      "user": "Admin (Super Admin)",
+      "action": "Social Media Sync: Telegram (t.me/sarrita8) से डेटा सिंक किया गया (1 नए पोस्ट आयातित)",
+      "module": "Social Media",
+      "details": {
+        "targetProfileId": "profile-telegram-sarrita8",
+        "addedCount": 1
+      },
+      "device": "Desktop / Chrome Windows 11"
+    },
     {
       "id": "log_1790237799272_ngmm",
       "timestamp": "2026-09-24T08:16:39.272Z",
@@ -3557,6 +3648,34 @@
       "type": "Portrait",
       "url": "/images/assets/sarita_bhadauria_hero.jpg",
       "category": "विधायक"
+    },
+    {
+      "id": "m-tg-1",
+      "title": "टेलीग्राम बुलेटिन - जनसंवाद एवं क्षेत्रीय सभा (t.me/sarrita8)",
+      "type": "Photo",
+      "url": "/images/media_1789490967547.jpg",
+      "category": "टेलीग्राम ब्रॉडकास्ट"
+    },
+    {
+      "id": "m-tg-2",
+      "title": "टेलीग्राम चैनल बैकअप - सेवा पखवाड़ा एवं वृक्षारोपण",
+      "type": "Photo",
+      "url": "/images/assets/work_health_camp.jpg",
+      "category": "टेलीग्राम ब्रॉडकास्ट"
+    },
+    {
+      "id": "m-tg-3",
+      "title": "टेलीग्राम मीडिया बैकअप - वंदे भारत स्वागत एवं सभा",
+      "type": "Photo",
+      "url": "/images/assets/social_rally.jpg",
+      "category": "टेलीग्राम ब्रॉडकास्ट"
+    },
+    {
+      "id": "m-tg-4",
+      "title": "टेलीग्राम आधिकारिक पोर्ट्रेट बैकअप (सरिता भदौरिया)",
+      "type": "Photo",
+      "url": "/uploads/images/sarita_bhadauriya-1789523047198-607565.png",
+      "category": "विधायक फोटो बैकअप"
     }
   ],
   "festivals": [
@@ -3670,6 +3789,23 @@
       "status": "connected",
       "lastSyncedAt": "2026-09-15T19:45:38.614Z",
       "autoSync": true
+    },
+    {
+      "id": "profile-telegram-sarrita8",
+      "platform": "telegram",
+      "handle": "sarrita8",
+      "username": "@sarrita8",
+      "displayName": "Sarita Bhadauria MLA Etawah (आधिकारिक टेलीग्राम चैनल)",
+      "profileUrl": "https://t.me/sarrita8",
+      "avatar": "/uploads/images/sarita_bhadauriya-1789523047198-607565.png",
+      "bio": "आधिकारिक टेलीग्राम चैनल - श्रीमती सरिता भदौरिया, विधायक, इटावा सदर विधानसभा निर्वाचन क्षेत्र (200)। जनसेवा, त्वरित सूचना, विकास बुलेटिन एवं लोक-कल्याणकारी योजनाएं।",
+      "followers": "12.5K",
+      "subscribers": "12.5K",
+      "totalPosts": 310,
+      "verified": true,
+      "status": "connected",
+      "lastSyncedAt": "2026-09-26T10:43:36.907Z",
+      "autoSync": true
     }
   ],
   "mlaPhotoHistory": [
@@ -3680,6 +3816,22 @@
       "category": "आधिकारिक",
       "date": "2026-09-16",
       "active": true
+    },
+    {
+      "id": "photo-tg-sarrita8-1",
+      "title": "टेलीग्राम आधिकारिक प्रोफ़ाइल पोर्ट्रेट (@sarrita8)",
+      "url": "/uploads/images/sarita_bhadauriya-1789523047198-607565.png",
+      "category": "टेलीग्राम बैकअप",
+      "date": "2026-09-26",
+      "active": true
+    },
+    {
+      "id": "photo-tg-sarrita8-2",
+      "title": "जनसेवा एवं जनसंवाद फोटो बैकअप (t.me/sarrita8)",
+      "url": "/images/media_1789490967547.jpg",
+      "category": "टेलीग्राम बैकअप",
+      "date": "2026-09-26",
+      "active": false
     }
   ],
   "contentReadLogs": [
@@ -4080,6 +4232,9 @@
       "contact": {
         "facebook": "https://www.facebook.com/mlaetawah",
         "instagram": "https://www.instagram.com/mlaetawah/?hl=en"
+      },
+      "socialLinks": {
+        "telegram": "https://t.me/sarrita8"
       }
     },
     {
@@ -4095,7 +4250,10 @@
       "highlightWord": "लखनऊ",
       "themePreset": "royal_blue",
       "active": false,
-      "status": "ready"
+      "status": "ready",
+      "socialLinks": {
+        "telegram": "https://t.me/sarrita8"
+      }
     }
   ],
   "activeLeaderId": "leader-sarita-etawah-200",
@@ -4204,6 +4362,8 @@
     "instagramUsername": "@mlaetawah",
     "instagramUrl": "https://www.instagram.com/mlaetawah/?hl=en",
     "whatsappNumber": "+91 98765 43210",
-    "youtubeChannelUrl": "https://www.youtube.com"
+    "youtubeChannelUrl": "https://www.youtube.com",
+    "telegramChannelUrl": "https://t.me/sarrita8",
+    "telegramHandle": "@sarrita8"
   }
 }

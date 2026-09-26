@@ -82,7 +82,8 @@ export default function AdminAllInOnePostCreator() {
     facebook: '',
     x: '',
     instagram: '',
-    whatsapp: ''
+    whatsapp: '',
+    telegram: ''
   });
 
   // History & Social Config
@@ -97,7 +98,8 @@ export default function AdminAllInOnePostCreator() {
     instagramUrl: 'https://www.instagram.com/mlaetawah/?hl=en',
     whatsappNumber: '919876543210',
     whatsappChannelUrl: 'https://whatsapp.com/channel/mlaetawah',
-    youtubeChannelUrl: 'https://youtube.com/@mlaetawah'
+    youtubeChannelUrl: 'https://youtube.com/@mlaetawah',
+    telegramChannelUrl: 'https://t.me/sarrita8'
   });
 
   const leaderName = activeLeaderProfile?.name || 'श्रीमती सरिता भदौरिया';
@@ -289,11 +291,15 @@ export default function AdminAllInOnePostCreator() {
     // WhatsApp: WhatsApp native bold (*text*), bullet points, helpline & group share CTA
     const waText = `*🏛️ ${baseTitle} 🏛️*\n_(${cleanCategory} | ${targetConstituency})_\n\n${cleanText}${videoSnippet}\n\n------------------------------\n🔹 *जनप्रतिनिधि:* ${leaderName}\n🔹 *पद:* ${leaderRole}\n📞 *जनसंवाद हेल्पलाइन:* +91 ${socialConfig.whatsappNumber || '9415045678'}\n🌐 *वेबसाइट:* https://aapkaneta.com\n\n📢 *कृपया इस जनहितकारी जानकारी को अपने सभी मित्रों एवं व्हाट्सएप ग्रुप्स में शेयर करें!* 🙏`;
 
+    // Telegram: Channel bulletin with broadcast styling, join CTA, and handle
+    const tgText = `📢【 ${baseTitle} 】\n\n📌 श्रेणी: #${cleanCategory.replace(/\s+/g, '_')} | #${targetConstituency.replace(/[^a-zA-Z0-9\u0900-\u097F]/g, '')}\n\n${cleanText}${videoSnippet}\n\n━━━━━━━━━━━━━━━━━━━━\n🏛️ ${leaderName}, ${leaderRole}\n📞 हेल्पलाइन: +91 ${socialConfig.whatsappNumber || '9876543210'}\n✈️ आधिकारिक चैनल: ${socialConfig.telegramChannelUrl || 'https://t.me/sarrita8'}\n\n#इटावा #सरिता_भदौरिया #TelegramUpdate #JanSeva`;
+
     setPlatformContents({
       facebook: fbText,
       x: xText,
       instagram: igText,
-      whatsapp: waText
+      whatsapp: waText,
+      telegram: tgText
     });
   };
 
@@ -375,6 +381,9 @@ export default function AdminAllInOnePostCreator() {
       } else if (platform === 'instagram') {
         showToast('✅ इंस्टाग्राम कैप्शन कॉपी हो गया! इंस्टाग्राम खोला जा रहा है...');
         targetUrl = socialConfig.instagramUrl || 'https://www.instagram.com';
+      } else if (platform === 'telegram') {
+        showToast('✅ टेलीग्राम टेक्स्ट कॉपी हो गया! टेलीग्राम चैनल/शेयर विंडो खोली जा रही है...');
+        targetUrl = `https://t.me/share/url?url=${encodeURIComponent(videoUrl || imageUrl || 'https://janseva-etawah200.org')}&text=${encodeURIComponent(textToCopy)}`;
       }
 
       if (targetUrl) {
@@ -416,7 +425,8 @@ export default function AdminAllInOnePostCreator() {
         facebook: post.platformVariants.facebook || '',
         x: post.platformVariants.x || post.platformVariants.twitter?.text || '',
         instagram: post.platformVariants.instagram || '',
-        whatsapp: post.platformVariants.whatsapp || ''
+        whatsapp: post.platformVariants.whatsapp || '',
+        telegram: post.platformVariants.telegram || ''
       });
     }
 
@@ -969,10 +979,10 @@ export default function AdminAllInOnePostCreator() {
               </div>
 
               {/* Platform Switcher Pills */}
-              <div className="grid grid-cols-4 gap-2">
+              <div className="grid grid-cols-2 sm:grid-cols-5 gap-2">
                 <button
                   onClick={() => setActivePreviewPlatform('facebook')}
-                  className={`py-2 px-1 rounded-2xl text-xs font-bold transition flex flex-col items-center gap-1 border ${
+                  className={`py-2 px-1 rounded-2xl text-xs font-bold transition flex flex-col items-center gap-1 border cursor-pointer ${
                     activePreviewPlatform === 'facebook'
                       ? 'bg-blue-50 border-blue-500 text-blue-700 shadow-sm'
                       : 'bg-slate-50 border-slate-200 text-slate-600 hover:bg-slate-100'
@@ -984,7 +994,7 @@ export default function AdminAllInOnePostCreator() {
 
                 <button
                   onClick={() => setActivePreviewPlatform('x')}
-                  className={`py-2 px-1 rounded-2xl text-xs font-bold transition flex flex-col items-center gap-1 border ${
+                  className={`py-2 px-1 rounded-2xl text-xs font-bold transition flex flex-col items-center gap-1 border cursor-pointer ${
                     activePreviewPlatform === 'x'
                       ? 'bg-slate-900 border-slate-900 text-white shadow-sm'
                       : 'bg-slate-50 border-slate-200 text-slate-600 hover:bg-slate-100'
@@ -998,7 +1008,7 @@ export default function AdminAllInOnePostCreator() {
 
                 <button
                   onClick={() => setActivePreviewPlatform('instagram')}
-                  className={`py-2 px-1 rounded-2xl text-xs font-bold transition flex flex-col items-center gap-1 border ${
+                  className={`py-2 px-1 rounded-2xl text-xs font-bold transition flex flex-col items-center gap-1 border cursor-pointer ${
                     activePreviewPlatform === 'instagram'
                       ? 'bg-gradient-to-r from-purple-50 via-pink-50 to-orange-50 border-pink-500 text-pink-700 shadow-sm'
                       : 'bg-slate-50 border-slate-200 text-slate-600 hover:bg-slate-100'
@@ -1010,7 +1020,7 @@ export default function AdminAllInOnePostCreator() {
 
                 <button
                   onClick={() => setActivePreviewPlatform('whatsapp')}
-                  className={`py-2 px-1 rounded-2xl text-xs font-bold transition flex flex-col items-center gap-1 border ${
+                  className={`py-2 px-1 rounded-2xl text-xs font-bold transition flex flex-col items-center gap-1 border cursor-pointer ${
                     activePreviewPlatform === 'whatsapp'
                       ? 'bg-emerald-50 border-emerald-500 text-emerald-700 shadow-sm'
                       : 'bg-slate-50 border-slate-200 text-slate-600 hover:bg-slate-100'
@@ -1018,6 +1028,18 @@ export default function AdminAllInOnePostCreator() {
                 >
                   <MessageCircle className="w-4 h-4 text-emerald-600" />
                   <span>WhatsApp</span>
+                </button>
+
+                <button
+                  onClick={() => setActivePreviewPlatform('telegram')}
+                  className={`py-2 px-1 rounded-2xl text-xs font-bold transition flex flex-col items-center gap-1 border cursor-pointer ${
+                    activePreviewPlatform === 'telegram'
+                      ? 'bg-sky-50 border-sky-500 text-sky-700 shadow-sm'
+                      : 'bg-slate-50 border-slate-200 text-slate-600 hover:bg-slate-100'
+                  }`}
+                >
+                  <Send className="w-4 h-4 text-sky-500" />
+                  <span>Telegram</span>
                 </button>
               </div>
 
@@ -1029,6 +1051,7 @@ export default function AdminAllInOnePostCreator() {
                     {activePreviewPlatform === 'x' && '𝕏 ट्विटर/X के लिए 280-कैरेक्टर पोस्ट तैयार है'}
                     {activePreviewPlatform === 'instagram' && '📷 इंस्टाग्राम के लिए कैप्शन व हैशटैग तैयार है'}
                     {activePreviewPlatform === 'whatsapp' && '💬 व्हाट्सएप के लिए बोल्ड व बुलेट मैसेज तैयार है'}
+                    {activePreviewPlatform === 'telegram' && '✈️ टेलीग्राम के लिए ब्रॉडकास्ट बुलेटिन तैयार है'}
                   </span>
                   <span className="text-orange-700 text-[11px]">
                     क्लिक करते ही टेक्स्ट क्लिपबोर्ड पर कॉपी हो जाएगा और सीधे सोशल मीडिया खुल जाएगा।
@@ -1299,6 +1322,49 @@ export default function AdminAllInOnePostCreator() {
                     </div>
                   </div>
                 )}
+
+                {/* 5. TELEGRAM SIMULATOR CARD */}
+                {activePreviewPlatform === 'telegram' && (
+                  <div className="rounded-2xl border border-sky-200 shadow-md p-4 bg-[#7595AD]/15 font-sans relative overflow-hidden">
+                    <div className="bg-[#2481cc] text-white px-3 py-2 -mx-4 -mt-4 mb-3 flex items-center justify-between shadow-sm">
+                      <div className="flex items-center gap-2.5">
+                        <img
+                          src={leaderPhoto}
+                          alt={leaderName}
+                          className="w-7 h-7 rounded-full object-cover border border-sky-300"
+                          onError={(e) => { e.target.src = 'https://ui-avatars.com/api/?name=Sarita+Bhadauria'; }}
+                        />
+                        <div className="flex-1 min-w-0">
+                          <p className="text-xs font-bold truncate">{leaderName} (t.me/sarrita8)</p>
+                          <p className="text-[10px] text-sky-100">12,500 subscribers • official channel</p>
+                        </div>
+                      </div>
+                      <Send className="w-4 h-4 text-white/90" />
+                    </div>
+
+                    <div className="max-w-[95%] bg-white rounded-2xl rounded-tl-xs p-3.5 shadow-sm text-xs text-slate-900 whitespace-pre-line leading-relaxed relative border border-slate-200">
+                      {imageUrl && (
+                        <div className="rounded-xl overflow-hidden mb-2 max-h-48 bg-slate-900">
+                          <img src={imageUrl} alt="" className="w-full h-full object-cover" />
+                        </div>
+                      )}
+                      {platformContents.telegram || 'टेलीग्राम चैनल ब्रॉडकास्ट यहाँ दिखाई देगा...'}
+                      
+                      <div className="text-[10px] text-slate-400 text-right mt-2 flex items-center justify-between border-t border-slate-100 pt-1.5">
+                        <span className="text-sky-600 font-bold flex items-center gap-1">
+                          <Send className="w-3 h-3" />
+                          <span>t.me/sarrita8</span>
+                        </span>
+                        <div className="flex items-center gap-1.5">
+                          <Eye className="w-3 h-3 text-slate-400" />
+                          <span>1.4K</span>
+                          <span>•</span>
+                          <span>10:48 AM</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                )}
               </div>
 
             </div>
@@ -1498,6 +1564,19 @@ export default function AdminAllInOnePostCreator() {
                         >
                           <MessageCircle className="w-3 h-3" /> WA
                         </button>
+
+                        <button
+                          type="button"
+                          onClick={async (e) => {
+                            e.stopPropagation();
+                            const text = post.platformVariants?.telegram || post.rawContent;
+                            await navigator.clipboard.writeText(text);
+                            showToast('✅ टेलीग्राम कंटेंट कॉपी हुआ!');
+                          }}
+                          className="px-2 py-1 bg-white hover:bg-sky-50 border border-slate-200 text-sky-600 rounded-lg text-[11px] font-bold flex items-center gap-1 shadow-2xs cursor-pointer"
+                        >
+                          <Send className="w-3 h-3" /> TG
+                        </button>
                       </div>
                     </div>
                   </div>
@@ -1584,17 +1663,31 @@ export default function AdminAllInOnePostCreator() {
 
               <div>
                 <label className="block text-xs font-bold text-slate-700 mb-1 flex items-center gap-1.5">
-                  <Youtube className="w-4 h-4 text-red-600" />
-                  <span>YouTube चैनल लिंक</span>
+                  <Send className="w-4 h-4 text-sky-500" />
+                  <span>Telegram आधिकारिक चैनल लिंक</span>
                 </label>
                 <input
                   type="url"
-                  value={socialConfig.youtubeChannelUrl}
-                  onChange={(e) => setSocialConfig({ ...socialConfig, youtubeChannelUrl: e.target.value })}
-                  placeholder="https://youtube.com/@channel"
-                  className="w-full px-3.5 py-2 text-sm bg-slate-50 border border-slate-200 rounded-xl focus:bg-white focus:border-red-500 outline-none"
+                  value={socialConfig.telegramChannelUrl}
+                  onChange={(e) => setSocialConfig({ ...socialConfig, telegramChannelUrl: e.target.value })}
+                  placeholder="https://t.me/sarrita8"
+                  className="w-full px-3.5 py-2 text-sm bg-slate-50 border border-slate-200 rounded-xl focus:bg-white focus:border-sky-500 outline-none"
                 />
               </div>
+            </div>
+
+            <div>
+              <label className="block text-xs font-bold text-slate-700 mb-1 flex items-center gap-1.5">
+                <Youtube className="w-4 h-4 text-red-600" />
+                <span>YouTube चैनल लिंक</span>
+              </label>
+              <input
+                type="url"
+                value={socialConfig.youtubeChannelUrl}
+                onChange={(e) => setSocialConfig({ ...socialConfig, youtubeChannelUrl: e.target.value })}
+                placeholder="https://youtube.com/@channel"
+                className="w-full px-3.5 py-2 text-sm bg-slate-50 border border-slate-200 rounded-xl focus:bg-white focus:border-red-500 outline-none"
+              />
             </div>
 
             <div className="pt-3">

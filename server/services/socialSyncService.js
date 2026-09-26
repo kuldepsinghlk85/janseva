@@ -34,6 +34,33 @@ class SocialSyncService {
         ig.avatar = "/uploads/images/sarita_bhadauriya-1789523047198-607565.png";
         updated = true;
       }
+      const tg = db.socialProfiles.find(p => p.platform === 'telegram');
+      if (!tg) {
+        db.socialProfiles.push({
+          id: "profile-telegram-sarrita8",
+          platform: "telegram",
+          handle: "sarrita8",
+          username: "@sarrita8",
+          displayName: "Sarita Bhadauria MLA Etawah (आधिकारिक टेलीग्राम चैनल)",
+          profileUrl: "https://t.me/sarrita8",
+          avatar: "/uploads/images/sarita_bhadauriya-1789523047198-607565.png",
+          bio: "आधिकारिक टेलीग्राम चैनल - श्रीमती सरिता भदौरिया, विधायक, इटावा सदर विधानसभा निर्वाचन क्षेत्र (200)। जनसेवा, त्वरित सूचना, विकास बुलेटिन एवं लोक-कल्याणकारी योजनाएं।",
+          followers: "12.5K",
+          subscribers: "12.5K",
+          totalPosts: 310,
+          verified: true,
+          status: "connected",
+          lastSyncedAt: new Date().toISOString(),
+          autoSync: true
+        });
+        updated = true;
+      } else {
+        tg.profileUrl = "https://t.me/sarrita8";
+        tg.handle = "sarrita8";
+        tg.username = "@sarrita8";
+        tg.avatar = "/uploads/images/sarita_bhadauriya-1789523047198-607565.png";
+        updated = true;
+      }
     }
 
     if (!db.socialPosts || !Array.isArray(db.socialPosts) || db.socialPosts.length === 0) {
@@ -65,6 +92,7 @@ class SocialSyncService {
       totalPosts: posts.length,
       instagramFollowers: profiles.find(p => p.platform === 'instagram')?.followers || '18.4K',
       facebookFollowers: profiles.find(p => p.platform === 'facebook')?.followers || '34.8K',
+      telegramSubscribers: profiles.find(p => p.platform === 'telegram')?.subscribers || profiles.find(p => p.platform === 'telegram')?.followers || '12.5K',
       convertedToActivities: posts.filter(p => p.isConvertedToActivity).length,
       convertedToWorks: posts.filter(p => p.isConvertedToWork).length
     };
@@ -126,6 +154,21 @@ class SocialSyncService {
         likes: Math.floor(2500 + Math.random() * 1000),
         comments: Math.floor(180 + Math.random() * 60),
         shares: Math.floor(120 + Math.random() * 50)
+      },
+      {
+        platform: 'telegram',
+        profileId: 'profile-telegram-sarrita8',
+        author: 'Sarita Bhadauria MLA Etawah (Telegram)',
+        authorAvatar: '/uploads/images/sarita_bhadauriya-1789523047198-607565.png',
+        profileUrl: 'https://t.me/sarrita8',
+        postUrl: 'https://t.me/sarrita8',
+        content: '📢 इटावा सदर विधानसभा 200 विकास बुलेटिन: जनसमस्याओं के त्वरित निस्तारण हेतु विधायक हेल्पलाइन व टेलीग्राम सेवा 24x7 सक्रिय है। ग्रामीण व शहरी जनमानस योजनाओं की सीधी जानकारी हेतु चैनल से जुड़े रहें: t.me/sarrita8',
+        media: '/images/media_1789490967547.jpg',
+        date: 'अभी-अभी सिंक किया गया',
+        timestamp: nowIso,
+        likes: Math.floor(1400 + Math.random() * 500),
+        comments: Math.floor(60 + Math.random() * 30),
+        shares: Math.floor(280 + Math.random() * 100)
       }
     ];
 
@@ -156,7 +199,12 @@ class SocialSyncService {
     db.socialPosts = posts;
     writeDb(db);
 
-    const platformNames = syncedProfiles.map(p => `${p.platform === 'instagram' ? 'Instagram (@mlaetawah)' : 'Facebook (mlaetawah)'}`).join(', ');
+    const platformNames = syncedProfiles.map(p => {
+      if (p.platform === 'instagram') return 'Instagram (@mlaetawah)';
+      if (p.platform === 'facebook') return 'Facebook (mlaetawah)';
+      if (p.platform === 'telegram') return 'Telegram (t.me/sarrita8)';
+      return p.platform;
+    }).join(', ');
     logAudit(user, `Social Media Sync: ${platformNames} से डेटा सिंक किया गया (${addedCount} नए पोस्ट आयातित)`, 'Social Media', { targetProfileId, addedCount });
 
     return {
@@ -262,14 +310,27 @@ class SocialSyncService {
     const db = this.initDb();
     const aiTags = classifySocialPost(postData.content);
 
+    let defaultProfileId = 'profile-instagram-mlaetawah';
+    let defaultAuthor = 'श्रीमती सरिता भदौरिया (@mlaetawah)';
+    let defaultProfileUrl = 'https://www.instagram.com/mlaetawah/?hl=en';
+    if (postData.platform === 'facebook') {
+      defaultProfileId = 'profile-facebook-mlaetawah';
+      defaultAuthor = 'Sarita Bhadauria MLA Etawah';
+      defaultProfileUrl = 'https://www.facebook.com/mlaetawah';
+    } else if (postData.platform === 'telegram') {
+      defaultProfileId = 'profile-telegram-sarrita8';
+      defaultAuthor = 'Sarita Bhadauria MLA Etawah (Telegram)';
+      defaultProfileUrl = 'https://t.me/sarrita8';
+    }
+
     const newPost = {
       id: 'post-custom-' + Date.now(),
       platform: postData.platform || 'instagram',
-      profileId: postData.profileId || (postData.platform === 'facebook' ? 'profile-facebook-mlaetawah' : 'profile-instagram-mlaetawah'),
-      author: postData.author || (postData.platform === 'facebook' ? 'Sarita Bhadauria MLA Etawah' : 'श्रीमती सरिता भदौरिया (@mlaetawah)'),
+      profileId: postData.profileId || defaultProfileId,
+      author: postData.author || defaultAuthor,
       authorAvatar: postData.authorAvatar || '/uploads/images/sarita_bhadauriya-1789523047198-607565.png',
-      profileUrl: postData.profileUrl || (postData.platform === 'facebook' ? 'https://www.facebook.com/mlaetawah' : 'https://www.instagram.com/mlaetawah/?hl=en'),
-      postUrl: postData.postUrl || (postData.platform === 'facebook' ? 'https://www.facebook.com/mlaetawah' : 'https://www.instagram.com/mlaetawah/?hl=en'),
+      profileUrl: postData.profileUrl || defaultProfileUrl,
+      postUrl: postData.postUrl || defaultProfileUrl,
       content: postData.content,
       media: postData.media || '/images/poli3.png',
       date: 'अभी-अभी',

@@ -110,13 +110,22 @@ export default function FooterPanorama() {
                   <span>📷 @mlaetawah</span>
                 </a>
                 <a
-                  href="https://www.facebook.com/mlaetawah"
+                  href={mla?.contact?.facebook || "https://www.facebook.com/mlaetawah"}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="px-2.5 py-1 rounded-lg bg-blue-950/60 border border-blue-700/50 text-blue-300 hover:bg-blue-900/60 text-[10px] font-bold transition flex items-center gap-1"
                   title="Official Facebook (mlaetawah)"
                 >
                   <span>📘 mlaetawah</span>
+                </a>
+                <a
+                  href={mla?.contact?.telegram || "https://t.me/sarrita8"}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-2.5 py-1 rounded-lg bg-sky-950/60 border border-sky-700/50 text-sky-300 hover:bg-sky-900/60 text-[10px] font-bold transition flex items-center gap-1"
+                  title="Official Telegram Channel (t.me/sarrita8)"
+                >
+                  <span>✈️ t.me/sarrita8</span>
                 </a>
               </div>
             </div>

@@ -23,7 +23,8 @@ import {
   X,
   AlertCircle,
   Layers,
-  MapPin
+  MapPin,
+  Send
 } from 'lucide-react';
 import ImageUploadInput from '../components/common/ImageUploadInput';
 import VoiceInputButton from '../components/common/VoiceInputButton';
@@ -178,12 +179,18 @@ export default function AdminSocialMedia() {
     try {
       const payload = {
         ...newPostForm,
-        author: newPostForm.platform === 'facebook' ? 'Sarita Bhadauria MLA Etawah' : 'श्रीमती सरिता भदौरिया (@mlaetawah)',
-        authorAvatar: newPostForm.platform === 'facebook' ? '/images/poli1.png' : '/images/poli4.png',
-        profileUrl: newPostForm.platform === 'facebook' 
-          ? 'https://www.facebook.com/mlaetawah?mibextid=ZbWKwL&utm_source=ig&utm_medium=social&utm_content=link_in_bio'
+        author: newPostForm.platform === 'telegram' 
+          ? 'Sarita Bhadauria MLA Etawah (Telegram)' 
+          : newPostForm.platform === 'facebook' 
+          ? 'Sarita Bhadauria MLA Etawah' 
+          : 'श्रीमती सरिता भदौरिया (@mlaetawah)',
+        authorAvatar: '/uploads/images/sarita_bhadauriya-1789523047198-607565.png',
+        profileUrl: newPostForm.platform === 'telegram'
+          ? 'https://t.me/sarrita8'
+          : newPostForm.platform === 'facebook' 
+          ? 'https://www.facebook.com/mlaetawah'
           : 'https://www.instagram.com/mlaetawah/?hl=en',
-        postUrl: newPostForm.postUrl || (newPostForm.platform === 'facebook' ? 'https://www.facebook.com/mlaetawah' : 'https://www.instagram.com/mlaetawah/?hl=en')
+        postUrl: newPostForm.postUrl || (newPostForm.platform === 'telegram' ? 'https://t.me/sarrita8' : newPostForm.platform === 'facebook' ? 'https://www.facebook.com/mlaetawah' : 'https://www.instagram.com/mlaetawah/?hl=en')
       };
       const res = await api.createSocialPost(payload, 'Admin (Super Admin)');
       if (res && res.success) {
@@ -227,6 +234,22 @@ export default function AdminSocialMedia() {
   const posts = socialData?.posts || [];
   const stats = socialData?.stats || {};
 
+  const tgProfile = profiles.find((p) => p.platform === 'telegram') || {
+    id: 'profile-telegram-sarrita8',
+    platform: 'telegram',
+    handle: 'sarrita8',
+    username: '@sarrita8',
+    displayName: 'Sarita Bhadauria MLA Etawah (आधिकारिक टेलीग्राम चैनल)',
+    profileUrl: 'https://t.me/sarrita8',
+    avatar: '/uploads/images/sarita_bhadauriya-1789523047198-607565.png',
+    bio: 'आधिकारिक टेलीग्राम चैनल - श्रीमती सरिता भदौरिया, विधायक, इटावा सदर विधानसभा निर्वाचन क्षेत्र (200)। त्वरित सूचना, विकास बुलेटिन एवं सीधा संवाद।',
+    followers: '12.5K',
+    subscribers: '12.5K',
+    totalPosts: 310,
+    status: 'connected',
+    lastSyncedAt: new Date().toISOString()
+  };
+
   const igProfile = profiles.find((p) => p.platform === 'instagram') || {
     id: 'profile-instagram-mlaetawah',
     platform: 'instagram',
@@ -260,6 +283,7 @@ export default function AdminSocialMedia() {
 
   // Filter posts
   const filteredPosts = posts.filter((p) => {
+    if (activeTab === 'telegram' && p.platform !== 'telegram') return false;
     if (activeTab === 'instagram' && p.platform !== 'instagram') return false;
     if (activeTab === 'facebook' && p.platform !== 'facebook') return false;
     if (activeTab === 'activity' && !p.isConvertedToActivity) return false;
@@ -325,13 +349,13 @@ export default function AdminSocialMedia() {
             </span>
             <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 flex items-center gap-1">
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-600 animate-pulse"></span>
-              2 प्रोफाइल्स लाइव सिंक
+              3 प्रोफाइल्स लाइव सिंक
             </span>
           </div>
-          <p className="text-xs text-slate-400 hidden sm:block">एडमिन यहाँ से दोनों प्रोफाइल का विवरण देख व सिंक कर सकते हैं</p>
+          <p className="text-xs text-slate-400 hidden sm:block">एडमिन यहाँ से सभी सोशल प्रोफाइल का विवरण देख व 1-क्लिक में सिंक कर सकते हैं</p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
           {/* Instagram Profile Card */}
           <div className="bg-gradient-to-br from-rose-50/60 via-white to-pink-50/40 rounded-3xl p-5 border-2 border-rose-200/80 shadow-md relative overflow-hidden flex flex-col justify-between">
             <div className="absolute -top-10 -right-10 w-32 h-32 bg-gradient-to-br from-pink-400/10 to-rose-500/20 rounded-full blur-2xl pointer-events-none"></div>
@@ -549,6 +573,116 @@ export default function AdminSocialMedia() {
               </div>
             </div>
           </div>
+
+          {/* Telegram Profile Card */}
+          <div className="bg-gradient-to-br from-sky-50/70 via-white to-cyan-50/40 rounded-3xl p-5 border-2 border-sky-200/80 shadow-md relative overflow-hidden flex flex-col justify-between">
+            <div className="absolute -top-10 -right-10 w-32 h-32 bg-gradient-to-br from-sky-400/10 to-blue-500/20 rounded-full blur-2xl pointer-events-none"></div>
+
+            <div>
+              {/* Profile Header */}
+              <div className="flex items-start justify-between gap-3">
+                <div className="flex items-center space-x-3.5">
+                  <div className="relative">
+                    <div className="w-16 h-16 rounded-full p-0.5 bg-sky-500 shadow-md">
+                      <img
+                        src={tgProfile.avatar || '/uploads/images/sarita_bhadauriya-1789523047198-607565.png'}
+                        alt={tgProfile.displayName}
+                        className="w-full h-full object-cover rounded-full border-2 border-white"
+                        onError={(e) => { e.target.src = '/images/poli1.png'; }}
+                      />
+                    </div>
+                    <span className="absolute bottom-0 right-0 w-5 h-5 bg-sky-500 text-white rounded-full flex items-center justify-center text-[10px] font-bold border-2 border-white shadow">
+                      ✓
+                    </span>
+                  </div>
+
+                  <div>
+                    <div className="flex items-center gap-1.5">
+                      <span className="text-[10px] font-black uppercase tracking-wider px-2 py-0.5 rounded-full bg-sky-500 text-white flex items-center gap-1">
+                        <Send className="w-2.5 h-2.5" />
+                        <span>TELEGRAM</span>
+                      </span>
+                      <span className="text-[11px] font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">
+                        ● सिंक एवं कनेक्टेड
+                      </span>
+                    </div>
+                    <h3 className="text-sm font-black text-slate-900 mt-1">
+                      {tgProfile.displayName}
+                    </h3>
+                    <a
+                      href={tgProfile.profileUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-xs font-bold text-sky-600 hover:text-sky-800 hover:underline flex items-center gap-1"
+                    >
+                      <span>{tgProfile.username || '@sarrita8'}</span>
+                      <ExternalLink className="w-3 h-3" />
+                    </a>
+                  </div>
+                </div>
+
+                <button
+                  onClick={() => {
+                    setEditingProfile(tgProfile);
+                    setShowEditProfileModal(true);
+                  }}
+                  className="p-1.5 text-slate-400 hover:text-slate-700 hover:bg-white rounded-lg transition"
+                  title="प्रोफाइल सेटिंग्स / URL संपादित करें"
+                >
+                  <Edit3 className="w-4 h-4" />
+                </button>
+              </div>
+
+              {/* Bio */}
+              <p className="text-xs text-slate-600 font-medium mt-3 bg-white/70 p-2.5 rounded-xl border border-sky-100 line-clamp-2">
+                {tgProfile.bio}
+              </p>
+
+              {/* Stats Bar */}
+              <div className="grid grid-cols-3 gap-2 text-center mt-3 pt-3 border-t border-sky-100">
+                <div className="bg-white/80 p-2 rounded-xl border border-sky-100/60 shadow-xs">
+                  <div className="text-base font-black text-slate-900">{tgProfile.subscribers || tgProfile.followers || '12.5K'}</div>
+                  <div className="text-[10px] text-slate-500 font-bold uppercase tracking-wider">सब्सक्राइबर्स</div>
+                </div>
+                <div className="bg-white/80 p-2 rounded-xl border border-sky-100/60 shadow-xs">
+                  <div className="text-base font-black text-slate-900">24x7</div>
+                  <div className="text-[10px] text-slate-500 font-bold uppercase tracking-wider">ब्रॉडकास्ट</div>
+                </div>
+                <div className="bg-white/80 p-2 rounded-xl border border-sky-100/60 shadow-xs">
+                  <div className="text-base font-black text-slate-900">{tgProfile.totalPosts || '310'}</div>
+                  <div className="text-[10px] text-slate-500 font-bold uppercase tracking-wider">कुल अपडेट्स</div>
+                </div>
+              </div>
+            </div>
+
+            {/* Profile Card Footer Actions */}
+            <div className="mt-4 pt-3 border-t border-sky-100 flex items-center justify-between gap-2">
+              <span className="text-[11px] text-slate-400">
+                अंतिम सिंक: {tgProfile.lastSyncedAt ? new Date(tgProfile.lastSyncedAt).toLocaleTimeString('hi-IN', { hour: '2-digit', minute: '2-digit' }) : 'अभी'}
+              </span>
+
+              <div className="flex items-center gap-2">
+                <a
+                  href={tgProfile.profileUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-3 py-1.5 rounded-xl bg-white border border-sky-200 text-sky-700 hover:bg-sky-50 text-xs font-bold transition flex items-center gap-1 shadow-xs"
+                >
+                  <span>चैनल देखें</span>
+                  <ExternalLink className="w-3 h-3" />
+                </a>
+
+                <button
+                  onClick={() => handleSync(tgProfile.id)}
+                  disabled={syncingProfileId === tgProfile.id}
+                  className="px-3.5 py-1.5 rounded-xl bg-sky-500 hover:bg-sky-600 text-white text-xs font-bold transition shadow flex items-center gap-1.5 cursor-pointer disabled:opacity-50"
+                >
+                  <RefreshCw className={`w-3.5 h-3.5 ${syncingProfileId === tgProfile.id ? 'animate-spin' : ''}`} />
+                  <span>{syncingProfileId === tgProfile.id ? 'सिंक हो रहा है...' : 'Telegram सिंक करें'}</span>
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -591,6 +725,18 @@ export default function AdminSocialMedia() {
             }`}
           >
             सभी पोस्ट्स ({posts.length})
+          </button>
+          <button
+            onClick={() => setActiveTab('telegram')}
+            className={`px-3 py-1.5 rounded-xl text-xs font-bold transition whitespace-nowrap cursor-pointer flex items-center gap-1 ${
+              activeTab === 'telegram'
+                ? 'bg-sky-500 text-white shadow-sm'
+                : 'bg-sky-50 text-sky-700 hover:bg-sky-100'
+            }`}
+          >
+            <Send className="w-3.5 h-3.5" />
+            <span>Telegram @sarrita8</span>
+            <span>({posts.filter((p) => p.platform === 'telegram').length})</span>
           </button>
           <button
             onClick={() => setActiveTab('instagram')}
@@ -679,7 +825,9 @@ export default function AdminSocialMedia() {
                     <div className="flex items-center gap-1.5">
                       <span
                         className={`font-black uppercase text-[9px] px-2 py-0.5 rounded-full ${
-                          post.platform === 'instagram'
+                          post.platform === 'telegram'
+                            ? 'bg-sky-500 text-white'
+                            : post.platform === 'instagram'
                             ? 'bg-gradient-to-r from-purple-600 to-pink-600 text-white'
                             : 'bg-blue-600 text-white'
                         }`}
@@ -862,11 +1010,22 @@ export default function AdminSocialMedia() {
             <form onSubmit={handleAddManualPost} className="space-y-4">
               <div>
                 <label className="block text-xs font-bold text-slate-700 mb-1">प्लेटफ़ॉर्म चुनें *</label>
-                <div className="grid grid-cols-2 gap-3">
+                <div className="grid grid-cols-3 gap-2">
+                  <button
+                    type="button"
+                    onClick={() => setNewPostForm({ ...newPostForm, platform: 'telegram' })}
+                    className={`py-2 rounded-xl text-xs font-bold transition flex items-center justify-center gap-1 cursor-pointer ${
+                      newPostForm.platform === 'telegram'
+                        ? 'bg-sky-500 text-white shadow'
+                        : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
+                    }`}
+                  >
+                    <span>Telegram (@sarrita8)</span>
+                  </button>
                   <button
                     type="button"
                     onClick={() => setNewPostForm({ ...newPostForm, platform: 'instagram' })}
-                    className={`py-2 rounded-xl text-xs font-bold transition flex items-center justify-center gap-1.5 cursor-pointer ${
+                    className={`py-2 rounded-xl text-xs font-bold transition flex items-center justify-center gap-1 cursor-pointer ${
                       newPostForm.platform === 'instagram'
                         ? 'bg-gradient-to-r from-pink-600 to-rose-600 text-white shadow'
                         : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
@@ -877,7 +1036,7 @@ export default function AdminSocialMedia() {
                   <button
                     type="button"
                     onClick={() => setNewPostForm({ ...newPostForm, platform: 'facebook' })}
-                    className={`py-2 rounded-xl text-xs font-bold transition flex items-center justify-center gap-1.5 cursor-pointer ${
+                    className={`py-2 rounded-xl text-xs font-bold transition flex items-center justify-center gap-1 cursor-pointer ${
                       newPostForm.platform === 'facebook'
                         ? 'bg-blue-600 text-white shadow'
                         : 'bg-slate-100 text-slate-700 hover:bg-slate-200'

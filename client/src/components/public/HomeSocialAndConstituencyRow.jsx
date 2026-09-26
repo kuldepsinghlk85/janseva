@@ -8,7 +8,8 @@ import {
   ExternalLink,
   Youtube,
   Instagram,
-  Facebook
+  Facebook,
+  Send
 } from 'lucide-react';
 
 export default function HomeSocialAndConstituencyRow() {
@@ -20,7 +21,7 @@ export default function HomeSocialAndConstituencyRow() {
       name: 'Facebook',
       handle: 'mlaetawah (Sarita Bhadauriya MLA)',
       url: settings?.mla?.contact?.facebook || 'https://www.facebook.com/mlaetawah',
-      btnText: 'Follow Page',
+      btnText: 'Follow',
       btnColor: 'bg-blue-600 hover:bg-blue-700 text-white',
       icon: Facebook,
       iconBg: 'bg-blue-600 text-white'
@@ -34,6 +35,16 @@ export default function HomeSocialAndConstituencyRow() {
       btnColor: 'bg-gradient-to-r from-pink-600 to-rose-600 hover:from-pink-700 hover:to-rose-700 text-white',
       icon: Instagram,
       iconBg: 'bg-gradient-to-tr from-amber-500 via-rose-500 to-purple-600 text-white'
+    },
+    {
+      id: 'tg',
+      name: 'Telegram',
+      handle: 't.me/sarrita8',
+      url: settings?.mla?.contact?.telegram || 'https://t.me/sarrita8',
+      btnText: 'Join',
+      btnColor: 'bg-sky-500 hover:bg-sky-600 text-white',
+      icon: Send,
+      iconBg: 'bg-sky-500 text-white'
     },
     {
       id: 'yt',
@@ -81,8 +92,8 @@ export default function HomeSocialAndConstituencyRow() {
                 </button>
               </div>
 
-              {/* 4 Social Cards in 2x2 or 4x1 grid */}
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-1">
+              {/* 5 Social Cards */}
+              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2 pt-1">
                 {socialChannels.map((ch) => {
                   const Icon = ch.icon;
                   return (

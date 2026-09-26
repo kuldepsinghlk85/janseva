@@ -17,6 +17,7 @@ import {
   Instagram,
   Facebook,
   Youtube,
+  Send,
   CheckCircle2,
   Sparkles
 } from 'lucide-react';
@@ -105,6 +106,7 @@ export default function PublicSocialPage() {
 
   const platforms = [
     { key: 'All', label: 'सभी मंच' },
+    { key: 'telegram', label: 'Telegram (t.me/sarrita8)' },
     { key: 'instagram', label: 'Instagram (@mlaetawah)' },
     { key: 'facebook', label: 'Facebook (mlaetawah)' },
     { key: 'youtube', label: 'YouTube' },
@@ -159,7 +161,7 @@ export default function PublicSocialPage() {
               आधिकारिक सोशल मीडिया केंद्र – हर मंच पर, जनता के साथ
             </h1>
             <p className="text-rose-100 text-sm sm:text-base leading-relaxed">
-              विधायक श्रीमती सरिता भदौरिया के आधिकारिक Instagram (@mlaetawah), Facebook, YouTube एवं X हैंडल्स से प्रतिदिन प्रकाशित पोस्ट्स, वीडियो एवं जन-सरोकार।
+              विधायक श्रीमती सरिता भदौरिया के आधिकारिक Telegram (t.me/sarrita8), Instagram (@mlaetawah), Facebook, YouTube एवं X हैंडल्स से प्रतिदिन प्रकाशित पोस्ट्स, वीडियो एवं जन-सरोकार।
             </p>
           </div>
         </div>
@@ -168,7 +170,23 @@ export default function PublicSocialPage() {
       {/* Profiles Bar */}
       <div className="max-w-7xl mx-auto px-4 -mt-5 mb-8 relative z-10">
         <div className="bg-white rounded-2xl shadow-lg border border-slate-200 p-4 sm:p-5">
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-4">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 mb-4">
+            <a
+              href="https://t.me/sarrita8"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-3 rounded-2xl bg-sky-50 border border-sky-200 flex items-center justify-between hover:shadow-md transition"
+            >
+              <div className="flex items-center gap-2">
+                <Send className="w-5 h-5 text-sky-600" />
+                <div>
+                  <h4 className="text-xs font-black text-slate-900">Telegram</h4>
+                  <p className="text-[10px] text-sky-700 font-bold">t.me/sarrita8</p>
+                </div>
+              </div>
+              <ExternalLink className="w-3.5 h-3.5 text-sky-600" />
+            </a>
+
             <a
               href="https://www.instagram.com/mlaetawah/?hl=en"
               target="_blank"
@@ -296,7 +314,15 @@ export default function PublicSocialPage() {
                     </div>
                   </div>
 
-                  <span className="px-2 py-0.5 rounded-md text-[10px] font-bold uppercase bg-slate-100 text-slate-700">
+                  <span className={`px-2 py-0.5 rounded-md text-[10px] font-bold uppercase ${
+                    item.platform === 'telegram'
+                      ? 'bg-sky-100 text-sky-700 border border-sky-200'
+                      : item.platform === 'instagram'
+                      ? 'bg-pink-100 text-pink-700 border border-pink-200'
+                      : item.platform === 'facebook'
+                      ? 'bg-blue-100 text-blue-700 border border-blue-200'
+                      : 'bg-slate-100 text-slate-700'
+                  }`}>
                     {item.platform}
                   </span>
                 </div>
