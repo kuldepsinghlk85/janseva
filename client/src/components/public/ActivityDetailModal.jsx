@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from 'react';
-import { X, Calendar, Clock, MapPin, Tag, Share2, ExternalLink, Play, Eye, CheckCircle2, ChevronLeft, ChevronRight } from 'lucide-react';
+import { X, Calendar, Clock, MapPin, Tag, Share2, ExternalLink, Play, Eye, CheckCircle2, ChevronLeft, ChevronRight, Facebook } from 'lucide-react';
 import { useApp } from '../../context/AppContext';
 import { api } from '../../services/api';
 import ShareButtons from './ShareButtons';
@@ -224,6 +223,33 @@ export default function ActivityDetailModal({ activity, onClose, onTagClick }) {
               </div>
             </div>
           )}
+
+          {/* Official Facebook Connect Card */}
+          <div className="p-3.5 rounded-2xl bg-blue-50/90 border border-blue-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+            <div className="flex items-center gap-2.5 min-w-0">
+              <div className="w-9 h-9 rounded-xl bg-blue-600 text-white flex items-center justify-center flex-shrink-0 shadow-sm">
+                <Facebook className="w-5 h-5 fill-white" />
+              </div>
+              <div className="min-w-0">
+                <h4 className="text-xs font-black text-slate-900 flex items-center gap-1.5">
+                  <span>सरिता भदौरिया (MLA Etawah) आधिकारिक फेसबुक</span>
+                  <CheckCircle2 className="w-3.5 h-3.5 text-blue-600 flex-shrink-0" />
+                </h4>
+                <p className="text-[11px] text-blue-800 truncate">
+                  facebook.com/mlaetawah पर इस गतिविधि की तस्वीरें व विस्तृत अपडेट देखें
+                </p>
+              </div>
+            </div>
+            <a
+              href={activity.facebookUrl || 'https://www.facebook.com/mlaetawah'}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-3.5 py-1.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold transition flex items-center gap-1.5 flex-shrink-0 shadow-sm cursor-pointer"
+            >
+              <span>फेसबुक पर देखें</span>
+              <ExternalLink className="w-3.5 h-3.5" />
+            </a>
+          </div>
 
           {/* Social & WhatsApp Sharing Card */}
           <div className="p-4 rounded-2xl bg-gradient-to-r from-orange-50 via-amber-50 to-green-50 border border-orange-200/70 flex flex-col sm:flex-row items-center justify-between gap-4">

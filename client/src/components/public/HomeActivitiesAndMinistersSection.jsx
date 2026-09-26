@@ -17,7 +17,8 @@ import {
   Copy,
   Check,
   Eye,
-  Clock
+  Clock,
+  Facebook
 } from 'lucide-react';
 
 export default function HomeActivitiesAndMinistersSection({ activities = [], onSelectActivity }) {
@@ -222,6 +223,16 @@ export default function HomeActivitiesAndMinistersSection({ activities = [], onS
                       </button>
 
                       <div className="flex items-center space-x-1.5">
+                        <a
+                          href={act.facebookUrl || "https://www.facebook.com/mlaetawah"}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="px-2.5 py-1 rounded-lg bg-blue-50 hover:bg-blue-100 text-blue-700 border border-blue-200 text-[11px] font-bold transition flex items-center gap-1 cursor-pointer"
+                          title="सरिता भदौरिया के आधिकारिक फेसबुक पर देखें"
+                        >
+                          <Facebook className="w-3 h-3 text-blue-600 fill-blue-600" />
+                          <span className="hidden sm:inline">FB</span>
+                        </a>
                         <button
                           onClick={() => handleWhatsAppShare(act)}
                           className="px-2.5 py-1 rounded-lg bg-emerald-50 hover:bg-emerald-100 text-emerald-700 border border-emerald-200 text-[11px] font-bold transition flex items-center gap-1 cursor-pointer"

@@ -18,9 +18,9 @@ export default function HomeSocialAndConstituencyRow() {
     {
       id: 'fb',
       name: 'Facebook',
-      handle: '/mlaetawah',
-      url: 'https://www.facebook.com/mlaetawah?mibextid=ZbWKwL',
-      btnText: 'Follow',
+      handle: 'mlaetawah (Sarita Bhadauriya MLA)',
+      url: settings?.mla?.contact?.facebook || 'https://www.facebook.com/mlaetawah',
+      btnText: 'Follow Page',
       btnColor: 'bg-blue-600 hover:bg-blue-700 text-white',
       icon: Facebook,
       iconBg: 'bg-blue-600 text-white'

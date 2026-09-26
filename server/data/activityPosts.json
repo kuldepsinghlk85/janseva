@@ -1,5 +1,89 @@
 [
   {
+    "id": 8,
+    "slug": "seva-pakhwada-etawah-sadar",
+    "title": "सेवा पखवाड़ा: इटावा सदर में विशाल स्वच्छता अभियान, वृक्षारोपण एवं जनसंवाद",
+    "category": "Public Service",
+    "categoryHi": "जनसेवा एवं स्वच्छता",
+    "date": "2026-09-22",
+    "time": "09:30 AM",
+    "location": {
+      "village": "इटावा सदर",
+      "block": "इटावा",
+      "district": "इटावा"
+    },
+    "shortDescription": "प्रधानमंत्री नरेंद्र मोदी जी के जन्मदिवस उपलक्ष्य में सेवा पखवाड़ा के अंतर्गत इटावा में स्वच्छता अभियान व वृक्षारोपण।",
+    "fullDescription": "आदरणीय प्रधानमंत्री नरेंद्र मोदी जी के जन्मदिवस के उपलक्ष्य में 'सेवा पखवाड़ा' के अंतर्गत इटावा सदर में विशाल स्वच्छता अभियान, वृक्षारोपण एवं फल वितरण कार्यक्रम संपन्न हुआ। समाज के अंतिम व्यक्ति तक विकास व सेवा की किरण पहुंचाना ही हमारा पावन ध्येय है। आइए, मिलकर स्वच्छ व हरित इटावा बनाएं।\n\n[स्रोत: आधिकारिक फेसबुक पेज - Sarita Bhadauria MLA Etawah https://www.facebook.com/mlaetawah]",
+    "images": [
+      "/images/assets/work_health_camp.jpg"
+    ],
+    "videoUrl": "",
+    "documents": [],
+    "facebookUrl": "https://www.facebook.com/mlaetawah",
+    "socialUrl": "https://www.facebook.com/mlaetawah",
+    "authorPhoto": "/uploads/images/sarita_bhadauriya-1789523047198-607565.png",
+    "externalLinks": [
+      {
+        "label": "आधिकारिक फेसबुक पोस्ट (सरिता भदौरिया)",
+        "url": "https://www.facebook.com/mlaetawah"
+      }
+    ],
+    "tags": [
+      "#SevaPakhwada",
+      "#SwachhEtawah",
+      "#SaritaBhadauria",
+      "#FacebookConnected"
+    ],
+    "shareEnabled": true,
+    "status": "published",
+    "views": 1420,
+    "shares": 310,
+    "createdAt": "2026-09-22T09:30:00.000Z",
+    "updatedAt": "2026-09-22T09:30:00.000Z"
+  },
+  {
+    "id": 7,
+    "slug": "vande-bharat-etawah-welcome",
+    "title": "आगरा-वाराणसी वंदे भारत एक्सप्रेस के इटावा आगमन पर भव्य स्वागत एवं हरी झंडी",
+    "category": "Railway & Transport",
+    "categoryHi": "रेलवे एवं परिवहन",
+    "date": "2026-09-24",
+    "time": "11:15 AM",
+    "location": {
+      "village": "इटावा जंक्शन",
+      "block": "इटावा नगर",
+      "district": "इटावा"
+    },
+    "shortDescription": "विधायक श्रीमती सरिता भदौरिया द्वारा आगरा-वाराणसी वंदे भारत एक्सप्रेस के इटावा स्टेशन पर ऐतिहासिक प्रथम आगमन पर भव्य स्वागत।",
+    "fullDescription": "इटावा रेलवे स्टेशन पर आगरा-वाराणसी नवसंचालित 'वंदे भारत एक्सप्रेस' के ठहराव एवं ऐतिहासिक आगमन पर क्षेत्रीय जनता व पार्टी कार्यकर्ताओं के साथ भव्य स्वागत किया। आदरणीय प्रधानमंत्री श्री नरेंद्र मोदी जी एवं रेल मंत्री जी का इटावावासियों की ओर से हार्दिक आभार। यह आधुनिक रेल सेवा जनपद के व्यापार, पर्यटन और कनेक्टिविटी को नई गति प्रदान करेगी।\n\n[स्रोत: आधिकारिक फेसबुक पेज - Sarita Bhadauria MLA Etawah https://www.facebook.com/mlaetawah]",
+    "images": [
+      "/images/assets/social_rally.jpg"
+    ],
+    "videoUrl": "",
+    "documents": [],
+    "facebookUrl": "https://www.facebook.com/mlaetawah",
+    "socialUrl": "https://www.facebook.com/mlaetawah",
+    "authorPhoto": "/uploads/images/sarita_bhadauriya-1789523047198-607565.png",
+    "externalLinks": [
+      {
+        "label": "आधिकारिक फेसबुक पोस्ट (सरिता भदौरिया)",
+        "url": "https://www.facebook.com/mlaetawah"
+      }
+    ],
+    "tags": [
+      "#VandeBharat",
+      "#EtawahJunction",
+      "#SaritaBhadauria",
+      "#FacebookConnected"
+    ],
+    "shareEnabled": true,
+    "status": "published",
+    "views": 1850,
+    "shares": 420,
+    "createdAt": "2026-09-24T11:15:00.000Z",
+    "updatedAt": "2026-09-24T11:15:00.000Z"
+  },
+  {
     "id": 6,
     "slug": "सैफई-प्राथमिक-विद्यालय-स्मार्ट-क्लासरूम-व-भवन-निरीक्षण-4653",
     "title": "सैफई प्राथमिक विद्यालय स्मार्ट क्लासरूम व भवन निरीक्षण",
@@ -23,6 +107,10 @@
       {
         "label": "instagram मूल पोस्ट",
         "url": "https://www.instagram.com/mlaetawah/?hl=en"
+      },
+      {
+        "label": "फेसबुक पर देखें (@mlaetawah)",
+        "url": "https://www.facebook.com/mlaetawah"
       }
     ],
     "tags": [
@@ -35,7 +123,10 @@
     "views": 0,
     "shares": 0,
     "createdAt": "2026-09-15T20:26:17.504Z",
-    "updatedAt": "2026-09-15T20:26:17.504Z"
+    "updatedAt": "2026-09-15T20:26:17.504Z",
+    "facebookUrl": "https://www.facebook.com/mlaetawah",
+    "socialUrl": "https://www.facebook.com/mlaetawah",
+    "authorPhoto": "/uploads/images/sarita_bhadauriya-1789523047198-607565.png"
   },
   {
     "id": 5,
@@ -57,7 +148,12 @@
     ],
     "videoUrl": "",
     "documents": [],
-    "externalLinks": [],
+    "externalLinks": [
+      {
+        "label": "फेसबुक पर देखें (@mlaetawah)",
+        "url": "https://www.facebook.com/mlaetawah"
+      }
+    ],
     "tags": [
       "#Inauguration",
       "#Etawah"
@@ -67,7 +163,10 @@
     "views": 0,
     "shares": 0,
     "createdAt": "2026-09-15T19:55:27.869Z",
-    "updatedAt": "2026-09-15T19:55:27.870Z"
+    "updatedAt": "2026-09-15T19:55:27.870Z",
+    "facebookUrl": "https://www.facebook.com/mlaetawah",
+    "socialUrl": "https://www.facebook.com/mlaetawah",
+    "authorPhoto": "/uploads/images/sarita_bhadauriya-1789523047198-607565.png"
   },
   {
     "id": 1,
@@ -103,6 +202,10 @@
       {
         "title": "इटावा जिला प्रशासन आधिकारिक पोर्टल",
         "url": "https://etawah.nic.in"
+      },
+      {
+        "label": "फेसबुक पर देखें (@mlaetawah)",
+        "url": "https://www.facebook.com/mlaetawah"
       }
     ],
     "tags": [
@@ -117,7 +220,10 @@
     "views": 1240,
     "shares": 280,
     "createdAt": "2026-09-16T11:30:00.000Z",
-    "updatedAt": "2026-09-16T11:30:00.000Z"
+    "updatedAt": "2026-09-16T11:30:00.000Z",
+    "facebookUrl": "https://www.facebook.com/mlaetawah",
+    "socialUrl": "https://www.facebook.com/mlaetawah",
+    "authorPhoto": "/uploads/images/sarita_bhadauriya-1789523047198-607565.png"
   },
   {
     "id": 2,
@@ -144,6 +250,10 @@
       {
         "title": "माध्यमिक शिक्षा परिषद उत्तर प्रदेश",
         "url": "https://upmsp.edu.in"
+      },
+      {
+        "label": "फेसबुक पर देखें (@mlaetawah)",
+        "url": "https://www.facebook.com/mlaetawah"
       }
     ],
     "tags": [
@@ -157,7 +267,10 @@
     "views": 980,
     "shares": 165,
     "createdAt": "2026-09-14T14:00:00.000Z",
-    "updatedAt": "2026-09-14T14:00:00.000Z"
+    "updatedAt": "2026-09-14T14:00:00.000Z",
+    "facebookUrl": "https://www.facebook.com/mlaetawah",
+    "socialUrl": "https://www.facebook.com/mlaetawah",
+    "authorPhoto": "/uploads/images/sarita_bhadauriya-1789523047198-607565.png"
   },
   {
     "id": 3,
@@ -183,6 +296,10 @@
       {
         "title": "राष्ट्रीय ग्रामीण आजीविका मिशन (NRLM)",
         "url": "https://aajeevika.gov.in"
+      },
+      {
+        "label": "फेसबुक पर देखें (@mlaetawah)",
+        "url": "https://www.facebook.com/mlaetawah"
       }
     ],
     "tags": [
@@ -196,7 +313,10 @@
     "views": 1450,
     "shares": 340,
     "createdAt": "2026-09-12T10:00:00.000Z",
-    "updatedAt": "2026-09-12T10:00:00.000Z"
+    "updatedAt": "2026-09-12T10:00:00.000Z",
+    "facebookUrl": "https://www.facebook.com/mlaetawah",
+    "socialUrl": "https://www.facebook.com/mlaetawah",
+    "authorPhoto": "/uploads/images/sarita_bhadauriya-1789523047198-607565.png"
   },
   {
     "id": 4,
@@ -226,6 +346,10 @@
       {
         "title": "आयुष्मान भारत पोर्टल",
         "url": "https://pmjay.gov.in"
+      },
+      {
+        "label": "फेसबुक पर देखें (@mlaetawah)",
+        "url": "https://www.facebook.com/mlaetawah"
       }
     ],
     "tags": [
@@ -239,6 +363,9 @@
     "views": 1120,
     "shares": 210,
     "createdAt": "2026-09-10T11:00:00.000Z",
-    "updatedAt": "2026-09-10T11:00:00.000Z"
+    "updatedAt": "2026-09-10T11:00:00.000Z",
+    "facebookUrl": "https://www.facebook.com/mlaetawah",
+    "socialUrl": "https://www.facebook.com/mlaetawah",
+    "authorPhoto": "/uploads/images/sarita_bhadauriya-1789523047198-607565.png"
   }
 ]

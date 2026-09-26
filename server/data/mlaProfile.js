@@ -10,15 +10,16 @@ const mlaProfile = {
   district: "इटावा",
   state: "उत्तर प्रदेश",
   party: "भारतीय जनता पार्टी (BJP)",
-  avatar: "/images/assets/sarita_bhadauria_hero.jpg",
-  heroPortrait: "/images/assets/sarita_bhadauria_hero.jpg",
+  avatar: "/uploads/images/sarita_bhadauriya-1789523047198-607565.png",
+  photo: "/uploads/images/sarita_bhadauriya-1789523047198-607565.png",
+  heroPortrait: "/uploads/images/sarita_bhadauriya-1789523047198-607565.png",
   slogans: [
     "जनता की सेवा ही सच्ची राजनीति है।",
     "सपना से सेवा, विकास से विश्वास, जनता का साथ",
     "सेवा, संवाद, विकास हमारा संकल्प",
     "जनता का विश्वास, विकास का संकल्प, इटावा का उज्जवल भविष्य"
   ],
-  about: "श्रीमती सरिता भदौरिया उत्तर प्रदेश की 17वीं एवं 18वीं विधानसभा में इटावा विधानसभा (200) का गौरवशाली प्रतिनिधित्व कर रही हैं। वे क्षेत्र के सर्वांगीण विकास, महिला स्वावलंबन, युवाओं के कौशल विकास एवं किसान कल्याण के लिए सदैव समर्पित हैं।",
+  about: "श्रीमती सरिता भदौरिया उत्तर प्रदेश की 17वीं एवं 18वीं विधानसभा में इटावा सदर विधानसभा (200) का गौरवशाली प्रतिनिधित्व कर रही हैं। वे क्षेत्र के सर्वांगीण विकास, महिला स्वावलंबन, युवाओं के कौशल विकास एवं किसान कल्याण के लिए सदैव समर्पित हैं।",
   electionHistory: [
     { year: "2022", election: "18वीं उत्तर प्रदेश विधानसभा", votes: "98,150", margin: "+17,342", result: "विजेता" },
     { year: "2017", election: "17वीं उत्तर प्रदेश विधानसभा", votes: "91,234", margin: "+17,342", result: "विजेता" }
@@ -36,7 +37,10 @@ const mlaProfile = {
     helpline: "+91 98765 43210",
     whatsapp: "+91 98765 43210",
     email: "mla.etawah200@janseva.org",
-    website: "https://janseva-etawah200.org"
+    website: "https://janseva-etawah200.org",
+    facebook: "https://www.facebook.com/mlaetawah",
+    instagram: "https://www.instagram.com/mlaetawah/?hl=en",
+    twitter: "https://twitter.com/mlaetawah"
   }
 };
 

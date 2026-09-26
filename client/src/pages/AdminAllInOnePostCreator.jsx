@@ -91,18 +91,18 @@ export default function AdminAllInOnePostCreator() {
   const [copySuccess, setCopySuccess] = useState('');
   const [toastMessage, setToastMessage] = useState('');
   const [socialConfig, setSocialConfig] = useState({
-    facebookPageUrl: 'https://facebook.com/saritabhadauria',
-    xHandle: '@mlasarita',
-    xProfileUrl: 'https://x.com/mlasarita',
-    instagramUrl: 'https://instagram.com/saritabhadauria_mla',
-    whatsappNumber: '919415045678',
-    whatsappChannelUrl: 'https://chat.whatsapp.com/sample',
-    youtubeChannelUrl: 'https://youtube.com/@saritabhadauria'
+    facebookPageUrl: 'https://www.facebook.com/mlaetawah',
+    xHandle: '@mlaetawah',
+    xProfileUrl: 'https://twitter.com/mlaetawah',
+    instagramUrl: 'https://www.instagram.com/mlaetawah/?hl=en',
+    whatsappNumber: '919876543210',
+    whatsappChannelUrl: 'https://whatsapp.com/channel/mlaetawah',
+    youtubeChannelUrl: 'https://youtube.com/@mlaetawah'
   });
 
   const leaderName = activeLeaderProfile?.name || 'श्रीमती सरिता भदौरिया';
   const leaderRole = activeLeaderProfile?.roleTitle || 'विधायक - इटावा सदर (200)';
-  const leaderPhoto = activeLeaderProfile?.photo || '/assets/images/leader.png';
+  const leaderPhoto = activeLeaderProfile?.photo || '/uploads/images/sarita_bhadauriya-1789523047198-607565.png';
 
   // 1. Initialize Speech Recognition
   useEffect(() => {

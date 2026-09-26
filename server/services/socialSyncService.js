@@ -24,9 +24,14 @@ class SocialSyncService {
         updated = true;
       }
       const fb = db.socialProfiles.find(p => p.platform === 'facebook');
-      if (fb && (!fb.profileUrl || !fb.profileUrl.includes('mlaetawah'))) {
-        fb.profileUrl = "https://www.facebook.com/mlaetawah?mibextid=ZbWKwL&utm_source=ig&utm_medium=social&utm_content=link_in_bio";
+      if (fb) {
+        fb.profileUrl = "https://www.facebook.com/mlaetawah";
         fb.handle = "mlaetawah";
+        fb.avatar = "/uploads/images/sarita_bhadauriya-1789523047198-607565.png";
+        updated = true;
+      }
+      if (ig) {
+        ig.avatar = "/uploads/images/sarita_bhadauriya-1789523047198-607565.png";
         updated = true;
       }
     }
@@ -111,9 +116,9 @@ class SocialSyncService {
         platform: 'facebook',
         profileId: 'profile-facebook-mlaetawah',
         author: 'Sarita Bhadauria MLA Etawah',
-        authorAvatar: '/images/poli1.png',
-        profileUrl: 'https://www.facebook.com/mlaetawah?mibextid=ZbWKwL&utm_source=ig&utm_medium=social&utm_content=link_in_bio',
-        postUrl: 'https://www.facebook.com/mlaetawah?mibextid=ZbWKwL&utm_source=ig&utm_medium=social&utm_content=link_in_bio',
+        authorAvatar: '/uploads/images/sarita_bhadauriya-1789523047198-607565.png',
+        profileUrl: 'https://www.facebook.com/mlaetawah',
+        postUrl: 'https://www.facebook.com/mlaetawah',
         content: 'इटावा विधानसभा (200) के सर्वांगीण विकास के क्रम में पीडब्ल्यूडी अधिकारियों के साथ समीक्षा बैठक। क्षेत्र में निर्माणाधीन 14 सड़कों व पुलिया निर्माण कार्यों की समयसीमा व गुणवत्ता की समीक्षा की गई।',
         media: '/images/assets/work_rampur_road.jpg',
         date: 'अभी-अभी सिंक किया गया',
@@ -185,6 +190,9 @@ class SocialSyncService {
       shortDescription: post.content.slice(0, 160) + '...',
       fullDescription: `${post.content}\n\n[आधिकारिक सोशल मीडिया स्रोत: ${post.author} - ${post.platform.toUpperCase()}]\nमूल पोस्ट लिंक: ${post.postUrl}`,
       images: [post.media || '/images/assets/work_school_children.jpg'],
+      facebookUrl: post.platform === 'facebook' ? post.postUrl : 'https://www.facebook.com/mlaetawah',
+      socialUrl: post.postUrl || 'https://www.facebook.com/mlaetawah',
+      authorPhoto: post.authorAvatar || '/uploads/images/sarita_bhadauriya-1789523047198-607565.png',
       externalLinks: [{ label: `${post.platform} मूल पोस्ट`, url: post.postUrl }],
       tags: [`#${ai.village || 'Etawah'}`, '#SocialMediaSync', `#${ai.category || 'Development'}`],
       status: 'published',
@@ -259,7 +267,7 @@ class SocialSyncService {
       platform: postData.platform || 'instagram',
       profileId: postData.profileId || (postData.platform === 'facebook' ? 'profile-facebook-mlaetawah' : 'profile-instagram-mlaetawah'),
       author: postData.author || (postData.platform === 'facebook' ? 'Sarita Bhadauria MLA Etawah' : 'श्रीमती सरिता भदौरिया (@mlaetawah)'),
-      authorAvatar: postData.authorAvatar || (postData.platform === 'facebook' ? '/images/poli1.png' : '/images/poli4.png'),
+      authorAvatar: postData.authorAvatar || '/uploads/images/sarita_bhadauriya-1789523047198-607565.png',
       profileUrl: postData.profileUrl || (postData.platform === 'facebook' ? 'https://www.facebook.com/mlaetawah' : 'https://www.instagram.com/mlaetawah/?hl=en'),
       postUrl: postData.postUrl || (postData.platform === 'facebook' ? 'https://www.facebook.com/mlaetawah' : 'https://www.instagram.com/mlaetawah/?hl=en'),
       content: postData.content,

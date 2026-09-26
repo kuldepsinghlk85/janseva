@@ -53,7 +53,7 @@ export default function PublicSocialPage() {
       likes: '6.2K',
       comments: '512',
       shares: '380',
-      url: 'https://www.facebook.com/mlaetawah?mibextid=ZbWKwL'
+      url: 'https://www.facebook.com/mlaetawah'
     },
     {
       id: 'p3',
@@ -186,7 +186,7 @@ export default function PublicSocialPage() {
             </a>
 
             <a
-              href="https://www.facebook.com/mlaetawah?mibextid=ZbWKwL"
+              href="https://www.facebook.com/mlaetawah"
               target="_blank"
               rel="noopener noreferrer"
               className="p-3 rounded-2xl bg-blue-50 border border-blue-200 flex items-center justify-between hover:shadow-md transition"

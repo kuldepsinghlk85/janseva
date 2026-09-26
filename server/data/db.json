@@ -45,11 +45,13 @@
       "email": "mla.etawah200@janseva.org",
       "website": "https://janseva-etawah200.org",
       "instagram": "https://www.instagram.com/mlaetawah/?hl=en",
-      "facebook": "https://www.facebook.com/mlaetawah?mibextid=ZbWKwL&utm_source=ig&utm_medium=social&utm_content=link_in_bio"
+      "facebook": "https://www.facebook.com/mlaetawah",
+      "twitter": "https://twitter.com/mlaetawah"
     },
     "photo": "/uploads/images/sarita_bhadauriya-1789523047198-607565.png",
     "image": "/uploads/images/sarita_bhadauriya-1789523047198-607565.png",
-    "banner": "/images/assets/official_bjp_mla_banner.jpg"
+    "banner": "/images/assets/official_bjp_mla_banner.jpg",
+    "avatar": "/uploads/images/sarita_bhadauriya-1789523047198-607565.png"
   },
   "settings": {
     "activeTemplate": "media-news",
@@ -569,11 +571,61 @@
   ],
   "socialPosts": [
     {
+      "id": "post-fb-seva-pakhwada",
+      "profileId": "profile-facebook-mlaetawah",
+      "platform": "facebook",
+      "author": "Sarita Bhadauria MLA Etawah",
+      "authorAvatar": "/uploads/images/sarita_bhadauriya-1789523047198-607565.png",
+      "profileUrl": "https://www.facebook.com/mlaetawah",
+      "postUrl": "https://www.facebook.com/mlaetawah",
+      "content": "आदरणीय प्रधानमंत्री नरेंद्र मोदी जी के जन्मदिवस के उपलक्ष्य में 'सेवा पखवाड़ा' के अंतर्गत इटावा सदर में विशाल स्वच्छता अभियान, वृक्षारोपण एवं फल वितरण कार्यक्रम संपन्न हुआ। समाज के अंतिम व्यक्ति तक विकास व सेवा की किरण पहुंचाना ही हमारा पावन ध्येय है। आइए, मिलकर स्वच्छ व हरित इटावा बनाएं। #SevaPakhwada #SaritaBhadauria #Etawah200",
+      "media": "/images/assets/work_health_camp.jpg",
+      "date": "2 दिन पहले",
+      "timestamp": "2026-09-24T10:25:05.822Z",
+      "likes": 5120,
+      "comments": 312,
+      "shares": 420,
+      "aiTags": {
+        "village": "इटावा सदर",
+        "category": "जनसेवा एवं स्वच्छता",
+        "department": "नगर पालिका परिषद इटावा",
+        "suggestedTitle": "सेवा पखवाड़ा: इटावा सदर में स्वच्छता अभियान एवं वृक्षारोपण"
+      },
+      "isConvertedToActivity": true,
+      "isConvertedToWork": false,
+      "publishedOnWebsite": true
+    },
+    {
+      "id": "post-fb-vande-bharat",
+      "profileId": "profile-facebook-mlaetawah",
+      "platform": "facebook",
+      "author": "Sarita Bhadauria MLA Etawah",
+      "authorAvatar": "/uploads/images/sarita_bhadauriya-1789523047198-607565.png",
+      "profileUrl": "https://www.facebook.com/mlaetawah",
+      "postUrl": "https://www.facebook.com/mlaetawah",
+      "content": "इटावा रेलवे स्टेशन पर आगरा-वाराणसी नवसंचालित 'वंदे भारत एक्सप्रेस' के ठहराव एवं ऐतिहासिक आगमन पर क्षेत्रीय जनता व पार्टी कार्यकर्ताओं के साथ भव्य स्वागत किया। आदरणीय प्रधानमंत्री श्री नरेंद्र मोदी जी एवं रेल मंत्री जी का इटावावासियों की ओर से हार्दिक आभार। यह आधुनिक रेल सेवा जनपद के व्यापार, पर्यटन और कनेक्टिविटी को नई गति प्रदान करेगी।",
+      "media": "/images/assets/social_rally.jpg",
+      "date": "1 दिन पहले",
+      "timestamp": "2026-09-25T10:25:05.816Z",
+      "likes": 6420,
+      "comments": 485,
+      "shares": 610,
+      "aiTags": {
+        "village": "इटावा नगर",
+        "category": "परिवहन एवं रेलवे",
+        "department": "भारतीय रेल / उत्तर मध्य रेलवे",
+        "suggestedTitle": "आगरा-वाराणसी वंदे भारत एक्सप्रेस का इटावा में भव्य स्वागत"
+      },
+      "isConvertedToActivity": true,
+      "isConvertedToWork": false,
+      "publishedOnWebsite": true
+    },
+    {
       "id": "post-sync-1789503985309-938",
       "platform": "instagram",
       "profileId": "profile-instagram-mlaetawah",
       "author": "श्रीमती सरिता भदौरिया (@mlaetawah)",
-      "authorAvatar": "/images/poli4.png",
+      "authorAvatar": "/uploads/images/sarita_bhadauriya-1789523047198-607565.png",
       "profileUrl": "https://www.instagram.com/mlaetawah/?hl=en",
       "postUrl": "https://www.instagram.com/mlaetawah/?hl=en",
       "content": "आज बकेवर एवं तकरोई क्षेत्र में जनसंवाद चौपाल का आयोजन। ग्रामीण जनमानस की पेयजल एवं विद्युत समस्याओं को मौके पर सुनकर संबंधित अधिकारियों को त्वरित निस्तारण के आदेश दिए। सबका साथ, सबका विकास हमारा ध्येय है।",
@@ -601,7 +653,7 @@
       "profileId": "profile-instagram-mlaetawah",
       "platform": "instagram",
       "author": "श्रीमती सरिता भदौरिया (@mlaetawah)",
-      "authorAvatar": "/images/poli4.png",
+      "authorAvatar": "/uploads/images/sarita_bhadauriya-1789523047198-607565.png",
       "profileUrl": "https://www.instagram.com/mlaetawah/?hl=en",
       "postUrl": "https://www.instagram.com/mlaetawah/?hl=en",
       "content": "इटावा जिला अस्पताल में स्वास्थ्य सेवाओं, आपातकालीन वार्ड व दवा वितरण व्यवस्था का औचक निरीक्षण किया। मरीजों व उनके तीमारदारों से मिलकर कुशलक्षेम जाना और डॉक्टरों को शत-प्रतिशत संवेदनशीलता के साथ उपचार सुनिश्चित करने के कड़े निर्देश दिए।",
@@ -626,9 +678,9 @@
       "profileId": "profile-facebook-mlaetawah",
       "platform": "facebook",
       "author": "Sarita Bhadauria MLA Etawah",
-      "authorAvatar": "/images/poli1.png",
-      "profileUrl": "https://www.facebook.com/mlaetawah?mibextid=ZbWKwL&utm_source=ig&utm_medium=social&utm_content=link_in_bio",
-      "postUrl": "https://www.facebook.com/mlaetawah?mibextid=ZbWKwL&utm_source=ig&utm_medium=social&utm_content=link_in_bio",
+      "authorAvatar": "/uploads/images/sarita_bhadauriya-1789523047198-607565.png",
+      "profileUrl": "https://www.facebook.com/mlaetawah",
+      "postUrl": "https://www.facebook.com/mlaetawah",
       "content": "जसवंतनगर एवं बकेवर क्षेत्र के किसान भाइयों के साथ चौपाल में संवाद। प्रधानमंत्री किसान सम्मान निधि एवं जल जीवन मिशन के अंतर्गत हर घर नल योजना की प्रगति की समीक्षा की। किसानों की खुशहाली ही हमारी प्राथमिकता है।",
       "media": "/images/assets/work_water_tank.jpg",
       "date": "2 दिन पहले",
@@ -651,7 +703,7 @@
       "profileId": "profile-instagram-mlaetawah",
       "platform": "instagram",
       "author": "श्रीमती सरिता भदौरिया (@mlaetawah)",
-      "authorAvatar": "/images/poli4.png",
+      "authorAvatar": "/uploads/images/sarita_bhadauriya-1789523047198-607565.png",
       "profileUrl": "https://www.instagram.com/mlaetawah/?hl=en",
       "postUrl": "https://www.instagram.com/mlaetawah/?hl=en",
       "content": "ग्राम रामपुर में लोक निर्माण विभाग (PWD) द्वारा ₹1.85 करोड़ की लागत से बनने वाले संपर्क मार्ग के डामरीकरण कार्य का सघन निरीक्षण। ग्रामीणों से बातचीत कर उनकी समस्याओं को सुना और तय समय सीमा में कार्य पूरा करने का निर्देश दिया।",
@@ -676,9 +728,9 @@
       "profileId": "profile-facebook-mlaetawah",
       "platform": "facebook",
       "author": "Sarita Bhadauria MLA Etawah",
-      "authorAvatar": "/images/poli1.png",
-      "profileUrl": "https://www.facebook.com/mlaetawah?mibextid=ZbWKwL&utm_source=ig&utm_medium=social&utm_content=link_in_bio",
-      "postUrl": "https://www.facebook.com/mlaetawah?mibextid=ZbWKwL&utm_source=ig&utm_medium=social&utm_content=link_in_bio",
+      "authorAvatar": "/uploads/images/sarita_bhadauriya-1789523047198-607565.png",
+      "profileUrl": "https://www.facebook.com/mlaetawah",
+      "postUrl": "https://www.facebook.com/mlaetawah",
       "content": "इटावा सदर में आयोजित 'महिला स्वावलंबन एवं आजीविका सम्मेलन' में स्वयं सहायता समूह की कर्मठ बहनों से संवाद। प्रधानमंत्री आवास व मुद्रा योजना से जुड़कर आत्मनिर्भर बन रहीं हमारी माताएं व बहनें नए भारत की सशक्त तस्वीर प्रस्तुत कर रही हैं।",
       "media": "/images/assets/work_women_shg.jpg",
       "date": "5 घंटे पहले",
@@ -701,7 +753,7 @@
       "profileId": "profile-instagram-mlaetawah",
       "platform": "instagram",
       "author": "श्रीमती सरिता भदौरिया (@mlaetawah)",
-      "authorAvatar": "/images/poli4.png",
+      "authorAvatar": "/uploads/images/sarita_bhadauriya-1789523047198-607565.png",
       "profileUrl": "https://www.instagram.com/mlaetawah/?hl=en",
       "postUrl": "https://www.instagram.com/mlaetawah/?hl=en",
       "content": "आज ग्राम सैफ़ई एवं बकेवर क्षेत्र में प्राथमिक विद्यालय के नवीन भवन एवं आधुनिक स्मार्ट क्लासरूम का स्थलीय निरीक्षण किया। नौनिहालों को बेहतर शिक्षा व सभी आधुनिक सुविधाएं उपलब्ध कराना हमारी सरकार का संकल्प है। अधिकारियों को गुणवत्ता से कोई समझौता न करने के सख्त निर्देश दिए।",
@@ -740,7 +792,10 @@
         "confidence": 0.94,
         "autoAdded": true,
         "suggestedTitle": "इटावा सदर में सरकारी योजनाएँ संबंधित कार्य समीक्षा"
-      }
+      },
+      "profileUrl": "https://www.facebook.com/mlaetawah",
+      "postUrl": "https://www.facebook.com/mlaetawah",
+      "authorAvatar": "/uploads/images/sarita_bhadauriya-1789523047198-607565.png"
     },
     {
       "id": "post-sync-1789501410597",
@@ -761,7 +816,10 @@
         "confidence": 0.94,
         "autoAdded": true,
         "suggestedTitle": "इटावा सदर में सरकारी योजनाएँ संबंधित कार्य समीक्षा"
-      }
+      },
+      "profileUrl": "https://www.facebook.com/mlaetawah",
+      "postUrl": "https://www.facebook.com/mlaetawah",
+      "authorAvatar": "/uploads/images/sarita_bhadauriya-1789523047198-607565.png"
     },
     {
       "id": "post-sync-1789494823939",
@@ -782,7 +840,10 @@
         "confidence": 0.94,
         "autoAdded": true,
         "suggestedTitle": "इटावा सदर में सरकारी योजनाएँ संबंधित कार्य समीक्षा"
-      }
+      },
+      "profileUrl": "https://www.facebook.com/mlaetawah",
+      "postUrl": "https://www.facebook.com/mlaetawah",
+      "authorAvatar": "/uploads/images/sarita_bhadauriya-1789523047198-607565.png"
     },
     {
       "id": "post-1",
@@ -799,7 +860,8 @@
         "village": "सैफई",
         "category": "विकास कार्य",
         "department": "सामान्य प्रशासन"
-      }
+      },
+      "authorAvatar": "/uploads/images/sarita_bhadauriya-1789523047198-607565.png"
     },
     {
       "id": "post-2",
@@ -816,7 +878,10 @@
         "village": "इटावा सदर",
         "category": "महिला सशक्तिकरण",
         "department": "राज्य ग्रामीण आजीविका मिशन"
-      }
+      },
+      "profileUrl": "https://www.facebook.com/mlaetawah",
+      "postUrl": "https://www.facebook.com/mlaetawah",
+      "authorAvatar": "/uploads/images/sarita_bhadauriya-1789523047198-607565.png"
     },
     {
       "id": "post-3",
@@ -1269,6 +1334,45 @@
     }
   ],
   "auditLogs": [
+    {
+      "id": "log_1790237799272_ngmm",
+      "timestamp": "2026-09-24T08:16:39.272Z",
+      "user": "श्रीमती सरिता भदौरिया",
+      "action": "Created All-in-One Social Post: \"इटावा में सड़क किनारे \"",
+      "module": "All-in-One Post Creator",
+      "details": {
+        "id": "aio_1790237799266_cjpa",
+        "title": "इटावा में सड़क किनारे ",
+        "category": "विकास कार्य",
+        "rawText": "",
+        "htmlContent": "",
+        "videoUrl": "",
+        "videoFile": "",
+        "imageUrl": "/uploads/images/gram211-1790237795606-553212.png",
+        "leader": {
+          "name": "श्रीमती सरिता भदौरिया",
+          "title": "विधायक, इटावा विधानसभा (200)",
+          "constituency": "इटावा (200)",
+          "photo": "/uploads/images/sarita_bhadauriya-1789523047198-607565.png"
+        },
+        "variants": {},
+        "status": "published",
+        "createdAt": "2026-09-24T08:16:39.266Z"
+      },
+      "device": "Desktop / Chrome Windows 11"
+    },
+    {
+      "id": "log_1790237692516_hr5l",
+      "timestamp": "2026-09-24T08:14:52.517Z",
+      "user": "Admin",
+      "action": "Social Media Sync:  से डेटा सिंक किया गया (0 नए पोस्ट आयातित)",
+      "module": "Social Media",
+      "details": {
+        "targetProfileId": "Admin (Super Admin)",
+        "addedCount": 0
+      },
+      "device": "Desktop / Chrome Windows 11"
+    },
     {
       "id": "log_1789671659202_txbg",
       "timestamp": "2026-09-17T19:00:59.202Z",
@@ -3540,7 +3644,7 @@
       "username": "@mlaetawah",
       "displayName": "श्रीमती सरिता भदौरिया (MLA Etawah)",
       "profileUrl": "https://www.instagram.com/mlaetawah/?hl=en",
-      "avatar": "/images/poli4.png",
+      "avatar": "/uploads/images/sarita_bhadauriya-1789523047198-607565.png",
       "bio": "विधायक - इटावा सदर विधानसभा (200), उत्तर प्रदेश विधानसभा | भारतीय जनता पार्टी | जनसेवा, विकास एवं अंत्योदय को समर्पित।",
       "followers": "18.4K",
       "following": "245",
@@ -3556,8 +3660,8 @@
       "handle": "mlaetawah",
       "username": "mlaetawah",
       "displayName": "Sarita Bhadauria - MLA Etawah (आधिकारिक पृष्ठ)",
-      "profileUrl": "https://www.facebook.com/mlaetawah?mibextid=ZbWKwL&utm_source=ig&utm_medium=social&utm_content=link_in_bio",
-      "avatar": "/images/poli1.png",
+      "profileUrl": "https://www.facebook.com/mlaetawah",
+      "avatar": "/uploads/images/sarita_bhadauriya-1789523047198-607565.png",
       "bio": "आधिकारिक फेसबुक पृष्ठ - श्रीमती सरिता भदौरिया, विधायक, इटावा विधानसभा निर्वाचन क्षेत्र (200)। जनसेवा, क्षेत्र का विकास एवं लोक-कल्याण ही सर्वोच्च प्राथमिकता।",
       "followers": "34.8K",
       "likes": "31.2K",
@@ -3971,7 +4075,12 @@
       "highlightWord": "इटावा",
       "themePreset": "saffron",
       "active": true,
-      "status": "active"
+      "status": "active",
+      "image": "/uploads/images/sarita_bhadauriya-1789523047198-607565.png",
+      "contact": {
+        "facebook": "https://www.facebook.com/mlaetawah",
+        "instagram": "https://www.instagram.com/mlaetawah/?hl=en"
+      }
     },
     {
       "id": "leader-demo-lucknow-cantt",
@@ -3991,6 +4100,25 @@
   ],
   "activeLeaderId": "leader-sarita-etawah-200",
   "allInOnePosts": [
+    {
+      "id": "aio_1790237799266_cjpa",
+      "title": "इटावा में सड़क किनारे ",
+      "category": "विकास कार्य",
+      "rawText": "",
+      "htmlContent": "",
+      "videoUrl": "",
+      "videoFile": "",
+      "imageUrl": "/uploads/images/gram211-1790237795606-553212.png",
+      "leader": {
+        "name": "श्रीमती सरिता भदौरिया",
+        "title": "विधायक, इटावा विधानसभा (200)",
+        "constituency": "इटावा (200)",
+        "photo": "/uploads/images/sarita_bhadauriya-1789523047198-607565.png"
+      },
+      "variants": {},
+      "status": "published",
+      "createdAt": "2026-09-24T08:16:39.266Z"
+    },
     {
       "id": "aio_1789671659198_rsnn",
       "title": "बच्चों में  किताबें ",
@@ -4066,5 +4194,16 @@
       "status": "published",
       "createdAt": "2026-09-16T18:24:12.787Z"
     }
-  ]
+  ],
+  "socialConfig": {
+    "facebookPage": "https://www.facebook.com/mlaetawah",
+    "facebookPageUrl": "https://www.facebook.com/mlaetawah",
+    "twitterHandle": "@mlaetawah",
+    "xHandle": "@mlaetawah",
+    "xProfileUrl": "https://twitter.com/mlaetawah",
+    "instagramUsername": "@mlaetawah",
+    "instagramUrl": "https://www.instagram.com/mlaetawah/?hl=en",
+    "whatsappNumber": "+91 98765 43210",
+    "youtubeChannelUrl": "https://www.youtube.com"
+  }
 }
